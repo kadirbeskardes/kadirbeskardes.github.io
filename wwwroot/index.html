@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 
 <head>
     <meta charset="utf-8" />
@@ -8,55 +8,117 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
-    <title>PersonalPortfolio</title>
+    <title>Yazılım Geliştirici Portföyü</title>
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <!-- Custom CSS -->
     <link href="css/site.css" rel="stylesheet" />
     <link href="css/loading.css" rel="stylesheet" />
-    <link href="PersonalPortfolio.styles.css" rel="stylesheet" />
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 
 <body>
     <!-- Özel Loading Ekranı -->
     <div id="app-loading" class="app-loading">
-        <div class="app-loading-content">
-            <div class="spinner-border text-primary" role="status">
-                <span class="visually-hidden">Loading...</span>
-            </div>
-            <div class="app-loading-text mt-3">
-                <h3>Portföyüm Yükleniyor</h3>
-                <p>Lütfen bekleyiniz...</p>
+        <div class="app-loading-container animate__animated animate__fadeIn">
+            <div class="app-loading-content text-center">
+                <!-- Logo veya Avatar -->
+                <div class="loading-logo mb-4">
+                    <i class="fas fa-code fa-4x text-primary"></i>
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="progress loading-progress mb-4">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated"
+                         role="progressbar" style="width: 0%"></div>
+                </div>
+
+                <!-- Başlık ve Açıklama -->
+                <div class="app-loading-text">
+                    <h2 class="fw-bold mb-2">Portföy Yükleniyor</h2>
+                    <p class="text-muted mb-4">Yazılım dünyasına hazırlanıyor...</p>
+                </div>
+
+                <!-- İlginç Yükleme Mesajları -->
+                <div class="loading-message">
+                    <small class="text-muted fst-italic" id="random-message">
+                        Bağımlılıklar yükleniyor...
+                    </small>
+                </div>
             </div>
         </div>
     </div>
 
     <div id="app">Loading...</div>
 
-    <div id="blazor-error-ui">
-        An unhandled error has occurred.
-        <a href="" class="reload">Reload</a>
-        <a class="dismiss">🗙</a>
+    <div id="blazor-error-ui" class="d-none">
+        <div class="alert alert-danger position-fixed bottom-0 end-0 m-3">
+            <strong>Hata!</strong> Bir sorun oluştu.
+            <a href="" class="alert-link">Yeniden Yükle</a>
+            <button type="button" class="btn-close float-end" data-bs-dismiss="alert"></button>
+        </div>
     </div>
 
     <!-- Bootstrap JS Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="_framework/blazor.webassembly.js"></script>
 
-    <!-- Loading ekranını gizlemek için script -->
+    <!-- Loading ekranı için özel script -->
     <script>
-        window.hideLoadingScreen = function () {
-            const loadingElement = document.getElementById('app-loading');
-            if (loadingElement) {
-                loadingElement.style.opacity = '0';
-                setTimeout(() => {
-                    loadingElement.style.display = 'none';
-                }, 500); // CSS transition süresiyle eşleşmeli
+        // Rastgele yükleme mesajları
+        const loadingMessages = [
+            "Kod derleniyor...",
+            "Bileşenler hazırlanıyor...",
+            "Veri yapıları oluşturuluyor...",
+            "Arayüz optimize ediliyor...",
+            "Son kontroller yapılıyor...",
+            "Nesneler başlatılıyor...",
+            "API bağlantıları kuruluyor..."
+        ];
+
+        // Progress bar animasyonu
+        let progress = 0;
+        const progressBar = document.querySelector('.progress-bar');
+        const randomMessageElement = document.getElementById('random-message');
+
+        const progressInterval = setInterval(() => {
+            progress += Math.random() * 10;
+            if (progress > 90) progress = 90; // Blazor yüklenene kadar 90'da tut
+
+            progressBar.style.width = `${progress}%`;
+            progressBar.setAttribute('aria-valuenow', progress);
+
+            // Her 3 saniyede bir rastgele mesaj göster
+            if (progress % 30 < 10) {
+                randomMessageElement.textContent = loadingMessages[Math.floor(Math.random() * loadingMessages.length)];
             }
+        }, 300);
+
+        // Blazor yüklendiğinde loading ekranını kaldır
+        window.hideLoadingScreen = function () {
+            clearInterval(progressInterval);
+
+            // Progress bar'ı tamamla
+            progressBar.style.width = '100%';
+            progressBar.setAttribute('aria-valuenow', 100);
+            randomMessageElement.textContent = "Hazır! Yönlendiriliyorsunuz...";
+
+            // Loading ekranını kaldır
+            const loadingElement = document.getElementById('app-loading');
+            loadingElement.classList.add('animate__fadeOut');
+
+            setTimeout(() => {
+                loadingElement.style.display = 'none';
+            }, 500);
         };
     </script>
 </body>
