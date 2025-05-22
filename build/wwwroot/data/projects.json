@@ -1,0 +1,71 @@
+﻿[
+    {
+        "id": 1,
+        "title": "Görme Engelliler İçin Görsel Tanıma ve Sosyal Etkileşim Uygulaması",
+        "shortDescription": "Görme engelli bireylerin çevrelerini tanımalarına ve sosyal etkileşimlerini artırmalarına yardımcı olan yapay zekâ destekli mobil uygulama.",
+        "fullDescription": "Bu proje, görme engelli bireylerin çevresini daha iyi tanımasını ve sosyal yaşama daha aktif katılmasını sağlamak amacıyla geliştirilmiş bir mobil uygulamadır. Uygulama, cihazın kamerasıyla çekilen görüntüleri Azure Computer Vision ve GPT-3.5 desteğiyle analiz ederek sesli anlatımlarla kullanıcıya aktarır. Aynı zamanda kullanıcının konum bilgisi kullanılarak yakınlardaki müze veya sosyal alanlar tespit edilip önerilir. Gün boyunca uygulamada meydana gelen hatalar sistem tarafından tespit edilip geliştiricilere e-posta yoluyla iletilir.\n\nTemel Özellikler:\n\n- Kamera ile ortam ve nesne tanıma\n- Sesli betimleme\n- Lokasyon tabanlı müze önerileri\n- Günlük hata raporlarının otomatik mail ile gönderimi",
+        "imageUrl": "https://cdn-icons-png.flaticon.com/512/194/194938.png",
+        "technologies": [ "C#", "XML", ".NET Framework 4.7", "Xamarin.Forms", "Azure Computer Vision", "OpenAI GPT-3.5", "Google Places API", "Visual Studio" ],
+        "createdDate": "2025-05-21",
+        "projectUrl": "#",
+        "githubUrl": "#",
+        "features": [
+            "Kamera ile ortam ve nesne tanıma",
+            "Sesli betimleme",
+            "Lokasyon tabanlı müze önerileri",
+            "Günlük hata raporlarının otomatik mail ile gönderimi"
+        ],
+        "screenshots": [],
+        "challenges": "Görsel tanımanın doğru yapılması ve sesli betimlemelerin anlaşılır olması.",
+        "solutions": "Azure Computer Vision ve GPT-3.5 ile yüksek doğruluk oranı sağlandı, sesli betimleme netleştirildi ve lokasyon tabanlı öneriler Google API'si ile geliştirildi."
+    },
+    {
+        "id": 2,
+        "title": "Remind Me - İlaç Takip ve Hatırlatma Sistemi",
+        "shortDescription": "Doktor ve hasta arasında etkileşim sağlayan, ilaç hatırlatmaları yapan mobil sağlık uygulaması.",
+        "fullDescription": "Remind Me, Alzheimer gibi hastalıklarla mücadele eden bireylerin ilaçlarını zamanında almasını sağlamak amacıyla geliştirilmiş bir mobil sağlık uygulamasıdır. Doktor, hastaya reçete ettiği ilaçları ve saatlerini sisteme tanımlar. Hasta bu saatlerde bir bildirim alır ve ilacını içtikten sonra video kaydıyla bunu doktora onaylayabilir. Uygulama doktor ve hasta arasında iki yönlü bir bilgi ve kayıt paylaşımı sunar.\n\nHasta Özellikleri:\n\n- İlaç saatinde bildirim alma\n- Video kaydı ile içtiğini onaylama\n- Doktor profiline erişim\n- İlaç ve zaman listesi görüntüleme\n\nDoktor Özellikleri:\n\n- Hasta ekleme/çıkarma\n- Hasta için ilaç ve saat belirleme\n- Video kayıtlarını izleme\n- Hasta durumunu güncelleme",
+        "imageUrl": "https://cdn-icons-png.flaticon.com/512/3524/3524388.png",
+        "technologies": [ "C#", "XAML", "Xamarin.Forms", ".NET", "Firebase Realtime Database", "Firebase Storage", "Android Studio", "Visual Studio" ],
+        "createdDate": "2025-05-21",
+        "projectUrl": "#",
+        "githubUrl": "#",
+        "features": [
+            "İlaç saatinde bildirim alma",
+            "Video kaydı ile içtiğini onaylama",
+            "Doktor profiline erişim",
+            "İlaç ve zaman listesi görüntüleme",
+            "Hasta ekleme/çıkarma",
+            "Video kayıtlarını izleme",
+            "Hasta durumunu güncelleme"
+        ],
+        "screenshots": [],
+        "challenges": "Uygulamanın iki yönlü veri paylaşımı ve video kaydı onaylama işlemlerinin doğru ve güvenli şekilde çalışması.",
+        "solutions": "Firebase Realtime Database ile hızlı veri senkronizasyonu sağlandı. Firebase Storage ile video kaydı depolama ve doğrulama işlemleri güvence altına alındı."
+    },
+    {
+        "id": 3,
+        "title": "Görüntü Üzerinde Metin ve Görsel Gizleme & Şifreleme",
+        "shortDescription": "LSB steganografi ve şifreleme algoritmalarıyla geliştirilen veri gizleme uygulaması.",
+        "fullDescription": "Bu proje, Python diliyle geliştirilmiş, görüntü dosyaları üzerine metin ve görsel verilerin gizlenmesini ve güvenliğinin sağlanmasını amaçlayan bir steganografi uygulamasıdır. LSB algoritması ile veri gizlenmiş, Blowfish ve Sezar şifreleme teknikleri ile güvenlik artırılmıştır. Kullanıcı arayüzü tkinter ile oluşturulmuştur.",
+        "imageUrl": "https://cdn-icons-png.flaticon.com/512/3062/3062634.png",
+        "technologies": [ "Python", "Tkinter", "Numpy", "Pillow", "LSB", "Blowfish", "Sezar Cipher", "PSNR", "SSIM" ],
+        "createdDate": "2024-01-01",
+        "projectUrl": "#",
+        "githubUrl": "#",
+        "features": [
+            "Metin ve görsel veri gizleme",
+            "Blowfish ile metin şifreleme",
+            "Sezar algoritması ile görsel şifreleme",
+            "PSNR ve SSIM ile kalite değerlendirme",
+            "Kullanıcı arayüzü ile kolay kullanım"
+        ],
+        "screenshots": [
+            "images/project1-1.jpg",
+            "images/project1-2.jpg"
+        ],
+        "challenges": "Veri gizlerken görüntü kalitesini bozmadan güvenliği sağlamak",
+        "solutions": "LSB yöntemiyle görünmez gizleme, şifreleme algoritmalarıyla güvenlik artırıldı ve kalite metrikleri (PSNR, SSIM) ile test edildi."
+    }
+
+
+]
