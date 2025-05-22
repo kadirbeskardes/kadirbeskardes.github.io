@@ -1,0 +1,171 @@
+﻿@page "/about"
+
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-body text-center">
+                    <img src="img/pp.jpg" alt="Profil Fotoğrafı" class="rounded-circle img-fluid mb-3" style="width: 150px;">
+                    <h3 class="card-title">Kadir Beşkardeş</h3>
+                    <p class="text-muted mb-1">Yazılım Geliştirici</p>
+                    <p class="text-muted mb-4">İstanbul, Türkiye</p>
+
+                    <div class="d-flex justify-content-center mb-2">
+                        <a href="#" class="btn btn-primary me-2">İletişim</a>
+                        <a href="~/cv.pdf" download class="btn btn-outline-primary">CV İndir</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Yetenekler</h5>
+                    <div class="mb-3">
+                        <h6 class="mb-1">C# / .NET</h6>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <h6 class="mb-1">Python</h6>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <h6 class="mb-1">HTML/CSS</h6>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <h6 class="mb-1">SQL</h6>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 80%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-8">
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                    <h3 class="card-title">Hakkımda</h3>
+                    <p class="card-text">
+                        Yazılım geliştirme, algoritma tasarımı ve problem çözme konularında güçlü bir altyapıya
+                        sahibim. ASP.NET Core MVC, C# ve Python dillerinde projeler geliştirdim; web ve mobil
+                        uygulama geliştirme deneyimine sahibim. Veritabanı tasarımı ve farklı teknolojilere olan
+                        ilgimle teknik yetkinliğimi sürekli geliştiriyorum.
+                    </p>
+                    <p class="card-text">
+                        İyi düzeyde İngilizce bilgiye sahibim. Çözüm
+                        odaklı ve kararlı bir şekilde karşılaştığım sorunlara etkili çözümler üretmeye odaklanırım.
+                    </p>
+                </div>
+            </div>
+
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                    <h3 class="card-title">Deneyim</h3>
+
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <h5>
+                                .NET Yazılım Geliştirme Uzmanı Eğitim Programı
+                            </h5>
+                            <h6 class="text-primary">BilgeAdam AKademi</h6>
+                            <p class="text-muted">02/2025 - 05/2025</p>
+                            <ul>
+                                <li> .NET, C#, OOP, EF Core, LINQ, MVC/Web API, SOLID ve tasarım desenleriyle çalıştım.</li>
+                                <li>
+                                    MSSQL, HTML/CSS, Bootstrap kullandım; Agile/Scrum süreçlerine dahil oldum.
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="timeline-item">
+                            <h5>Stajyer Yazılım Geliştirici</h5>
+                            <h6 class="text-primary">
+                                Yıldız Teknik Üniversitesi Bilgi İşlem Daire Başkanlığı
+                            </h6>
+                            <p class="text-muted">07/2023 - 09/2023</p>
+                            <ul>
+                                <li>Frontend geliştirme (HTML, CSS, JavaScript)</li>
+                                <li>Backend API testleri</li>
+                                <li>Veritabanı tasarımı ve optimizasyonu</li>
+                            </ul>
+                        </div>
+
+                        <div class="timeline-item">
+                            <h5>Stajyer Yazılım Geliştirici</h5>
+                            <h6 class="text-primary">
+                                Yıldız Teknik Üniversitesi Bilgi İşlem Daire Başkanlığı
+                            </h6>
+                            <p class="text-muted">07/2022 - 09/2022</p>
+                            <ul>
+                                <li>Frontend geliştirme (HTML, CSS, JavaScript)</li>
+                                <li>Backend API testleri</li>
+                                <li>Veritabanı tasarımı ve optimizasyonu</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h3 class="card-title">Eğitim</h3>
+
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <h5>Kırıkkale Üniversitesi</h5>
+                            <h6 class="text-primary">Bilgisayar Mühendisliği</h6>
+                            <p class="text-muted">2020 - 2024</p>
+                            <p>Lisans derecesi: 3.15</p>
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .timeline {
+        position: relative;
+        padding-left: 2rem;
+    }
+
+        .timeline:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary-color);
+        }
+
+    .timeline-item {
+        position: relative;
+        padding-bottom: 2rem;
+    }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: -2.1rem;
+            top: 0.3rem;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background: var(--primary-color);
+        }
+</style>

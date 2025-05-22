@@ -1,0 +1,68 @@
+﻿@page "/contact"
+@using Personal.Components
+
+<div class="container py-5">
+    <div class="text-center mb-5">
+        <h2 class="section-title d-inline-block">İletişim</h2>
+        <p class="text-muted">Bana ulaşmak için aşağıdaki formu kullanabilirsiniz</p>
+    </div>
+    
+    <div class="row g-5">
+        <div class="col-lg-5">
+            <div class="card shadow-sm h-100">
+                <div class="card-body p-4">
+                    <h3 class="h4 mb-4">İletişim Bilgileri</h3>
+                    
+                    <div class="d-flex mb-4">
+                        <div class="me-3 text-primary">
+                            <i class="bi bi-geo-alt fs-4"></i>
+                        </div>
+                        <div>
+                            <h5 class="h6 mb-1">Adres</h5>
+                            <p class="text-muted mb-0">İstanbul, Türkiye</p>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex mb-4">
+                        <div class="me-3 text-primary">
+                            <i class="bi bi-envelope fs-4"></i>
+                        </div>
+                        <div>
+                            <h5 class="h6 mb-1">E-posta</h5>
+                            <p class="text-muted mb-0">kadir.beskardes11@gmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex mb-4">
+                        <div class="me-3 text-primary">
+                            <i class="bi bi-telephone fs-4"></i>
+                        </div>
+                        <div>
+                            <h5 class="h6 mb-1">Telefon</h5>
+                            <p class="text-muted mb-0">+90 507 275 67 47</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-5">
+                        <h5 class="h6 mb-3">Sosyal Medya</h5>
+                        <div class="social-links">
+                            <a href="#" class="social-icon"><i class="bi bi-github"></i></a>
+                            <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
+                            <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
+                            <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-7">
+            <div class="card shadow-sm">
+                <div class="card-body p-4">
+                    <h3 class="h4 mb-4">Mesaj Gönder</h3>
+                    <ContactForm />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

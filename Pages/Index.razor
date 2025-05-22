@@ -1,0 +1,147 @@
+﻿@page "/"
+@using Personal.Models
+@using Personal.Services
+@inject ProjectService ProjectService
+
+<div class="hero-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="display-4 fw-bold mb-4">Merhaba, Ben <span class="text-primary">Kadir Beşkardeş</span></h1>
+                <p class="lead mb-4">Yazılım Geliştirici & Full Stack Developer</p>
+                <p class="mb-4">
+                    Web ve mobil uygulama geliştirme konusunda uzmanlaşmış bir yazılım geliştiriciyim.
+                    Kullanıcı dostu, modern ve performanslı uygulamalar geliştiriyorum.
+                </p>
+                <div class="d-flex gap-3">
+                    <a href="about" class="btn btn-primary btn-lg px-4">
+                        <i class="bi bi-person me-2"></i>Hakkımda
+                    </a>
+                    <a href="contact" class="btn btn-outline-primary btn-lg px-4">
+                        <i class="bi bi-envelope me-2"></i>İletişim
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6 d-none d-lg-block">
+                <img src="img/pp.jpg" alt="Profil" class="img-fluid rounded shadow">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container my-5">
+    <div class="text-center mb-5">
+        <h2 class="section-title d-inline-block">Yeteneklerim</h2>
+        <p class="text-muted">Geliştirme süreçlerinde kullandığım teknolojiler</p>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card h-100">
+                <div class="card-body text-center p-4">
+                    <i class="bi bi-code-slash text-primary display-4 mb-3"></i>
+                    <h3 class="h4 mb-3">Frontend</h3>
+                    <ul class="list-unstyled">
+                        <li>Blazor WebAssembly</li>
+                        <li>HTML5/CSS3</li>
+                        <li>JavaScript</li>
+                        <li>Bootstrap 5</li>
+                        <li>React</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card h-100">
+                <div class="card-body text-center p-4">
+                    <i class="bi bi-server text-primary display-4 mb-3"></i>
+                    <h3 class="h4 mb-3">Backend</h3>
+                    <ul class="list-unstyled">
+                        <li>ASP.NET Core</li>
+                        <li>C#</li>
+                        <li>Entity Framework</li>
+                        <li>REST API</li>
+                        <li>SQL Server</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card h-100">
+                <div class="card-body text-center p-4">
+                    <i class="bi bi-tools text-primary display-4 mb-3"></i>
+                    <h3 class="h4 mb-3">Araçlar</h3>
+                    <ul class="list-unstyled">
+                        <li>Visual Studio</li>
+                        <li>Git/GitHub</li>
+                        <li>Azure DevOps</li>
+                        <li>Docker</li>
+                        <li>Postman</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bg-light py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="section-title d-inline-block">Son Projelerim</h2>
+            <p class="text-muted">Yakın zamanda tamamladığım çalışmalar</p>
+        </div>
+
+        @if (featuredProjects == null)
+        {
+            <div class="text-center">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="row g-4">
+                @foreach (var project in featuredProjects)
+                {
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card h-100 shadow-sm">
+                            <img src="@project.ImageUrl" class="card-img-top" alt="@project.Title">
+                            <div class="card-body">
+                                <h5 class="card-title">@project.Title</h5>
+                                <p class="card-text">@project.ShortDescription</p>
+                                <div class="mb-3">
+                                    @foreach (var tech in project.Technologies.Take(3))
+                                    {
+                                        <span class="badge bg-primary me-1">@tech</span>
+                                    }
+                                </div>
+                            </div>
+                            <div class="card-footer bg-transparent border-0">
+                                <a href="@($"project/{project.Id}")" class="btn btn-sm btn-outline-primary">Detaylar</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <div class="text-center mt-4">
+                <a href="projects" class="btn btn-primary">
+                    <i class="bi bi-collection me-2"></i>Tüm Projeleri Görüntüle
+                </a>
+            </div>
+        }
+    </div>
+</div>
+
+@code {
+    private List<ProjectListing>? featuredProjects;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var allProjects = await ProjectService.GetProjectListingsAsync();
+        featuredProjects = allProjects.OrderByDescending(p => p.CreatedDate).Take(3).ToList();
+    }
+}

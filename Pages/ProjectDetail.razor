@@ -1,0 +1,319 @@
+﻿@page "/project/{id:int}"
+@using Personal.Models
+@using Personal.Services
+@inject ProjectService ProjectService
+@inject NavigationManager NavigationManager
+
+<PageTitle>@(project?.Title ?? "Proje Detayı")</PageTitle>
+
+@if (project == null)
+{
+    <div class="container py-5 my-5 text-center">
+        @if (isLoading)
+        {
+            <div class="d-flex justify-content-center align-items-center" style="height: 300px;">
+                <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+                    <span class="visually-hidden">Yükleniyor...</span>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-danger shadow-sm">
+                <div class="d-flex flex-column align-items-center">
+                    <i class="bi bi-exclamation-octagon-fill text-danger fs-1 mb-3"></i>
+                    <h4 class="alert-heading">Proje Bulunamadı</h4>
+                    <p>Belirtilen ID ile bir proje bulunamadı veya yüklenirken bir hata oluştu.</p>
+                    <button class="btn btn-primary mt-3" @onclick="NavigateToProjects">
+                        <i class="bi bi-arrow-left me-2"></i>Proje Listesine Dön
+                    </button>
+                </div>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <!-- Breadcrumb Navigation -->
+    <nav aria-label="breadcrumb" class="bg-light py-3">
+        <div class="container">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item"><a href="/">Ana Sayfa</a></li>
+                <li class="breadcrumb-item"><a href="/projects">Projeler</a></li>
+                <li class="breadcrumb-item active" aria-current="page">@project.Title</li>
+            </ol>
+        </div>
+    </nav>
+
+    <div class="container py-5">
+        <!-- Project Header -->
+        <div class="row mb-5">
+            <div class="col-lg-8">
+                <div class="d-flex align-items-center mb-3">
+                    <h1 class="display-5 fw-bold me-3">@project.Title</h1>
+                    <span class="badge bg-primary fs-6 align-self-start">
+                        @project.CreatedDate.ToString("MMMM yyyy")
+                    </span>
+                </div>
+                <p class="lead">@project.ShortDescription</p>
+
+                <!-- Project Tags -->
+                <div class="d-flex flex-wrap gap-2 mb-4">
+                    @foreach (var tech in project.Technologies)
+                    {
+                        <span class="badge bg-secondary">
+                            <i class="bi bi-tag-fill me-1"></i>@tech
+                        </span>
+                    }
+                </div>
+
+                <!-- Project Links -->
+                <div class="d-flex flex-wrap gap-3 mb-4">
+                    @if (!string.IsNullOrEmpty(project.ProjectUrl))
+                    {
+                        <a href="@project.ProjectUrl" target="_blank" class="btn btn-primary">
+                            <i class="bi bi-box-arrow-up-right me-2"></i>Canlı Demo
+                        </a>
+                    }
+                    @if (!string.IsNullOrEmpty(project.GitHubUrl))
+                    {
+                        <a href="@project.GitHubUrl" target="_blank" class="btn btn-dark">
+                            <i class="bi bi-github me-2"></i>GitHub Repo
+                        </a>
+                    }
+                    <button class="btn btn-outline-secondary" @onclick="NavigateToProjects">
+                        <i class="bi bi-arrow-left me-2"></i>Tüm Projeler
+                    </button>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card shadow-sm h-100">
+                    <img src="@project.ImageUrl" class="card-img-top" alt="@project.Title">
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Content -->
+        <div class="row">
+            <div class="col-lg-8">
+                <!-- Project Description -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header bg-white border-bottom-0">
+                        <h2 class="h4 mb-0">
+                            <i class="bi bi-file-text text-primary me-2"></i>Proje Açıklaması
+                        </h2>
+                    </div>
+                    <div class="card-body">
+                        <markdown>@project.FullDescription</markdown>
+                    </div>
+                </div>
+
+                <!-- Project Features -->
+                @if (project.Features?.Any() == true)
+                {
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-header bg-white border-bottom-0">
+                            <h2 class="h4 mb-0">
+                                <i class="bi bi-list-check text-primary me-2"></i>Öne Çıkan Özellikler
+                            </h2>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-group list-group-flush">
+                                @foreach (var feature in project.Features)
+                                {
+                                    <li class="list-group-item border-0 ps-0">
+                                        <i class="bi bi-check-circle-fill text-success me-2"></i>@feature
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                }
+
+                <!-- Challenges & Solutions -->
+                @if (!string.IsNullOrEmpty(project.Challenges) || !string.IsNullOrEmpty(project.Solutions))
+                {
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-header bg-white border-bottom-0">
+                            <h2 class="h4 mb-0">
+                                <i class="bi bi-lightbulb text-primary me-2"></i>Zorluklar ve Çözümler
+                            </h2>
+                        </div>
+                        <div class="card-body">
+                            @if (!string.IsNullOrEmpty(project.Challenges))
+                            {
+                                <h5 class="text-primary mt-3">Karşılaşılan Zorluklar</h5>
+                                <markdown>@project.Challenges</markdown>
+                            }
+
+                            @if (!string.IsNullOrEmpty(project.Solutions))
+                            {
+                                <h5 class="text-primary mt-4">Uygulanan Çözümler</h5>
+                                <markdown>@project.Solutions</markdown>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <!-- Project Sidebar -->
+            <div class="col-lg-4">
+                <!-- Technology Stack -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="h5 mb-0">
+                            <i class="bi bi-stack me-2"></i>Teknoloji Yığını
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled">
+                            @foreach (var tech in project.Technologies)
+                            {
+                                <li class="mb-2">
+                                    <div class="d-flex align-items-center">
+                                        <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                                        <span>@tech</span>
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Project Metadata -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header bg-white">
+                        <h3 class="h5 mb-0">
+                            <i class="bi bi-info-circle text-primary me-2"></i>Proje Bilgileri
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <dl class="row mb-0">
+                            <dt class="col-sm-5">Oluşturulma Tarihi</dt>
+                            <dd class="col-sm-7">@project.CreatedDate.ToString("dd MMMM yyyy")</dd>
+
+                            <dt class="col-sm-5">Kategori</dt>
+                            <dd class="col-sm-7">Web Uygulaması</dd>
+
+                            @if (!string.IsNullOrEmpty(project.ProjectUrl))
+                            {
+                                <dt class="col-sm-5">Durum</dt>
+                                <dd class="col-sm-7">
+                                    <span class="badge bg-success">Canlı</span>
+                                </dd>
+                            }
+                        </dl>
+                    </div>
+                </div>
+
+                <!-- Screenshots Gallery -->
+                @if (project.Screenshots?.Any() == true)
+                {
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-white">
+                            <h3 class="h5 mb-0">
+                                <i class="bi bi-images text-primary me-2"></i>Ekran Görüntüleri
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-2">
+                                @foreach (var screenshot in project.Screenshots)
+                                {
+                                    <div class="col-6">
+                                        <a href="#" @onclick="() => OpenLightbox(screenshot)"
+                                        @onclick:preventDefault
+                                           class="d-block">
+                                            <img src="@screenshot" class="img-fluid rounded shadow-sm" alt="Ekran görüntüsü">
+                                        </a>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox Modal -->
+    @if (showLightbox)
+    {
+        <div class="modal fade show d-block" tabindex="-1" style="background: rgba(0,0,0,0.9)">
+            <div class="modal-dialog modal-dialog-centered modal-xl">
+                <div class="modal-content border-0 bg-transparent">
+                    <div class="modal-header border-0">
+                        <button type="button" class="btn-close btn-close-white" @onclick="CloseLightbox"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <img src="@currentScreenshot" class="img-fluid" style="max-height: 80vh" alt="Ekran görüntüsü">
+                    </div>
+                    <div class="modal-footer border-0 justify-content-center">
+                        <button class="btn btn-outline-light me-2" @onclick="PrevScreenshot"
+                                disabled="@(currentScreenshotIndex <= 0)">
+                            <i class="bi bi-chevron-left"></i> Önceki
+                        </button>
+                        <span class="text-white mx-2">
+                            @(currentScreenshotIndex + 1) / @project.Screenshots.Length
+                        </span>
+                        <button class="btn btn-outline-light ms-2" @onclick="NextScreenshot"
+                                disabled="@(currentScreenshotIndex >= project.Screenshots.Length - 1)">
+                            Sonraki <i class="bi bi-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+
+@code {
+    [Parameter] public int Id { get; set; }
+
+    private Personal.Models.ProjectDetail? project;
+    private bool isLoading = true;
+    private bool showLightbox = false;
+    private string? currentScreenshot;
+    private int currentScreenshotIndex = 0;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        isLoading = true;
+        project = await ProjectService.GetProjectDetailAsync(Id);
+        isLoading = false;
+    }
+
+    private void NavigateToProjects()
+    {
+        NavigationManager.NavigateTo("/projects");
+    }
+
+    private void OpenLightbox(string screenshot)
+    {
+        if (project?.Screenshots == null) return;
+
+        currentScreenshot = screenshot;
+        currentScreenshotIndex = Array.IndexOf(project.Screenshots, screenshot);
+        showLightbox = true;
+    }
+
+    private void CloseLightbox()
+    {
+        showLightbox = false;
+    }
+
+    private void PrevScreenshot()
+    {
+        if (project?.Screenshots == null || currentScreenshotIndex <= 0) return;
+
+        currentScreenshotIndex--;
+        currentScreenshot = project.Screenshots[currentScreenshotIndex];
+    }
+
+    private void NextScreenshot()
+    {
+        if (project?.Screenshots == null || currentScreenshotIndex >= project.Screenshots.Length - 1) return;
+
+        currentScreenshotIndex++;
+        currentScreenshot = project.Screenshots[currentScreenshotIndex];
+    }
+}

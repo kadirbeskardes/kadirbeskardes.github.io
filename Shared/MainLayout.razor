@@ -1,0 +1,82 @@
+﻿@inherits LayoutComponentBase
+
+<div class="d-flex flex-column min-vh-100">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="/">
+                    <i class="bi bi-code-slash me-2"></i>Portföyüm
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                                <i class="bi bi-house-door me-1"></i> Ana Sayfa
+                            </NavLink>
+                        </li>
+                        <li class="nav-item">
+                            <NavLink class="nav-link" href="about">
+                                <i class="bi bi-person me-1"></i> Hakkımda
+                            </NavLink>
+                        </li>
+                        <li class="nav-item">
+                            <NavLink class="nav-link" href="projects">
+                                <i class="bi bi-briefcase me-1"></i> Projeler
+                            </NavLink>
+                        </li>
+                        <li class="nav-item">
+                            <NavLink class="nav-link" href="contact">
+                                <i class="bi bi-envelope me-1"></i> İletişim
+                            </NavLink>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="files/cv.pdf" download>
+                                <i class="bi bi-download me-1"></i> CV İndir
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="flex-grow-1 py-4">
+        @Body
+    </main>
+
+    <footer class="bg-dark text-white py-4 mt-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Hakkımda</h5>
+                    <p>Yeni teknolojiler öğrenmeye ve kendimi geliştirmeye devam ediyorum.</p>
+                </div>
+                <div class="col-md-3">
+                    <h5>Bağlantılar</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="/" class="text-white">Ana Sayfa</a></li>
+                        <li><a href="about" class="text-white">Hakkımda</a></li>
+                        <li><a href="projects" class="text-white">Projeler</a></li>
+                        <li><a href="contact" class="text-white">İletişim</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Sosyal Medya</h5>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="bi bi-github"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4 bg-light">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2025 Portföyüm. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+</div>
