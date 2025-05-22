@@ -1,131 +1,319 @@
 ﻿@page "/about"
 
-<div class="container py-5">
-    <div class="row">
-        <div class="col-lg-4">
-            <div class="card mb-4 shadow-sm">
-                <div class="card-body text-center">
-                    <img src="img/pp.jpg" alt="Profil Fotoğrafı" class="rounded-circle img-fluid mb-3" style="width: 150px;">
-                    <h3 class="card-title">Kadir Beşkardeş</h3>
-                    <p class="text-muted mb-1">Yazılım Geliştirici</p>
-                    <p class="text-muted mb-4">İstanbul, Türkiye</p>
-
-                    <div class="d-flex justify-content-center mb-2">
-                        <a href="#" class="btn btn-primary me-2">İletişim</a>
-                        <a href="cv.pdf" download class="btn btn-outline-primary">CV İndir</a>
+<!-- Modern Hero Section with Particles -->
+<section class="about-hero bg-dark text-white position-relative overflow-hidden">
+    <div id="particles-js"></div>
+    <div class="container position-relative py-5" style="z-index: 2;">
+        <div class="row align-items-center min-vh-60 py-5">
+            <div class="col-lg-7">
+                <div class="badge bg-primary bg-opacity-10 text-primary mb-3 px-3 py-2 rounded-pill">Yazılım Geliştirici</div>
+                <h1 class="display-3 fw-bold mb-4 animate__animated animate__fadeInDown">Kadir Beşkardeş</h1>
+                <p class="lead mb-4 animate__animated animate__fadeIn animate__delay-1s">Full Stack Developer | .NET Enthusiast | Problem Solver</p>
+                <p class="mb-5 animate__animated animate__fadeIn animate__delay-1s">
+                    Yazılım geliştirme ve algoritma tasarımında yetkinim; ASP.NET Core MVC, C# ve Python ile projeler geliştirdim. Çözüm odaklıyım ve teknik becerilerimi sürekli geliştiriyorum.
+                </p>
+                <div class="d-flex flex-wrap gap-3 animate__animated animate__fadeIn animate__delay-2s">
+                    <a href="#contact" class="btn btn-primary btn-lg px-4 rounded-pill">
+                        <i class="bi bi-envelope me-2"></i>İletişime Geç
+                    </a>
+                    <a href="cv.pdf" download class="btn btn-outline-light btn-lg px-4 rounded-pill">
+                        <i class="bi bi-download me-2"></i>CV İndir
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-5 d-none d-lg-block">
+                <div class="hero-image-container position-relative">
+                    <img src="img/pp.jpg" alt="Kadir Beşkardeş" class="img-fluid rounded-4 shadow-lg border border-4 border-white">
+                    <div class="tech-badge dotnet-badge">
+                        <i class="fab fa-microsoft"></i>
+                    </div>
+                    <div class="tech-badge python-badge">
+                        <i class="fab fa-python"></i>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="hero-scroll-indicator">
+        <a href="#main-content" class="text-white"><i class="bi bi-chevron-down fs-4"></i></a>
+    </div>
+</section>
 
-            <div class="card shadow-sm mb-4">
-                <div class="card-body">
-                    <h5 class="card-title">Yetenekler</h5>
-                    <div class="mb-3">
-                        <h6 class="mb-1">C# / .NET</h6>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 90%"></div>
+<!-- Main Content -->
+<div id="main-content" class="container py-5">
+    <div class="row g-4">
+        <!-- Left Column - Profile Card -->
+        <div class="col-lg-4">
+            <div class="card border-0 shadow-lg h-100 sticky-top" style="top: 20px;">
+                <div class="card-body p-4">
+                    <div class="profile-image-container mx-auto mb-4">
+                        <img src="img/pp.jpg" alt="Kadir Beşkardeş" class="img-fluid rounded-circle shadow border border-4 border-white">
+                    </div>
+                    <h3 class="card-title fw-bold text-center mb-2">Kadir Beşkardeş</h3>
+                    <p class="text-muted text-center mb-3">Computer Engineer / Software Developer</p>
+
+                    <div class="d-flex justify-content-center gap-3 mb-4">
+                        <a href="https://github.com/kadirbeskardes" class="social-icon bg-github"><i class="bi bi-github"></i></a>
+                        <a href="https://www.linkedin.com/in/kadirbeskardes/" class="social-icon bg-linkedin"><i class="bi bi-linkedin"></i></a>
+                        <a href="https://x.com/beskardeskadirr" class="social-icon bg-twitter"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" class="social-icon bg-instagram"><i class="bi bi-instagram"></i></a>
+                    </div>
+
+                    <div class="mb-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="bi bi-geo-alt-fill text-primary me-2 fs-5"></i>
+                            <span>İstanbul, Türkiye</span>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="bi bi-envelope-fill text-primary me-2 fs-5"></i>
+                            <span>kadir.beskardes11@gmail.com</span>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <i class="bi bi-phone-fill text-primary me-2 fs-5"></i>
+                            <span>+90 507 275 67 47</span>
                         </div>
                     </div>
-                    <div class="mb-3">
-                        <h6 class="mb-1">Python</h6>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 85%"></div>
+
+                    <div class="skills-section mb-4">
+                        <h5 class="fw-bold mb-3"><i class="bi bi-code-slash me-2"></i>Teknik Yetkinlikler</h5>
+                        <div class="d-flex flex-wrap gap-2">
+                            <!-- .NET Teknolojileri -->
+                            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill">
+                                <i class="fab fa-microsoft me-1"></i> .NET
+                            </span>
+                            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill">
+                                <i class="fas fa-code me-1"></i> C#
+                            </span>
+                            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill">
+                                <i class="fas fa-mobile-alt me-1"></i> Xamarin
+                            </span>
+
+                            <!-- Veritabanı -->
+                            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill">
+                                <i class="fas fa-database me-1"></i> SQL
+                            </span>
+
+                            <!-- Python -->
+                            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill">
+                                <i class="fab fa-python me-1"></i> Python
+                            </span>
+
+                            <!-- Frontend -->
+                            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill">
+                                <i class="fab fa-html5 me-1"></i> HTML
+                            </span>
+                            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill">
+                                <i class="fab fa-css3-alt me-1"></i> CSS
+                            </span>
+
+                            <!-- Design Patterns -->
+                            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill">
+                                <i class="fas fa-cubes me-1"></i> Unit of Work
+                            </span>
+                            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill">
+                                <i class="fas fa-boxes me-1"></i> Repository Pattern
+                            </span>
+                            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill">
+                                <i class="fas fa-project-diagram me-1"></i> EAV Pattern
+                            </span>
                         </div>
                     </div>
-                    <div class="mb-3">
-                        <h6 class="mb-1">HTML/CSS</h6>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 75%"></div>
+
+                    <div class="references-section mb-4">
+                        <h5 class="fw-bold mb-3"><i class="bi bi-person-lines-fill me-2"></i>Referanslar</h5>
+                        <div class="reference-item mb-3">
+                            <h6 class="fw-bold mb-1">Fatih Alkan</h6>
+                            <p class="text-muted mb-1">
+                                Yazılım Birim Yöneticisi - Bilge Adam Akademi
+                            </p>
+                            <p class="small mb-1">+90 554 774 69 09, alkanfatih@hotmail.com.tr</p>
                         </div>
                     </div>
-                    <div class="mb-3">
-                        <h6 class="mb-1">SQL</h6>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 80%"></div>
+
+                    <div class="certificates-section">
+                        <h5 class="fw-bold mb-3"><i class="bi bi-award-fill me-2"></i>Sertifikalar</h5>
+
+                        <div class="certificate-item mb-3 p-3 bg-light rounded-3">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h6 class="fw-bold mb-1">
+                                        <a href="https://example.com/certificate/123" target="_blank" class="text-decoration-none">
+                                            <i class="bi bi-link-45deg"></i> .NET Geliştirici Eğitim Programı
+                                        </a>
+                                    </h6>
+                                    <p class="text-muted mb-1 small">
+                                        <i class="bi bi-building"></i> BilgeAdam Akademi
+                                    </p>
+                                </div>
+                                <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-1">2025</span>
+                            </div>
                         </div>
+
+                        <div class="certificate-item mb-3 p-3 bg-light rounded-3">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h6 class="fw-bold mb-1">
+                                        <a href="https://onedrive.live.com/?redeem=aHR0cHM6Ly8xZHJ2Lm1zL2IvYy9kMTkwMDg4ZTIyZDdlZTcxL0VSOGpMbmJoQTJWSXVha3M2Uk1ySmx3QnVkQ1V2VjMwNzVyTXRvTGJBQkZ1dUE%255FZT1Ha201ZW0&cid=D190088E22D7EE71&id=D190088E22D7EE71%2521s762e231f03e14865b9a92ce9132b265c&parId=root&o=OneUp&v=validatepermission" target="_blank" class="text-decoration-none">
+                                            <i class="bi bi-link-45deg"></i> C# Programlama
+                                        </a>
+                                    </h6>
+                                    <p class="text-muted mb-1 small">
+                                        <i class="bi bi-building"></i> BTK Akademi
+                                    </p>
+                                </div>
+                                <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-1">2024</span>
+                            </div>
+                        </div>
+
+                       
                     </div>
                 </div>
             </div>
         </div>
 
+        <!-- Right Column - Content -->
         <div class="col-lg-8">
-            <div class="card shadow-sm mb-4">
-                <div class="card-body">
-                    <h3 class="card-title">Hakkımda</h3>
-                    <p class="card-text">
-                        Yazılım geliştirme, algoritma tasarımı ve problem çözme konularında güçlü bir altyapıya
-                        sahibim. ASP.NET Core MVC, C# ve Python dillerinde projeler geliştirdim; web ve mobil
-                        uygulama geliştirme deneyimine sahibim. Veritabanı tasarımı ve farklı teknolojilere olan
-                        ilgimle teknik yetkinliğimi sürekli geliştiriyorum.
-                    </p>
-                    <p class="card-text">
-                        İyi düzeyde İngilizce bilgiye sahibim. Çözüm
-                        odaklı ve kararlı bir şekilde karşılaştığım sorunlara etkili çözümler üretmeye odaklanırım.
-                    </p>
-                </div>
-            </div>
-
-            <div class="card shadow-sm mb-4">
-                <div class="card-body">
-                    <h3 class="card-title">Deneyim</h3>
-
-                    <div class="timeline">
-                        <div class="timeline-item">
-                            <h5>
-                                .NET Yazılım Geliştirme Uzmanı Eğitim Programı
-                            </h5>
-                            <h6 class="text-primary">BilgeAdam AKademi</h6>
-                            <p class="text-muted">02/2025 - 05/2025</p>
-                            <ul>
-                                <li> .NET, C#, OOP, EF Core, LINQ, MVC/Web API, SOLID ve tasarım desenleriyle çalıştım.</li>
-                                <li>
-                                    MSSQL, HTML/CSS, Bootstrap kullandım; Agile/Scrum süreçlerine dahil oldum.
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="timeline-item">
-                            <h5>Stajyer Yazılım Geliştirici</h5>
-                            <h6 class="text-primary">
-                                Yıldız Teknik Üniversitesi Bilgi İşlem Daire Başkanlığı
-                            </h6>
-                            <p class="text-muted">07/2023 - 09/2023</p>
-                            <ul>
-                                <li>Frontend geliştirme (HTML, CSS, JavaScript)</li>
-                                <li>Backend API testleri</li>
-                                <li>Veritabanı tasarımı ve optimizasyonu</li>
-                            </ul>
-                        </div>
-
-                        <div class="timeline-item">
-                            <h5>Stajyer Yazılım Geliştirici</h5>
-                            <h6 class="text-primary">
-                                Yıldız Teknik Üniversitesi Bilgi İşlem Daire Başkanlığı
-                            </h6>
-                            <p class="text-muted">07/2022 - 09/2022</p>
-                            <ul>
-                                <li>Frontend geliştirme (HTML, CSS, JavaScript)</li>
-                                <li>Backend API testleri</li>
-                                <li>Veritabanı tasarımı ve optimizasyonu</li>
-                            </ul>
+            <!-- About Section -->
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body p-4">
+                    <h3 class="card-title fw-bold mb-4 d-flex align-items-center">
+                        <span class="icon-circle bg-primary-light me-3"><i class="bi bi-person-lines-fill text-primary"></i></span>
+                        <span>Profesyonel Özet</span>
+                    </h3>
+                    <div class="ps-4">
+                        <p class="card-text fs-5 mb-4">
+                            Yazılım geliştirme, algoritma tasarımı ve problem çözme konularında güçlü bir altyapıya
+                            sahibim. ASP.NET Core MVC, C# ve Python dillerinde projeler geliştirdim; web ve mobil
+                            uygulama geliştirme deneyimine sahibim. Veritabanı tasarımı ve farklı teknolojilere olan
+                            ilgimle teknik yetkinliğimi sürekli geliştiriyorum. 
+                        </p>
+                        <p class="card-text fs-5 mb-4">
+                            İyi düzeyde İngilizce bilgiye sahibim. Çözüm
+                            odaklı ve kararlı bir şekilde karşılaştığım sorunlara etkili çözümler üretmeye odaklanırım.
+                        </p>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="d-flex">
+                                    <div class="me-3 text-primary">
+                                        <i class="bi bi-check-circle-fill fs-5"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="fw-bold mb-1">Backend Geliştirme</h6>
+                                        <p class="text-muted mb-0">C#, Python, .NET Framework,.NET Core, Web API</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex">
+                                    <div class="me-3 text-primary">
+                                        <i class="bi bi-check-circle-fill fs-5"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="fw-bold mb-1">Frontend Geliştirme</h6>
+                                        <p class="text-muted mb-0">Blazor, Razor</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex">
+                                    <div class="me-3 text-primary">
+                                        <i class="bi bi-check-circle-fill fs-5"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="fw-bold mb-1">Veritabanı</h6>
+                                        <p class="text-muted mb-0">SQL Server, MySQL</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <h3 class="card-title">Eğitim</h3>
+            <!-- Experience Section -->
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body p-4">
+                    <h3 class="card-title fw-bold mb-4 d-flex align-items-center">
+                        <span class="icon-circle bg-primary-light me-3"><i class="bi bi-briefcase-fill text-primary"></i></span>
+                        <span>İş Deneyimi</span>
+                    </h3>
 
-                    <div class="timeline">
-                        <div class="timeline-item">
-                            <h5>Kırıkkale Üniversitesi</h5>
-                            <h6 class="text-primary">Bilgisayar Mühendisliği</h6>
-                            <p class="text-muted">2020 - 2024</p>
-                            <p>Lisans derecesi: 3.15</p>
+                    <div class="timeline ps-4">
+                        <!-- Experience 1 -->
+                        <div class="timeline-item position-relative pb-4">
+                            <div class="timeline-period bg-primary text-white">02/2025 - 05/2025</div>
+                            <div class="timeline-content p-4 rounded-3">
+                                <h5 class="fw-bold mb-1">.NET Yazılım Geliştirme Uzmanı Eğitim Programı</h5>
+                                <h6 class="text-primary mb-2">
+                                    BilgeAdam Teknoloji
+                                </h6>
+                                <ul class="mb-0 ps-3">
+                                    <li>C# ve OOP temelleriyle birlikte .NET 6/7/8, Entity Framework Core, LINQ, MVC ve Web API konularında deneyim kazandım.</li>
+                                    <li>SOLID prensipleri ile Singleton, Repository ve Unit of Work gibi tasarım desenlerini etkin şekilde kullanmayı öğrendim.</li>
+                                    <li>MSSQL ve T-SQL kullanarak veritabanı işlemleri gerçekleştirdim.</li>
+                                    <li>HTML5, CSS3 ve Bootstrap ile temel arayüz geliştirme bilgisi edindim; çalışmalarımı Agile ve Scrum metodolojilerine uygun şekilde yürüttüm.</li>
+                                </ul>
+                            </div>
                         </div>
 
-                        
+                        <!-- Experience 2 -->
+                        <div class="timeline-item position-relative pb-4">
+                            <div class="timeline-period bg-primary text-white">07/2023 - 09/2023</div>
+                            <div class="timeline-content p-4 rounded-3">
+                                <h5 class="fw-bold mb-1">Stajyer Yazılım Geliştirici</h5>
+                                <h6 class="text-primary mb-2">
+                                    Yıldız Teknik Üniversitesi Bilgi İşlem Daire Başkanlığı
+                                </h6>
+                                <ul class="mb-0 ps-3">
+                                    <li>Windows servisleri kullanarak internet bağlantısı kontrolü, işlem sonlandırma ve loglama gibi görevleri gerçekleştiren C# uygulamaları geliştirdim.</li>
+                                    <li>ASP.NET MVC ve Bootstrap kullanarak kullanıcı giriş/kayıt, şifre yenileme ve e-posta doğrulama gibi işlevleri içeren modern bir web uygulaması oluşturdum.</li>
+
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Experience 3 -->
+                        <div class="timeline-item position-relative pb-4">
+                            <div class="timeline-period bg-primary text-white">07/2022 - 09/2022</div>
+                            <div class="timeline-content p-4 rounded-3">
+                                <h5 class="fw-bold mb-1">Stajyer Yazılım Geliştirici</h5>
+                                <h6 class="text-primary mb-2">
+                                    Yıldız Teknik Üniversitesi Bilgi İşlem Daire Başkanlığı
+                                </h6>
+                                <ul class="mb-0 ps-3">
+                                    <li>Token Based Authentication ve ASP.NET Web API kullanarak bir kimlik doğrulama sistemi geliştirildi. Web API kurulumu, OWIN yapılandırması, token üretimi, MD5 şifreleme ve Entity Framework ile veritabanı bağlantısı yapıldı.</li>
+                                    <li>Kullanıcı rolleri içeren SQL veritabanı yapısı tasarlanarak projeye entegre edildi. Entity Framework ile bağlantı sağlandı, Postman ve AJAX/JQuery kullanılarak testler gerçekleştirildi.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Education Section -->
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body p-4">
+                    <h3 class="card-title fw-bold mb-4 d-flex align-items-center">
+                        <span class="icon-circle bg-primary-light me-3"><i class="bi bi-mortarboard-fill text-primary"></i></span>
+                        <span>Eğitim</span>
+                    </h3>
+
+                    <div class="timeline ps-4">
+                        <div class="timeline-item position-relative">
+                            <div class="timeline-period bg-primary text-white">2020 - 2024</div>
+                            <div class="timeline-content p-4 rounded-3">
+                                <h5 class="fw-bold mb-1">Kırıkkale Üniversitesi</h5>
+                                <h6 class="text-primary mb-2">Bilgisayar Mühendisliği - Lisans</h6>
+                                <div class="d-flex flex-wrap gap-4 mb-2">
+                                    <div>
+                                        <i class="bi bi-award text-primary me-2"></i>
+                                        <span>GPA: 3.15/4.00</span>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -133,39 +321,416 @@
     </div>
 </div>
 
+<!-- Technologies Section -->
+<section class="bg-light py-5">
+    <div class="container py-4">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold mb-3">Çalıştığım Teknolojiler</h2>
+            <p class="text-muted mx-auto" style="max-width: 600px;">
+                Modern ve güvenilir teknolojilerle çalışıyorum. Sürekli olarak yeni teknolojiler öğreniyor ve kendimi geliştiriyorum.
+            </p>
+        </div>
+        <div class="row g-4">
+            <div class="col-6 col-md-3">
+                <div class="tech-card p-4 text-center rounded-3">
+                    <i class="fab fa-microsoft fa-3x text-primary mb-3"></i>
+                    <h5 class="fw-bold mb-0">.NET Ecosystem</h5>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="tech-card p-4 text-center rounded-3">
+                    <i class="fab fa-python fa-3x text-primary mb-3"></i>
+                    <h5 class="fw-bold mb-0">Python</h5>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="tech-card p-4 text-center rounded-3">
+                    <i class="fas fa-database fa-3x text-primary mb-3"></i>
+                    <h5 class="fw-bold mb-0">Databases</h5>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="tech-card p-4 text-center rounded-3">
+                    <i class="fas fa-cloud fa-3x text-primary mb-3"></i>
+                    <h5 class="fw-bold mb-0">Cloud</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <style>
-    .timeline {
-        position: relative;
-        padding-left: 2rem;
+    @@keyframes float {
+        0% {
+            transform: translateY(0px);
+        }
+
+        50% {
+            transform: translateY(-15px);
+        }
+
+        100% {
+            transform: translateY(0px);
+        }
     }
 
-        .timeline:before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: var(--primary-color);
+    @@keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {
+            transform: translateY(0) translateX(-50%);
         }
+
+        40% {
+            transform: translateY(-20px) translateX(-50%);
+        }
+
+        60% {
+            transform: translateY(-10px) translateX(-50%);
+        }
+    }
+
+    /* Özel Stiller */
+    .about-hero {
+        background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        margin-bottom: 3rem;
+        position: relative;
+    }
+
+    .profile-image-container {
+        width: 180px;
+        height: 180px;
+        margin: 0 auto;
+    }
+
+        .profile-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+    .hero-image-container {
+        position: relative;
+    }
+
+        .hero-image-container img {
+            width: 100%;
+            max-width: 350px;
+            height: auto;
+        }
+
+    .tech-badge {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        color: white;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        animation: float 6s ease-in-out infinite;
+    }
+
+    .dotnet-badge {
+        background: linear-gradient(135deg, #512bd4 0%, #0078d4 100%);
+        top: -20px;
+        left: -20px;
+        animation-delay: 0s;
+    }
+
+    .python-badge {
+        background: linear-gradient(135deg, #3776ab 0%, #ffd43b 100%);
+        top: 50%;
+        right: -20px;
+        transform: translateY(-50%);
+        animation-delay: 2s;
+    }
+
+    .social-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        color: white;
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+    }
+
+    .bg-github {
+        background-color: #333;
+    }
+
+    .bg-linkedin {
+        background-color: #0a66c2;
+    }
+
+    .bg-twitter {
+        background-color: #000;
+    }
+
+    .bg-instagram {
+        background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+    }
+
+    .social-icon:hover {
+        transform: translateY(-3px) scale(1.1);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .skills-section, .references-section, .certificates-section {
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .bg-primary-light {
+        background-color: rgba(59, 130, 246, 0.1);
+    }
+
+    .icon-circle {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.25rem;
+    }
+
+    /* Timeline Stilleri */
+    .timeline {
+        position: relative;
+    }
 
     .timeline-item {
         position: relative;
-        padding-bottom: 2rem;
+        padding-left: 30px;
     }
 
-        .timeline-item:last-child {
-            padding-bottom: 0;
-        }
+    .timeline-period {
+        position: absolute;
+        left: -30px;
+        top: 0;
+        width: 60px;
+        padding: 5px;
+        border-radius: 20px;
+        text-align: center;
+        font-size: 0.75rem;
+        font-weight: bold;
+        z-index: 2;
+    }
 
-        .timeline-item:before {
+    .timeline-content {
+        position: relative;
+        transition: all 0.3s ease;
+        border-left: 2px solid #3b82f6;
+        padding-left: 20px;
+        margin-left: 10px;
+    }
+
+        .timeline-content:before {
             content: '';
             position: absolute;
-            left: -2.1rem;
-            top: 0.3rem;
-            width: 1rem;
-            height: 1rem;
+            left: -7px;
+            top: 15px;
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
-            background: var(--primary-color);
+            background-color: #3b82f6;
+            border: 2px solid white;
+            z-index: 2;
         }
+
+        .timeline-content:hover {
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+            transform: translateX(5px);
+        }
+
+    /* Tech Cards */
+    .tech-card {
+        transition: all 0.3s ease;
+        background-color: white;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+        .tech-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+        }
+
+    /* Hero Scroll Indicator */
+    .hero-scroll-indicator {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        animation: bounce 2s infinite;
+    }
+
+    .certificate-item {
+        transition: all 0.3s ease;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+        .certificate-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-color: rgba(59, 130, 246, 0.2);
+        }
+
+        .certificate-item a {
+            color: #1a365d;
+            transition: color 0.2s ease;
+        }
+
+            .certificate-item a:hover {
+                color: #3b82f6;
+                text-decoration: underline !important;
+            }
+    /* Responsive Adjustments */
+    @@media (max-width: 768px) {
+        .about-hero {
+            text-align: center;
+        }
+
+        .hero-image-container {
+            margin-top: 30px;
+        }
+
+        .timeline-item {
+            padding-left: 0;
+        }
+
+        .timeline-period {
+            position: relative;
+            left: 0;
+            top: 0;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        .timeline-content {
+            border-left: none;
+            padding-left: 0;
+            margin-left: 0;
+        }
+
+            .timeline-content:before {
+                display: none;
+            }
+    }
 </style>
+
+<!-- Particles.js -->
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        particlesJS('particles-js', {
+            "particles": {
+                "number": {
+                    "value": 80,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#ffffff"
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    },
+                    "polygon": {
+                        "nb_sides": 5
+                    }
+                },
+                "opacity": {
+                    "value": 0.3,
+                    "random": false,
+                    "anim": {
+                        "enable": false,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 3,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 40,
+                        "size_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#ffffff",
+                    "opacity": 0.2,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 2,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": {
+                        "enable": false,
+                        "rotateX": 600,
+                        "rotateY": 1200
+                    }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "grab"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 140,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "bubble": {
+                        "distance": 400,
+                        "size": 40,
+                        "duration": 2,
+                        "opacity": 8,
+                        "speed": 3
+                    },
+                    "repulse": {
+                        "distance": 200,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+    });
+</script>

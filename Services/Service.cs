@@ -28,18 +28,19 @@ namespace Personal.Services
             _http = http;
         }
 
-        public async Task<List<ProjectListing>> GetProjectListingsAsync()
+        public async Task<List<ProjectDetail>> GetProjectListingsAsync()
         {
             await LoadProjectsIfNeededAsync();
-            return _projects?.Select(p => new ProjectListing
+            return _projects?.Select(p => new ProjectDetail
             {
                 Id = p.Id,
                 Title = p.Title,
                 ShortDescription = p.ShortDescription,
                 ImageUrl = p.ImageUrl,
                 Technologies = p.Technologies,
-                CreatedDate = p.CreatedDate
-            }).ToList() ?? new List<ProjectListing>();
+                CreatedDate = p.CreatedDate,
+                GitHubUrl = p.GitHubUrl,
+            }).ToList() ?? new List<ProjectDetail>();
         }
 
         public async Task<ProjectDetail?> GetProjectDetailAsync(int id)
