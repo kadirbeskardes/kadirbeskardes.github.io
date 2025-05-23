@@ -3,65 +3,184 @@
 @using Personal.Services
 @inject ProjectService ProjectService
 
-<div class="container py-5">
-    <div class="text-center mb-5">
-        <h2 class="section-title d-inline-block">Projelerim</h2>
-        <p class="text-muted">Tamamladığım ve üzerinde çalıştığım projeler</p>
-    </div>
-
-    @if (projects == null)
-    {
-        <div class="text-center py-5">
-            <div class="spinner-border text-primary" role="status">
-                <span class="visually-hidden">Loading...</span>
-            </div>
-            <p class="mt-3">Projeler yükleniyor...</p>
-        </div>
-    }
-    else if (!projects.Any())
-    {
-        <div class="alert alert-warning text-center">
-            Gösterilecek proje bulunamadı.
-        </div>
-    }
-    else
-    {
-        <div class="row g-4">
-            @foreach (var project in projects)
-            {
-                <div class="col-lg-4 col-md-6">
-                    <div class="card h-100 shadow-sm">
-                        <div class="position-relative">
-                            <img src="@project.ImageUrl" class="card-img-top" alt="@project.Title">
-                            <div class="badge bg-primary position-absolute top-0 end-0 m-2">
-                                @project.CreatedDate.ToString("yyyy")
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">@project.Title</h5>
-                            <p class="card-text">@project.ShortDescription</p>
-                            <div class="mb-3">
-                                @foreach (var tech in project.Technologies.Take(3))
-                                {
-                                    <span class="badge bg-secondary me-1 mb-1">@tech</span>
-                                }
-                                @if (project.Technologies.Length > 3)
-                                {
-                                    <span class="badge bg-light text-dark me-1 mb-1">+@(project.Technologies.Length - 3)</span>
-                                }
-                            </div>
-                        </div>
-                        <div class="card-footer bg-transparent">
-                            <a href="@($"project/{project.Id}")" class="btn btn-primary w-100">
-                                <i class="bi bi-eye me-1"></i>Detayları Gör
-                            </a>
-                        </div>
+<div class="projects-page">
+    <!-- Hero Section -->
+    <section class="projects-hero bg-dark text-white py-5">
+        <div class="container py-4">
+            <div class="row align-items-center">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1 class="display-4 fw-bold mb-3">Projelerim</h1>
+                    <p class="lead mb-4">Yaratıcı çözümler ve yenilikçi yaklaşımlarla geliştirdiğim projeler</p>
+                    <div class="d-flex justify-content-center gap-3">
+                        <a href="#projects-grid" class="btn btn-primary btn-lg px-4 rounded-pill">
+                            <i class="bi bi-grid me-2"></i>Projeleri Keşfet
+                        </a>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Grid -->
+    <section id="projects-grid" class="py-5">
+        <div class="container py-4">
+            @if (projects == null)
+            {
+                <div class="text-center py-5">
+                    <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <p class="mt-3 fs-5">Projeler yükleniyor...</p>
+                </div>
+            }
+            else if (!projects.Any())
+            {
+                <div class="alert alert-warning text-center py-4">
+                    <i class="bi bi-exclamation-circle fs-3"></i>
+                    <h4 class="alert-heading mt-3">Henüz proje eklenmedi</h4>
+                    <p>Yakın zamanda yeni projeler eklenecektir.</p>
+                </div>
+            }
+            else
+            {
+                <div class="row g-4">
+                    @foreach (var project in projects)
+                    {
+                        <div class="col-xl-4 col-md-6">
+                            <div class="project-card card h-100 shadow-lg border-0 overflow-hidden">
+                                <div class="position-relative image-wrapper">
+                                    <img src="@project.ImageUrl" class="card-img-top project-image" alt="@project.Title">
+                                    <div class="project-year-badge">
+                                        @project.CreatedDate.ToString("yyyy")
+                                    </div>
+                                    <div class="project-hover-overlay">
+                                        <a href="@($"project/{project.Id}")" class="btn btn-outline-light btn-lg rounded-pill">
+                                            <i class="bi bi-eye-fill me-2"></i>Detayları Gör
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-start mb-3">
+                                        <h3 class="card-title h5 fw-bold">@project.Title</h3>
+                                        <div class="project-links">
+                                            @if (!string.IsNullOrEmpty(project.GitHubUrl))
+                                            {
+                                                <a href="@project.GitHubUrl" target="_blank" class="text-dark mx-1" title="GitHub Repo">
+                                                    <i class="bi bi-github fs-5"></i>
+                                                </a>
+                                            }
+                                        </div>
+                                    </div>
+                                    <p class="card-text text-muted mb-4">@project.ShortDescription</p>
+                                    <div class="project-technologies">
+                                        @foreach (var tech in project.Technologies)
+                                        {
+                                            <span class="tech-badge">@tech</span>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
                 </div>
             }
         </div>
-    }
+    </section>
 </div>
+
+<style>
+    .projects-hero {
+        background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .project-card {
+        transition: all 0.3s ease;
+        border-radius: 12px;
+    }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+    .image-wrapper {
+        aspect-ratio: 16 / 9;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .project-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+        transition: transform 0.3s ease;
+    }
+
+    .project-card:hover .project-image {
+        transform: scale(1.05);
+    }
+
+    .project-year-badge {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 600;
+    }
+
+    .project-hover-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: all 0.3s ease;
+    }
+
+    .project-card:hover .project-hover-overlay {
+        opacity: 1;
+    }
+
+    .project-technologies {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 1rem;
+    }
+
+    .tech-badge {
+        background-color: #f1f5f9;
+        color: #334155;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 500;
+    }
+
+    @@media (max-width: 768px) {
+        .projects-hero {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
+
+        .image-wrapper {
+            aspect-ratio: 16 / 10;
+        }
+    }
+</style>
 
 @code {
     private List<Personal.Models.ProjectDetail>? projects;

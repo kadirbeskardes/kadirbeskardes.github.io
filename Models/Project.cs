@@ -7,6 +7,7 @@
         public string ShortDescription { get; set; }
         public string ImageUrl { get; set; }
         public string[] Technologies { get; set; }
+        public string Category {  get; set; }
         public DateTime CreatedDate { get; set; }
     }
 

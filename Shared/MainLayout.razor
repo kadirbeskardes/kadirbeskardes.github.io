@@ -2,39 +2,40 @@
 
 <div class="d-flex flex-column min-vh-100">
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-primary border-3" style="box-shadow: 0 2px 15px rgba(0, 123, 255, 0.2);">
             <div class="container">
-                <a class="navbar-brand" href="/">
-                    <i class="bi bi-code-slash me-2"></i>Portföyüm
+                <a class="navbar-brand d-flex align-items-center" href="/" style="transition: all 0.3s ease;">
+                    <i class="bi bi-code-slash fs-3 text-primary me-2" style="text-shadow: 0 0 8px rgba(13, 110, 253, 0.6);"></i>
+                    <span class="fw-bold fs-4 gradient-text">Portföyüm</span>
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                                <i class="bi bi-house-door me-1"></i> Ana Sayfa
+                        <li class="nav-item mx-1">
+                            <NavLink class="nav-link d-flex align-items-center py-3 px-3 rounded hover-effect" href="" Match="NavLinkMatch.All" active-class="active">
+                                <i class="bi bi-house-door me-2"></i> Ana Sayfa
                             </NavLink>
                         </li>
-                        <li class="nav-item">
-                            <NavLink class="nav-link" href="about">
-                                <i class="bi bi-person me-1"></i> Hakkımda
+                        <li class="nav-item mx-1">
+                            <NavLink class="nav-link d-flex align-items-center py-3 px-3 rounded hover-effect" href="about" active-class="active">
+                                <i class="bi bi-person me-2"></i> Hakkımda
                             </NavLink>
                         </li>
-                        <li class="nav-item">
-                            <NavLink class="nav-link" href="projects">
-                                <i class="bi bi-briefcase me-1"></i> Projeler
+                        <li class="nav-item mx-1">
+                            <NavLink class="nav-link d-flex align-items-center py-3 px-3 rounded hover-effect" href="projects" active-class="active">
+                                <i class="bi bi-briefcase me-2"></i> Projeler
                             </NavLink>
                         </li>
-                        <li class="nav-item">
-                            <NavLink class="nav-link" href="contact">
-                                <i class="bi bi-envelope me-1"></i> İletişim
+                        <li class="nav-item mx-1">
+                            <NavLink class="nav-link d-flex align-items-center py-3 px-3 rounded hover-effect" href="contact" active-class="active">
+                                <i class="bi bi-envelope me-2"></i> İletişim
                             </NavLink>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="cv.pdf" download>
-                                <i class="bi bi-download me-1"></i> CV İndir
+                        <li class="nav-item ms-2 d-flex align-items-center">
+                            <a class="btn btn-primary d-flex align-items-center py-2 px-3 rounded-pill glow-on-hover" href="cv.pdf" download>
+                                <i class="bi bi-download me-2"></i> CV İndir
                             </a>
                         </li>
                     </ul>
@@ -43,7 +44,7 @@
         </nav>
     </header>
 
-    <main class="flex-grow-1 py-4">
+    <main class="flex-grow-1">
         @Body
     </main>
 
@@ -80,3 +81,58 @@
         </div>
     </footer>
 </div>
+
+<style>
+    /* Özel stiller ekleyelim */
+    .gradient-text {
+        background: linear-gradient(90deg, #0d6efd, #6f42c1);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .hover-effect {
+        transition: all 0.3s ease;
+        position: relative;
+    }
+
+        .hover-effect:hover {
+            background-color: rgba(13, 110, 253, 0.1) !important;
+            transform: translateY(-2px);
+        }
+
+        .hover-effect::after {
+            content: '';
+            position: absolute;
+            bottom: 8px;
+            left: 15%;
+            width: 70%;
+            height: 2px;
+            background: #0d6efd;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .hover-effect:hover::after {
+            transform: scaleX(1);
+        }
+
+    .glow-on-hover {
+        transition: all 0.3s ease;
+        box-shadow: 0 0 10px rgba(13, 110, 253, 0);
+    }
+
+        .glow-on-hover:hover {
+            box-shadow: 0 0 15px rgba(13, 110, 253, 0.6);
+            transform: translateY(-2px);
+        }
+
+    .active {
+        background-color: rgba(13, 110, 253, 0.2) !important;
+        font-weight: 500;
+    }
+
+        .active::after {
+            transform: scaleX(1) !important;
+        }
+</style>

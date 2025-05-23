@@ -16,4 +16,11 @@
     <None Include=".github\workflows\gh-pages.yml" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\img\chat\" />
+    <Folder Include="wwwroot\img\stego\" />
+    <Folder Include="wwwroot\img\spell\" />
+    <Folder Include="wwwroot\img\remind\" />
+  </ItemGroup>
+
 </Project>

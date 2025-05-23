@@ -19,12 +19,12 @@
         }
         else
         {
-            <div class="alert alert-danger shadow-sm">
+            <div class="alert alert-danger shadow-sm py-5">
                 <div class="d-flex flex-column align-items-center">
                     <i class="bi bi-exclamation-octagon-fill text-danger fs-1 mb-3"></i>
                     <h4 class="alert-heading">Proje Bulunamadı</h4>
-                    <p>Belirtilen ID ile bir proje bulunamadı veya yüklenirken bir hata oluştu.</p>
-                    <button class="btn btn-primary mt-3" @onclick="NavigateToProjects">
+                    <p class="mb-4">Belirtilen ID ile bir proje bulunamadı veya yüklenirken bir hata oluştu.</p>
+                    <button class="btn btn-primary px-4 py-2 rounded-pill" @onclick="NavigateToProjects">
                         <i class="bi bi-arrow-left me-2"></i>Proje Listesine Dön
                     </button>
                 </div>
@@ -34,203 +34,233 @@
 }
 else
 {
-    <!-- Breadcrumb Navigation -->
-    <nav aria-label="breadcrumb" class="bg-light py-3">
-        <div class="container">
-            <ol class="breadcrumb mb-0">
-                <li class="breadcrumb-item"><a href="/">Ana Sayfa</a></li>
-                <li class="breadcrumb-item"><a href="/projects">Projeler</a></li>
-                <li class="breadcrumb-item active" aria-current="page">@project.Title</li>
-            </ol>
-        </div>
-    </nav>
-
-    <div class="container py-5">
-        <!-- Project Header -->
-        <div class="row mb-5">
-            <div class="col-lg-8">
-                <div class="d-flex align-items-center mb-3">
-                    <h1 class="display-5 fw-bold me-3">@project.Title</h1>
-                    <span class="badge bg-primary fs-6 align-self-start">
+    <!-- Hero Section -->
+    <section class="project-hero bg-dark text-white py-5">
+        <div class="container py-4">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/" class="text-white-50">Ana Sayfa</a></li>
+                            <li class="breadcrumb-item"><a href="/projects" class="text-white-50">Projeler</a></li>
+                            <li class="breadcrumb-item active text-white" aria-current="page">@project.Title</li>
+                        </ol>
+                    </nav>
+                    <h1 class="display-4 fw-bold mb-3">@project.Title</h1>
+                    <p class="lead mb-4">@project.ShortDescription</p>
+                    <div class="d-flex flex-wrap gap-3">
+                        @if (!string.IsNullOrEmpty(project.ProjectUrl))
+                        {
+                            <a href="@project.ProjectUrl" target="_blank" class="btn btn-primary px-4 py-2 rounded-pill">
+                                <i class="bi bi-box-arrow-up-right me-2"></i>Canlı Demo
+                            </a>
+                        }
+                        @if (!string.IsNullOrEmpty(project.GitHubUrl))
+                        {
+                            <a href="@project.GitHubUrl" target="_blank" class="btn btn-outline-light px-4 py-2 rounded-pill">
+                                <i class="bi bi-github me-2"></i>GitHub Repo
+                            </a>
+                        }
+                    </div>
+                </div>
+                <div class="col-lg-4 mt-4 mt-lg-0">
+                    <div class="project-badge">
+                        <i class="bi bi-calendar-check me-2"></i>
                         @project.CreatedDate.ToString("MMMM yyyy")
-                    </span>
-                </div>
-                <p class="lead">@project.ShortDescription</p>
-
-                <!-- Project Tags -->
-                <div class="d-flex flex-wrap gap-2 mb-4">
-                    @foreach (var tech in project.Technologies)
-                    {
-                        <span class="badge bg-secondary">
-                            <i class="bi bi-tag-fill me-1"></i>@tech
-                        </span>
-                    }
-                </div>
-
-                <!-- Project Links -->
-                <div class="d-flex flex-wrap gap-3 mb-4">
-                    @if (!string.IsNullOrEmpty(project.ProjectUrl))
-                    {
-                        <a href="@project.ProjectUrl" target="_blank" class="btn btn-primary">
-                            <i class="bi bi-box-arrow-up-right me-2"></i>Canlı Demo
-                        </a>
-                    }
-                    @if (!string.IsNullOrEmpty(project.GitHubUrl))
-                    {
-                        <a href="@project.GitHubUrl" target="_blank" class="btn btn-dark">
-                            <i class="bi bi-github me-2"></i>GitHub Repo
-                        </a>
-                    }
-                    <button class="btn btn-outline-secondary" @onclick="NavigateToProjects">
-                        <i class="bi bi-arrow-left me-2"></i>Tüm Projeler
-                    </button>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="card shadow-sm h-100">
-                    <img src="@project.ImageUrl" class="card-img-top" alt="@project.Title">
+                    </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Project Content -->
-        <div class="row">
+    <!-- Project Content -->
+    <div class="container py-5">
+        <div class="row g-4">
+            <!-- Main Content -->
             <div class="col-lg-8">
-                <!-- Project Description -->
-                <div class="card shadow-sm mb-4">
-                    <div class="card-header bg-white border-bottom-0">
-                        <h2 class="h4 mb-0">
-                            <i class="bi bi-file-text text-primary me-2"></i>Proje Açıklaması
+                <!-- Project Overview -->
+                <section class="card shadow-sm border-0 rounded-3 mb-4">
+                    <div class="card-body p-4">
+                        <h2 class="h4 fw-bold mb-4 d-flex align-items-center">
+                            <i class="bi bi-file-text text-primary me-3 fs-3"></i>
+                            <span>Proje Detayları</span>
                         </h2>
+                        <div class="project-content">
+                            <markdown>@project.FullDescription</markdown>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <markdown>@project.FullDescription</markdown>
-                    </div>
-                </div>
+                </section>
 
-                <!-- Project Features -->
+                <!-- Key Features -->
                 @if (project.Features?.Any() == true)
                 {
-                    <div class="card shadow-sm mb-4">
-                        <div class="card-header bg-white border-bottom-0">
-                            <h2 class="h4 mb-0">
-                                <i class="bi bi-list-check text-primary me-2"></i>Öne Çıkan Özellikler
+                    <section class="card shadow-sm border-0 rounded-3 mb-4">
+                        <div class="card-body p-4">
+                            <h2 class="h4 fw-bold mb-4 d-flex align-items-center">
+                                <i class="bi bi-list-check text-primary me-3 fs-3"></i>
+                                <span>Öne Çıkan Özellikler</span>
                             </h2>
-                        </div>
-                        <div class="card-body">
-                            <ul class="list-group list-group-flush">
+                            <div class="row g-3">
                                 @foreach (var feature in project.Features)
                                 {
-                                    <li class="list-group-item border-0 ps-0">
-                                        <i class="bi bi-check-circle-fill text-success me-2"></i>@feature
-                                    </li>
+                                    <div class="col-md-6">
+                                        <div class="feature-item p-3 bg-light rounded-2">
+                                            <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                            <span>@feature</span>
+                                        </div>
+                                    </div>
                                 }
-                            </ul>
+                            </div>
                         </div>
-                    </div>
+                    </section>
                 }
 
                 <!-- Challenges & Solutions -->
                 @if (!string.IsNullOrEmpty(project.Challenges) || !string.IsNullOrEmpty(project.Solutions))
                 {
-                    <div class="card shadow-sm mb-4">
-                        <div class="card-header bg-white border-bottom-0">
-                            <h2 class="h4 mb-0">
-                                <i class="bi bi-lightbulb text-primary me-2"></i>Zorluklar ve Çözümler
+                    <section class="card shadow-sm border-0 rounded-3 mb-4">
+                        <div class="card-body p-4">
+                            <h2 class="h4 fw-bold mb-4 d-flex align-items-center">
+                                <i class="bi bi-lightbulb text-primary me-3 fs-3"></i>
+                                <span>Zorluklar ve Çözümler</span>
                             </h2>
-                        </div>
-                        <div class="card-body">
+
                             @if (!string.IsNullOrEmpty(project.Challenges))
                             {
-                                <h5 class="text-primary mt-3">Karşılaşılan Zorluklar</h5>
-                                <markdown>@project.Challenges</markdown>
+                                <div class="mb-4">
+                                    <h3 class="h5 text-primary mb-3">
+                                        <i class="bi bi-exclamation-triangle me-2"></i>Karşılaşılan Zorluklar
+                                    </h3>
+                                    <div class="project-content">
+                                        <markdown>@project.Challenges</markdown>
+                                    </div>
+                                </div>
                             }
 
                             @if (!string.IsNullOrEmpty(project.Solutions))
                             {
-                                <h5 class="text-primary mt-4">Uygulanan Çözümler</h5>
-                                <markdown>@project.Solutions</markdown>
+                                <div>
+                                    <h3 class="h5 text-primary mb-3">
+                                        <i class="bi bi-check-circle me-2"></i>Uygulanan Çözümler
+                                    </h3>
+                                    <div class="project-content">
+                                        <markdown>@project.Solutions</markdown>
+                                    </div>
+                                </div>
                             }
                         </div>
-                    </div>
+                    </section>
                 }
             </div>
 
-            <!-- Project Sidebar -->
+            <!-- Sidebar -->
             <div class="col-lg-4">
                 <!-- Technology Stack -->
-                <div class="card shadow-sm mb-4">
-                    <div class="card-header bg-primary text-white">
-                        <h3 class="h5 mb-0">
-                            <i class="bi bi-stack me-2"></i>Teknoloji Yığını
-                        </h3>
-                    </div>
-                    <div class="card-body">
-                        <ul class="list-unstyled">
+                <section class="card shadow-sm border-0 rounded-3 mb-4">
+                    <div class="card-body p-4">
+                        <h2 class="h4 fw-bold mb-4 d-flex align-items-center">
+                            <i class="bi bi-stack text-primary me-3 fs-3"></i>
+                            <span>Teknoloji Yığını</span>
+                        </h2>
+                        <div class="tech-stack">
                             @foreach (var tech in project.Technologies)
                             {
-                                <li class="mb-2">
+                                <div class="tech-item mb-3">
                                     <div class="d-flex align-items-center">
-                                        <i class="bi bi-check-circle-fill text-primary me-2"></i>
-                                        <span>@tech</span>
+                                        <div class="tech-icon me-3">
+                                            <i class="bi bi-check-circle-fill text-primary"></i>
+                                        </div>
+                                        <span class="fw-medium">@tech</span>
                                     </div>
-                                </li>
+                                </div>
                             }
-                        </ul>
+                        </div>
                     </div>
-                </div>
+                </section>
 
-                <!-- Project Metadata -->
-                <div class="card shadow-sm mb-4">
-                    <div class="card-header bg-white">
-                        <h3 class="h5 mb-0">
-                            <i class="bi bi-info-circle text-primary me-2"></i>Proje Bilgileri
-                        </h3>
-                    </div>
-                    <div class="card-body">
-                        <dl class="row mb-0">
-                            <dt class="col-sm-5">Oluşturulma Tarihi</dt>
-                            <dd class="col-sm-7">@project.CreatedDate.ToString("dd MMMM yyyy")</dd>
-
-                            <dt class="col-sm-5">Kategori</dt>
-                            <dd class="col-sm-7">Web Uygulaması</dd>
-
-                            @if (!string.IsNullOrEmpty(project.ProjectUrl))
-                            {
-                                <dt class="col-sm-5">Durum</dt>
-                                <dd class="col-sm-7">
-                                    <span class="badge bg-success">Canlı</span>
-                                </dd>
-                            }
-                        </dl>
-                    </div>
-                </div>
-
-                <!-- Screenshots Gallery -->
+                <!-- Project Gallery -->
                 @if (project.Screenshots?.Any() == true)
                 {
-                    <div class="card shadow-sm">
-                        <div class="card-header bg-white">
-                            <h3 class="h5 mb-0">
-                                <i class="bi bi-images text-primary me-2"></i>Ekran Görüntüleri
-                            </h3>
+                    <section class="card shadow-sm border-0 rounded-3 mb-4">
+                        <div class="card-body p-4">
+                            <h2 class="h4 fw-bold mb-4 d-flex align-items-center">
+                                <i class="bi bi-images text-primary me-3 fs-3"></i>
+                                <span>Ekran Görüntüleri</span>
+                            </h2>
+                            <div class="project-gallery">
+                                <div class="row g-2">
+                                    @foreach (var screenshot in project.Screenshots)
+                                    {
+                                        <div class="col-6">
+                                            <a href="#" @onclick="() => OpenLightbox(screenshot)"
+                                            @onclick:preventDefault
+                                               class="gallery-thumbnail">
+                                                <img src="@screenshot" class="img-fluid rounded" alt="Ekran görüntüsü">
+                                                <div class="gallery-overlay">
+                                                    <i class="bi bi-zoom-in text-white fs-4"></i>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <div class="row g-2">
-                                @foreach (var screenshot in project.Screenshots)
-                                {
-                                    <div class="col-6">
-                                        <a href="#" @onclick="() => OpenLightbox(screenshot)"
-                                        @onclick:preventDefault
-                                           class="d-block">
-                                            <img src="@screenshot" class="img-fluid rounded shadow-sm" alt="Ekran görüntüsü">
-                                        </a>
+                    </section>
+                }
+
+                <!-- Project Info -->
+                <section class="card shadow-sm border-0 rounded-3">
+                    <div class="card-body p-4">
+                        <h2 class="h4 fw-bold mb-4 d-flex align-items-center">
+                            <i class="bi bi-info-circle text-primary me-3 fs-3"></i>
+                            <span>Proje Bilgileri</span>
+                        </h2>
+                        <div class="project-info">
+                            <div class="info-item mb-3">
+                                <div class="d-flex">
+                                    <div class="info-icon me-3 text-primary">
+                                        <i class="bi bi-calendar"></i>
                                     </div>
-                                }
+                                    <div>
+                                        <h3 class="h6 mb-1">Oluşturulma Tarihi</h3>
+                                        <p class="mb-0">@project.CreatedDate.ToString("dd MMMM yyyy")</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="info-item mb-3">
+                                <div class="d-flex">
+                                    <div class="info-icon me-3 text-primary">
+                                        <i class="bi bi-tags"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="h6 mb-1">Kategori</h3>
+                                        <p class="mb-0">@project.Category</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <div class="d-flex">
+                                    <div class="info-icon me-3 text-primary">
+                                        <i class="bi bi-check-circle"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="h6 mb-1">Durum</h3>
+                                        <p class="mb-0">
+                                            @if (!string.IsNullOrEmpty(project.ProjectUrl))
+                                            {
+                                                <span class="badge bg-success">Canlı</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge bg-secondary">Geliştirme Aşamasında</span>
+                                            }
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                }
+                </section>
             </div>
         </div>
     </div>
@@ -238,28 +268,26 @@ else
     <!-- Lightbox Modal -->
     @if (showLightbox)
     {
-        <div class="modal fade show d-block" tabindex="-1" style="background: rgba(0,0,0,0.9)">
-            <div class="modal-dialog modal-dialog-centered modal-xl">
-                <div class="modal-content border-0 bg-transparent">
-                    <div class="modal-header border-0">
-                        <button type="button" class="btn-close btn-close-white" @onclick="CloseLightbox"></button>
-                    </div>
-                    <div class="modal-body text-center">
-                        <img src="@currentScreenshot" class="img-fluid" style="max-height: 80vh" alt="Ekran görüntüsü">
-                    </div>
-                    <div class="modal-footer border-0 justify-content-center">
-                        <button class="btn btn-outline-light me-2" @onclick="PrevScreenshot"
-                                disabled="@(currentScreenshotIndex <= 0)">
-                            <i class="bi bi-chevron-left"></i> Önceki
-                        </button>
-                        <span class="text-white mx-2">
-                            @(currentScreenshotIndex + 1) / @project.Screenshots.Length
-                        </span>
-                        <button class="btn btn-outline-light ms-2" @onclick="NextScreenshot"
-                                disabled="@(currentScreenshotIndex >= project.Screenshots.Length - 1)">
-                            Sonraki <i class="bi bi-chevron-right"></i>
-                        </button>
-                    </div>
+        <div class="lightbox-modal">
+            <div class="lightbox-container">
+                <button class="lightbox-close" @onclick="CloseLightbox">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+                <div class="lightbox-content">
+                    <img src="@currentScreenshot" class="lightbox-image" alt="Ekran görüntüsü">
+                </div>
+                <div class="lightbox-footer">
+                    <button class="lightbox-nav" @onclick="PrevScreenshot"
+                            disabled="@(currentScreenshotIndex <= 0)">
+                        <i class="bi bi-chevron-left"></i>
+                    </button>
+                    <span class="lightbox-counter">
+                        @(currentScreenshotIndex + 1) / @project.Screenshots.Length
+                    </span>
+                    <button class="lightbox-nav" @onclick="NextScreenshot"
+                            disabled="@(currentScreenshotIndex >= project.Screenshots.Length - 1)">
+                        <i class="bi bi-chevron-right"></i>
+                    </button>
                 </div>
             </div>
         </div>
@@ -317,3 +345,193 @@ else
         currentScreenshot = project.Screenshots[currentScreenshotIndex];
     }
 }
+
+<style>
+    /* Hero Section */
+    .project-hero {
+        background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .project-badge {
+        background-color: rgba(255, 255, 255, 0.1);
+        color: white;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 1rem;
+        font-weight: 500;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    /* Project Content */
+    .project-content {
+        line-height: 1.8;
+    }
+
+        .project-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+    /* Feature Items */
+    .feature-item {
+        transition: all 0.3s ease;
+        border-left: 3px solid #3b82f6;
+    }
+
+        .feature-item:hover {
+            background-color: rgba(59, 130, 246, 0.05);
+            transform: translateX(5px);
+        }
+
+    /* Technology Stack */
+    .tech-item {
+        padding: 8px 12px;
+        border-radius: 6px;
+        background-color: #f8f9fa;
+        transition: all 0.3s ease;
+    }
+
+        .tech-item:hover {
+            background-color: #e9ecef;
+            transform: translateX(5px);
+        }
+
+    .tech-icon {
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Gallery */
+    .gallery-thumbnail {
+        position: relative;
+        display: block;
+        border-radius: 6px;
+        overflow: hidden;
+    }
+
+    .gallery-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: all 0.3s ease;
+    }
+
+    .gallery-thumbnail:hover .gallery-overlay {
+        opacity: 1;
+    }
+
+    .gallery-thumbnail img {
+        transition: transform 0.3s ease;
+    }
+
+    .gallery-thumbnail:hover img {
+        transform: scale(1.05);
+    }
+
+    /* Lightbox */
+    .lightbox-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        z-index: 1050;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: fadeIn 0.3s ease;
+    }
+
+    .lightbox-container {
+        position: relative;
+        max-width: 90%;
+        max-height: 90vh;
+        width: auto;
+    }
+
+    .lightbox-close {
+        position: absolute;
+        top: -40px;
+        right: 0;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+
+    .lightbox-image {
+        max-height: 80vh;
+        width: auto;
+        border-radius: 8px;
+    }
+
+    .lightbox-footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 1rem;
+        color: white;
+    }
+
+    .lightbox-nav {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+        cursor: pointer;
+        margin: 0 1rem;
+    }
+
+        .lightbox-nav:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+    .lightbox-counter {
+        margin: 0 1rem;
+        font-size: 1rem;
+    }
+
+    @@keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    /* Responsive Adjustments */
+    @@media (max-width: 768px) {
+        .project-hero {
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+        }
+
+            .project-hero h1 {
+                font-size: 2rem;
+            }
+
+        .lightbox-container {
+            max-width: 95%;
+        }
+    }
+</style>

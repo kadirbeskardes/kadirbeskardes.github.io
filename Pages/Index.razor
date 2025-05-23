@@ -15,10 +15,10 @@
                     Kullanıcı dostu, modern ve performanslı uygulamalar geliştiriyorum.
                 </p>
                 <div class="d-flex gap-3 animate__animated animate__fadeIn animate__delay-2s">
-                    <a href="about" class="btn btn-light btn-lg px-4 rounded-pill">
+                    <a href="about" class="btn btn-light btn-lg px-4 rounded-pill shadow-sm">
                         <i class="bi bi-person me-2"></i>Hakkımda
                     </a>
-                    <a href="contact" class="btn btn-outline-light btn-lg px-4 rounded-pill">
+                    <a href="contact" class="btn btn-outline-light btn-lg px-4 rounded-pill shadow-sm">
                         <i class="bi bi-envelope me-2"></i>İletişim
                     </a>
                 </div>
@@ -121,7 +121,11 @@
                         <div class="card h-100 border-0 shadow-sm overflow-hidden hover-effect">
                             <div class="project-image-container">
                                 <img src="@project.ImageUrl" class="card-img-top" alt="@project.Title">
-                                <div class="overlay"></div>
+                                <div class="overlay d-flex align-items-center justify-content-center">
+                                    <a href="@($"project/{project.Id}")" class="btn btn-primary rounded-pill px-4 shadow">
+                                        <i class="bi bi-eye-fill me-2"></i>Projeyi İncele
+                                    </a>
+                                </div>
                             </div>
                             <div class="card-body">
                                 <h5 class="card-title fw-bold">@project.Title</h5>
@@ -134,7 +138,7 @@
                                 </div>
                             </div>
                             <div class="card-footer bg-transparent border-0 pt-0 d-flex justify-content-between">
-                                <a href="@($"project/{project.Id}")" class="btn btn-sm btn-primary rounded-pill">
+                                <a href="@($"project/{project.Id}")" class="btn btn-sm btn-outline-primary rounded-pill">
                                     Detayları Gör <i class="bi bi-arrow-right ms-2"></i>
                                 </a>
                                 @if (!string.IsNullOrWhiteSpace(project.GitHubUrl))
@@ -150,7 +154,7 @@
             </div>
 
             <div class="text-center mt-5">
-                <a href="projects" class="btn btn-primary btn-lg px-4 rounded-pill">
+                <a href="projects" class="btn btn-primary btn-lg px-4 rounded-pill shadow-sm">
                     <i class="bi bi-collection me-2"></i>Tüm Projeleri Görüntüle
                 </a>
             </div>
@@ -230,17 +234,20 @@
 
     .hover-effect {
         transition: all 0.3s ease;
+        border-radius: 12px !important;
     }
 
         .hover-effect:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.2) !important;
         }
 
     .project-image-container {
         position: relative;
         overflow: hidden;
         height: 200px;
+        border-top-left-radius: 12px !important;
+        border-top-right-radius: 12px !important;
     }
 
         .project-image-container img {
@@ -256,9 +263,9 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(102, 126, 234, 0.2);
+            background: rgba(102, 126, 234, 0.7);
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: all 0.3s ease;
         }
 
     .hover-effect:hover .project-image-container img {
@@ -275,6 +282,7 @@
 
     .profile-image-container {
         position: relative;
+        display: inline-block;
     }
 
         .profile-image-container:before {
@@ -294,5 +302,14 @@
         100% {
             transform: rotate(360deg);
         }
+    }
+
+    .card {
+        border-radius: 12px !important;
+        overflow: hidden;
+    }
+
+    .btn {
+        transition: all 0.3s ease;
     }
 </style>

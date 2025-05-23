@@ -4,11 +4,12 @@
         "title": "Görme Engelliler İçin Görsel Tanıma ve Sosyal Etkileşim Uygulaması",
         "shortDescription": "Görme engelli bireylerin çevrelerini tanımalarına ve sosyal etkileşimlerini artırmalarına yardımcı olan yapay zekâ destekli mobil uygulama.",
         "fullDescription": "Bu proje, görme engelli bireylerin çevresini daha iyi tanımasını ve sosyal yaşama daha aktif katılmasını sağlamak amacıyla geliştirilmiş bir mobil uygulamadır. Uygulama, cihazın kamerasıyla çekilen görüntüleri Azure Computer Vision ve GPT-3.5 desteğiyle analiz ederek sesli anlatımlarla kullanıcıya aktarır. Aynı zamanda kullanıcının konum bilgisi kullanılarak yakınlardaki müze veya sosyal alanlar tespit edilip önerilir. Gün boyunca uygulamada meydana gelen hatalar sistem tarafından tespit edilip geliştiricilere e-posta yoluyla iletilir.\n\nTemel Özellikler:\n\n- Kamera ile ortam ve nesne tanıma\n- Sesli betimleme\n- Lokasyon tabanlı müze önerileri\n- Günlük hata raporlarının otomatik mail ile gönderimi",
-        "imageUrl": "https://cdn-icons-png.flaticon.com/512/194/194938.png",
+        "imageUrl": "img/gorme_pp.jpg",
         "technologies": [ "C#", "XML", ".NET Framework 4.7", "Xamarin.Forms", "Azure Computer Vision", "OpenAI GPT-3.5", "Google Places API", "Visual Studio" ],
         "createdDate": "2025-05-21",
         "projectUrl": "#",
-        "githubUrl": "#",
+        "Category": "Mobil Uygulama",
+        "githubUrl": "https://github.com/kadirbeskardes/GormeEngelliUygulama",
         "features": [
             "Kamera ile ortam ve nesne tanıma",
             "Sesli betimleme",
@@ -24,11 +25,12 @@
         "title": "Remind Me - İlaç Takip ve Hatırlatma Sistemi",
         "shortDescription": "Doktor ve hasta arasında etkileşim sağlayan, ilaç hatırlatmaları yapan mobil sağlık uygulaması.",
         "fullDescription": "Remind Me, Alzheimer gibi hastalıklarla mücadele eden bireylerin ilaçlarını zamanında almasını sağlamak amacıyla geliştirilmiş bir mobil sağlık uygulamasıdır. Doktor, hastaya reçete ettiği ilaçları ve saatlerini sisteme tanımlar. Hasta bu saatlerde bir bildirim alır ve ilacını içtikten sonra video kaydıyla bunu doktora onaylayabilir. Uygulama doktor ve hasta arasında iki yönlü bir bilgi ve kayıt paylaşımı sunar.\n\nHasta Özellikleri:\n\n- İlaç saatinde bildirim alma\n- Video kaydı ile içtiğini onaylama\n- Doktor profiline erişim\n- İlaç ve zaman listesi görüntüleme\n\nDoktor Özellikleri:\n\n- Hasta ekleme/çıkarma\n- Hasta için ilaç ve saat belirleme\n- Video kayıtlarını izleme\n- Hasta durumunu güncelleme",
-        "imageUrl": "https://cdn-icons-png.flaticon.com/512/3524/3524388.png",
+        "imageUrl": "img/remind_pp.jpg",
         "technologies": [ "C#", "XAML", "Xamarin.Forms", ".NET", "Firebase Realtime Database", "Firebase Storage", "Android Studio", "Visual Studio" ],
         "createdDate": "2025-05-21",
         "projectUrl": "#",
-        "githubUrl": "#",
+        "githubUrl": "https://github.com/kadirbeskardes/RemindMe",
+        "Category": "Mobil Uygulama",
         "features": [
             "İlaç saatinde bildirim alma",
             "Video kaydı ile içtiğini onaylama",
@@ -47,11 +49,12 @@
         "title": "Görüntü Üzerinde Metin ve Görsel Gizleme & Şifreleme",
         "shortDescription": "LSB steganografi ve şifreleme algoritmalarıyla geliştirilen veri gizleme uygulaması.",
         "fullDescription": "Bu proje, Python diliyle geliştirilmiş, görüntü dosyaları üzerine metin ve görsel verilerin gizlenmesini ve güvenliğinin sağlanmasını amaçlayan bir steganografi uygulamasıdır. LSB algoritması ile veri gizlenmiş, Blowfish ve Sezar şifreleme teknikleri ile güvenlik artırılmıştır. Kullanıcı arayüzü tkinter ile oluşturulmuştur.",
-        "imageUrl": "https://cdn-icons-png.flaticon.com/512/3062/3062634.png",
+        "imageUrl": "img/stego_pp.jpg",
         "technologies": [ "Python", "Tkinter", "Numpy", "Pillow", "LSB", "Blowfish", "Sezar Cipher", "PSNR", "SSIM" ],
         "createdDate": "2024-01-01",
         "projectUrl": "#",
-        "githubUrl": "#",
+        "githubUrl": "https://github.com/kadirbeskardes/Steganografi_Py",
+        "Category": "Masaüstü Uygulama",
         "features": [
             "Metin ve görsel veri gizleme",
             "Blowfish ile metin şifreleme",
@@ -65,6 +68,64 @@
         ],
         "challenges": "Veri gizlerken görüntü kalitesini bozmadan güvenliği sağlamak",
         "solutions": "LSB yöntemiyle görünmez gizleme, şifreleme algoritmalarıyla güvenlik artırıldı ve kalite metrikleri (PSNR, SSIM) ile test edildi."
+    }
+    ,
+    {
+        "id": 4,
+        "title": "GrinGrid - Gerçek Zamanlı Chat Uygulaması",
+        "shortDescription": "Xamarin ve Firebase ile geliştirilen, çok platformlu ve güvenli bir anlık mesajlaşma uygulaması.",
+        "fullDescription": "GrinGrid, kullanıcıların anlık mesaj, medya ve dosya paylaşımı yapabilmesini sağlayan, Xamarin.Forms ile geliştirilen çapraz platform bir chat uygulamasıdır. Gerçek zamanlı veri senkronizasyonu için Firebase kullanılmış, kullanıcı dostu arayüzü ve güvenli altyapısı ile öne çıkmaktadır. Xamarin.Essentials, Plugin.Media gibi eklentilerle zenginleştirilmiş olan bu uygulama, küçük işletmeler ve bireysel kullanıcılar için etkili bir iletişim çözümüdür.",
+        "imageUrl": "img/chat_pp.jpg",
+        "technologies": [ "Xamarin.Forms", "C#", "Firebase", "XAML", "Xamarin.Essentials", "Plugin.Media", "Firebase Realtime Database", "Firebase Storage" ],
+        "createdDate": "2024-01-01",
+        "projectUrl": "#",
+        "githubUrl": "https://github.com/kadirbeskardes/HaasChat",
+        "Category": "Mobil Uygulama",
+        "features": [
+            "Gerçek zamanlı mesajlaşma",
+            "Medya ve dosya paylaşımı",
+            "Firebase ile anlık veri senkronizasyonu",
+            "Çapraz platform desteği (iOS ve Android)",
+            "Kullanıcı kimlik doğrulama ve güvenli veri saklama"
+        ],
+        "screenshots": [
+            "images/gringrid-login.jpg",
+            "images/gringrid-chat.jpg"
+        ],
+        "challenges": "Gerçek zamanlı veri yönetimi ve platformlar arası tutarlı arayüz tasarımı",
+        "solutions": "Firebase ile anlık veri aktarımı sağlandı, Xamarin.Forms ile ortak UI geliştirildi, güvenlik ve veri yönetimi için Xamarin.Essentials kullanıldı."
+    },
+    {
+        "id": 5,
+        "title": "Yazım Denetleyici (Metin Madenciliği Uygulaması)",
+        "shortDescription": "Python ve Tkinter ile geliştirilen, kelime düzeltme ve yazım denetimi yapan masaüstü uygulama.",
+        "fullDescription": "Bu proje, Python dilinde geliştirilmiş bir yazım denetleyici (spell checker) uygulamasıdır. Kullanıcıdan alınan metindeki yazım hatalarını düzeltmek için doğal dil işleme teknikleri uygulanmıştır. Lojik yapı olarak, kelime frekanslarına dayalı olasılıklı düzeltme algoritması kullanılmıştır. Tkinter ile oluşturulan kullanıcı arayüzü sayesinde etkileşimli ve kolay kullanım sağlanmıştır.",
+        "imageUrl": "img/spell_pp.jpg",
+        "technologies": [
+            "Python",
+            "Tkinter",
+            "Regex",
+            "Counter",
+            "Natural Language Processing",
+            "Edit Distance"
+        ],
+        "createdDate": "2024-02-15",
+        "projectUrl": "#",
+        "githubUrl": "https://github.com/kadirbeskardes/Spell-Checking",
+        "Category": "Masaüstü Uygulama",
+        "features": [
+            "Kelime frekanslarına dayalı yazım düzeltme",
+            "Kullanıcıdan metin girişi alma ve anında düzeltme",
+            "Edit distance hesaplamaları (edits1, edits2)",
+            "Tkinter ile görsel kullanıcı arayüzü",
+            "Hatalı kelimeler için en olası doğru kelimeyi önerme"
+        ],
+        "screenshots": [
+            "images/spellchecker-1.jpg",
+            "images/spellchecker-2.jpg"
+        ],
+        "challenges": "Yanlış yazılmış kelimelere en uygun düzeltmeyi önermek ve performansı korumak",
+        "solutions": "Büyük veri kümesinden kelime frekansı analizi yapıldı, düzenleme uzaklığına göre en olası kelime önerildi ve performans için Counter yapısı kullanıldı."
     }
 
 
