@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <!-- Main Pages -->
+  <url>
+    <loc>https://kadirbeskardes.github.io/</loc>
+    <lastmod>2025-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://kadirbeskardes.github.io/img/pp.jpg</image:loc>
+      <image:caption>Kadir Beşkardeş - Full Stack Developer profil fotoğrafı</image:caption>
+      <image:title>Kadir Beşkardeş Profil</image:title>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://kadirbeskardes.github.io/about</loc>
+    <lastmod>2025-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://kadirbeskardes.github.io/img/pp.jpg</image:loc>
+      <image:caption>Kadir Beşkardeş hakkında bilgi sayfası</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://kadirbeskardes.github.io/projects</loc>
+    <lastmod>2025-09-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://kadirbeskardes.github.io/contact</loc>
+    <lastmod>2025-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Individual Project Pages -->
+  <url>
+    <loc>https://kadirbeskardes.github.io/projects/1</loc>
+    <lastmod>2023-12-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://kadirbeskardes.github.io/img/gorme_pp.jpg</image:loc>
+      <image:caption>Görme Engelliler İçin Görsel Tanıma Uygulaması</image:caption>
+      <image:title>Görme Engelli Uygulaması Projesi</image:title>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://kadirbeskardes.github.io/projects/2</loc>
+    <lastmod>2022-12-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://kadirbeskardes.github.io/img/remind_pp.jpg</image:loc>
+      <image:caption>Remind Me - İlaç Takip ve Hatırlatma Sistemi</image:caption>
+      <image:title>İlaç Takip Uygulaması</image:title>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://kadirbeskardes.github.io/projects/3</loc>
+    <lastmod>2025-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://kadirbeskardes.github.io/img/kitabika_pp.jpg</image:loc>
+      <image:caption>Kitabika - Kitap Yönetim ve E-Ticaret Platformu</image:caption>
+      <image:title>E-Ticaret Kitap Platformu</image:title>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://kadirbeskardes.github.io/projects/4</loc>
+    <lastmod>2024-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://kadirbeskardes.github.io/img/stego_pp.jpg</image:loc>
+      <image:caption>Steganografi - Görüntü Üzerinde Metin Gizleme Uygulaması</image:caption>
+      <image:title>Steganografi Uygulaması</image:title>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://kadirbeskardes.github.io/projects/5</loc>
+    <lastmod>2023-01-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://kadirbeskardes.github.io/img/chat_pp.jpg</image:loc>
+      <image:caption>GrinGrid - Gerçek Zamanlı Chat Uygulaması</image:caption>
+      <image:title>Chat Messaging Uygulaması</image:title>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://kadirbeskardes.github.io/projects/6</loc>
+    <lastmod>2024-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://kadirbeskardes.github.io/img/spell_pp.jpg</image:loc>
+      <image:caption>Yazım Denetleyici - Metin Madenciliği Uygulaması</image:caption>
+      <image:title>Spell Checker Uygulaması</image:title>
+    </image:image>
+  </url>
+</urlset>

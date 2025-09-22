@@ -3,6 +3,18 @@
 @using Personal.Services
 @inject ProjectService ProjectService
 
+<PageTitle>Projeler - Kadir Beşkardeş Portfolio</PageTitle>
+<HeadContent>
+    <meta name="description" content="Kadir Beşkardeş'in geliştirdiği C#, .NET, Python projeleri. Görme engelli uygulaması, e-ticaret platformu, chat uygulaması ve daha fazla proje.">
+    <meta property="og:title" content="Projeler - Kadir Beşkardeş Software Portfolio">
+    <meta property="og:description" content="Full Stack Developer olarak geliştirdiğim web ve mobil uygulamalar. C#, .NET Core, Python ile yapılmış projeler.">
+    <meta property="og:url" content="https://kadirbeskardes.github.io/projects">
+    <meta property="og:type" content="website">
+    <meta name="twitter:title" content="Yazılım Projeleri - Kadir Beşkardeş">
+    <meta name="twitter:description" content="C#, .NET, Python ile geliştirdiğim projelerimi keşfedin.">
+    <link rel="canonical" href="https://kadirbeskardes.github.io/projects">
+</HeadContent>
+
 <div class="projects-page">
     <!-- Hero Section -->
     <section class="projects-hero bg-dark text-white py-5">
@@ -181,6 +193,73 @@
         }
     }
 </style>
+
+<!-- Projects SEO and Structured Data -->
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@@type": "Question",
+      "name": "Hangi teknolojilerle projeler geliştiriyorsun?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "C#, .NET Core, ASP.NET, Blazor WebAssembly, Xamarin.Forms, Python, Entity Framework, SQL Server, Firebase ve Azure teknolojileriyle web ve mobil uygulamalar geliştiriyorum."
+      }
+    },
+    {
+      "@@type": "Question", 
+      "name": "Projelerinde hangi tür uygulamalar var?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "Portföyümde görme engelliler için görsel tanıma uygulaması, ilaç takip sistemi, e-ticaret platformu, steganografi uygulaması, chat uygulaması ve yazım denetleyicisi gibi çeşitli projeler bulunmaktadır."
+      }
+    },
+    {
+      "@@type": "Question",
+      "name": "Projeler GitHub'da mevcut mu?",
+      "acceptedAnswer": {
+        "@@type": "Answer", 
+        "text": "Evet, projelerimin kaynak kodları GitHub hesabımda (github.com/kadirbeskardes) açık kaynak olarak paylaşılmaktadır."
+      }
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@@type": "CollectionPage",
+  "name": "Projeler - Kadir Beşkardeş",
+  "description": "Full Stack Developer Kadir Beşkardeş'in geliştirdiği web ve mobil uygulama projeleri",
+  "url": "https://kadirbeskardes.github.io/projects",
+  "mainEntity": {
+    "@@type": "ItemList",
+    "name": "Yazılım Projeleri",
+    "description": "C#, .NET, Python ve diğer teknolojilerle geliştirilmiş projeler",
+    "numberOfItems": 6
+  },
+  "breadcrumb": {
+    "@@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@@type": "ListItem",
+        "position": 1,
+        "name": "Ana Sayfa",
+        "item": "https://kadirbeskardes.github.io/"
+      },
+      {
+        "@@type": "ListItem", 
+        "position": 2,
+        "name": "Projeler",
+        "item": "https://kadirbeskardes.github.io/projects"
+      }
+    ]
+  }
+}
+</script>
 
 @code {
     private List<Personal.Models.ProjectDetail>? projects;

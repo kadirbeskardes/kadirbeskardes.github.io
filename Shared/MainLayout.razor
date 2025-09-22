@@ -44,6 +44,18 @@
         </nav>
     </header>
 
+    <!-- Breadcrumb Navigation -->
+    <nav aria-label="breadcrumb" class="bg-light border-bottom" style="display: none;" id="breadcrumb-nav">
+        <div class="container">
+            <ol class="breadcrumb mb-0 py-2" itemscope itemtype="https://schema.org/BreadcrumbList">
+                <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a href="/" itemprop="item"><span itemprop="name">Ana Sayfa</span></a>
+                    <meta itemprop="position" content="1" />
+                </li>
+            </ol>
+        </div>
+    </nav>
+
     <main class="flex-grow-1">
         @Body
     </main>
