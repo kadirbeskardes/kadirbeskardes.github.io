@@ -45,7 +45,7 @@
         "solutions": "Firebase Realtime Database ile hızlı veri senkronizasyonu sağlandı. Firebase Storage ile video kaydı depolama ve doğrulama işlemleri güvence altına alındı."
     },
     {
-        "id": 4,
+        "id": 3,
         "title": "Kitabika: Kitap Yönetim ve E-Ticaret Platformu",
         "shortDescription": "Kapsamlı kullanıcı ve yönetici paneline sahip, katmanlı mimariyle geliştirilmiş modern bir kitap satış platformu.",
         "fullDescription": "Kitabika, kitap satışı yapan işletmelerin dijital ortama taşınması için geliştirilmiş, kullanıcı dostu ve güvenli bir web uygulamasıdır. ASP.NET Core MVC ile geliştirilen bu sistem, kitap katalog yönetimi, sepet ve sipariş işlemleri, rol tabanlı kullanıcı yönetimi ve kapsamlı bir yönetici paneli gibi pek çok özelliği içerir. Katmanlı mimarisi sayesinde yüksek sürdürülebilirlik sunar. Admin paneli üzerinden kitap, kategori, sipariş ve kullanıcı yönetimi sağlanırken; kullanıcılar kitapları keşfedebilir, sipariş verebilir ve geçmiş siparişlerini takip edebilir.",
