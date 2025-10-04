@@ -2,6 +2,7 @@
 @using Personal.Models
 @using Personal.Services
 @inject ProjectService ProjectService
+@inject IStringLocalizer<SharedResource> Localizer
 
 <PageTitle>Projeler - Kadir Beşkardeş Portfolio</PageTitle>
 <HeadContent>
@@ -21,7 +22,7 @@
         <div class="container py-4">
             <div class="row align-items-center">
                 <div class="col-lg-8 mx-auto text-center">
-                    <h1 class="display-4 fw-bold mb-3">Projelerim</h1>
+                    <h1 class="display-4 fw-bold mb-3">@Localizer["Projects.Title"]</h1>
                     <p class="lead mb-4">Yaratıcı çözümler ve yenilikçi yaklaşımlarla geliştirdiğim projeler</p>
                     <div class="d-flex justify-content-center gap-3">
                         <a href="#projects-grid" class="btn btn-primary btn-lg px-4 rounded-pill">
@@ -67,7 +68,7 @@
                                     </div>
                                     <div class="project-hover-overlay">
                                         <a href="@($"project/{project.Id}")" class="btn btn-outline-light btn-lg rounded-pill">
-                                            <i class="bi bi-eye-fill me-2"></i>Detayları Gör
+                                            <i class="bi bi-eye-fill me-2"></i>@Localizer["Projects.ViewDetails"]
                                         </a>
                                     </div>
                                 </div>

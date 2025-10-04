@@ -2,24 +2,24 @@
 @using Personal.Models
 @using Personal.Services
 @inject ProjectService ProjectService
+@inject IStringLocalizer<SharedResource> Localizer
 
 <!-- Hero Section -->
 <section class="hero-section bg-gradient-primary text-white py-5">
     <div class="container py-5">
         <div class="row align-items-center">
             <div class="col-lg-6 order-lg-1 order-2">
-                <h1 class="display-3 fw-bold mb-4 animate__animated animate__fadeInDown">Merhaba, Ben <span class="text-highlight">Kadir Beşkardeş</span></h1>
-                <p class="lead mb-4 text-light animate__animated animate__fadeIn animate__delay-1s">Yazılım Geliştirici & Full Stack Developer</p>
+                <h1 class="display-3 fw-bold mb-4 animate__animated animate__fadeInDown">@Localizer["Home.Greeting"] <span class="text-highlight">Kadir Beşkardeş</span></h1>
+                <p class="lead mb-4 text-light animate__animated animate__fadeIn animate__delay-1s">@Localizer["Home.JobTitle"]</p>
                 <p class="mb-4 fs-5 text-light animate__animated animate__fadeIn animate__delay-1s">
-                    Web ve mobil uygulama geliştirme konusunda uzmanlaşmış bir yazılım geliştiriciyim.
-                    Kullanıcı dostu, modern ve performanslı uygulamalar geliştiriyorum.
+                    @Localizer["Home.Description"]
                 </p>
                 <div class="d-flex gap-3 animate__animated animate__fadeIn animate__delay-2s">
                     <a href="about" class="btn btn-light btn-lg px-4 rounded-pill shadow-sm">
-                        <i class="bi bi-person me-2"></i>Hakkımda
+                        <i class="bi bi-person me-2"></i>@Localizer["Home.AboutButton"]
                     </a>
                     <a href="contact" class="btn btn-outline-light btn-lg px-4 rounded-pill shadow-sm">
-                        <i class="bi bi-envelope me-2"></i>İletişim
+                        <i class="bi bi-envelope me-2"></i>@Localizer["Home.ContactButton"]
                     </a>
                 </div>
             </div>

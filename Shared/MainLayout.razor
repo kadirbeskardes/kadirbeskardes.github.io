@@ -1,4 +1,5 @@
 ﻿@inherits LayoutComponentBase
+@inject IStringLocalizer<SharedResource> Localizer
 
 <div class="d-flex flex-column min-vh-100">
     <header>
@@ -6,7 +7,7 @@
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="/" style="transition: all 0.3s ease;">
                     <i class="bi bi-code-slash fs-3 text-primary me-2" style="text-shadow: 0 0 8px rgba(13, 110, 253, 0.6);"></i>
-                    <span class="fw-bold fs-4 gradient-text">Portföyüm</span>
+                    <span class="fw-bold fs-4 gradient-text">@Localizer["Nav.Portfolio"]</span>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -15,27 +16,30 @@
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item mx-1">
                             <NavLink class="nav-link d-flex align-items-center py-3 px-3 rounded hover-effect" href="" Match="NavLinkMatch.All" active-class="active">
-                                <i class="bi bi-house-door me-2"></i> Ana Sayfa
+                                <i class="bi bi-house-door me-2"></i> @Localizer["Nav.Home"]
                             </NavLink>
                         </li>
                         <li class="nav-item mx-1">
                             <NavLink class="nav-link d-flex align-items-center py-3 px-3 rounded hover-effect" href="about" active-class="active">
-                                <i class="bi bi-person me-2"></i> Hakkımda
+                                <i class="bi bi-person me-2"></i> @Localizer["Nav.About"]
                             </NavLink>
                         </li>
                         <li class="nav-item mx-1">
                             <NavLink class="nav-link d-flex align-items-center py-3 px-3 rounded hover-effect" href="projects" active-class="active">
-                                <i class="bi bi-briefcase me-2"></i> Projeler
+                                <i class="bi bi-briefcase me-2"></i> @Localizer["Nav.Projects"]
                             </NavLink>
                         </li>
                         <li class="nav-item mx-1">
                             <NavLink class="nav-link d-flex align-items-center py-3 px-3 rounded hover-effect" href="contact" active-class="active">
-                                <i class="bi bi-envelope me-2"></i> İletişim
+                                <i class="bi bi-envelope me-2"></i> @Localizer["Nav.Contact"]
                             </NavLink>
+                        </li>
+                        <li class="nav-item mx-1 d-flex align-items-center">
+                            <CultureSwitcher />
                         </li>
                         <li class="nav-item ms-2 d-flex align-items-center">
                             <a class="btn btn-primary d-flex align-items-center py-2 px-3 rounded-pill glow-on-hover" href="files/CV Kadir Beskardes.pdf" download>
-                                <i class="bi bi-download me-2"></i> CV İndir
+                                <i class="bi bi-download me-2"></i> @Localizer["Nav.DownloadCV"]
                             </a>
                         </li>
                     </ul>
@@ -96,6 +100,11 @@
 
 <style>
     /* Özel stiller ekleyelim */
+    .navbar {
+        z-index: 1050 !important;
+        position: relative;
+    }
+    
     .gradient-text {
         background: linear-gradient(90deg, #0d6efd, #6f42c1);
         -webkit-background-clip: text;

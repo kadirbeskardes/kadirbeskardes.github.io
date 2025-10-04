@@ -1,4 +1,5 @@
 ﻿@page "/about"
+@inject IStringLocalizer<SharedResource> Localizer
 
 <PageTitle>Hakkımda - Kadir Beşkardeş Full Stack Developer</PageTitle>
 <HeadContent>
@@ -18,18 +19,18 @@
     <div class="container position-relative py-5" style="z-index: 2;">
         <div class="row align-items-center min-vh-60 py-5">
             <div class="col-lg-7">
-                <div class="badge bg-primary bg-opacity-10 text-primary mb-3 px-3 py-2 rounded-pill">Yazılım Geliştirici</div>
+                <div class="badge bg-primary bg-opacity-10 text-primary mb-3 px-3 py-2 rounded-pill">@Localizer["About.Badge"]</div>
                 <h1 class="display-3 fw-bold mb-4 animate__animated animate__fadeInDown">Kadir Beşkardeş</h1>
-                <p class="lead mb-4 animate__animated animate__fadeIn animate__delay-1s">Full Stack Developer | .NET Enthusiast | Problem Solver</p>
+                <p class="lead mb-4 animate__animated animate__fadeIn animate__delay-1s">@Localizer["About.Subtitle"]</p>
                 <p class="mb-5 animate__animated animate__fadeIn animate__delay-1s">
-                    Yazılım geliştirme ve algoritma tasarımında yetkinim; ASP.NET Core MVC, C# ve Python ile projeler geliştirdim. Çözüm odaklıyım ve teknik becerilerimi sürekli geliştiriyorum.
+                    @Localizer["About.Description"]
                 </p>
                 <div class="d-flex flex-wrap gap-3 animate__animated animate__fadeIn animate__delay-2s">
                     <a href="contact" class="btn btn-primary btn-lg px-4 rounded-pill">
-                        <i class="bi bi-envelope me-2"></i>İletişime Geç
+                        <i class="bi bi-envelope me-2"></i>@Localizer["About.ContactButton"]
                     </a>
                     <a href="files/CV Kadir Beskardes.pdf" download class="btn btn-outline-light btn-lg px-4 rounded-pill">
-                        <i class="bi bi-download me-2"></i>CV İndir
+                        <i class="bi bi-download me-2"></i>@Localizer["About.DownloadCV"]
                     </a>
                 </div>
             </div>

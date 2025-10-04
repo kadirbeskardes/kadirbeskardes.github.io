@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  
+  <!-- Navigation -->
+  <data name="Nav.Portfolio" xml:space="preserve">
+    <value>Portföyüm</value>
+  </data>
+  <data name="Nav.Home" xml:space="preserve">
+    <value>Ana Sayfa</value>
+  </data>
+  <data name="Nav.About" xml:space="preserve">
+    <value>Hakkımda</value>
+  </data>
+  <data name="Nav.Projects" xml:space="preserve">
+    <value>Projelerim</value>
+  </data>
+  <data name="Nav.Contact" xml:space="preserve">
+    <value>İletişim</value>
+  </data>
+  <data name="Nav.DownloadCV" xml:space="preserve">
+    <value>CV İndir</value>
+  </data>
+  
+  <!-- Home Page -->
+  <data name="Home.Greeting" xml:space="preserve">
+    <value>Merhaba, Ben</value>
+  </data>
+  <data name="Home.JobTitle" xml:space="preserve">
+    <value>Yazılım Geliştirici &amp; Full Stack Developer</value>
+  </data>
+  <data name="Home.Description" xml:space="preserve">
+    <value>Web ve mobil uygulama geliştirme konusunda uzmanlaşmış bir yazılım geliştiriciyim. Kullanıcı dostu, modern ve performanslı uygulamalar geliştiriyorum.</value>
+  </data>
+  <data name="Home.AboutButton" xml:space="preserve">
+    <value>Hakkımda</value>
+  </data>
+  <data name="Home.ContactButton" xml:space="preserve">
+    <value>İletişim</value>
+  </data>
+  
+  <!-- Contact Page -->
+  <data name="Contact.Title" xml:space="preserve">
+    <value>İletişim</value>
+  </data>
+  <data name="Contact.GetInTouch" xml:space="preserve">
+    <value>Sorularınız veya projeleriniz için bana ulaşabilirsiniz</value>
+  </data>
+  <data name="Contact.Name" xml:space="preserve">
+    <value>Ad Soyad</value>
+  </data>
+  <data name="Contact.Email" xml:space="preserve">
+    <value>E-posta</value>
+  </data>
+  <data name="Contact.Message" xml:space="preserve">
+    <value>Mesaj</value>
+  </data>
+  <data name="Contact.Send" xml:space="preserve">
+    <value>Mesaj Gönder</value>
+  </data>
+  <data name="Contact.SendMessageTitle" xml:space="preserve">
+    <value>Mesaj Gönder</value>
+  </data>
+  <data name="Contact.SendMessageDescription" xml:space="preserve">
+    <value>Projeleriniz veya sorularınız hakkında bana yazabilirsiniz. En kısa sürede dönüş yapacağım.</value>
+  </data>
+  <data name="Contact.ContactInfo" xml:space="preserve">
+    <value>İletişim Bilgileri</value>
+  </data>
+  <data name="Contact.Address" xml:space="preserve">
+    <value>Adres</value>
+  </data>
+  <data name="Contact.Location" xml:space="preserve">
+    <value>İstanbul, Türkiye</value>
+  </data>
+  <data name="Contact.Subject" xml:space="preserve">
+    <value>Konu</value>
+  </data>
+  
+  <!-- About Page -->
+  <data name="About.Title" xml:space="preserve">
+    <value>Hakkımda</value>
+  </data>
+  <data name="About.Badge" xml:space="preserve">
+    <value>Yazılım Geliştirici</value>
+  </data>
+  <data name="About.Subtitle" xml:space="preserve">
+    <value>Full Stack Developer | .NET Enthusiast | Problem Solver</value>
+  </data>
+  <data name="About.Description" xml:space="preserve">
+    <value>Yazılım geliştirme ve algoritma tasarımında yetkinim; ASP.NET Core MVC, C# ve Python ile projeler geliştirdim. Çözüm odaklıyım ve teknik becerilerimi sürekli geliştiriyorum.</value>
+  </data>
+  <data name="About.ContactButton" xml:space="preserve">
+    <value>İletişime Geç</value>
+  </data>
+  <data name="About.DownloadCV" xml:space="preserve">
+    <value>CV İndir</value>
+  </data>
+  
+  <!-- Projects Page -->
+  <data name="Projects.Title" xml:space="preserve">
+    <value>Projelerim</value>
+  </data>
+  <data name="Projects.ViewDetails" xml:space="preserve">
+    <value>Detayları Görüntüle</value>
+  </data>
+  <data name="Projects.ViewSource" xml:space="preserve">
+    <value>Kaynak Kodu</value>
+  </data>
+  <data name="Projects.ViewLive" xml:space="preserve">
+    <value>Canlı Demo</value>
+  </data>
+  
+</root>

@@ -1,5 +1,6 @@
 ﻿@page "/contact"
 @using Personal.Components
+@inject IStringLocalizer<SharedResource> Localizer
 
 <PageTitle>İletişim - Kadir Beşkardeş</PageTitle>
 <HeadContent>
@@ -16,8 +17,8 @@
 <div class="contact-page">
     <div class="container py-5">
         <div class="text-center mb-5">
-            <h2 class="display-5 fw-bold text-gradient">İletişim</h2>
-            <p class="lead text-muted">Sorularınız veya projeleriniz için bana ulaşabilirsiniz</p>
+            <h2 class="display-5 fw-bold text-gradient">@Localizer["Contact.Title"]</h2>
+            <p class="lead text-muted">@Localizer["Contact.GetInTouch"]</p>
             <div class="divider mx-auto"></div>
         </div>
 
@@ -25,15 +26,15 @@
             <div class="col-lg-5">
                 <div class="contact-info-card card h-100 border-0 shadow-lg">
                     <div class="card-body p-4 p-lg-5">
-                        <h3 class="h4 mb-4 fw-bold text-primary">İletişim Bilgileri</h3>
+                        <h3 class="h4 mb-4 fw-bold text-primary">@Localizer["Contact.ContactInfo"]</h3>
 
                         <div class="contact-item d-flex mb-4">
                             <div class="contact-icon me-3">
                                 <i class="bi bi-geo-alt-fill fs-3 text-gradient"></i>
                             </div>
                             <div>
-                                <h5 class="h6 mb-1 fw-semibold">Adres</h5>
-                                <p class="text-muted mb-0">İstanbul, Türkiye</p>
+                                <h5 class="h6 mb-1 fw-semibold">@Localizer["Contact.Address"]</h5>
+                                <p class="text-muted mb-0">@Localizer["Contact.Location"]</p>
                             </div>
                         </div>
 
@@ -42,7 +43,7 @@
                                 <i class="bi bi-envelope-fill fs-3 text-gradient"></i>
                             </div>
                             <div>
-                                <h5 class="h6 mb-1 fw-semibold">E-posta</h5>
+                                <h5 class="h6 mb-1 fw-semibold">@Localizer["Contact.Email"]</h5>
                                 <p class="text-muted mb-0">kadir.beskardes11@gmail.com</p>
                             </div>
                         </div>
@@ -81,8 +82,8 @@
             <div class="col-lg-7">
                 <div class="contact-form-card card border-0 shadow-lg">
                     <div class="card-body p-4 p-lg-5">
-                        <h3 class="h4 mb-4 fw-bold text-primary">Mesaj Gönder</h3>
-                        <p class="text-muted mb-4">Projeleriniz veya sorularınız hakkında bana yazabilirsiniz. En kısa sürede dönüş yapacağım.</p>
+                        <h3 class="h4 mb-4 fw-bold text-primary">@Localizer["Contact.SendMessageTitle"]</h3>
+                        <p class="text-muted mb-4">@Localizer["Contact.SendMessageDescription"]</p>
                         <ContactForm />
                     </div>
                 </div>

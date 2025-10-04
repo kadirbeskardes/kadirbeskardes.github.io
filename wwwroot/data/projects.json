@@ -160,7 +160,51 @@
         ],
         "challenges": "Yanlış yazılmış kelimelere en uygun düzeltmeyi önermek ve performansı korumak",
         "solutions": "Büyük veri kümesinden kelime frekansı analizi yapıldı, düzenleme uzaklığına göre en olası kelime önerildi ve performans için Counter yapısı kullanıldı."
-    }
+    },
+    {
+    "id": 7,
+    "title": "Testival - Tournament ve Quiz Uygulaması",
+    "shortDescription": "Kullanıcıların etkileşimli turnuvalar ve quizler oluşturabileceği, karşılaştırma tabanlı yarışmalar düzenleyebileceği çok platformlu uygulama.",
+    "fullDescription": "Testival, kullanıcıların çeşitli konularda turnuvalar ve testler oluşturabileceği, katılımcıların ikili karşılaştırmalarla en iyiyi seçebileceği kapsamlı bir platform. Uygulama hem web hem de mobil platformlarda çalışmakta olup, kullanıcılar test oluşturabilir, başkalarının testlerine katılabilir ve sonuçları görüntüleyebilir.\n\nTemel Özellikler:\n\n- Web ve mobil uygulama desteği\n- Kullanıcı kaydı ve giriş sistemi (JWT tabanlı)\n- Test/turnuva oluşturma (2'nin katları halinde seçenek sayısı)\n- İkili karşılaştırma sistemi (tournament bracket)\n- Görsel içerik desteği (base64 image upload)\n- Çoklu dil desteği (Türkçe/İngilizce)\n- İstatistik ve sonuç görüntüleme\n- Responsive tasarım ve PWA özellikleri\n- SEO optimizasyonu ve performans iyileştirmeleri\n- Azure SQL Database entegrasyonu\n- Real-time sonuç güncellemeleri",
+    "imageUrl": "img/testival_pp.jpg",
+    "technologies": [ 
+        "C#", 
+        "ASP.NET Core 8", 
+        "Entity Framework Core", 
+        "SQL Server/Azure SQL", 
+        "React Native", 
+        "Expo", 
+        "TypeScript", 
+        "JWT Authentication", 
+        "Azure App Service", 
+        "PWA", 
+        "Bootstrap", 
+        "Axios", 
+        "Visual Studio"
+    ],
+    "createdDate": "2025-09-28",
+    "projectUrl": "https://tourmentapp-bpbfcufgc4feejbf.polandcentral-01.azurewebsites.net",
+    "Category": "Full-Stack Uygulama",
+    "githubUrl": "https://github.com/kadirbeskardes/TourmentApp",
+    "features": [
+        "Cross-platform mobil uygulama (React Native/Expo)",
+        "ASP.NET Core web uygulaması",
+        "JWT tabanlı kimlik doğrulama sistemi",
+        "İkili karşılaştırma turnuva sistemi",
+        "Görsel içerik yükleme ve gösterme",
+        "Çoklu dil desteği (i18n)",
+        "Responsive web tasarım",
+        "PWA (Progressive Web App) özellikleri",
+        "Real-time istatistik görüntüleme",
+        "SEO optimizasyonu",
+        "Azure Cloud deployment",
+        "Repository pattern ve clean architecture",
+        "Error handling ve logging sistemi"
+    ],
+    "screenshots": [],
+    "challenges": "Cross-platform uyumluluk sağlama, tournament bracket algoritması geliştirme, performans optimizasyonu ve Azure deployment yapılandırması.",
+    "solutions": "Expo framework ile mobil geliştirme, Entity Framework ile veritabanı yönetimi, JWT ile güvenli API authentication, Azure App Service ile scalable deployment ve comprehensive error handling middleware implementasyonu."
+}
 
 
 ]

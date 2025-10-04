@@ -1,9 +1,14 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
+﻿@inject IStringLocalizer<SharedResource> Localizer
+
+<div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="">Portföyüm</a>
-        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <a class="navbar-brand" href="">@Localizer["Nav.Portfolio"]</a>
+        <div class="d-flex align-items-center">
+            <CultureSwitcher />
+            <button title="Navigation menu" class="navbar-toggler ms-2" @onclick="ToggleNavMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
     </div>
 </div>
 
@@ -11,27 +16,27 @@
     <nav class="flex-column">
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Ana Sayfa
+                <span class="oi oi-home" aria-hidden="true"></span> @Localizer["Nav.Home"]
             </NavLink>
         </div>
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="about">
-                <span class="oi oi-person" aria-hidden="true"></span> Hakkımda
+                <span class="oi oi-person" aria-hidden="true"></span> @Localizer["Nav.About"]
             </NavLink>
         </div>
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="projects">
-                <span class="oi oi-briefcase" aria-hidden="true"></span> Projelerim
+                <span class="oi oi-briefcase" aria-hidden="true"></span> @Localizer["Nav.Projects"]
             </NavLink>
         </div>
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="contact">
-                <span class="oi oi-envelope-open" aria-hidden="true"></span> İletişim
+                <span class="oi oi-envelope-open" aria-hidden="true"></span> @Localizer["Nav.Contact"]
             </NavLink>
         </div>
         <div class="nav-item px-3">
             <a class="nav-link" href="files/cv.pdf" download>
-                <span class="oi oi-cloud-download" aria-hidden="true"></span> CV İndir
+                <span class="oi oi-cloud-download" aria-hidden="true"></span> @Localizer["Nav.DownloadCV"]
             </a>
         </div>
     </nav>
@@ -40,7 +45,7 @@
 @code {
     private bool collapseNavMenu = true;
 
-    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
 
     private void ToggleNavMenu()
     {
