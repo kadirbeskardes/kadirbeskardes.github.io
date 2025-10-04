@@ -251,9 +251,25 @@
                     </h3>
 
                     <div class="timeline ps-4">
+                        <!-- New Experience -->
+                        <div class="timeline-item position-relative pb-4">
+                            <div class="timeline-period bg-primary text-white">Ağu 2025 — Devam</div>
+                            <div class="timeline-content p-4 rounded-3">
+                                <h5 class="fw-bold mb-1">Freelance Web Geliştirici</h5>
+                                <h6 class="text-primary mb-2">
+                                    Deluxe Digital Solutions
+                                </h6>
+                                <ul class="mb-0 ps-3">
+                                    <li>Ağustos 2025'ten beri freelance olarak web geliştirme projelerinde çalışıyorum.</li>
+                                    <li>Birkaç WordPress projesinde tema ve eklenti özelleştirme, bakım ve performans optimizasyonu gerçekleştirdim.</li>
+                                    <li>Çok sayıda React projesinde yer aldım; özellikle hata çözümü (bug fixing) ve performans optimizasyonu üzerinde yoğunlaştım.</li>
+                                </ul>
+                            </div>
+                        </div>
+
                         <!-- Experience 1 -->
                         <div class="timeline-item position-relative pb-4">
-                            <div class="timeline-period bg-primary text-white">02/2025 - 05/2025</div>
+                            <div class="timeline-period bg-primary text-white">Şub 2025 — May 2025</div>
                             <div class="timeline-content p-4 rounded-3">
                                 <h5 class="fw-bold mb-1">.NET Yazılım Geliştirme Uzmanı Eğitim Programı</h5>
                                 <h6 class="text-primary mb-2">
@@ -270,7 +286,7 @@
 
                         <!-- Experience 2 -->
                         <div class="timeline-item position-relative pb-4">
-                            <div class="timeline-period bg-primary text-white">07/2023 - 09/2023</div>
+                            <div class="timeline-period bg-primary text-white">Tem 2023 — Eyl 2023</div>
                             <div class="timeline-content p-4 rounded-3">
                                 <h5 class="fw-bold mb-1">Stajyer Yazılım Geliştirici</h5>
                                 <h6 class="text-primary mb-2">
@@ -286,7 +302,7 @@
 
                         <!-- Experience 3 -->
                         <div class="timeline-item position-relative pb-4">
-                            <div class="timeline-period bg-primary text-white">07/2022 - 09/2022</div>
+                            <div class="timeline-period bg-primary text-white">Tem 2022 — Eyl 2022</div>
                             <div class="timeline-content p-4 rounded-3">
                                 <h5 class="fw-bold mb-1">Stajyer Yazılım Geliştirici</h5>
                                 <h6 class="text-primary mb-2">
@@ -312,7 +328,25 @@
 
                     <div class="timeline ps-4">
                         <div class="timeline-item position-relative">
-                            <div class="timeline-period bg-primary text-white">2020 - 2024</div>
+                            <div class="timeline-period bg-primary text-white">2025 — Devam</div>
+                            <div class="timeline-content p-4 rounded-3">
+                                <h5 class="fw-bold mb-1">Yönetim Bilişim Sistemleri (Açıköğretim)</h5>
+                                <h6 class="text-primary mb-2">Anadolu Üniversitesi</h6>
+                                <div class="d-flex flex-wrap gap-4 mb-2">
+                                    <div>
+                                        <i class="bi bi-building text-primary me-2"></i>
+                                        <span>Açıköğretim</span>
+                                    </div>
+                                    <div>
+                                        <i class="bi bi-award text-primary me-2"></i>
+                                        <span>GPA: Henüz yok</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item position-relative">
+                            <div class="timeline-period bg-primary text-white">2020 — 2024</div>
                             <div class="timeline-content p-4 rounded-3">
                                 <h5 class="fw-bold mb-1">Kırıkkale Üniversitesi</h5>
                                 <h6 class="text-primary mb-2">Bilgisayar Mühendisliği - Lisans</h6>
@@ -517,28 +551,34 @@
 
     .timeline-item {
         position: relative;
-        padding-left: 30px;
+        display: flex;
+        align-items: flex-start;
+        gap: 18px;
+        padding-left: 0;
     }
 
     .timeline-period {
-        position: absolute;
-        left: -30px;
-        top: 0;
-        width: 60px;
-        padding: 5px;
-        border-radius: 20px;
+        position: relative;
+        width: 120px;
+        padding: 8px 10px;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
         text-align: center;
-        font-size: 0.75rem;
-        font-weight: bold;
+        font-weight: 600;
         z-index: 2;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        flex-shrink: 0;
     }
 
     .timeline-content {
         position: relative;
         transition: all 0.3s ease;
         border-left: 2px solid #3b82f6;
-        padding-left: 20px;
-        margin-left: 10px;
+        padding-left: 16px;
+        flex: 1 1 auto;
     }
 
         .timeline-content:before {
@@ -619,7 +659,13 @@
             left: 0;
             top: 0;
             margin-bottom: 10px;
-            display: inline-block;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            padding: 5px 10px;
+            border-radius: 999px;
         }
 
         .timeline-content {

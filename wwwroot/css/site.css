@@ -1,18 +1,18 @@
-/* Enhanced Design System */
+/* Enhanced Design System - Koyu Tema */
 :root {
     /* Primary Color Palette */
     --primary-color: #6366f1;
-    --primary-dark: #4f46e5;
+    --primary-dark: #4338ca;
     --primary-light: #818cf8;
     --secondary-color: #8b5cf6;
     --accent-color: #06b6d4;
-    --accent-light: #67e8f9;
+    --accent-light: #22d3ee;
     
-    /* Neutral Palette */
-    --dark-color: #0f172a;
-    --dark-secondary: #1e293b;
-    --dark-tertiary: #334155;
-    --light-color: #f8fafc;
+    /* Neutral Palette - Daha Koyu */
+    --dark-color: #0a0f1e;
+    --dark-secondary: #1a1f35;
+    --dark-tertiary: #2a2f45;
+    --light-color: #f1f5f9;
     --light-secondary: #e2e8f0;
     --light-tertiary: #cbd5e1;
     
@@ -22,10 +22,10 @@
     --danger-color: #ef4444;
     --info-color: #3b82f6;
     
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-    --gradient-accent: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-light) 100%);
-    --gradient-dark: linear-gradient(135deg, var(--dark-color) 0%, var(--dark-secondary) 100%);
+    /* Gradients - Daha Canlı ve Koyu */
+    --gradient-primary: linear-gradient(135deg, #4338ca 0%, #6366f1 50%, #8b5cf6 100%);
+    --gradient-accent: linear-gradient(135deg, #0891b2 0%, #06b6d4 50%, #22d3ee 100%);
+    --gradient-dark: linear-gradient(135deg, #0a0f1e 0%, #1a1f35 50%, #0a0f1e 100%);
     
     /* Shadows */
     --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
@@ -68,10 +68,12 @@
 body {
     font-family: 'Inter', 'Poppins', sans-serif;
     background: var(--gradient-dark);
+    background-attachment: fixed;
     color: var(--light-color);
     overflow-x: hidden;
     line-height: 1.7;
     letter-spacing: -0.01em;
+    min-height: 100vh;
 }
 
 /* Typography Improvements */
@@ -91,25 +93,27 @@ html {
     scroll-behavior: smooth;
 }
 
-/* Selection colors */
+/* Selection colors - Daha Belirgin */
 ::selection {
-    background: var(--accent-color);
-    color: var(--dark-color);
+    background: rgba(99, 102, 241, 0.5);
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(99, 102, 241, 0.5);
 }
 
 ::-moz-selection {
-    background: var(--accent-color);
-    color: var(--dark-color);
+    background: rgba(99, 102, 241, 0.5);
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(99, 102, 241, 0.5);
 }
 
-/* Loading Screen Styles */
+/* Loading Screen Styles - Daha Koyu */
 .app-loading {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, var(--dark-color) 0%, #16213e 100%);
+    background: linear-gradient(135deg, #0a0f1e 0%, #1a1f35 50%, #0a0f1e 100%);
     z-index: 9999;
     display: flex;
     justify-content: center;
@@ -125,8 +129,8 @@ html {
 }
 
 .app-loading-text h1 {
-    color: #4cc9f0;
-    text-shadow: 0 0 10px rgba(76, 201, 240, 0.5), 0 0 20px rgba(76, 201, 240, 0.3);
+    color: #f1f5f9;
+    text-shadow: 0 0 20px rgba(99, 102, 241, 0.6), 0 0 40px rgba(99, 102, 241, 0.3);
 }
 
 .loading-logo {
@@ -141,8 +145,9 @@ html {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    border: 3px solid rgba(67, 97, 238, 0.2);
+    border: 3px solid rgba(99, 102, 241, 0.3);
     animation: pulse 4s infinite ease-in-out;
+    box-shadow: 0 0 30px rgba(99, 102, 241, 0.2);
 }
 
 .logo-circle:nth-child(2) {
@@ -164,14 +169,15 @@ html {
 .loading-progress {
     height: 6px;
     border-radius: 3px;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(71, 85, 105, 0.3);
     overflow: hidden;
     margin: 3rem 0;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.4);
 }
 
 .progress-bar {
-    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    background: linear-gradient(90deg, #4338ca 0%, #6366f1 50%, #06b6d4 100%);
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.6);
     transition: width 0.6s ease-out;
 }
 
@@ -195,7 +201,7 @@ html {
     transform: translateY(10px);
     transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
     color: var(--accent-color);
-    filter: drop-shadow(0 2px 5px rgba(76, 201, 240, 0.3));
+    filter: drop-shadow(0 2px 10px rgba(99, 102, 241, 0.5));
 }
 
 .social-links {
@@ -389,15 +395,16 @@ html {
     opacity: 1;
 }
 
-/* Enhanced Card Styles */
+/* Enhanced Card Styles - Daha Koyu */
 .card-enhanced {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(30, 41, 59, 0.4);
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(99, 102, 241, 0.2);
     border-radius: var(--radius-xl);
     transition: all var(--transition-base);
     position: relative;
     overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .card-enhanced::before {
@@ -411,9 +418,9 @@ html {
 }
 
 .card-enhanced:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(99, 102, 241, 0.3);
-    box-shadow: var(--shadow-xl);
+    background: rgba(30, 41, 59, 0.6);
+    border-color: rgba(99, 102, 241, 0.5);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), 0 0 30px rgba(99, 102, 241, 0.2);
     transform: translateY(-5px);
 }
 
@@ -469,11 +476,12 @@ html {
     background-clip: text;
 }
 
-/* Enhanced Navigation Styles */
+/* Enhanced Navigation Styles - Daha Koyu */
 .navbar {
     backdrop-filter: blur(20px);
-    background: rgba(15, 23, 42, 0.8) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(10, 15, 30, 0.9) !important;
+    border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .navbar-nav .nav-link {
@@ -502,16 +510,18 @@ html {
 }
 
 .navbar-nav .nav-link.hover-effect:hover {
-    background-color: rgba(99, 102, 241, 0.1);
-    color: var(--accent-color) !important;
+    background-color: rgba(99, 102, 241, 0.2);
+    color: var(--accent-light) !important;
     transform: translateY(-2px);
     border-radius: var(--radius-md);
+    box-shadow: 0 0 15px rgba(99, 102, 241, 0.3);
 }
 
 .navbar-nav .nav-link.active {
-    background-color: rgba(99, 102, 241, 0.15);
-    color: var(--accent-color) !important;
+    background-color: rgba(99, 102, 241, 0.25);
+    color: var(--accent-light) !important;
     border-radius: var(--radius-md);
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
 }
 
 .navbar-brand {
@@ -565,8 +575,8 @@ html {
 }
 
 .btn-outline-light {
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(99, 102, 241, 0.4);
+    background: rgba(30, 41, 59, 0.4);
     color: var(--light-color);
     backdrop-filter: blur(10px);
     transition: all var(--transition-base);
@@ -575,17 +585,17 @@ html {
 }
 
 .btn-outline-light:hover {
-    background: rgba(255, 255, 255, 0.95);
-    border-color: rgba(255, 255, 255, 0.8);
-    color: var(--dark-color) !important;
+    background: rgba(99, 102, 241, 0.3);
+    border-color: rgba(99, 102, 241, 0.6);
+    color: #ffffff !important;
     transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
 }
 
-/* Glass morphism button */
+/* Glass morphism button - Koyu Tema */
 .btn-glass {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(30, 41, 59, 0.4);
+    border: 1px solid rgba(99, 102, 241, 0.3);
     backdrop-filter: blur(20px);
     color: var(--light-color);
     transition: all var(--transition-base);
@@ -593,11 +603,11 @@ html {
 }
 
 .btn-glass:hover {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(30, 41, 59, 0.6);
+    border-color: rgba(99, 102, 241, 0.5);
     color: var(--light-color);
     transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
+    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
 }
 
 /* Enhanced Interactive Effects */
