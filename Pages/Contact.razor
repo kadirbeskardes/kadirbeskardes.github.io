@@ -1,24 +1,25 @@
-﻿@page "/contact"
+@page "/contact"
 @using Personal.Components
-@inject IStringLocalizer<SharedResource> Localizer
+@using Personal.Services
+@inject LocalizationService L
 
-<PageTitle>İletişim - Kadir Beşkardeş</PageTitle>
+<PageTitle>�leti�im - Kadir Be�karde�</PageTitle>
 <HeadContent>
-    <meta name="description" content="Kadir Beşkardeş ile iletişime geçin. Projeleriniz için benimle çalışmak istiyorsanız veya sorularınız varsa iletişim bilgilerim burada.">
-    <meta property="og:title" content="İletişim - Kadir Beşkardeş">
-    <meta property="og:description" content="Full Stack Developer Kadir Beşkardeş ile iletişime geçin. Proje teklifleri ve işbirliği için.">
+    <meta name="description" content="Kadir Be�karde� ile ileti�ime ge�in. Projeleriniz i�in benimle �al��mak istiyorsan�z veya sorular�n�z varsa ileti�im bilgilerim burada.">
+    <meta property="og:title" content="�leti�im - Kadir Be�karde�">
+    <meta property="og:description" content="Full Stack Developer Kadir Be�karde� ile ileti�ime ge�in. Proje teklifleri ve i�birli�i i�in.">
     <meta property="og:url" content="https://kadirbeskardes.github.io/contact">
     <meta property="og:type" content="website">
-    <meta name="twitter:title" content="İletişim - Kadir Beşkardeş">
-    <meta name="twitter:description" content="Projeleriniz için benimle çalışmak istiyorsanız iletişime geçin.">
+    <meta name="twitter:title" content="�leti�im - Kadir Be�karde�">
+    <meta name="twitter:description" content="Projeleriniz i�in benimle �al��mak istiyorsan�z ileti�ime ge�in.">
     <link rel="canonical" href="https://kadirbeskardes.github.io/contact">
 </HeadContent>
 
 <div class="contact-page">
     <div class="container py-5">
         <div class="text-center mb-5">
-            <h2 class="display-5 fw-bold text-gradient">@Localizer["Contact.Title"]</h2>
-            <p class="lead text-muted">@Localizer["Contact.GetInTouch"]</p>
+            <h2 class="display-5 fw-bold text-gradient">@L["Contact_Title"]</h2>
+            <p class="lead text-muted">@L["Contact_GetInTouch"]</p>
             <div class="divider mx-auto"></div>
         </div>
 
@@ -26,15 +27,15 @@
             <div class="col-lg-5">
                 <div class="contact-info-card card h-100 border-0 shadow-lg">
                     <div class="card-body p-4 p-lg-5">
-                        <h3 class="h4 mb-4 fw-bold text-primary">@Localizer["Contact.ContactInfo"]</h3>
+                        <h3 class="h4 mb-4 fw-bold text-primary">@L["Contact_ContactInfo"]</h3>
 
                         <div class="contact-item d-flex mb-4">
                             <div class="contact-icon me-3">
                                 <i class="bi bi-geo-alt-fill fs-3 text-gradient"></i>
                             </div>
                             <div>
-                                <h5 class="h6 mb-1 fw-semibold">@Localizer["Contact.Address"]</h5>
-                                <p class="text-muted mb-0">@Localizer["Contact.Location"]</p>
+                                <h5 class="h6 mb-1 fw-semibold">@L["Contact_Address"]</h5>
+                                <p class="text-muted mb-0">@L["Contact_Location"]</p>
                             </div>
                         </div>
 
@@ -43,7 +44,7 @@
                                 <i class="bi bi-envelope-fill fs-3 text-gradient"></i>
                             </div>
                             <div>
-                                <h5 class="h6 mb-1 fw-semibold">@Localizer["Contact.Email"]</h5>
+                                <h5 class="h6 mb-1 fw-semibold">@L["Contact_Email"]</h5>
                                 <p class="text-muted mb-0">kadir.beskardes11@gmail.com</p>
                             </div>
                         </div>
@@ -53,13 +54,13 @@
                                 <i class="bi bi-telephone-fill fs-3 text-gradient"></i>
                             </div>
                             <div>
-                                <h5 class="h6 mb-1 fw-semibold">Telefon</h5>
+                                <h5 class="h6 mb-1 fw-semibold">@L["Contact_Phone"]</h5>
                                 <p class="text-muted mb-0">+90 507 275 67 47</p>
                             </div>
                         </div>
 
                         <div class="mt-5 pt-3">
-                            <h5 class="h6 mb-3 fw-semibold">Sosyal Medya Hesaplarım</h5>
+                            <h5 class="h6 mb-3 fw-semibold">@L["Contact_SocialMedia"]</h5>
                             <div class="social-links d-flex gap-3">
                                 <a href="https://github.com/kadirbeskardes" class="social-icon btn btn-outline-primary rounded-circle p-2">
                                     <i class="bi bi-github fs-5"></i>
@@ -82,8 +83,8 @@
             <div class="col-lg-7">
                 <div class="contact-form-card card border-0 shadow-lg">
                     <div class="card-body p-4 p-lg-5">
-                        <h3 class="h4 mb-4 fw-bold text-primary">@Localizer["Contact.SendMessageTitle"]</h3>
-                        <p class="text-muted mb-4">@Localizer["Contact.SendMessageDescription"]</p>
+                        <h3 class="h4 mb-4 fw-bold text-primary">@L["Contact_SendMessageTitle"]</h3>
+                        <p class="text-muted mb-4">@L["Contact_SendMessageDescription"]</p>
                         <ContactForm />
                     </div>
                 </div>
@@ -94,7 +95,7 @@
 
 <style>
     .text-gradient {
-        background: linear-gradient(45deg, #3a7bd5, #00d2ff);
+        background: linear-gradient(135deg, #6366f1, #06b6d4);
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
@@ -104,51 +105,120 @@
     .divider {
         width: 80px;
         height: 4px;
-        background: linear-gradient(45deg, #3a7bd5, #00d2ff);
+        background: linear-gradient(135deg, #6366f1, #06b6d4);
         border-radius: 2px;
         margin: 1rem auto;
     }
 
     .contact-info-card {
-        border-radius: 15px;
-        background: rgba(255, 255, 255, 0.9);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 20px;
+        background: rgba(30, 41, 59, 0.6);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(99, 102, 241, 0.2);
+    }
+
+    .contact-info-card h3,
+    .contact-info-card h5,
+    .contact-info-card h6 {
+        color: #fff !important;
+    }
+
+    .contact-info-card .text-muted {
+        color: rgba(255, 255, 255, 0.7) !important;
     }
 
     .contact-form-card {
-        border-radius: 15px;
+        border-radius: 20px;
+        background: rgba(30, 41, 59, 0.6);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(99, 102, 241, 0.2);
+    }
+
+    .contact-form-card h3 {
+        color: #06b6d4 !important;
+    }
+
+    .contact-form-card .text-muted {
+        color: rgba(255, 255, 255, 0.7) !important;
     }
 
     .contact-icon {
-        width: 50px;
-        height: 50px;
+        width: 55px;
+        height: 55px;
         display: flex;
         align-items: center;
         justify-content: center;
-        background: rgba(58, 123, 213, 0.1);
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(6, 182, 212, 0.2));
         border-radius: 50%;
+        border: 1px solid rgba(99, 102, 241, 0.3);
     }
 
     .social-icon {
-        width: 40px;
-        height: 40px;
+        width: 45px;
+        height: 45px;
         display: flex;
         align-items: center;
         justify-content: center;
         transition: all 0.3s ease;
+        background: rgba(99, 102, 241, 0.1) !important;
+        border: 1px solid rgba(99, 102, 241, 0.3) !important;
+        color: #fff !important;
     }
 
-        .social-icon:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
+    .social-icon:hover {
+        transform: translateY(-3px);
+        background: linear-gradient(135deg, #6366f1, #06b6d4) !important;
+        border-color: transparent !important;
+        box-shadow: 0 5px 20px rgba(99, 102, 241, 0.4);
+    }
 
     .contact-page {
-        background-color: #f8f9fa;
-        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%233a7bd5" fill-opacity="0.05" d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,181.3C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
-        background-repeat: no-repeat;
-        background-position: bottom;
-        background-size: contain;
+        background: linear-gradient(135deg, #0a0f1e 0%, #1a1f35 50%, #0a0f1e 100%);
+        min-height: 100vh;
+    }
+
+    .contact-page .lead {
+        color: rgba(255, 255, 255, 0.7) !important;
+    }
+
+    /* Form Styles */
+    .contact-form-card .form-control,
+    .contact-form-card .form-select {
+        background: rgba(15, 23, 42, 0.6);
+        border: 1px solid rgba(99, 102, 241, 0.3);
+        color: #fff;
+        border-radius: 10px;
+        padding: 12px 16px;
+    }
+
+    .contact-form-card .form-control:focus,
+    .contact-form-card .form-select:focus {
+        background: rgba(15, 23, 42, 0.8);
+        border-color: #6366f1;
+        box-shadow: 0 0 15px rgba(99, 102, 241, 0.3);
+        color: #fff;
+    }
+
+    .contact-form-card .form-control::placeholder {
+        color: rgba(255, 255, 255, 0.5);
+    }
+
+    .contact-form-card .form-label {
+        color: rgba(255, 255, 255, 0.8);
+        font-weight: 500;
+    }
+
+    .contact-form-card .btn-primary {
+        background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        border: none;
+        padding: 12px 30px;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .contact-form-card .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 20px rgba(99, 102, 241, 0.4);
     }
 </style>

@@ -1,8 +1,5 @@
 ﻿@using Microsoft.AspNetCore.Components.Web
 @using Microsoft.JSInterop
-@using System.Globalization
-@using Personal.Services
-@using Microsoft.AspNetCore.Components
 
 <Router AppAssembly="@typeof(App).Assembly">
     <Found Context="routeData">
@@ -22,14 +19,6 @@
 
 @code {
     [Inject] private IJSRuntime JSRuntime { get; set; } = default!;
-    [Inject] private CultureService CultureService { get; set; } = default!;
-    [Inject] private NavigationManager Navigation { get; set; } = default!;
-
-    protected override async Task OnInitializedAsync()
-    {
-        // Set culture immediately on initialization
-        await SetCultureFromUrl();
-    }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -44,41 +33,6 @@
             {
                 // Ignore if function doesn't exist
             }
-        }
-    }
-
-    private async Task SetCultureFromUrl()
-    {
-        try
-        {
-            var uri = new Uri(Navigation.Uri);
-            var query = Microsoft.AspNetCore.WebUtilities.QueryHelpers.ParseQuery(uri.Query);
-            
-            string cultureName = "tr-TR"; // default
-            
-            if (query.TryGetValue("culture", out var cultureValue))
-            {
-                cultureName = cultureValue.FirstOrDefault() ?? "tr-TR";
-            }
-            else
-            {
-                // Fallback to localStorage or service
-                cultureName = await CultureService.GetCultureAsync();
-            }
-            
-            var culture = new CultureInfo(cultureName);
-            CultureInfo.DefaultThreadCurrentCulture = culture;
-            CultureInfo.DefaultThreadCurrentUICulture = culture;
-            
-            Console.WriteLine($"Culture set to: {culture.Name} from URL: {Navigation.Uri}");
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error setting culture: {ex.Message}");
-            // If there's an error, default to Turkish
-            var defaultCulture = new CultureInfo("tr-TR");
-            CultureInfo.DefaultThreadCurrentCulture = defaultCulture;
-            CultureInfo.DefaultThreadCurrentUICulture = defaultCulture;
         }
     }
 }

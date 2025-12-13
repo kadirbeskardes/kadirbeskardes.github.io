@@ -59,47 +59,47 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   
-  <!-- Navigation - Türkçe (Varsayılan) -->
+  <!-- Navigation - English -->
   <data name="Nav_Portfolio" xml:space="preserve">
-    <value>Portföyüm</value>
+    <value>Portfolio</value>
   </data>
   <data name="Nav_Home" xml:space="preserve">
-    <value>Ana Sayfa</value>
+    <value>Home</value>
   </data>
   <data name="Nav_About" xml:space="preserve">
-    <value>Hakkımda</value>
+    <value>About</value>
   </data>
   <data name="Nav_Projects" xml:space="preserve">
-    <value>Projelerim</value>
+    <value>Projects</value>
   </data>
   <data name="Nav_Contact" xml:space="preserve">
-    <value>İletişim</value>
+    <value>Contact</value>
   </data>
   <data name="Nav_DownloadCV" xml:space="preserve">
-    <value>CV İndir</value>
+    <value>Download CV</value>
   </data>
   
-  <!-- Home Page - Türkçe -->
+  <!-- Home Page - English -->
   <data name="Home_Greeting" xml:space="preserve">
-    <value>Merhaba, Ben</value>
+    <value>Hello, I'm</value>
   </data>
   <data name="Home_JobTitle" xml:space="preserve">
-    <value>Yazılım Geliştirici &amp; Full Stack Developer</value>
+    <value>Software Developer &amp; Full Stack Developer</value>
   </data>
   <data name="Home_Description" xml:space="preserve">
-    <value>Web ve mobil uygulama geliştirme konusunda uzmanlaşmış bir yazılım geliştiriciyim. Kullanıcı dostu, modern ve performanslı uygulamalar geliştiriyorum.</value>
+    <value>I am a software developer specialized in web and mobile application development. I develop user-friendly, modern and high-performance applications.</value>
   </data>
   <data name="Home_AboutButton" xml:space="preserve">
-    <value>Hakkımda</value>
+    <value>About Me</value>
   </data>
   <data name="Home_ContactButton" xml:space="preserve">
-    <value>İletişim</value>
+    <value>Contact</value>
   </data>
   <data name="Home_Skills" xml:space="preserve">
-    <value>Yeteneklerim</value>
+    <value>My Skills</value>
   </data>
   <data name="Home_SkillsSubtitle" xml:space="preserve">
-    <value>Geliştirme süreçlerinde kullandığım teknolojiler</value>
+    <value>Technologies I use in development processes</value>
   </data>
   <data name="Home_Frontend" xml:space="preserve">
     <value>Frontend</value>
@@ -108,127 +108,127 @@
     <value>Backend</value>
   </data>
   <data name="Home_Tools" xml:space="preserve">
-    <value>Araçlar</value>
+    <value>Tools</value>
   </data>
   <data name="Home_RecentProjects" xml:space="preserve">
-    <value>Son Projelerim</value>
+    <value>Recent Projects</value>
   </data>
   <data name="Home_RecentProjectsSubtitle" xml:space="preserve">
-    <value>Yakın zamanda tamamladığım çalışmalar</value>
+    <value>My recently completed works</value>
   </data>
   <data name="Home_ViewProject" xml:space="preserve">
-    <value>Projeyi İncele</value>
+    <value>View Project</value>
   </data>
   <data name="Home_ViewDetails" xml:space="preserve">
-    <value>Detayları Gör</value>
+    <value>View Details</value>
   </data>
   <data name="Home_AllProjects" xml:space="preserve">
-    <value>Tüm Projeler</value>
+    <value>All Projects</value>
   </data>
   
-  <!-- Contact Page - Türkçe -->
+  <!-- Contact Page - English -->
   <data name="Contact_Title" xml:space="preserve">
-    <value>İletişim</value>
+    <value>Contact</value>
   </data>
   <data name="Contact_GetInTouch" xml:space="preserve">
-    <value>Sorularınız veya projeleriniz için bana ulaşabilirsiniz</value>
+    <value>Questions or projects? You can reach me</value>
   </data>
   <data name="Contact_Name" xml:space="preserve">
-    <value>Ad Soyad</value>
+    <value>Full Name</value>
   </data>
   <data name="Contact_Email" xml:space="preserve">
-    <value>E-posta</value>
+    <value>Email</value>
   </data>
   <data name="Contact_Message" xml:space="preserve">
-    <value>Mesaj</value>
+    <value>Message</value>
   </data>
   <data name="Contact_Send" xml:space="preserve">
-    <value>Mesaj Gönder</value>
+    <value>Send Message</value>
   </data>
   <data name="Contact_SendMessageTitle" xml:space="preserve">
-    <value>Mesaj Gönder</value>
+    <value>Send Message</value>
   </data>
   <data name="Contact_SendMessageDescription" xml:space="preserve">
-    <value>Projeleriniz veya sorularınız hakkında bana yazabilirsiniz. En kısa sürede dönüş yapacağım.</value>
+    <value>You can write to me about your projects or questions. I will get back to you as soon as possible.</value>
   </data>
   <data name="Contact_ContactInfo" xml:space="preserve">
-    <value>İletişim Bilgileri</value>
+    <value>Contact Information</value>
   </data>
   <data name="Contact_Address" xml:space="preserve">
-    <value>Adres</value>
+    <value>Address</value>
   </data>
   <data name="Contact_Location" xml:space="preserve">
-    <value>İstanbul, Türkiye</value>
+    <value>Istanbul, Turkey</value>
   </data>
   <data name="Contact_Subject" xml:space="preserve">
-    <value>Konu</value>
+    <value>Subject</value>
   </data>
   <data name="Contact_Phone" xml:space="preserve">
-    <value>Telefon</value>
+    <value>Phone</value>
   </data>
   <data name="Contact_SocialMedia" xml:space="preserve">
-    <value>Sosyal Medya Hesaplarım</value>
+    <value>My Social Media</value>
   </data>
   
-  <!-- About Page - Türkçe -->
+  <!-- About Page - English -->
   <data name="About_Title" xml:space="preserve">
-    <value>Hakkımda</value>
+    <value>About Me</value>
   </data>
   <data name="About_Badge" xml:space="preserve">
-    <value>Yazılım Geliştirici</value>
+    <value>Software Developer</value>
   </data>
   <data name="About_Subtitle" xml:space="preserve">
     <value>Full Stack Developer | .NET Enthusiast | Problem Solver</value>
   </data>
   <data name="About_Description" xml:space="preserve">
-    <value>Yazılım geliştirme ve algoritma tasarımında yetkinim; ASP.NET Core MVC, C# ve Python ile projeler geliştirdim. Çözüm odaklıyım ve teknik becerilerimi sürekli geliştiriyorum.</value>
+    <value>I am competent in software development and algorithm design; I have developed projects with ASP.NET Core MVC, C# and Python. I am solution-oriented and continuously improve my technical skills.</value>
   </data>
   <data name="About_ContactButton" xml:space="preserve">
-    <value>İletişime Geç</value>
+    <value>Get in Touch</value>
   </data>
   <data name="About_DownloadCV" xml:space="preserve">
-    <value>CV İndir</value>
+    <value>Download CV</value>
   </data>
   <data name="About_TechnicalSkills" xml:space="preserve">
-    <value>Teknik Yetkinlikler</value>
+    <value>Technical Skills</value>
   </data>
   <data name="About_References" xml:space="preserve">
-    <value>Referanslar</value>
+    <value>References</value>
   </data>
   <data name="About_Certificates" xml:space="preserve">
-    <value>Sertifikalar</value>
+    <value>Certificates</value>
   </data>
   <data name="About_ProfessionalSummary" xml:space="preserve">
-    <value>Profesyonel Özet</value>
+    <value>Professional Summary</value>
   </data>
   
-  <!-- Projects Page - Türkçe -->
+  <!-- Projects Page - English -->
   <data name="Projects_Title" xml:space="preserve">
-    <value>Projelerim</value>
+    <value>My Projects</value>
   </data>
   <data name="Projects_Subtitle" xml:space="preserve">
-    <value>Yaratıcı çözümler ve yenilikçi yaklaşımlarla geliştirdiğim projeler</value>
+    <value>Projects developed with creative solutions and innovative approaches</value>
   </data>
   <data name="Projects_Explore" xml:space="preserve">
-    <value>Projeleri Keşfet</value>
+    <value>Explore Projects</value>
   </data>
   <data name="Projects_ViewDetails" xml:space="preserve">
-    <value>Detayları Görüntüle</value>
+    <value>View Details</value>
   </data>
   <data name="Projects_ViewSource" xml:space="preserve">
-    <value>Kaynak Kodu</value>
+    <value>View Source</value>
   </data>
   <data name="Projects_ViewLive" xml:space="preserve">
-    <value>Canlı Demo</value>
+    <value>Live Demo</value>
   </data>
   <data name="Projects_Loading" xml:space="preserve">
-    <value>Projeler yükleniyor...</value>
+    <value>Loading projects...</value>
   </data>
   <data name="Projects_NoProjects" xml:space="preserve">
-    <value>Henüz proje eklenmedi</value>
+    <value>No projects added yet</value>
   </data>
   <data name="Projects_NoProjectsDescription" xml:space="preserve">
-    <value>Yakın zamanda yeni projeler eklenecektir.</value>
+    <value>New projects will be added soon.</value>
   </data>
   
 </root>

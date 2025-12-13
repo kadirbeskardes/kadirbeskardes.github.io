@@ -1,15 +1,16 @@
-ï»¿@page "/about"
-@inject IStringLocalizer<SharedResource> Localizer
+@page "/about"
+@using Personal.Services
+@inject LocalizationService L
 
-<PageTitle>HakkÄ±mda - Kadir BeÅŸkardeÅŸ Full Stack Developer</PageTitle>
+<PageTitle>Hakkýmda - Kadir Beþkardeþ Full Stack Developer</PageTitle>
 <HeadContent>
-    <meta name="description" content="Kadir BeÅŸkardeÅŸ hakkÄ±nda detaylÄ± bilgiler. Full Stack Developer olarak deneyimlerim, yeteneklerim ve Ã§alÄ±ÅŸtÄ±ÄŸÄ±m teknolojiler hakkÄ±nda bilgi edinin.">
-    <meta property="og:title" content="HakkÄ±mda - Kadir BeÅŸkardeÅŸ Full Stack Developer">
-    <meta property="og:description" content="C#, .NET, Python uzmanÄ± Full Stack Developer. YazÄ±lÄ±m geliÅŸtirme deneyimlerim ve projelerim hakkÄ±nda detaylÄ± bilgi.">
+    <meta name="description" content="Kadir Beþkardeþ hakkýnda detaylý bilgiler. Full Stack Developer olarak deneyimlerim, yeteneklerim ve çalýþtýðým teknolojiler hakkýnda bilgi edinin.">
+    <meta property="og:title" content="Hakkýmda - Kadir Beþkardeþ Full Stack Developer">
+    <meta property="og:description" content="C#, .NET, Python uzmaný Full Stack Developer. Yazýlým geliþtirme deneyimlerim ve projelerim hakkýnda detaylý bilgi.">
     <meta property="og:url" content="https://kadirbeskardes.github.io/about">
     <meta property="og:type" content="profile">
-    <meta name="twitter:title" content="HakkÄ±mda - Kadir BeÅŸkardeÅŸ">
-    <meta name="twitter:description" content="Full Stack Developer olarak deneyimlerim ve yeteneklerim hakkÄ±nda bilgi edinin.">
+    <meta name="twitter:title" content="Hakkýmda - Kadir Beþkardeþ">
+    <meta name="twitter:description" content="Full Stack Developer olarak deneyimlerim ve yeteneklerim hakkýnda bilgi edinin.">
     <link rel="canonical" href="https://kadirbeskardes.github.io/about">
 </HeadContent>
 
@@ -19,24 +20,24 @@
     <div class="container position-relative py-5" style="z-index: 2;">
         <div class="row align-items-center min-vh-60 py-5">
             <div class="col-lg-7">
-                <div class="badge bg-primary bg-opacity-10 text-primary mb-3 px-3 py-2 rounded-pill">@Localizer["About.Badge"]</div>
-                <h1 class="display-3 fw-bold mb-4 animate__animated animate__fadeInDown">Kadir BeÅŸkardeÅŸ</h1>
-                <p class="lead mb-4 animate__animated animate__fadeIn animate__delay-1s">@Localizer["About.Subtitle"]</p>
+                <div class="badge bg-primary bg-opacity-10 text-primary mb-3 px-3 py-2 rounded-pill">@L["About_Badge"]</div>
+                <h1 class="display-3 fw-bold mb-4 animate__animated animate__fadeInDown">Kadir Beþkardeþ</h1>
+                <p class="lead mb-4 animate__animated animate__fadeIn animate__delay-1s">@L["About_Subtitle"]</p>
                 <p class="mb-5 animate__animated animate__fadeIn animate__delay-1s">
-                    @Localizer["About.Description"]
+                    @L["About_Description"]
                 </p>
                 <div class="d-flex flex-wrap gap-3 animate__animated animate__fadeIn animate__delay-2s">
                     <a href="contact" class="btn btn-primary btn-lg px-4 rounded-pill">
-                        <i class="bi bi-envelope me-2"></i>@Localizer["About.ContactButton"]
+                        <i class="bi bi-envelope me-2"></i>@L["About_ContactButton"]
                     </a>
                     <a href="files/CV Kadir Beskardes.pdf" download class="btn btn-outline-light btn-lg px-4 rounded-pill">
-                        <i class="bi bi-download me-2"></i>@Localizer["About.DownloadCV"]
+                        <i class="bi bi-download me-2"></i>@L["About_DownloadCV"]
                     </a>
                 </div>
             </div>
             <div class="col-lg-5 d-none d-lg-block">
                 <div class="hero-image-container position-relative">
-                    <img src="img/pp.jpg" alt="Kadir BeÅŸkardeÅŸ" class="img-fluid rounded-4 shadow-lg border border-4 border-white">
+                    <img src="img/pp.jpg" alt="Kadir Beþkardeþ" class="img-fluid rounded-4 shadow-lg border border-4 border-white">
                     <div class="tech-badge dotnet-badge">
                         <i class="fab fa-microsoft"></i>
                     </div>
@@ -60,9 +61,9 @@
             <div class="card border-0 shadow-lg h-100 sticky-top" style="top: 20px;">
                 <div class="card-body p-4">
                     <div class="profile-image-container mx-auto mb-4">
-                        <img src="img/pp.jpg" alt="Kadir BeÅŸkardeÅŸ" class="img-fluid rounded-circle shadow border border-4 border-white">
+                        <img src="img/pp.jpg" alt="Kadir Beþkardeþ" class="img-fluid rounded-circle shadow border border-4 border-white">
                     </div>
-                    <h3 class="card-title fw-bold text-center mb-2">Kadir BeÅŸkardeÅŸ</h3>
+                    <h3 class="card-title fw-bold text-center mb-2">Kadir Beþkardeþ</h3>
                     <p class="text-muted text-center mb-3">Computer Engineer / Software Developer</p>
 
                     <div class="d-flex justify-content-center gap-3 mb-4">
@@ -75,7 +76,7 @@
                     <div class="mb-4">
                         <div class="d-flex align-items-center mb-3">
                             <i class="bi bi-geo-alt-fill text-primary me-2 fs-5"></i>
-                            <span>Ä°stanbul, TÃ¼rkiye</span>
+                            <span>Ýstanbul, Türkiye</span>
                         </div>
                         <div class="d-flex align-items-center mb-3">
                             <i class="bi bi-envelope-fill text-primary me-2 fs-5"></i>
@@ -101,7 +102,7 @@
                                 <i class="fas fa-mobile-alt me-1"></i> Xamarin
                             </span>
 
-                            <!-- VeritabanÄ± -->
+                            <!-- Veritabaný -->
                             <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill">
                                 <i class="fas fa-database me-1"></i> SQL
                             </span>
@@ -137,7 +138,7 @@
                         <div class="reference-item mb-3">
                             <h6 class="fw-bold mb-1">Fatih Alkan</h6>
                             <p class="text-muted mb-1">
-                                YazÄ±lÄ±m Birim YÃ¶neticisi - Bilge Adam Akademi
+                                Yazýlým Birim Yöneticisi - Bilge Adam Akademi
                             </p>
                             <p class="small mb-1">+90 554 774 69 09, alkanfatih@hotmail.com.tr</p>
                         </div>
@@ -150,8 +151,8 @@
                             <div class="d-flex justify-content-between align-items-start">
                                 <div>
                                     <h6 class="fw-bold mb-1">
-                                        <a href="files/KADÄ°R BEÅžKARDEÅž KatÄ±lÄ±m SertifikasÄ± BilgeAdam.pdf" target="_blank" class="text-decoration-none">
-                                            <i class="bi bi-link-45deg"></i> .NET GeliÅŸtirici EÄŸitim ProgramÄ±
+                                        <a href="files/KADÝR BEÞKARDEÞ Katýlým Sertifikasý BilgeAdam.pdf" target="_blank" class="text-decoration-none">
+                                            <i class="bi bi-link-45deg"></i> .NET Geliþtirici Eðitim Programý
                                         </a>
                                     </h6>
                                     <p class="text-muted mb-1 small">
@@ -189,18 +190,18 @@
                 <div class="card-body p-4">
                     <h3 class="card-title fw-bold mb-4 d-flex align-items-center">
                         <span class="icon-circle bg-primary-light me-3"><i class="bi bi-person-lines-fill text-primary"></i></span>
-                        <span>Profesyonel Ã–zet</span>
+                        <span>Profesyonel Özet</span>
                     </h3>
                     <div class="ps-4">
                         <p class="card-text fs-5 mb-4">
-                            YazÄ±lÄ±m geliÅŸtirme, algoritma tasarÄ±mÄ± ve problem Ã§Ã¶zme konularÄ±nda gÃ¼Ã§lÃ¼ bir altyapÄ±ya
-                            sahibim. ASP.NET Core MVC, C# ve Python dillerinde projeler geliÅŸtirdim; web ve mobil
-                            uygulama geliÅŸtirme deneyimine sahibim. VeritabanÄ± tasarÄ±mÄ± ve farklÄ± teknolojilere olan
-                            ilgimle teknik yetkinliÄŸimi sÃ¼rekli geliÅŸtiriyorum. 
+                            Yazýlým geliþtirme, algoritma tasarýmý ve problem çözme konularýnda güçlü bir altyapýya
+                            sahibim. ASP.NET Core MVC, C# ve Python dillerinde projeler geliþtirdim; web ve mobil
+                            uygulama geliþtirme deneyimine sahibim. Veritabaný tasarýmý ve farklý teknolojilere olan
+                            ilgimle teknik yetkinliðimi sürekli geliþtiriyorum. 
                         </p>
                         <p class="card-text fs-5 mb-4">
-                            Ä°yi dÃ¼zeyde Ä°ngilizce bilgiye sahibim. Ã‡Ã¶zÃ¼m
-                            odaklÄ± ve kararlÄ± bir ÅŸekilde karÅŸÄ±laÅŸtÄ±ÄŸÄ±m sorunlara etkili Ã§Ã¶zÃ¼mler Ã¼retmeye odaklanÄ±rÄ±m.
+                            Ýyi düzeyde Ýngilizce bilgiye sahibim. Çözüm
+                            odaklý ve kararlý bir þekilde karþýlaþtýðým sorunlara etkili çözümler üretmeye odaklanýrým.
                         </p>
                         <div class="row g-3">
                             <div class="col-md-6">
@@ -209,7 +210,7 @@
                                         <i class="bi bi-check-circle-fill fs-5"></i>
                                     </div>
                                     <div>
-                                        <h6 class="fw-bold mb-1">Backend GeliÅŸtirme</h6>
+                                        <h6 class="fw-bold mb-1">Backend Geliþtirme</h6>
                                         <p class="text-muted mb-0">C#, Python, .NET Framework,.NET Core, Web API</p>
                                     </div>
                                 </div>
@@ -220,7 +221,7 @@
                                         <i class="bi bi-check-circle-fill fs-5"></i>
                                     </div>
                                     <div>
-                                        <h6 class="fw-bold mb-1">Frontend GeliÅŸtirme</h6>
+                                        <h6 class="fw-bold mb-1">Frontend Geliþtirme</h6>
                                         <p class="text-muted mb-0">Blazor, Razor</p>
                                     </div>
                                 </div>
@@ -231,7 +232,7 @@
                                         <i class="bi bi-check-circle-fill fs-5"></i>
                                     </div>
                                     <div>
-                                        <h6 class="fw-bold mb-1">VeritabanÄ±</h6>
+                                        <h6 class="fw-bold mb-1">Veritabaný</h6>
                                         <p class="text-muted mb-0">SQL Server, MySQL</p>
                                     </div>
                                 </div>
@@ -247,54 +248,54 @@
                 <div class="card-body p-4">
                     <h3 class="card-title fw-bold mb-4 d-flex align-items-center">
                         <span class="icon-circle bg-primary-light me-3"><i class="bi bi-briefcase-fill text-primary"></i></span>
-                        <span>Ä°ÅŸ Deneyimi</span>
+                        <span>Ýþ Deneyimi</span>
                     </h3>
 
                     <div class="timeline ps-4">
                         <!-- New Experience -->
                         <div class="timeline-item position-relative pb-4">
-                            <div class="timeline-period bg-primary text-white">AÄŸu 2025 â€” Devam</div>
+                            <div class="timeline-period bg-primary text-white">Aðu 2025 — Devam</div>
                             <div class="timeline-content p-4 rounded-3">
-                                <h5 class="fw-bold mb-1">Freelance Web GeliÅŸtirici</h5>
+                                <h5 class="fw-bold mb-1">Freelance Web Geliþtirici</h5>
                                 <h6 class="text-primary mb-2">
                                     Deluxe Digital Solutions
                                 </h6>
                                 <ul class="mb-0 ps-3">
-                                    <li>AÄŸustos 2025'ten beri freelance olarak web geliÅŸtirme projelerinde Ã§alÄ±ÅŸÄ±yorum.</li>
-                                    <li>BirkaÃ§ WordPress projesinde tema ve eklenti Ã¶zelleÅŸtirme, bakÄ±m ve performans optimizasyonu gerÃ§ekleÅŸtirdim.</li>
-                                    <li>Ã‡ok sayÄ±da React projesinde yer aldÄ±m; Ã¶zellikle hata Ã§Ã¶zÃ¼mÃ¼ (bug fixing) ve performans optimizasyonu Ã¼zerinde yoÄŸunlaÅŸtÄ±m.</li>
+                                    <li>Aðustos 2025'ten beri freelance olarak web geliþtirme projelerinde çalýþýyorum.</li>
+                                    <li>Birkaç WordPress projesinde tema ve eklenti özelleþtirme, bakým ve performans optimizasyonu gerçekleþtirdim.</li>
+                                    <li>Çok sayýda React projesinde yer aldým; özellikle hata çözümü (bug fixing) ve performans optimizasyonu üzerinde yoðunlaþtým.</li>
                                 </ul>
                             </div>
                         </div>
 
                         <!-- Experience 1 -->
                         <div class="timeline-item position-relative pb-4">
-                            <div class="timeline-period bg-primary text-white">Åžub 2025 â€” May 2025</div>
+                            <div class="timeline-period bg-primary text-white">Þub 2025 — May 2025</div>
                             <div class="timeline-content p-4 rounded-3">
-                                <h5 class="fw-bold mb-1">.NET YazÄ±lÄ±m GeliÅŸtirme UzmanÄ± EÄŸitim ProgramÄ±</h5>
+                                <h5 class="fw-bold mb-1">.NET Yazýlým Geliþtirme Uzmaný Eðitim Programý</h5>
                                 <h6 class="text-primary mb-2">
                                     BilgeAdam Teknoloji
                                 </h6>
                                 <ul class="mb-0 ps-3">
-                                    <li>C# ve OOP temelleriyle birlikte .NET 6/7/8, Entity Framework Core, LINQ, MVC ve Web API konularÄ±nda deneyim kazandÄ±m.</li>
-                                    <li>SOLID prensipleri ile Singleton, Repository ve Unit of Work gibi tasarÄ±m desenlerini etkin ÅŸekilde kullanmayÄ± Ã¶ÄŸrendim.</li>
-                                    <li>MSSQL ve T-SQL kullanarak veritabanÄ± iÅŸlemleri gerÃ§ekleÅŸtirdim.</li>
-                                    <li>HTML5, CSS3 ve Bootstrap ile temel arayÃ¼z geliÅŸtirme bilgisi edindim; Ã§alÄ±ÅŸmalarÄ±mÄ± Agile ve Scrum metodolojilerine uygun ÅŸekilde yÃ¼rÃ¼ttÃ¼m.</li>
+                                    <li>C# ve OOP temelleriyle birlikte .NET 6/7/8, Entity Framework Core, LINQ, MVC ve Web API konularýnda deneyim kazandým.</li>
+                                    <li>SOLID prensipleri ile Singleton, Repository ve Unit of Work gibi tasarým desenlerini etkin þekilde kullanmayý öðrendim.</li>
+                                    <li>MSSQL ve T-SQL kullanarak veritabaný iþlemleri gerçekleþtirdim.</li>
+                                    <li>HTML5, CSS3 ve Bootstrap ile temel arayüz geliþtirme bilgisi edindim; çalýþmalarýmý Agile ve Scrum metodolojilerine uygun þekilde yürüttüm.</li>
                                 </ul>
                             </div>
                         </div>
 
                         <!-- Experience 2 -->
                         <div class="timeline-item position-relative pb-4">
-                            <div class="timeline-period bg-primary text-white">Tem 2023 â€” Eyl 2023</div>
+                            <div class="timeline-period bg-primary text-white">Tem 2023 — Eyl 2023</div>
                             <div class="timeline-content p-4 rounded-3">
-                                <h5 class="fw-bold mb-1">Stajyer YazÄ±lÄ±m GeliÅŸtirici</h5>
+                                <h5 class="fw-bold mb-1">Stajyer Yazýlým Geliþtirici</h5>
                                 <h6 class="text-primary mb-2">
-                                    YÄ±ldÄ±z Teknik Ãœniversitesi Bilgi Ä°ÅŸlem Daire BaÅŸkanlÄ±ÄŸÄ±
+                                    Yýldýz Teknik Üniversitesi Bilgi Ýþlem Daire Baþkanlýðý
                                 </h6>
                                 <ul class="mb-0 ps-3">
-                                    <li>Windows servisleri kullanarak internet baÄŸlantÄ±sÄ± kontrolÃ¼, iÅŸlem sonlandÄ±rma ve loglama gibi gÃ¶revleri gerÃ§ekleÅŸtiren C# uygulamalarÄ± geliÅŸtirdim.</li>
-                                    <li>ASP.NET MVC ve Bootstrap kullanarak kullanÄ±cÄ± giriÅŸ/kayÄ±t, ÅŸifre yenileme ve e-posta doÄŸrulama gibi iÅŸlevleri iÃ§eren modern bir web uygulamasÄ± oluÅŸturdum.</li>
+                                    <li>Windows servisleri kullanarak internet baðlantýsý kontrolü, iþlem sonlandýrma ve loglama gibi görevleri gerçekleþtiren C# uygulamalarý geliþtirdim.</li>
+                                    <li>ASP.NET MVC ve Bootstrap kullanarak kullanýcý giriþ/kayýt, þifre yenileme ve e-posta doðrulama gibi iþlevleri içeren modern bir web uygulamasý oluþturdum.</li>
 
                                 </ul>
                             </div>
@@ -302,15 +303,15 @@
 
                         <!-- Experience 3 -->
                         <div class="timeline-item position-relative pb-4">
-                            <div class="timeline-period bg-primary text-white">Tem 2022 â€” Eyl 2022</div>
+                            <div class="timeline-period bg-primary text-white">Tem 2022 — Eyl 2022</div>
                             <div class="timeline-content p-4 rounded-3">
-                                <h5 class="fw-bold mb-1">Stajyer YazÄ±lÄ±m GeliÅŸtirici</h5>
+                                <h5 class="fw-bold mb-1">Stajyer Yazýlým Geliþtirici</h5>
                                 <h6 class="text-primary mb-2">
-                                    YÄ±ldÄ±z Teknik Ãœniversitesi Bilgi Ä°ÅŸlem Daire BaÅŸkanlÄ±ÄŸÄ±
+                                    Yýldýz Teknik Üniversitesi Bilgi Ýþlem Daire Baþkanlýðý
                                 </h6>
                                 <ul class="mb-0 ps-3">
-                                    <li>Token Based Authentication ve ASP.NET Web API kullanarak bir kimlik doÄŸrulama sistemi geliÅŸtirildi. Web API kurulumu, OWIN yapÄ±landÄ±rmasÄ±, token Ã¼retimi, MD5 ÅŸifreleme ve Entity Framework ile veritabanÄ± baÄŸlantÄ±sÄ± yapÄ±ldÄ±.</li>
-                                    <li>KullanÄ±cÄ± rolleri iÃ§eren SQL veritabanÄ± yapÄ±sÄ± tasarlanarak projeye entegre edildi. Entity Framework ile baÄŸlantÄ± saÄŸlandÄ±, Postman ve AJAX/JQuery kullanÄ±larak testler gerÃ§ekleÅŸtirildi.</li>
+                                    <li>Token Based Authentication ve ASP.NET Web API kullanarak bir kimlik doðrulama sistemi geliþtirildi. Web API kurulumu, OWIN yapýlandýrmasý, token üretimi, MD5 þifreleme ve Entity Framework ile veritabaný baðlantýsý yapýldý.</li>
+                                    <li>Kullanýcý rolleri içeren SQL veritabaný yapýsý tasarlanarak projeye entegre edildi. Entity Framework ile baðlantý saðlandý, Postman ve AJAX/JQuery kullanýlarak testler gerçekleþtirildi.</li>
                                 </ul>
                             </div>
                         </div>
@@ -323,33 +324,33 @@
                 <div class="card-body p-4">
                     <h3 class="card-title fw-bold mb-4 d-flex align-items-center">
                         <span class="icon-circle bg-primary-light me-3"><i class="bi bi-mortarboard-fill text-primary"></i></span>
-                        <span>EÄŸitim</span>
+                        <span>Eðitim</span>
                     </h3>
 
                     <div class="timeline ps-4">
                         <div class="timeline-item position-relative">
-                            <div class="timeline-period bg-primary text-white">2025 â€” Devam</div>
+                            <div class="timeline-period bg-primary text-white">2025 — Devam</div>
                             <div class="timeline-content p-4 rounded-3">
-                                <h5 class="fw-bold mb-1">YÃ¶netim BiliÅŸim Sistemleri (AÃ§Ä±kÃ¶ÄŸretim)</h5>
-                                <h6 class="text-primary mb-2">Anadolu Ãœniversitesi</h6>
+                                <h5 class="fw-bold mb-1">Yönetim Biliþim Sistemleri (Açýköðretim)</h5>
+                                <h6 class="text-primary mb-2">Anadolu Üniversitesi</h6>
                                 <div class="d-flex flex-wrap gap-4 mb-2">
                                     <div>
                                         <i class="bi bi-building text-primary me-2"></i>
-                                        <span>AÃ§Ä±kÃ¶ÄŸretim</span>
+                                        <span>Açýköðretim</span>
                                     </div>
                                     <div>
                                         <i class="bi bi-award text-primary me-2"></i>
-                                        <span>GPA: HenÃ¼z yok</span>
+                                        <span>GPA: Henüz yok</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="timeline-item position-relative">
-                            <div class="timeline-period bg-primary text-white">2020 â€” 2024</div>
+                            <div class="timeline-period bg-primary text-white">2020 — 2024</div>
                             <div class="timeline-content p-4 rounded-3">
-                                <h5 class="fw-bold mb-1">KÄ±rÄ±kkale Ãœniversitesi</h5>
-                                <h6 class="text-primary mb-2">Bilgisayar MÃ¼hendisliÄŸi - Lisans</h6>
+                                <h5 class="fw-bold mb-1">Kýrýkkale Üniversitesi</h5>
+                                <h6 class="text-primary mb-2">Bilgisayar Mühendisliði - Lisans</h6>
                                 <div class="d-flex flex-wrap gap-4 mb-2">
                                     <div>
                                         <i class="bi bi-award text-primary me-2"></i>
@@ -370,9 +371,9 @@
 <section class="bg-light py-5">
     <div class="container py-4">
         <div class="text-center mb-5">
-            <h2 class="fw-bold mb-3">Ã‡alÄ±ÅŸtÄ±ÄŸÄ±m Teknolojiler</h2>
+            <h2 class="fw-bold mb-3">Çalýþtýðým Teknolojiler</h2>
             <p class="text-muted mx-auto" style="max-width: 600px;">
-                Modern ve gÃ¼venilir teknolojilerle Ã§alÄ±ÅŸÄ±yorum. SÃ¼rekli olarak yeni teknolojiler Ã¶ÄŸreniyor ve kendimi geliÅŸtiriyorum.
+                Modern ve güvenilir teknolojilerle çalýþýyorum. Sürekli olarak yeni teknolojiler öðreniyor ve kendimi geliþtiriyorum.
             </p>
         </div>
         <div class="row g-4">
@@ -433,7 +434,7 @@
         }
     }
 
-    /* Ã–zel Stiller */
+    /* Özel Stiller */
     .about-hero {
         background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
         margin-bottom: 3rem;

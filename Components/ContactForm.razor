@@ -1,41 +1,45 @@
 ﻿@using Personal.Models
-@inject IStringLocalizer<SharedResource> Localizer
+@using Personal.Services
+@inject LocalizationService L
 
 <EditForm Model="@contactModel" OnValidSubmit="@HandleValidSubmit">
     <DataAnnotationsValidator />
-    <ValidationSummary />
+    <ValidationSummary class="text-danger" />
 
-    <div class="form-group">
-        <label for="name">@Localizer["Contact.Name"]</label>
-        <InputText @bind-Value="contactModel.Name" id="name" class="form-control" />
-        <ValidationMessage For="@(() => contactModel.Name)" />
+    <div class="mb-4">
+        <label for="name" class="form-label">@L["Contact_Name"]</label>
+        <InputText @bind-Value="contactModel.Name" id="name" class="form-control" placeholder="@L["Contact_Name"]" />
+        <ValidationMessage For="@(() => contactModel.Name)" class="text-danger small" />
     </div>
 
-    <div class="form-group">
-        <label for="email">@Localizer["Contact.Email"]</label>
-        <InputText @bind-Value="contactModel.Email" id="email" class="form-control" />
-        <ValidationMessage For="@(() => contactModel.Email)" />
+    <div class="mb-4">
+        <label for="email" class="form-label">@L["Contact_Email"]</label>
+        <InputText @bind-Value="contactModel.Email" id="email" class="form-control" placeholder="ornek@email.com" />
+        <ValidationMessage For="@(() => contactModel.Email)" class="text-danger small" />
     </div>
 
-    <div class="form-group">
-        <label for="subject">@Localizer["Contact.Subject"]</label>
-        <InputText @bind-Value="contactModel.Subject" id="subject" class="form-control" />
-        <ValidationMessage For="@(() => contactModel.Subject)" />
+    <div class="mb-4">
+        <label for="subject" class="form-label">@L["Contact_Subject"]</label>
+        <InputText @bind-Value="contactModel.Subject" id="subject" class="form-control" placeholder="@L["Contact_Subject"]" />
+        <ValidationMessage For="@(() => contactModel.Subject)" class="text-danger small" />
     </div>
 
-    <div class="form-group">
-        <label for="message">@Localizer["Contact.Message"]</label>
-        <InputTextArea @bind-Value="contactModel.Message" id="message" class="form-control" rows="5"></InputTextArea>
-        <ValidationMessage For="@(() => contactModel.Message)" />
+    <div class="mb-4">
+        <label for="message" class="form-label">@L["Contact_Message"]</label>
+        <InputTextArea @bind-Value="contactModel.Message" id="message" class="form-control" rows="5" placeholder="@L["Contact_Message"]"></InputTextArea>
+        <ValidationMessage For="@(() => contactModel.Message)" class="text-danger small" />
     </div>
 
-    <button type="submit" class="btn btn-primary">@Localizer["Contact.Send"]</button>
+    <button type="submit" class="btn btn-primary w-100">
+        <i class="bi bi-send me-2"></i>@L["Contact_Send"]
+    </button>
 </EditForm>
 
 @if (isSubmitted)
 {
-    <div class="alert alert-success mt-3">
-        Mesajınız başarıyla gönderildi. Teşekkür ederiz!
+    <div class="alert alert-success mt-4 d-flex align-items-center" role="alert">
+        <i class="bi bi-check-circle-fill me-2 fs-5"></i>
+        <span>Mesajınız başarıyla gönderildi. Teşekkür ederiz!</span>
     </div>
 }
 

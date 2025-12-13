@@ -1,17 +1,23 @@
 @using System.Globalization
-@using Microsoft.Extensions.Localization
 @using Personal.Services
 @inject CultureService CultureService
-@inject IStringLocalizer<Personal.Resources.SharedResource> Localizer
 
 <div class="dropdown culture-switcher">
     <button class="btn btn-outline-light btn-sm dropdown-toggle d-flex align-items-center" type="button" id="cultureDropdown" data-bs-toggle="dropdown" aria-expanded="false">
         <i class="bi bi-globe me-1"></i>
-        @GetCurrentCultureName()
+        @GetCurrentCultureDisplay()
     </button>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="cultureDropdown">
-        <li><a class="dropdown-item @(IsCurrentCulture("tr-TR") ? "active" : "")" href="javascript:void(0)" @onclick="@(async () => await ChangeCulture("tr-TR"))">🇹🇷 Türkçe</a></li>
-        <li><a class="dropdown-item @(IsCurrentCulture("en-US") ? "active" : "")" href="javascript:void(0)" @onclick="@(async () => await ChangeCulture("en-US"))">🇺🇸 English</a></li>
+        <li>
+            <button class="dropdown-item @(IsCurrentCulture("tr-TR") ? "active" : "")" @onclick="@(() => ChangeCultureAsync("tr-TR"))">
+                🇹🇷 Türkçe
+            </button>
+        </li>
+        <li>
+            <button class="dropdown-item @(IsCurrentCulture("en-US") ? "active" : "")" @onclick="@(() => ChangeCultureAsync("en-US"))">
+                🇺🇸 English
+            </button>
+        </li>
     </ul>
 </div>
 
@@ -41,27 +47,26 @@
 </style>
 
 @code {
-    private async Task ChangeCulture(string culture)
+    private string GetCurrentCultureDisplay()
     {
-        await CultureService.SetCultureAsync(culture);
-    }
-
-    private string GetCurrentCultureName()
-    {
-        // Debug için console'a yazdıralım
-        Console.WriteLine($"Current Culture: {CultureInfo.CurrentCulture.Name}");
-        Console.WriteLine($"Current UI Culture: {CultureInfo.CurrentUICulture.Name}");
-        
         return CultureInfo.CurrentUICulture.Name switch
         {
             "tr-TR" => "TR",
-            "en-US" => "EN", 
+            "en-US" => "EN",
             _ => "TR"
         };
     }
 
-    private bool IsCurrentCulture(string culture)
+    private bool IsCurrentCulture(string cultureName)
     {
-        return CultureInfo.CurrentUICulture.Name == culture;
+        return CultureInfo.CurrentUICulture.Name == cultureName;
+    }
+
+    private async Task ChangeCultureAsync(string cultureName)
+    {
+        if (CultureInfo.CurrentUICulture.Name != cultureName)
+        {
+            await CultureService.SetCultureAsync(cultureName);
+        }
     }
 }

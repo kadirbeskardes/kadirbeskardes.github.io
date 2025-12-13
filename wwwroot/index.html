@@ -49,7 +49,7 @@
     <meta name="target" content="all">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="Kadir Portföy">
     <meta name="application-name" content="Kadir Beşkardeş Portfolio">
     <meta name="msapplication-TileColor" content="#4361ee">
@@ -177,6 +177,26 @@
         ]
       }
     ]
+    </script>
+    
+    <!-- Blazor Culture Management -->
+    <script>
+        window.blazorCulture = {
+            get: function() {
+                try {
+                    return localStorage.getItem('BlazorCulture') || 'tr-TR';
+                } catch (e) {
+                    return 'tr-TR';
+                }
+            },
+            set: function(value) {
+                try {
+                    localStorage.setItem('BlazorCulture', value);
+                } catch (e) {
+                    console.warn('localStorage not available');
+                }
+            }
+        };
     </script>
 </head>
 

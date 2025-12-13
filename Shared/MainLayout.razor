@@ -1,5 +1,6 @@
 ﻿@inherits LayoutComponentBase
-@inject IStringLocalizer<SharedResource> Localizer
+@using Personal.Services
+@inject LocalizationService L
 
 <div class="d-flex flex-column min-vh-100">
     <header>
@@ -7,7 +8,7 @@
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="/" style="transition: all 0.3s ease;">
                     <i class="bi bi-code-slash fs-3 text-primary me-2" style="text-shadow: 0 0 8px rgba(13, 110, 253, 0.6);"></i>
-                    <span class="fw-bold fs-4 gradient-text">@Localizer["Nav.Portfolio"]</span>
+                    <span class="fw-bold fs-4 gradient-text">@L["Nav_Portfolio"]</span>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -16,22 +17,22 @@
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item mx-1">
                             <NavLink class="nav-link d-flex align-items-center py-3 px-3 rounded hover-effect" href="" Match="NavLinkMatch.All" active-class="active">
-                                <i class="bi bi-house-door me-2"></i> @Localizer["Nav.Home"]
+                                <i class="bi bi-house-door me-2"></i> @L["Nav_Home"]
                             </NavLink>
                         </li>
                         <li class="nav-item mx-1">
                             <NavLink class="nav-link d-flex align-items-center py-3 px-3 rounded hover-effect" href="about" active-class="active">
-                                <i class="bi bi-person me-2"></i> @Localizer["Nav.About"]
+                                <i class="bi bi-person me-2"></i> @L["Nav_About"]
                             </NavLink>
                         </li>
                         <li class="nav-item mx-1">
                             <NavLink class="nav-link d-flex align-items-center py-3 px-3 rounded hover-effect" href="projects" active-class="active">
-                                <i class="bi bi-briefcase me-2"></i> @Localizer["Nav.Projects"]
+                                <i class="bi bi-briefcase me-2"></i> @L["Nav_Projects"]
                             </NavLink>
                         </li>
                         <li class="nav-item mx-1">
                             <NavLink class="nav-link d-flex align-items-center py-3 px-3 rounded hover-effect" href="contact" active-class="active">
-                                <i class="bi bi-envelope me-2"></i> @Localizer["Nav.Contact"]
+                                <i class="bi bi-envelope me-2"></i> @L["Nav_Contact"]
                             </NavLink>
                         </li>
                         <li class="nav-item mx-1 d-flex align-items-center">
@@ -39,7 +40,7 @@
                         </li>
                         <li class="nav-item ms-2 d-flex align-items-center">
                             <a class="btn btn-primary d-flex align-items-center py-2 px-3 rounded-pill glow-on-hover" href="files/CV Kadir Beskardes.pdf" download>
-                                <i class="bi bi-download me-2"></i> @Localizer["Nav.DownloadCV"]
+                                <i class="bi bi-download me-2"></i> @L["Nav_DownloadCV"]
                             </a>
                         </li>
                     </ul>
@@ -64,49 +65,85 @@
         @Body
     </main>
 
-    <footer class="bg-dark text-white py-4 mt-4">
+    <footer class="footer-modern py-5 mt-auto">
         <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h5>Hakkımda</h5>
-                    <p>Yeni teknolojiler öğrenmeye ve kendimi geliştirmeye devam ediyorum.</p>
-                </div>
-                <div class="col-md-3">
-                    <h5>Bağlantılar</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="/" class="text-white">Ana Sayfa</a></li>
-                        <li><a href="about" class="text-white">Hakkımda</a></li>
-                        <li><a href="projects" class="text-white">Projeler</a></li>
-                        <li><a href="contact" class="text-white">İletişim</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3">
-                    <h5>Sosyal Medya</h5>
-                    <div class="social-links">
-                        <a href="https://github.com/kadirbeskardes" class="social-icon"><i class="bi bi-github"></i></a>
-                        <a href="https://www.linkedin.com/in/kadirbeskardes/" class="social-icon"><i class="bi bi-linkedin"></i></a>
-                        <a href="https://x.com/beskardeskadirr" class="social-icon"><i class="bi bi-twitter"></i></a>
-                        <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-brand mb-4">
+                        <i class="bi bi-code-slash fs-2 text-primary me-2"></i>
+                        <span class="fw-bold fs-4 gradient-text">@L["Nav_Portfolio"]</span>
+                    </div>
+                    <p class="text-light opacity-75 mb-4">@L["Footer_AboutText"]</p>
+                    <div class="social-links d-flex gap-3">
+                        <a href="https://github.com/kadirbeskardes" class="social-icon-footer" target="_blank" aria-label="GitHub">
+                            <i class="bi bi-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/kadirbeskardes/" class="social-icon-footer" target="_blank" aria-label="LinkedIn">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+                        <a href="https://x.com/beskardeskadirr" class="social-icon-footer" target="_blank" aria-label="Twitter">
+                            <i class="bi bi-twitter-x"></i>
+                        </a>
                     </div>
                 </div>
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="footer-title mb-4">@L["Footer_Links"]</h5>
+                    <ul class="footer-links list-unstyled">
+                        <li><a href="/"><i class="bi bi-chevron-right me-2"></i>@L["Nav_Home"]</a></li>
+                        <li><a href="about"><i class="bi bi-chevron-right me-2"></i>@L["Nav_About"]</a></li>
+                        <li><a href="projects"><i class="bi bi-chevron-right me-2"></i>@L["Nav_Projects"]</a></li>
+                        <li><a href="contact"><i class="bi bi-chevron-right me-2"></i>@L["Nav_Contact"]</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="footer-title mb-4">@L["Contact_ContactInfo"]</h5>
+                    <ul class="footer-contact list-unstyled">
+                        <li class="d-flex align-items-start mb-3">
+                            <i class="bi bi-geo-alt-fill text-primary me-3 mt-1"></i>
+                            <span class="text-light opacity-75">@L["Contact_Location"]</span>
+                        </li>
+                        <li class="d-flex align-items-start mb-3">
+                            <i class="bi bi-envelope-fill text-primary me-3 mt-1"></i>
+                            <a href="mailto:kadir.beskardes11@gmail.com" class="text-light opacity-75 text-decoration-none">kadir.beskardes11@gmail.com</a>
+                        </li>
+                        <li class="d-flex align-items-start">
+                            <i class="bi bi-phone-fill text-primary me-3 mt-1"></i>
+                            <a href="tel:+905072756747" class="text-light opacity-75 text-decoration-none">+90 507 275 67 47</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="footer-title mb-4">@L["Nav_DownloadCV"]</h5>
+                    <p class="text-light opacity-75 mb-3">CV'mi indirerek deneyimlerim hakkında daha fazla bilgi edinebilirsiniz.</p>
+                    <a href="files/CV Kadir Beskardes.pdf" download class="btn btn-primary rounded-pill px-4">
+                        <i class="bi bi-download me-2"></i>@L["Nav_DownloadCV"]
+                    </a>
+                </div>
             </div>
-            <hr class="my-4 bg-light">
-            <div class="text-center">
-                <p class="mb-0">&copy; 2025 Portföyüm. Tüm hakları saklıdır.</p>
+            <hr class="my-4 border-secondary opacity-25">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0 text-light opacity-50 small">@L["Footer_Copyright"]</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0 text-light opacity-50 small">
+                        <i class="bi bi-heart-fill text-danger mx-1"></i> Blazor WebAssembly ile geliştirildi
+                    </p>
+                </div>
             </div>
         </div>
     </footer>
 </div>
 
 <style>
-    /* Özel stiller ekleyelim */
+    /* Navbar Styles */
     .navbar {
         z-index: 1050 !important;
         position: relative;
     }
     
     .gradient-text {
-        background: linear-gradient(90deg, #0d6efd, #6f42c1);
+        background: linear-gradient(135deg, #6366f1, #06b6d4);
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
@@ -118,7 +155,7 @@
     }
 
         .hover-effect:hover {
-            background-color: rgba(13, 110, 253, 0.1) !important;
+            background-color: rgba(99, 102, 241, 0.15) !important;
             transform: translateY(-2px);
         }
 
@@ -129,7 +166,7 @@
             left: 15%;
             width: 70%;
             height: 2px;
-            background: #0d6efd;
+            background: linear-gradient(90deg, #6366f1, #06b6d4);
             transform: scaleX(0);
             transition: transform 0.3s ease;
         }
@@ -140,20 +177,103 @@
 
     .glow-on-hover {
         transition: all 0.3s ease;
-        box-shadow: 0 0 10px rgba(13, 110, 253, 0);
+        box-shadow: 0 0 10px rgba(99, 102, 241, 0);
+        background: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
+        border: none !important;
     }
 
         .glow-on-hover:hover {
-            box-shadow: 0 0 15px rgba(13, 110, 253, 0.6);
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.6);
             transform: translateY(-2px);
         }
 
     .active {
-        background-color: rgba(13, 110, 253, 0.2) !important;
+        background-color: rgba(99, 102, 241, 0.2) !important;
         font-weight: 500;
     }
 
         .active::after {
             transform: scaleX(1) !important;
         }
+
+    /* Footer Styles */
+    .footer-modern {
+        background: linear-gradient(180deg, rgba(10, 15, 30, 0.95) 0%, rgba(15, 20, 40, 1) 100%);
+        border-top: 1px solid rgba(99, 102, 241, 0.2);
+    }
+
+    .footer-brand {
+        display: flex;
+        align-items: center;
+    }
+
+    .footer-title {
+        color: #fff;
+        font-weight: 600;
+        position: relative;
+        padding-bottom: 10px;
+    }
+
+    .footer-title::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 40px;
+        height: 3px;
+        background: linear-gradient(90deg, #6366f1, #06b6d4);
+        border-radius: 3px;
+    }
+
+    .footer-links li {
+        margin-bottom: 12px;
+    }
+
+    .footer-links a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .footer-links a:hover {
+        color: #06b6d4;
+        transform: translateX(5px);
+    }
+
+    .footer-links a i {
+        font-size: 0.7rem;
+        transition: transform 0.3s ease;
+    }
+
+    .footer-links a:hover i {
+        transform: translateX(3px);
+    }
+
+    .social-icon-footer {
+        width: 42px;
+        height: 42px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(99, 102, 241, 0.1);
+        border: 1px solid rgba(99, 102, 241, 0.3);
+        border-radius: 50%;
+        color: #fff;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+    }
+
+    .social-icon-footer:hover {
+        background: linear-gradient(135deg, #6366f1, #06b6d4);
+        border-color: transparent;
+        transform: translateY(-3px);
+        box-shadow: 0 5px 20px rgba(99, 102, 241, 0.4);
+        color: #fff;
+    }
+
+    .footer-contact a:hover {
+        color: #06b6d4 !important;
+    }
 </style>

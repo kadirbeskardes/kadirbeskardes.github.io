@@ -2,24 +2,24 @@
 @using Personal.Models
 @using Personal.Services
 @inject ProjectService ProjectService
-@inject IStringLocalizer<SharedResource> Localizer
+@inject LocalizationService L
 
 <!-- Hero Section -->
 <section class="hero-section bg-gradient-primary text-white py-5">
     <div class="container py-5">
         <div class="row align-items-center">
             <div class="col-lg-6 order-lg-1 order-2">
-                <h1 class="display-3 fw-bold mb-4 animate__animated animate__fadeInDown">@Localizer["Home.Greeting"] <span class="text-highlight">Kadir Beşkardeş</span></h1>
-                <p class="lead mb-4 text-light animate__animated animate__fadeIn animate__delay-1s">@Localizer["Home.JobTitle"]</p>
+                <h1 class="display-3 fw-bold mb-4 animate__animated animate__fadeInDown">@L["Home_Greeting"] <span class="text-highlight">Kadir Beşkardeş</span></h1>
+                <p class="lead mb-4 text-light animate__animated animate__fadeIn animate__delay-1s">@L["Home_JobTitle"]</p>
                 <p class="mb-4 fs-5 text-light animate__animated animate__fadeIn animate__delay-1s">
-                    @Localizer["Home.Description"]
+                    @L["Home_Description"]
                 </p>
                 <div class="d-flex gap-3 animate__animated animate__fadeIn animate__delay-2s">
                     <a href="about" class="btn btn-light btn-lg px-4 rounded-pill shadow-sm">
-                        <i class="bi bi-person me-2"></i>@Localizer["Home.AboutButton"]
+                        <i class="bi bi-person me-2"></i>@L["Home_AboutButton"]
                     </a>
                     <a href="contact" class="btn btn-outline-light btn-lg px-4 rounded-pill shadow-sm">
-                        <i class="bi bi-envelope me-2"></i>@Localizer["Home.ContactButton"]
+                        <i class="bi bi-envelope me-2"></i>@L["Home_ContactButton"]
                     </a>
                 </div>
             </div>
@@ -44,8 +44,8 @@
 <section class="py-5" style="background: rgba(30, 41, 59, 0.5);">
     <div class="container py-5">
         <div class="text-center mb-5">
-            <h2 class="section-title fw-bold position-relative d-inline-block text-white">Yeteneklerim</h2>
-            <p class="text-light opacity-75 fs-5">Geliştirme süreçlerinde kullandığım teknolojiler</p>
+            <h2 class="section-title fw-bold position-relative d-inline-block text-white">@L["Home_Skills"]</h2>
+            <p class="text-light opacity-75 fs-5">@L["Home_SkillsSubtitle"]</p>
         </div>
 
         <div class="row g-4">
@@ -55,7 +55,7 @@
                         <div class="icon-container-enhanced mb-4 mx-auto">
                             <i class="bi bi-code-slash fs-1"></i>
                         </div>
-                        <h3 class="h4 mb-3 fw-bold text-white">Frontend</h3>
+                        <h3 class="h4 mb-3 fw-bold text-white">@L["Home_Frontend"]</h3>
                         <ul class="list-unstyled skill-list">
                             <li><i class="bi bi-check-circle-fill text-info me-2"></i><span class="text-light">Blazor WebAssembly</span></li>
                             <li><i class="bi bi-check-circle-fill text-info me-2"></i><span class="text-light">HTML5/CSS3</span></li>
@@ -72,7 +72,7 @@
                         <div class="icon-container-enhanced mb-4 mx-auto">
                             <i class="bi bi-server fs-1"></i>
                         </div>
-                        <h3 class="h4 mb-3 fw-bold text-white">Backend</h3>
+                        <h3 class="h4 mb-3 fw-bold text-white">@L["Home_Backend"]</h3>
                         <ul class="list-unstyled skill-list">
                             <li><i class="bi bi-check-circle-fill text-info me-2"></i><span class="text-light">.NET</span></li>
                             <li><i class="bi bi-check-circle-fill text-info me-2"></i><span class="text-light">Python</span></li>
@@ -90,7 +90,7 @@
                         <div class="icon-container-enhanced mb-4 mx-auto">
                             <i class="bi bi-tools fs-1"></i>
                         </div>
-                        <h3 class="h4 mb-3 fw-bold text-white">Araçlar</h3>
+                        <h3 class="h4 mb-3 fw-bold text-white">@L["Home_Tools"]</h3>
                         <ul class="list-unstyled skill-list">
                             <li><i class="bi bi-check-circle-fill text-success me-2"></i><span class="text-light">Visual Studio</span></li>
                             <li><i class="bi bi-check-circle-fill text-success me-2"></i><span class="text-light">Git/GitHub</span></li>
@@ -108,8 +108,8 @@
 <section class="py-5" style="background: var(--dark-color);">
     <div class="container py-5">
         <div class="text-center mb-5">
-            <h2 class="section-title fw-bold position-relative d-inline-block text-white">Son Projelerim</h2>
-            <p class="text-light fs-5">Yakın zamanda tamamladığım çalışmalar</p>
+            <h2 class="section-title fw-bold position-relative d-inline-block text-white">@L["Home_RecentProjects"]</h2>
+            <p class="text-light fs-5">@L["Home_RecentProjectsSubtitle"]</p>
         </div>
 
         @if (featuredProjects == null)
@@ -131,7 +131,7 @@
                                 <img src="@project.ImageUrl" class="card-img-top" alt="@project.Title" style="height: 200px; object-fit: cover;">
                                 <div class="overlay d-flex align-items-center justify-content-center">
                                     <a href="@($"project/{project.Id}")" class="btn btn-enhanced btn-glass rounded-pill px-4 shadow">
-                                        <i class="bi bi-eye-fill me-2"></i>Projeyi İncele
+                                        <i class="bi bi-eye-fill me-2"></i>@L["Home_ViewProject"]
                                     </a>
                                 </div>
                             </div>
@@ -147,7 +147,7 @@
                             </div>
                             <div class="card-footer bg-transparent border-0 pt-0 d-flex justify-content-between">
                                 <a href="@($"project/{project.Id}")" class="btn btn-sm btn-enhanced rounded-pill" style="background: var(--primary-color); color: white; position: relative; overflow: hidden;">
-                                    Detayları Gör <i class="bi bi-arrow-right ms-2"></i>
+                                    @L["Home_ViewDetails"] <i class="bi bi-arrow-right ms-2"></i>
                                 </a>
                                 @if (!string.IsNullOrWhiteSpace(project.GitHubUrl))
                                 {
@@ -163,7 +163,7 @@
 
             <div class="text-center mt-5">
                 <a href="projects" class="btn btn-enhanced btn-lg px-4 rounded-pill shadow-sm animate-in" style="background: var(--accent-color); color: white; position: relative; overflow: hidden;">
-                    <i class="bi bi-collection me-2"></i>Tüm Projeleri Görüntüle
+                    <i class="bi bi-collection me-2"></i>@L["Home_AllProjects"]
                 </a>
             </div>
         }
@@ -181,111 +181,130 @@
 }
 
 <style>
-    /* Özel Stiller */
+    /* Hero Section */
     .hero-section {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: linear-gradient(135deg, #4338ca 0%, #6366f1 50%, #8b5cf6 100%);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        opacity: 0.5;
     }
 
     .text-highlight {
-        color: #fff;
-        position: relative;
-        display: inline-block;
+        background: linear-gradient(135deg, #06b6d4, #22d3ee, #06b6d4);
+        background-size: 200% 200%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: gradientMove 3s ease infinite;
     }
 
-        .text-highlight:after {
-            content: '';
-            position: absolute;
-            bottom: 5px;
-            left: 0;
-            width: 100%;
-            height: 10px;
-            background-color: rgba(255, 255, 255, 0.3);
-            z-index: -1;
-            border-radius: 3px;
-        }
+    @@keyframes gradientMove {
+        0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+    }
 
     .section-title {
         position: relative;
-        padding-bottom: 10px;
+        padding-bottom: 15px;
     }
 
-        .section-title:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-            border-radius: 3px;
-        }
+    .section-title:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(90deg, #6366f1, #06b6d4);
+        border-radius: 3px;
+    }
 
-    .icon-container {
+    .icon-container-enhanced {
         width: 80px;
         height: 80px;
-        border-radius: 50%;
+        border-radius: 20px;
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: rgba(102, 126, 234, 0.1);
+        background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        transition: all 0.3s ease;
+    }
+
+    .icon-container-enhanced:hover {
+        transform: scale(1.1) rotate(5deg);
     }
 
     .skill-list li {
-        padding: 8px 0;
-        border-bottom: 1px solid #eee;
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+        transition: all 0.3s ease;
     }
 
-        .skill-list li:last-child {
-            border-bottom: none;
-        }
+    .skill-list li:last-child {
+        border-bottom: none;
+    }
+
+    .skill-list li:hover {
+        transform: translateX(8px);
+        background: rgba(99, 102, 241, 0.05);
+        padding-left: 10px;
+        border-radius: 8px;
+    }
 
     .hover-effect {
-        transition: all 0.3s ease;
-        border-radius: 12px !important;
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        border-radius: 20px !important;
     }
 
-        .hover-effect:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.2) !important;
-        }
+    .hover-effect:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(99, 102, 241, 0.3) !important;
+    }
 
     .project-image-container {
         position: relative;
         overflow: hidden;
         height: 200px;
-        border-top-left-radius: 12px !important;
-        border-top-right-radius: 12px !important;
+        border-radius: 16px 16px 0 0 !important;
     }
 
-        .project-image-container img {
-            object-fit: cover;
-            width: 100%;
-            height: 100%;
-            transition: transform 0.5s ease;
-        }
+    .project-image-container img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.5s ease;
+    }
 
-        .project-image-container .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(102, 126, 234, 0.7);
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
+    .project-image-container .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.9), rgba(139, 92, 246, 0.9));
+        opacity: 0;
+        transition: all 0.4s ease;
+        backdrop-filter: blur(5px);
+    }
 
     .hover-effect:hover .project-image-container img {
-        transform: scale(1.05);
+        transform: scale(1.1);
     }
 
     .hover-effect:hover .project-image-container .overlay {
         opacity: 1;
-    }
-
-    .bg-primary-light {
-        background-color: rgba(102, 126, 234, 0.1);
     }
 
     .profile-image-container {
@@ -293,31 +312,41 @@
         display: inline-block;
     }
 
-        .profile-image-container:before {
-            content: '';
-            position: absolute;
-            width: 110%;
-            height: 110%;
-            top: -5%;
-            left: -5%;
-            border-radius: 50%;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            animation: rotate 8s linear infinite;
-            z-index: -1;
-        }
-
-    @@keyframes rotate {
-        100% {
-            transform: rotate(360deg);
-        }
+    .profile-image-container::before {
+        content: '';
+        position: absolute;
+        width: 115%;
+        height: 115%;
+        top: -7.5%;
+        left: -7.5%;
+        border-radius: 50%;
+        background: linear-gradient(45deg, #6366f1, #06b6d4, #8b5cf6, #6366f1);
+        background-size: 300% 300%;
+        animation: gradientBorder 4s ease infinite;
+        z-index: -1;
     }
 
-    .card {
-        border-radius: 12px !important;
-        overflow: hidden;
+    @@keyframes gradientBorder {
+        0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
     }
 
-    .btn {
-        transition: all 0.3s ease;
+    .card-enhanced {
+        background: rgba(30, 41, 59, 0.5);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(99, 102, 241, 0.2);
+        border-radius: 20px;
+    }
+
+    .btn-glass {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #fff;
+    }
+
+    .btn-glass:hover {
+        background: rgba(255, 255, 255, 0.2);
+        color: #fff;
     }
 </style>
