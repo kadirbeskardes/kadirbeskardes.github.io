@@ -2,15 +2,15 @@
 @using Personal.Services
 @inject LocalizationService L
 
-<PageTitle>Hakkýmda - Kadir Beþkardeþ Full Stack Developer</PageTitle>
+<PageTitle>@L["About_Title"] - @L["About_Name"]</PageTitle>
 <HeadContent>
-    <meta name="description" content="Kadir Beþkardeþ hakkýnda detaylý bilgiler. Full Stack Developer olarak deneyimlerim, yeteneklerim ve çalýþtýðým teknolojiler hakkýnda bilgi edinin.">
-    <meta property="og:title" content="Hakkýmda - Kadir Beþkardeþ Full Stack Developer">
-    <meta property="og:description" content="C#, .NET, Python uzmaný Full Stack Developer. Yazýlým geliþtirme deneyimlerim ve projelerim hakkýnda detaylý bilgi.">
+    <meta name="description" content="@L["About_ProfessionalSummaryText1"]">
+    <meta property="og:title" content="@L["About_Title"] - @L["About_Name"]">
+    <meta property="og:description" content="@L["About_Subtitle"]">
     <meta property="og:url" content="https://kadirbeskardes.github.io/about">
     <meta property="og:type" content="profile">
-    <meta name="twitter:title" content="Hakkýmda - Kadir Beþkardeþ">
-    <meta name="twitter:description" content="Full Stack Developer olarak deneyimlerim ve yeteneklerim hakkýnda bilgi edinin.">
+    <meta name="twitter:title" content="@L["About_Title"] - @L["About_Name"]">
+    <meta name="twitter:description" content="@L["About_Subtitle"]">
     <link rel="canonical" href="https://kadirbeskardes.github.io/about">
 </HeadContent>
 
@@ -21,7 +21,7 @@
         <div class="row align-items-center min-vh-60 py-5">
             <div class="col-lg-7">
                 <div class="badge bg-primary bg-opacity-10 text-primary mb-3 px-3 py-2 rounded-pill">@L["About_Badge"]</div>
-                <h1 class="display-3 fw-bold mb-4 animate__animated animate__fadeInDown">Kadir Beþkardeþ</h1>
+                <h1 class="display-3 fw-bold mb-4 animate__animated animate__fadeInDown">@L["About_Name"]</h1>
                 <p class="lead mb-4 animate__animated animate__fadeIn animate__delay-1s">@L["About_Subtitle"]</p>
                 <p class="mb-5 animate__animated animate__fadeIn animate__delay-1s">
                     @L["About_Description"]
@@ -37,7 +37,7 @@
             </div>
             <div class="col-lg-5 d-none d-lg-block">
                 <div class="hero-image-container position-relative">
-                    <img src="img/pp.jpg" alt="Kadir Beþkardeþ" class="img-fluid rounded-4 shadow-lg border border-4 border-white">
+                    <img src="img/pp.jpg" alt="@L["About_Name"]" class="img-fluid rounded-4 shadow-lg border border-4 border-white">
                     <div class="tech-badge dotnet-badge">
                         <i class="fab fa-microsoft"></i>
                     </div>
@@ -61,10 +61,10 @@
             <div class="card border-0 shadow-lg h-100 sticky-top" style="top: 20px;">
                 <div class="card-body p-4">
                     <div class="profile-image-container mx-auto mb-4">
-                        <img src="img/pp.jpg" alt="Kadir Beþkardeþ" class="img-fluid rounded-circle shadow border border-4 border-white">
+                        <img src="img/pp.jpg" alt="@L["About_Name"]" class="img-fluid rounded-circle shadow border border-4 border-white">
                     </div>
-                    <h3 class="card-title fw-bold text-center mb-2">Kadir Beþkardeþ</h3>
-                    <p class="text-muted text-center mb-3">Computer Engineer / Software Developer</p>
+                    <h3 class="card-title fw-bold text-center mb-2">@L["About_Name"]</h3>
+                    <p class="text-muted text-center mb-3">@L["About_JobTitle"]</p>
 
                     <div class="d-flex justify-content-center gap-3 mb-4">
                         <a href="https://github.com/kadirbeskardes" class="social-icon bg-github"><i class="bi bi-github"></i></a>
@@ -76,7 +76,7 @@
                     <div class="mb-4">
                         <div class="d-flex align-items-center mb-3">
                             <i class="bi bi-geo-alt-fill text-primary me-2 fs-5"></i>
-                            <span>Ýstanbul, Türkiye</span>
+                            <span>@L["About_Location"]</span>
                         </div>
                         <div class="d-flex align-items-center mb-3">
                             <i class="bi bi-envelope-fill text-primary me-2 fs-5"></i>
@@ -89,7 +89,7 @@
                     </div>
 
                     <div class="skills-section mb-4">
-                        <h5 class="fw-bold mb-3"><i class="bi bi-code-slash me-2"></i>Teknik Yetkinlikler</h5>
+                        <h5 class="fw-bold mb-3"><i class="bi bi-code-slash me-2"></i>@L["About_TechnicalSkillsTitle"]</h5>
                         <div class="d-flex flex-wrap gap-2">
                             <!-- .NET Teknolojileri -->
                             <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill">
@@ -102,7 +102,7 @@
                                 <i class="fas fa-mobile-alt me-1"></i> Xamarin
                             </span>
 
-                            <!-- Veritabaný -->
+                            <!-- VeritabanÄ± -->
                             <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill">
                                 <i class="fas fa-database me-1"></i> SQL
                             </span>
@@ -134,29 +134,29 @@
                     </div>
 
                     <div class="references-section mb-4">
-                        <h5 class="fw-bold mb-3"><i class="bi bi-person-lines-fill me-2"></i>Referanslar</h5>
+                        <h5 class="fw-bold mb-3"><i class="bi bi-person-lines-fill me-2"></i>@L["About_ReferencesTitle"]</h5>
                         <div class="reference-item mb-3">
-                            <h6 class="fw-bold mb-1">Fatih Alkan</h6>
+                            <h6 class="fw-bold mb-1">@L["About_Reference_1_Name"]</h6>
                             <p class="text-muted mb-1">
-                                Yazýlým Birim Yöneticisi - Bilge Adam Akademi
+                                @L["About_Reference_1_Title"]
                             </p>
                             <p class="small mb-1">+90 554 774 69 09, alkanfatih@hotmail.com.tr</p>
                         </div>
                     </div>
 
                     <div class="certificates-section">
-                        <h5 class="fw-bold mb-3"><i class="bi bi-award-fill me-2"></i>Sertifikalar</h5>
+                        <h5 class="fw-bold mb-3"><i class="bi bi-award-fill me-2"></i>@L["About_CertificatesTitle"]</h5>
 
                         <div class="certificate-item mb-3 p-3 bg-light rounded-3">
                             <div class="d-flex justify-content-between align-items-start">
                                 <div>
                                     <h6 class="fw-bold mb-1">
-                                        <a href="files/KADÝR BEÞKARDEÞ Katýlým Sertifikasý BilgeAdam.pdf" target="_blank" class="text-decoration-none">
-                                            <i class="bi bi-link-45deg"></i> .NET Geliþtirici Eðitim Programý
+                                        <a href="files/KADÄ°R BEÅžKARDEÅž KatÄ±lÄ±m SertifikasÄ± BilgeAdam.pdf" target="_blank" class="text-decoration-none">
+                                            <i class="bi bi-link-45deg"></i> @L["About_Certificate_1_Name"]
                                         </a>
                                     </h6>
                                     <p class="text-muted mb-1 small">
-                                        <i class="bi bi-building"></i> BilgeAdam Akademi
+                                        <i class="bi bi-building"></i> @L["About_Certificate_1_Issuer"]
                                     </p>
                                 </div>
                                 <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-1">2025</span>
@@ -167,19 +167,17 @@
                             <div class="d-flex justify-content-between align-items-start">
                                 <div>
                                     <h6 class="fw-bold mb-1">
-                                        <a href="files/C%23_Programlama_Sertifika.pdf" target="_blank" class="text-decoration-none">
-                                            <i class="bi bi-link-45deg"></i> C# Programlama
+                                        <a href="files/C#_Programlama_Sertifika.pdf" target="_blank" class="text-decoration-none">
+                                            <i class="bi bi-link-45deg"></i> @L["About_Certificate_2_Name"]
                                         </a>
                                     </h6>
                                     <p class="text-muted mb-1 small">
-                                        <i class="bi bi-building"></i> BTK Akademi
+                                        <i class="bi bi-building"></i> @L["About_Certificate_2_Issuer"]
                                     </p>
                                 </div>
                                 <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-1">2024</span>
                             </div>
                         </div>
-
-                       
                     </div>
                 </div>
             </div>
@@ -190,18 +188,14 @@
                 <div class="card-body p-4">
                     <h3 class="card-title fw-bold mb-4 d-flex align-items-center">
                         <span class="icon-circle bg-primary-light me-3"><i class="bi bi-person-lines-fill text-primary"></i></span>
-                        <span>Profesyonel Özet</span>
+                        <span>@L["About_ProfessionalSummaryTitle"]</span>
                     </h3>
                     <div class="ps-4">
                         <p class="card-text fs-5 mb-4">
-                            Yazýlým geliþtirme, algoritma tasarýmý ve problem çözme konularýnda güçlü bir altyapýya
-                            sahibim. ASP.NET Core MVC, C# ve Python dillerinde projeler geliþtirdim; web ve mobil
-                            uygulama geliþtirme deneyimine sahibim. Veritabaný tasarýmý ve farklý teknolojilere olan
-                            ilgimle teknik yetkinliðimi sürekli geliþtiriyorum. 
+                            @L["About_ProfessionalSummaryText1"]
                         </p>
                         <p class="card-text fs-5 mb-4">
-                            Ýyi düzeyde Ýngilizce bilgiye sahibim. Çözüm
-                            odaklý ve kararlý bir þekilde karþýlaþtýðým sorunlara etkili çözümler üretmeye odaklanýrým.
+                            @L["About_ProfessionalSummaryText2"]
                         </p>
                         <div class="row g-3">
                             <div class="col-md-6">
@@ -210,8 +204,8 @@
                                         <i class="bi bi-check-circle-fill fs-5"></i>
                                     </div>
                                     <div>
-                                        <h6 class="fw-bold mb-1">Backend Geliþtirme</h6>
-                                        <p class="text-muted mb-0">C#, Python, .NET Framework,.NET Core, Web API</p>
+                                        <h6 class="fw-bold mb-1">@L["About_Skill_Backend"]</h6>
+                                        <p class="text-muted mb-0">C#, Python, .NET Framework, .NET Core, Web API</p>
                                     </div>
                                 </div>
                             </div>
@@ -221,7 +215,7 @@
                                         <i class="bi bi-check-circle-fill fs-5"></i>
                                     </div>
                                     <div>
-                                        <h6 class="fw-bold mb-1">Frontend Geliþtirme</h6>
+                                        <h6 class="fw-bold mb-1">@L["About_Skill_Frontend"]</h6>
                                         <p class="text-muted mb-0">Blazor, Razor</p>
                                     </div>
                                 </div>
@@ -232,7 +226,7 @@
                                         <i class="bi bi-check-circle-fill fs-5"></i>
                                     </div>
                                     <div>
-                                        <h6 class="fw-bold mb-1">Veritabaný</h6>
+                                        <h6 class="fw-bold mb-1">@L["About_Skill_Database"]</h6>
                                         <p class="text-muted mb-0">SQL Server, MySQL</p>
                                     </div>
                                 </div>
@@ -248,54 +242,54 @@
                 <div class="card-body p-4">
                     <h3 class="card-title fw-bold mb-4 d-flex align-items-center">
                         <span class="icon-circle bg-primary-light me-3"><i class="bi bi-briefcase-fill text-primary"></i></span>
-                        <span>Ýþ Deneyimi</span>
+                        <span>@L["About_ExperienceTitle"]</span>
                     </h3>
 
                     <div class="timeline ps-4">
                         <!-- New Experience -->
                         <div class="timeline-item position-relative pb-4">
-                            <div class="timeline-period bg-primary text-white">Aðu 2025 — Devam</div>
+                            <div class="timeline-period bg-primary text-white">@L["About_Experience_1_Date"]</div>
                             <div class="timeline-content p-4 rounded-3">
-                                <h5 class="fw-bold mb-1">Freelance Web Geliþtirici</h5>
+                                <h5 class="fw-bold mb-1">@L["About_Experience_1_Title"]</h5>
                                 <h6 class="text-primary mb-2">
-                                    Deluxe Digital Solutions
+                                    @L["About_Experience_1_Company"]
                                 </h6>
                                 <ul class="mb-0 ps-3">
-                                    <li>Aðustos 2025'ten beri freelance olarak web geliþtirme projelerinde çalýþýyorum.</li>
-                                    <li>Birkaç WordPress projesinde tema ve eklenti özelleþtirme, bakým ve performans optimizasyonu gerçekleþtirdim.</li>
-                                    <li>Çok sayýda React projesinde yer aldým; özellikle hata çözümü (bug fixing) ve performans optimizasyonu üzerinde yoðunlaþtým.</li>
+                                    <li>@L["About_Experience_1_Desc1"]</li>
+                                    <li>@L["About_Experience_1_Desc2"]</li>
+                                    <li>@L["About_Experience_1_Desc3"]</li>
                                 </ul>
                             </div>
                         </div>
 
                         <!-- Experience 1 -->
                         <div class="timeline-item position-relative pb-4">
-                            <div class="timeline-period bg-primary text-white">Þub 2025 — May 2025</div>
+                            <div class="timeline-period bg-primary text-white">@L["About_Experience_2_Date"]</div>
                             <div class="timeline-content p-4 rounded-3">
-                                <h5 class="fw-bold mb-1">.NET Yazýlým Geliþtirme Uzmaný Eðitim Programý</h5>
+                                <h5 class="fw-bold mb-1">@L["About_Experience_2_Title"]</h5>
                                 <h6 class="text-primary mb-2">
-                                    BilgeAdam Teknoloji
+                                    @L["About_Experience_2_Company"]
                                 </h6>
                                 <ul class="mb-0 ps-3">
-                                    <li>C# ve OOP temelleriyle birlikte .NET 6/7/8, Entity Framework Core, LINQ, MVC ve Web API konularýnda deneyim kazandým.</li>
-                                    <li>SOLID prensipleri ile Singleton, Repository ve Unit of Work gibi tasarým desenlerini etkin þekilde kullanmayý öðrendim.</li>
-                                    <li>MSSQL ve T-SQL kullanarak veritabaný iþlemleri gerçekleþtirdim.</li>
-                                    <li>HTML5, CSS3 ve Bootstrap ile temel arayüz geliþtirme bilgisi edindim; çalýþmalarýmý Agile ve Scrum metodolojilerine uygun þekilde yürüttüm.</li>
+                                    <li>@L["About_Experience_2_Desc1"]</li>
+                                    <li>@L["About_Experience_2_Desc2"]</li>
+                                    <li>@L["About_Experience_2_Desc3"]</li>
+                                    <li>@L["About_Experience_2_Desc4"]</li>
                                 </ul>
                             </div>
                         </div>
 
                         <!-- Experience 2 -->
                         <div class="timeline-item position-relative pb-4">
-                            <div class="timeline-period bg-primary text-white">Tem 2023 — Eyl 2023</div>
+                            <div class="timeline-period bg-primary text-white">@L["About_Experience_3_Date"]</div>
                             <div class="timeline-content p-4 rounded-3">
-                                <h5 class="fw-bold mb-1">Stajyer Yazýlým Geliþtirici</h5>
+                                <h5 class="fw-bold mb-1">@L["About_Experience_3_Title"]</h5>
                                 <h6 class="text-primary mb-2">
-                                    Yýldýz Teknik Üniversitesi Bilgi Ýþlem Daire Baþkanlýðý
+                                    @L["About_Experience_3_Company"]
                                 </h6>
                                 <ul class="mb-0 ps-3">
-                                    <li>Windows servisleri kullanarak internet baðlantýsý kontrolü, iþlem sonlandýrma ve loglama gibi görevleri gerçekleþtiren C# uygulamalarý geliþtirdim.</li>
-                                    <li>ASP.NET MVC ve Bootstrap kullanarak kullanýcý giriþ/kayýt, þifre yenileme ve e-posta doðrulama gibi iþlevleri içeren modern bir web uygulamasý oluþturdum.</li>
+                                    <li>@L["About_Experience_3_Desc1"]</li>
+                                    <li>@L["About_Experience_3_Desc2"]</li>
 
                                 </ul>
                             </div>
@@ -303,15 +297,15 @@
 
                         <!-- Experience 3 -->
                         <div class="timeline-item position-relative pb-4">
-                            <div class="timeline-period bg-primary text-white">Tem 2022 — Eyl 2022</div>
+                            <div class="timeline-period bg-primary text-white">@L["About_Experience_4_Date"]</div>
                             <div class="timeline-content p-4 rounded-3">
-                                <h5 class="fw-bold mb-1">Stajyer Yazýlým Geliþtirici</h5>
+                                <h5 class="fw-bold mb-1">@L["About_Experience_4_Title"]</h5>
                                 <h6 class="text-primary mb-2">
-                                    Yýldýz Teknik Üniversitesi Bilgi Ýþlem Daire Baþkanlýðý
+                                    @L["About_Experience_4_Company"]
                                 </h6>
                                 <ul class="mb-0 ps-3">
-                                    <li>Token Based Authentication ve ASP.NET Web API kullanarak bir kimlik doðrulama sistemi geliþtirildi. Web API kurulumu, OWIN yapýlandýrmasý, token üretimi, MD5 þifreleme ve Entity Framework ile veritabaný baðlantýsý yapýldý.</li>
-                                    <li>Kullanýcý rolleri içeren SQL veritabaný yapýsý tasarlanarak projeye entegre edildi. Entity Framework ile baðlantý saðlandý, Postman ve AJAX/JQuery kullanýlarak testler gerçekleþtirildi.</li>
+                                    <li>@L["About_Experience_4_Desc1"]</li>
+                                    <li>@L["About_Experience_4_Desc2"]</li>
                                 </ul>
                             </div>
                         </div>
@@ -324,37 +318,37 @@
                 <div class="card-body p-4">
                     <h3 class="card-title fw-bold mb-4 d-flex align-items-center">
                         <span class="icon-circle bg-primary-light me-3"><i class="bi bi-mortarboard-fill text-primary"></i></span>
-                        <span>Eðitim</span>
+                        <span>@L["About_EducationTitle"]</span>
                     </h3>
 
                     <div class="timeline ps-4">
                         <div class="timeline-item position-relative">
-                            <div class="timeline-period bg-primary text-white">2025 — Devam</div>
+                            <div class="timeline-period bg-primary text-white">@L["About_Education_1_Date"]</div>
                             <div class="timeline-content p-4 rounded-3">
-                                <h5 class="fw-bold mb-1">Yönetim Biliþim Sistemleri (Açýköðretim)</h5>
-                                <h6 class="text-primary mb-2">Anadolu Üniversitesi</h6>
+                                <h5 class="fw-bold mb-1">@L["About_Education_1_Title"]</h5>
+                                <h6 class="text-primary mb-2">@L["About_Education_1_School"]</h6>
                                 <div class="d-flex flex-wrap gap-4 mb-2">
                                     <div>
                                         <i class="bi bi-building text-primary me-2"></i>
-                                        <span>Açýköðretim</span>
+                                        <span>@L["About_Education_1_Detail"]</span>
                                     </div>
                                     <div>
                                         <i class="bi bi-award text-primary me-2"></i>
-                                        <span>GPA: Henüz yok</span>
+                                        <span>@L["About_Education_1_GPA"]</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="timeline-item position-relative">
-                            <div class="timeline-period bg-primary text-white">2020 — 2024</div>
+                            <div class="timeline-period bg-primary text-white">@L["About_Education_2_Date"]</div>
                             <div class="timeline-content p-4 rounded-3">
-                                <h5 class="fw-bold mb-1">Kýrýkkale Üniversitesi</h5>
-                                <h6 class="text-primary mb-2">Bilgisayar Mühendisliði - Lisans</h6>
+                                <h5 class="fw-bold mb-1">@L["About_Education_2_School"]</h5>
+                                <h6 class="text-primary mb-2">@L["About_Education_2_Title"]</h6>
                                 <div class="d-flex flex-wrap gap-4 mb-2">
                                     <div>
                                         <i class="bi bi-award text-primary me-2"></i>
-                                        <span>GPA: 3.15/4.00</span>
+                                        <span>@L["About_Education_2_GPA"]</span>
                                     </div>
                                     
                                 </div>
@@ -371,9 +365,9 @@
 <section class="bg-light py-5">
     <div class="container py-4">
         <div class="text-center mb-5">
-            <h2 class="fw-bold mb-3">Çalýþtýðým Teknolojiler</h2>
+            <h2 class="fw-bold mb-3">@L["About_TechnologiesTitle"]</h2>
             <p class="text-muted mx-auto" style="max-width: 600px;">
-                Modern ve güvenilir teknolojilerle çalýþýyorum. Sürekli olarak yeni teknolojiler öðreniyor ve kendimi geliþtiriyorum.
+                @L["About_TechnologiesDescription"]
             </p>
         </div>
         <div class="row g-4">
@@ -434,7 +428,7 @@
         }
     }
 
-    /* Özel Stiller */
+    /* Ã–zel Stiller */
     .about-hero {
         background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
         margin-bottom: 3rem;
