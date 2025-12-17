@@ -1,6 +1,9 @@
 ﻿using Markdig;
 using Personal.Models;
+using System.Globalization;
+using System.Net.Http;
 using System.Net.Http.Json;
+using System.Text.RegularExpressions;
 
 namespace Personal.Services
 {
@@ -22,6 +25,9 @@ namespace Personal.Services
     {
         private readonly HttpClient _http;
         private List<ProjectDetail>? _projects;
+        private string _currentCulture = "tr";
+        private bool _isLoaded = false;
+        public string CurrentCulture => _currentCulture;
 
         public ProjectService(HttpClient http)
         {
@@ -55,7 +61,10 @@ namespace Personal.Services
             {
                 try
                 {
-                    _projects = await _http.GetFromJsonAsync<List<ProjectDetail>>("data/projects.json");
+                    _currentCulture = CultureInfo.CurrentUICulture.Name.StartsWith("en") ? "en" : "tr"; ;
+                    var projects = await _http.GetFromJsonAsync<List<ProjectDetail>>($"data/projects.{_currentCulture}.json");
+                    _projects = projects ?? new List<ProjectDetail>();
+                    _isLoaded = true;
                 }
                 catch
                 {
