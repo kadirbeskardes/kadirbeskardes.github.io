@@ -1,210 +1,208 @@
 ﻿[
-    {
-        "id": 1,
-        "title": "Görme Engelliler İçin Görsel Tanıma ve Sosyal Etkileşim Uygulaması",
-        "shortDescription": "Görme engelli bireylerin çevrelerini tanımalarına ve sosyal etkileşimlerini artırmalarına yardımcı olan yapay zekâ destekli mobil uygulama.",
-        "fullDescription": "Bu proje, görme engelli bireylerin çevresini daha iyi tanımasını ve sosyal yaşama daha aktif katılmasını sağlamak amacıyla geliştirilmiş bir mobil uygulamadır. Uygulama, cihazın kamerasıyla çekilen görüntüleri Azure Computer Vision ve GPT-3.5 desteğiyle analiz ederek sesli anlatımlarla kullanıcıya aktarır. Aynı zamanda kullanıcının konum bilgisi kullanılarak yakınlardaki müze veya sosyal alanlar tespit edilip önerilir. Gün boyunca uygulamada meydana gelen hatalar sistem tarafından tespit edilip geliştiricilere e-posta yoluyla iletilir.\n\nTemel Özellikler:\n\n- Kamera ile ortam ve nesne tanıma\n- Sesli betimleme\n- Lokasyon tabanlı müze önerileri\n- Günlük hata raporlarının otomatik mail ile gönderimi",
-        "imageUrl": "img/gorme_pp.jpg",
-        "technologies": [ "C#", "XML", ".NET Framework 4.7", "Xamarin.Forms", "Azure Computer Vision", "OpenAI GPT-3.5", "Google Places API", "Visual Studio" ],
-        "createdDate": "2023-12-21",
-        "projectUrl": "#",
-        "Category": "Mobil Uygulama",
-        "githubUrl": "https://github.com/kadirbeskardes/GormeEngelliUygulama",
-        "features": [
-            "Kamera ile ortam ve nesne tanıma",
-            "Sesli betimleme",
-            "Lokasyon tabanlı müze önerileri",
-            "Günlük hata raporlarının otomatik mail ile gönderimi"
-        ],
-        "screenshots": [],
-        "challenges": "Görsel tanımanın doğru yapılması ve sesli betimlemelerin anlaşılır olması.",
-        "solutions": "Azure Computer Vision ve GPT-3.5 ile yüksek doğruluk oranı sağlandı, sesli betimleme netleştirildi ve lokasyon tabanlı öneriler Google API'si ile geliştirildi."
-    },
-    {
-        "id": 2,
-        "title": "Remind Me - İlaç Takip ve Hatırlatma Sistemi",
-        "shortDescription": "Doktor ve hasta arasında etkileşim sağlayan, ilaç hatırlatmaları yapan mobil sağlık uygulaması.",
-        "fullDescription": "Remind Me, Alzheimer gibi hastalıklarla mücadele eden bireylerin ilaçlarını zamanında almasını sağlamak amacıyla geliştirilmiş bir mobil sağlık uygulamasıdır. Doktor, hastaya reçete ettiği ilaçları ve saatlerini sisteme tanımlar. Hasta bu saatlerde bir bildirim alır ve ilacını içtikten sonra video kaydıyla bunu doktora onaylayabilir. Uygulama doktor ve hasta arasında iki yönlü bir bilgi ve kayıt paylaşımı sunar.\n\nHasta Özellikleri:\n\n- İlaç saatinde bildirim alma\n- Video kaydı ile içtiğini onaylama\n- Doktor profiline erişim\n- İlaç ve zaman listesi görüntüleme\n\nDoktor Özellikleri:\n\n- Hasta ekleme/çıkarma\n- Hasta için ilaç ve saat belirleme\n- Video kayıtlarını izleme\n- Hasta durumunu güncelleme",
-        "imageUrl": "img/remind_pp.jpg",
-        "technologies": [ "C#", "XAML", "Xamarin.Forms", ".NET", "Firebase Realtime Database", "Firebase Storage", "Android Studio", "Visual Studio" ],
-        "createdDate": "2022-12-01",
-        "projectUrl": "#",
-        "githubUrl": "https://github.com/kadirbeskardes/RemindMe",
-        "Category": "Mobil Uygulama",
-        "features": [
-            "İlaç saatinde bildirim alma",
-            "Video kaydı ile içtiğini onaylama",
-            "Doktor profiline erişim",
-            "İlaç ve zaman listesi görüntüleme",
-            "Hasta ekleme/çıkarma",
-            "Video kayıtlarını izleme",
-            "Hasta durumunu güncelleme"
-        ],
-        "screenshots": [],
-        "challenges": "Uygulamanın iki yönlü veri paylaşımı ve video kaydı onaylama işlemlerinin doğru ve güvenli şekilde çalışması.",
-        "solutions": "Firebase Realtime Database ile hızlı veri senkronizasyonu sağlandı. Firebase Storage ile video kaydı depolama ve doğrulama işlemleri güvence altına alındı."
-    },
-    {
-        "id": 3,
-        "title": "Kitabika: Kitap Yönetim ve E-Ticaret Platformu",
-        "shortDescription": "Kapsamlı kullanıcı ve yönetici paneline sahip, katmanlı mimariyle geliştirilmiş modern bir kitap satış platformu.",
-        "fullDescription": "Kitabika, kitap satışı yapan işletmelerin dijital ortama taşınması için geliştirilmiş, kullanıcı dostu ve güvenli bir web uygulamasıdır. ASP.NET Core MVC ile geliştirilen bu sistem, kitap katalog yönetimi, sepet ve sipariş işlemleri, rol tabanlı kullanıcı yönetimi ve kapsamlı bir yönetici paneli gibi pek çok özelliği içerir. Katmanlı mimarisi sayesinde yüksek sürdürülebilirlik sunar. Admin paneli üzerinden kitap, kategori, sipariş ve kullanıcı yönetimi sağlanırken; kullanıcılar kitapları keşfedebilir, sipariş verebilir ve geçmiş siparişlerini takip edebilir.",
-        "imageUrl": "img/kitabika_pp.jpg",
-        "technologies": [
-            "C#",
-            "ASP.NET Core 9.0",
-            "Entity Framework Core",
-            "AutoMapper",
-            "BCrypt.Net",
-            "SQL Server",
-            "jQuery",
-            "Visual Studio 2022"
-        ],
-        "createdDate": "2025-06-07",
-        "projectUrl": "#",
-        "Category": "Web Uygulaması",
-        "githubUrl": "https://github.com/kadirbeskardes/Kitabika",
-        "features": [
-            "Kullanıcı kayıt ve giriş sistemi (rol tabanlı erişim)",
-            "Kitap katalog ve kategori yönetimi",
-            "Sepet ve sipariş sistemi",
-            "Yönetici paneli üzerinden tüm varlıkların yönetimi",
-            "Satış istatistikleri ve detaylı raporlama",
-            "Katmanlı mimari, repository pattern ve UnitOfWork yapısı",
-            "Dependency Injection",
-            "AutoMapper ile DTO yönetimi",
-            "Session yönetimi"
-        ],
-        "screenshots": [],
-        "challenges": "Rol bazlı erişim kontrolü ve çok katmanlı sistemin senkronizasyonunun sağlanması.",
-        "solutions": "Repository ve Unit of Work desenleri ile veri erişimi soyutlandı, AutoMapper ile DTO kullanımı optimize edildi, rol tabanlı yetkilendirme ASP.NET Identity ile entegre edildi."
-    },
-    {
-        "id": 4,
-        "title": "Görüntü Üzerinde Metin ve Görsel Gizleme & Şifreleme",
-        "shortDescription": "LSB steganografi ve şifreleme algoritmalarıyla geliştirilen veri gizleme uygulaması.",
-        "fullDescription": "Bu proje, Python diliyle geliştirilmiş, görüntü dosyaları üzerine metin ve görsel verilerin gizlenmesini ve güvenliğinin sağlanmasını amaçlayan bir steganografi uygulamasıdır. LSB algoritması ile veri gizlenmiş, Blowfish ve Sezar şifreleme teknikleri ile güvenlik artırılmıştır. Kullanıcı arayüzü tkinter ile oluşturulmuştur.",
-        "imageUrl": "img/stego_pp.jpg",
-        "technologies": [ "Python", "Tkinter", "Numpy", "Pillow", "LSB", "Blowfish", "Sezar Cipher", "PSNR", "SSIM" ],
-        "createdDate": "2024-05-20",
-        "projectUrl": "#",
-        "githubUrl": "https://github.com/kadirbeskardes/Steganografi_Py",
-        "Category": "Masaüstü Uygulama",
-        "features": [
-            "Metin ve görsel veri gizleme",
-            "Blowfish ile metin şifreleme",
-            "Sezar algoritması ile görsel şifreleme",
-            "PSNR ve SSIM ile kalite değerlendirme",
-            "Kullanıcı arayüzü ile kolay kullanım"
-        ],
-        "screenshots": [
-            "images/project1-1.jpg",
-            "images/project1-2.jpg"
-        ],
-        "challenges": "Veri gizlerken görüntü kalitesini bozmadan güvenliği sağlamak",
-        "solutions": "LSB yöntemiyle görünmez gizleme, şifreleme algoritmalarıyla güvenlik artırıldı ve kalite metrikleri (PSNR, SSIM) ile test edildi."
-    },
-    {
-        "id": 5,
-        "title": "GrinGrid - Gerçek Zamanlı Chat Uygulaması",
-        "shortDescription": "Xamarin ve Firebase ile geliştirilen, çok platformlu ve güvenli bir anlık mesajlaşma uygulaması.",
-        "fullDescription": "GrinGrid, kullanıcıların anlık mesaj, medya ve dosya paylaşımı yapabilmesini sağlayan, Xamarin.Forms ile geliştirilen çapraz platform bir chat uygulamasıdır. Gerçek zamanlı veri senkronizasyonu için Firebase kullanılmış, kullanıcı dostu arayüzü ve güvenli altyapısı ile öne çıkmaktadır. Xamarin.Essentials, Plugin.Media gibi eklentilerle zenginleştirilmiş olan bu uygulama, küçük işletmeler ve bireysel kullanıcılar için etkili bir iletişim çözümüdür.",
-        "imageUrl": "img/chat_pp.jpg",
-        "technologies": [ "Xamarin.Forms", "C#", "Firebase", "XAML", "Xamarin.Essentials", "Plugin.Media", "Firebase Realtime Database", "Firebase Storage" ],
-        "createdDate": "2023-01-11",
-        "projectUrl": "#",
-        "githubUrl": "https://github.com/kadirbeskardes/HaasChat",
-        "Category": "Mobil Uygulama",
-        "features": [
-            "Gerçek zamanlı mesajlaşma",
-            "Medya ve dosya paylaşımı",
-            "Firebase ile anlık veri senkronizasyonu",
-            "Çapraz platform desteği (iOS ve Android)",
-            "Kullanıcı kimlik doğrulama ve güvenli veri saklama"
-        ],
-        "screenshots": [
-            "images/gringrid-login.jpg",
-            "images/gringrid-chat.jpg"
-        ],
-        "challenges": "Gerçek zamanlı veri yönetimi ve platformlar arası tutarlı arayüz tasarımı",
-        "solutions": "Firebase ile anlık veri aktarımı sağlandı, Xamarin.Forms ile ortak UI geliştirildi, güvenlik ve veri yönetimi için Xamarin.Essentials kullanıldı."
-    },
-    {
-        "id": 6,
-        "title": "Yazım Denetleyici (Metin Madenciliği Uygulaması)",
-        "shortDescription": "Python ve Tkinter ile geliştirilen, kelime düzeltme ve yazım denetimi yapan masaüstü uygulama.",
-        "fullDescription": "Bu proje, Python dilinde geliştirilmiş bir yazım denetleyici (spell checker) uygulamasıdır. Kullanıcıdan alınan metindeki yazım hatalarını düzeltmek için doğal dil işleme teknikleri uygulanmıştır. Lojik yapı olarak, kelime frekanslarına dayalı olasılıklı düzeltme algoritması kullanılmıştır. Tkinter ile oluşturulan kullanıcı arayüzü sayesinde etkileşimli ve kolay kullanım sağlanmıştır.",
-        "imageUrl": "img/spell_pp.jpg",
-        "technologies": [
-            "Python",
-            "Tkinter",
-            "Regex",
-            "Counter",
-            "Natural Language Processing",
-            "Edit Distance"
-        ],
-        "createdDate": "2024-05-15",
-        "projectUrl": "#",
-        "githubUrl": "https://github.com/kadirbeskardes/Spell-Checking",
-        "Category": "Masaüstü Uygulama",
-        "features": [
-            "Kelime frekanslarına dayalı yazım düzeltme",
-            "Kullanıcıdan metin girişi alma ve anında düzeltme",
-            "Edit distance hesaplamaları (edits1, edits2)",
-            "Tkinter ile görsel kullanıcı arayüzü",
-            "Hatalı kelimeler için en olası doğru kelimeyi önerme"
-        ],
-        "screenshots": [
-            "images/spellchecker-1.jpg",
-            "images/spellchecker-2.jpg"
-        ],
-        "challenges": "Yanlış yazılmış kelimelere en uygun düzeltmeyi önermek ve performansı korumak",
-        "solutions": "Büyük veri kümesinden kelime frekansı analizi yapıldı, düzenleme uzaklığına göre en olası kelime önerildi ve performans için Counter yapısı kullanıldı."
-    },
-    {
+  {
+    "id": 1,
+    "title": "Görme Engelliler İçin Görsel Tanıma ve Sosyal Etkileşim Uygulaması",
+    "shortDescription": "Görme engelli bireylerin çevrelerini tanımalarına ve sosyal etkileşimlerini artırmalarına yardımcı olan yapay zekâ destekli mobil uygulama.",
+    "fullDescription": "Bu proje, görme engelli bireylerin çevresini daha iyi tanımasını ve sosyal yaşama daha aktif katılmasını sağlamak amacıyla geliştirilmiş bir mobil uygulamadır. Uygulama, cihazın kamerasıyla çekilen görüntüleri Azure Computer Vision ve GPT-3.5 desteğiyle analiz ederek sesli anlatımlarla kullanıcıya aktarır. Aynı zamanda kullanıcının konum bilgisi kullanılarak yakınlardaki müze veya sosyal alanlar tespit edilip önerilir. Gün boyunca uygulamada meydana gelen hatalar sistem tarafından tespit edilip geliştiricilere e-posta yoluyla iletilir.\n\nTemel Özellikler:\n\n- Kamera ile ortam ve nesne tanıma\n- Sesli betimleme\n- Lokasyon tabanlı müze önerileri\n- Günlük hata raporlarının otomatik mail ile gönderimi",
+    "imageUrl": "img/gorme_pp.jpg",
+    "technologies": [ "C#", "XML", ".NET Framework 4.7", "Xamarin.Forms", "Azure Computer Vision", "OpenAI GPT-3.5", "Google Places API", "Visual Studio" ],
+    "createdDate": "2023-12-21",
+    "projectUrl": "#",
+    "Category": "Mobil Uygulama",
+    "githubUrl": "https://github.com/kadirbeskardes/GormeEngelliUygulama",
+    "features": [
+      "Kamera ile ortam ve nesne tanıma",
+      "Sesli betimleme",
+      "Lokasyon tabanlı müze önerileri",
+      "Günlük hata raporlarının otomatik mail ile gönderimi"
+    ],
+    "screenshots": [],
+    "challenges": "Görsel tanımanın doğru yapılması ve sesli betimlemelerin anlaşılır olması.",
+    "solutions": "Azure Computer Vision ve GPT-3.5 ile yüksek doğruluk oranı sağlandı, sesli betimleme netleştirildi ve lokasyon tabanlı öneriler Google API'si ile geliştirildi."
+  },
+  {
+    "id": 2,
+    "title": "Remind Me - İlaç Takip ve Hatırlatma Sistemi",
+    "shortDescription": "Doktor ve hasta arasında etkileşim sağlayan, ilaç hatırlatmaları yapan mobil sağlık uygulaması.",
+    "fullDescription": "Remind Me, Alzheimer gibi hastalıklarla mücadele eden bireylerin ilaçlarını zamanında almasını sağlamak amacıyla geliştirilmiş bir mobil sağlık uygulamasıdır. Doktor, hastaya reçete ettiği ilaçları ve saatlerini sisteme tanımlar. Hasta bu saatlerde bir bildirim alır ve ilacını içtikten sonra video kaydıyla bunu doktora onaylayabilir. Uygulama doktor ve hasta arasında iki yönlü bir bilgi ve kayıt paylaşımı sunar.\n\nHasta Özellikleri:\n\n- İlaç saatinde bildirim alma\n- Video kaydı ile içtiğini onaylama\n- Doktor profiline erişim\n- İlaç ve zaman listesi görüntüleme\n\nDoktor Özellikleri:\n\n- Hasta ekleme/çıkarma\n- Hasta için ilaç ve saat belirleme\n- Video kayıtlarını izleme\n- Hasta durumunu güncelleme",
+    "imageUrl": "img/remind_pp.jpg",
+    "technologies": [ "C#", "XAML", "Xamarin.Forms", ".NET", "Firebase Realtime Database", "Firebase Storage", "Android Studio", "Visual Studio" ],
+    "createdDate": "2022-12-01",
+    "projectUrl": "#",
+    "githubUrl": "https://github.com/kadirbeskardes/RemindMe",
+    "Category": "Mobil Uygulama",
+    "features": [
+      "İlaç saatinde bildirim alma",
+      "Video kaydı ile içtiğini onaylama",
+      "Doktor profiline erişim",
+      "İlaç ve zaman listesi görüntüleme",
+      "Hasta ekleme/çıkarma",
+      "Video kayıtlarını izleme",
+      "Hasta durumunu güncelleme"
+    ],
+    "screenshots": [],
+    "challenges": "Uygulamanın iki yönlü veri paylaşımı ve video kaydı onaylama işlemlerinin doğru ve güvenli şekilde çalışması.",
+    "solutions": "Firebase Realtime Database ile hızlı veri senkronizasyonu sağlandı. Firebase Storage ile video kaydı depolama ve doğrulama işlemleri güvence altına alındı."
+  },
+  {
+    "id": 3,
+    "title": "Kitabika: Kitap Yönetim ve E-Ticaret Platformu",
+    "shortDescription": "Kapsamlı kullanıcı ve yönetici paneline sahip, katmanlı mimariyle geliştirilmiş modern bir kitap satış platformu.",
+    "fullDescription": "Kitabika, kitap satışı yapan işletmelerin dijital ortama taşınması için geliştirilmiş, kullanıcı dostu ve güvenli bir web uygulamasıdır. ASP.NET Core MVC ile geliştirilen bu sistem, kitap katalog yönetimi, sepet ve sipariş işlemleri, rol tabanlı kullanıcı yönetimi ve kapsamlı bir yönetici paneli gibi pek çok özelliği içerir. Katmanlı mimarisi sayesinde yüksek sürdürülebilirlik sunar. Admin paneli üzerinden kitap, kategori, sipariş ve kullanıcı yönetimi sağlanırken; kullanıcılar kitapları keşfedebilir, sipariş verebilir ve geçmiş siparişlerini takip edebilir.",
+    "imageUrl": "img/kitabika_pp.jpg",
+    "technologies": [
+      "C#",
+      "ASP.NET Core 9.0",
+      "Entity Framework Core",
+      "AutoMapper",
+      "BCrypt.Net",
+      "SQL Server",
+      "jQuery",
+      "Visual Studio 2022"
+    ],
+    "createdDate": "2025-06-07",
+    "projectUrl": "#",
+    "Category": "Web Uygulaması",
+    "githubUrl": "https://github.com/kadirbeskardes/Kitabika",
+    "features": [
+      "Kullanıcı kayıt ve giriş sistemi (rol tabanlı erişim)",
+      "Kitap katalog ve kategori yönetimi",
+      "Sepet ve sipariş sistemi",
+      "Yönetici paneli üzerinden tüm varlıkların yönetimi",
+      "Satış istatistikleri ve detaylı raporlama",
+      "Katmanlı mimari, repository pattern ve UnitOfWork yapısı",
+      "Dependency Injection",
+      "AutoMapper ile DTO yönetimi",
+      "Session yönetimi"
+    ],
+    "screenshots": [],
+    "challenges": "Rol bazlı erişim kontrolü ve çok katmanlı sistemin senkronizasyonunun sağlanması.",
+    "solutions": "Repository ve Unit of Work desenleri ile veri erişimi soyutlandı, AutoMapper ile DTO kullanımı optimize edildi, rol tabanlı yetkilendirme ASP.NET Identity ile entegre edildi."
+  },
+  {
+    "id": 4,
+    "title": "Görüntü Üzerinde Metin ve Görsel Gizleme & Şifreleme",
+    "shortDescription": "LSB steganografi ve şifreleme algoritmalarıyla geliştirilen veri gizleme uygulaması.",
+    "fullDescription": "Bu proje, Python diliyle geliştirilmiş, görüntü dosyaları üzerine metin ve görsel verilerin gizlenmesini ve güvenliğinin sağlanmasını amaçlayan bir steganografi uygulamasıdır. LSB algoritması ile veri gizlenmiş, Blowfish ve Sezar şifreleme teknikleri ile güvenlik artırılmıştır. Kullanıcı arayüzü tkinter ile oluşturulmuştur.",
+    "imageUrl": "img/stego_pp.jpg",
+    "technologies": [ "Python", "Tkinter", "Numpy", "Pillow", "LSB", "Blowfish", "Sezar Cipher", "PSNR", "SSIM" ],
+    "createdDate": "2024-05-20",
+    "projectUrl": "#",
+    "githubUrl": "https://github.com/kadirbeskardes/Steganografi_Py",
+    "Category": "Masaüstü Uygulama",
+    "features": [
+      "Metin ve görsel veri gizleme",
+      "Blowfish ile metin şifreleme",
+      "Sezar algoritması ile görsel şifreleme",
+      "PSNR ve SSIM ile kalite değerlendirme",
+      "Kullanıcı arayüzü ile kolay kullanım"
+    ],
+    "screenshots": [
+      "images/project1-1.jpg",
+      "images/project1-2.jpg"
+    ],
+    "challenges": "Veri gizlerken görüntü kalitesini bozmadan güvenliği sağlamak",
+    "solutions": "LSB yöntemiyle görünmez gizleme, şifreleme algoritmalarıyla güvenlik artırıldı ve kalite metrikleri (PSNR, SSIM) ile test edildi."
+  },
+  {
+    "id": 5,
+    "title": "GrinGrid - Gerçek Zamanlı Chat Uygulaması",
+    "shortDescription": "Xamarin ve Firebase ile geliştirilen, çok platformlu ve güvenli bir anlık mesajlaşma uygulaması.",
+    "fullDescription": "GrinGrid, kullanıcıların anlık mesaj, medya ve dosya paylaşımı yapabilmesini sağlayan, Xamarin.Forms ile geliştirilen çapraz platform bir chat uygulamasıdır. Gerçek zamanlı veri senkronizasyonu için Firebase kullanılmış, kullanıcı dostu arayüzü ve güvenli altyapısı ile öne çıkmaktadır. Xamarin.Essentials, Plugin.Media gibi eklentilerle zenginleştirilmiş olan bu uygulama, küçük işletmeler ve bireysel kullanıcılar için etkili bir iletişim çözümüdür.",
+    "imageUrl": "img/chat_pp.jpg",
+    "technologies": [ "Xamarin.Forms", "C#", "Firebase", "XAML", "Xamarin.Essentials", "Plugin.Media", "Firebase Realtime Database", "Firebase Storage" ],
+    "createdDate": "2023-01-11",
+    "projectUrl": "#",
+    "githubUrl": "https://github.com/kadirbeskardes/HaasChat",
+    "Category": "Mobil Uygulama",
+    "features": [
+      "Gerçek zamanlı mesajlaşma",
+      "Medya ve dosya paylaşımı",
+      "Firebase ile anlık veri senkronizasyonu",
+      "Çapraz platform desteği (iOS ve Android)",
+      "Kullanıcı kimlik doğrulama ve güvenli veri saklama"
+    ],
+    "screenshots": [
+      "images/gringrid-login.jpg",
+      "images/gringrid-chat.jpg"
+    ],
+    "challenges": "Gerçek zamanlı veri yönetimi ve platformlar arası tutarlı arayüz tasarımı",
+    "solutions": "Firebase ile anlık veri aktarımı sağlandı, Xamarin.Forms ile ortak UI geliştirildi, güvenlik ve veri yönetimi için Xamarin.Essentials kullanıldı."
+  },
+  {
+    "id": 6,
+    "title": "Yazım Denetleyici (Metin Madenciliği Uygulaması)",
+    "shortDescription": "Python ve Tkinter ile geliştirilen, kelime düzeltme ve yazım denetimi yapan masaüstü uygulama.",
+    "fullDescription": "Bu proje, Python dilinde geliştirilmiş bir yazım denetleyici (spell checker) uygulamasıdır. Kullanıcıdan alınan metindeki yazım hatalarını düzeltmek için doğal dil işleme teknikleri uygulanmıştır. Lojik yapı olarak, kelime frekanslarına dayalı olasılıklı düzeltme algoritması kullanılmıştır. Tkinter ile oluşturulan kullanıcı arayüzü sayesinde etkileşimli ve kolay kullanım sağlanmıştır.",
+    "imageUrl": "img/spell_pp.jpg",
+    "technologies": [
+      "Python",
+      "Tkinter",
+      "Regex",
+      "Counter",
+      "Natural Language Processing",
+      "Edit Distance"
+    ],
+    "createdDate": "2024-05-15",
+    "projectUrl": "#",
+    "githubUrl": "https://github.com/kadirbeskardes/Spell-Checking",
+    "Category": "Masaüstü Uygulama",
+    "features": [
+      "Kelime frekanslarına dayalı yazım düzeltme",
+      "Kullanıcıdan metin girişi alma ve anında düzeltme",
+      "Edit distance hesaplamaları (edits1, edits2)",
+      "Tkinter ile görsel kullanıcı arayüzü",
+      "Hatalı kelimeler için en olası doğru kelimeyi önerme"
+    ],
+    "screenshots": [
+      "images/spellchecker-1.jpg",
+      "images/spellchecker-2.jpg"
+    ],
+    "challenges": "Yanlış yazılmış kelimelere en uygun düzeltmeyi önermek ve performansı korumak",
+    "solutions": "Büyük veri kümesinden kelime frekansı analizi yapıldı, düzenleme uzaklığına göre en olası kelime önerildi ve performans için Counter yapısı kullanıldı."
+  },
+  {
     "id": 7,
     "title": "Testival - Tournament ve Quiz Uygulaması",
     "shortDescription": "Kullanıcıların etkileşimli turnuvalar ve quizler oluşturabileceği, karşılaştırma tabanlı yarışmalar düzenleyebileceği çok platformlu uygulama.",
     "fullDescription": "Testival, kullanıcıların çeşitli konularda turnuvalar ve testler oluşturabileceği, katılımcıların ikili karşılaştırmalarla en iyiyi seçebileceği kapsamlı bir platform. Uygulama hem web hem de mobil platformlarda çalışmakta olup, kullanıcılar test oluşturabilir, başkalarının testlerine katılabilir ve sonuçları görüntüleyebilir.\n\nTemel Özellikler:\n\n- Web ve mobil uygulama desteği\n- Kullanıcı kaydı ve giriş sistemi (JWT tabanlı)\n- Test/turnuva oluşturma (2'nin katları halinde seçenek sayısı)\n- İkili karşılaştırma sistemi (tournament bracket)\n- Görsel içerik desteği (base64 image upload)\n- Çoklu dil desteği (Türkçe/İngilizce)\n- İstatistik ve sonuç görüntüleme\n- Responsive tasarım ve PWA özellikleri\n- SEO optimizasyonu ve performans iyileştirmeleri\n- Azure SQL Database entegrasyonu\n- Real-time sonuç güncellemeleri",
     "imageUrl": "img/testival_pp.jpg",
-    "technologies": [ 
-        "C#", 
-        "ASP.NET Core 8", 
-        "Entity Framework Core", 
-        "SQL Server/Azure SQL", 
-        "React Native", 
-        "Expo", 
-        "TypeScript", 
-        "JWT Authentication", 
-        "Azure App Service", 
-        "PWA", 
-        "Bootstrap", 
-        "Axios", 
-        "Visual Studio"
+    "technologies": [
+      "C#",
+      "ASP.NET Core 8",
+      "Entity Framework Core",
+      "SQL Server/Azure SQL",
+      "React Native",
+      "Expo",
+      "TypeScript",
+      "JWT Authentication",
+      "Azure App Service",
+      "PWA",
+      "Bootstrap",
+      "Axios",
+      "Visual Studio"
     ],
     "createdDate": "2025-09-28",
     "projectUrl": "https://tourmentapp-bpbfcufgc4feejbf.polandcentral-01.azurewebsites.net",
     "Category": "Full-Stack Uygulama",
     "githubUrl": "https://github.com/kadirbeskardes/TourmentApp",
     "features": [
-        "Cross-platform mobil uygulama (React Native/Expo)",
-        "ASP.NET Core web uygulaması",
-        "JWT tabanlı kimlik doğrulama sistemi",
-        "İkili karşılaştırma turnuva sistemi",
-        "Görsel içerik yükleme ve gösterme",
-        "Çoklu dil desteği (i18n)",
-        "Responsive web tasarım",
-        "PWA (Progressive Web App) özellikleri",
-        "Real-time istatistik görüntüleme",
-        "SEO optimizasyonu",
-        "Azure Cloud deployment",
-        "Repository pattern ve clean architecture",
-        "Error handling ve logging sistemi"
+      "Cross-platform mobil uygulama (React Native/Expo)",
+      "ASP.NET Core web uygulaması",
+      "JWT tabanlı kimlik doğrulama sistemi",
+      "İkili karşılaştırma turnuva sistemi",
+      "Görsel içerik yükleme ve gösterme",
+      "Çoklu dil desteği (i18n)",
+      "Responsive web tasarım",
+      "PWA (Progressive Web App) özellikleri",
+      "Real-time istatistik görüntüleme",
+      "SEO optimizasyonu",
+      "Azure Cloud deployment",
+      "Repository pattern ve clean architecture",
+      "Error handling ve logging sistemi"
     ],
     "screenshots": [],
     "challenges": "Cross-platform uyumluluk sağlama, tournament bracket algoritması geliştirme, performans optimizasyonu ve Azure deployment yapılandırması.",
     "solutions": "Expo framework ile mobil geliştirme, Entity Framework ile veritabanı yönetimi, JWT ile güvenli API authentication, Azure App Service ile scalable deployment ve comprehensive error handling middleware implementasyonu."
-}
-
-
+  }
 ]

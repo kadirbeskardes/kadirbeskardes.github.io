@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+LOCALIZATION_README.md
+SEO_DOCUMENTATION.md
