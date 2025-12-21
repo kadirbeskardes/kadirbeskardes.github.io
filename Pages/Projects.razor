@@ -18,15 +18,19 @@
 
 <div class="projects-page">
     <!-- Hero Section -->
-    <section class="projects-hero bg-dark text-white py-5">
-        <div class="container py-4">
+    <section class="projects-hero text-white py-5 position-relative overflow-hidden">
+        <div class="hero-bg-pattern"></div>
+        <div class="container py-5 position-relative" style="z-index: 2;">
             <div class="row align-items-center">
                 <div class="col-lg-8 mx-auto text-center">
-                    <h1 class="display-4 fw-bold mb-3">@L["Projects_Title"]</h1>
-                    <p class="lead mb-4">@L["Projects_Subtitle"]</p>
-                    <div class="d-flex justify-content-center gap-3">
-                        <a href="#projects-grid" class="btn btn-primary btn-lg px-4 rounded-pill">
-                            <i class="bi bi-grid me-2"></i>@L["Projects_Explore"]
+                    <span class="badge bg-white bg-opacity-20 text-white rounded-pill px-3 py-2 mb-3 animate__animated animate__fadeInDown">
+                        <i class="bi bi-code-slash me-2"></i>Portfolio
+                    </span>
+                    <h1 class="display-3 fw-bold mb-3 animate__animated animate__fadeInDown animate__delay-1s">@L["Projects_Title"]</h1>
+                    <p class="lead mb-5 text-white-50 animate__animated animate__fadeInUp animate__delay-1s">@L["Projects_Subtitle"]</p>
+                    <div class="animate__animated animate__fadeInUp animate__delay-2s">
+                        <a href="#projects-grid" class="btn btn-light btn-lg px-5 rounded-pill shadow-lg hover-scale">
+                            <i class="bi bi-arrow-down-circle me-2"></i>@L["Projects_Explore"]
                         </a>
                     </div>
                 </div>
@@ -35,23 +39,27 @@
     </section>
 
     <!-- Projects Grid -->
-    <section id="projects-grid" class="py-5">
+    <section id="projects-grid" class="py-5 bg-light position-relative">
         <div class="container py-4">
             @if (projects == null)
             {
                 <div class="text-center py-5">
-                    <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+                    <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
                         <span class="visually-hidden">Loading...</span>
                     </div>
-                    <p class="mt-3 fs-5">@L["Projects_Loading"]</p>
+                    <p class="mt-3 text-muted fw-medium">@L["Projects_Loading"]</p>
                 </div>
             }
             else if (!projects.Any())
             {
-                <div class="alert alert-warning text-center py-4">
-                    <i class="bi bi-exclamation-circle fs-3"></i>
-                    <h4 class="alert-heading mt-3">@L["Projects_NoProjects"]</h4>
-                    <p>@L["Projects_NoProjectsDescription"]</p>
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <div class="alert alert-warning text-center py-5 border-0 shadow-sm rounded-4">
+                            <i class="bi bi-clipboard-x display-1 text-warning mb-3 d-block"></i>
+                            <h4 class="alert-heading mt-3 fw-bold">@L["Projects_NoProjects"]</h4>
+                            <p class="mb-0 text-muted">@L["Projects_NoProjectsDescription"]</p>
+                        </div>
+                    </div>
                 </div>
             }
             else
@@ -59,37 +67,44 @@
                 <div class="row g-4">
                     @foreach (var project in projects)
                     {
-                        <div class="col-xl-4 col-md-6">
-                            <div class="project-card card h-100 shadow-lg border-0 overflow-hidden">
-                                <div class="position-relative image-wrapper">
-                                    <img src="@project.ImageUrl" class="card-img-top project-image" alt="@project.Title">
-                                    <div class="project-year-badge">
-                                        @project.CreatedDate.ToString("yyyy")
-                                    </div>
-                                    <div class="project-hover-overlay">
-                                        <a href="@($"project/{project.Id}")" class="btn btn-outline-light btn-lg rounded-pill">
+                        <div class="col-xl-4 col-md-6 d-flex align-items-stretch" @key="project.Id">
+                            <div class="project-card card h-100 border-0 shadow-sm overflow-hidden w-100">
+                                <div class="card-img-wrapper position-relative">
+                                    <img src="@project.ImageUrl" class="card-img-top project-image" alt="@project.Title" loading="lazy">
+                                    <div class="project-overlay d-flex flex-column justify-content-center align-items-center text-center p-3">
+                                        <a href="@($"project/{project.Id}")" class="btn btn-light rounded-pill px-4 py-2 mb-3 shadow-sm transform-scale">
                                             <i class="bi bi-eye-fill me-2"></i>@L["Projects_ViewDetails"]
                                         </a>
+                                        @if (!string.IsNullOrEmpty(project.GitHubUrl))
+                                        {
+                                            <a href="@project.GitHubUrl" target="_blank" class="btn btn-outline-light rounded-pill px-4 py-2 shadow-sm transform-scale">
+                                                <i class="bi bi-github me-2"></i>GitHub
+                                            </a>
+                                        }
+                                    </div>
+                                    <div class="project-date-badge">
+                                        <i class="bi bi-calendar-event me-1"></i>@project.CreatedDate.ToString("MMM yyyy")
                                     </div>
                                 </div>
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-start mb-3">
-                                        <h3 class="card-title h5 fw-bold">@project.Title</h3>
-                                        <div class="project-links">
-                                            @if (!string.IsNullOrEmpty(project.GitHubUrl))
+                                <div class="card-body p-4 d-flex flex-column">
+                                    <h3 class="card-title h5 fw-bold mb-3 text-truncate-2">@project.Title</h3>
+                                    <p class="card-text text-muted mb-4 flex-grow-1 text-truncate-3">@project.ShortDescription</p>
+                                    
+                                    <div class="project-footer mt-auto pt-3 border-top border-light">
+                                        <div class="d-flex flex-wrap gap-2">
+                                            @foreach (var tech in project.Technologies.Take(3))
                                             {
-                                                <a href="@project.GitHubUrl" target="_blank" class="text-dark mx-1" title="GitHub Repo">
-                                                    <i class="bi bi-github fs-5"></i>
-                                                </a>
+                                                <span class="badge bg-light text-primary border border-primary border-opacity-10 rounded-pill fw-normal px-3 py-2">
+                                                    @tech
+                                                </span>
+                                            }
+                                            @if (project.Technologies.Length > 3)
+                                            {
+                                                <span class="badge bg-light text-muted border rounded-pill fw-normal px-2 py-2">
+                                                    +@(project.Technologies.Length - 3)
+                                                </span>
                                             }
                                         </div>
-                                    </div>
-                                    <p class="card-text text-muted mb-4">@project.ShortDescription</p>
-                                    <div class="project-technologies">
-                                        @foreach (var tech in project.Technologies)
-                                        {
-                                            <span class="tech-badge">@tech</span>
-                                        }
                                     </div>
                                 </div>
                             </div>
@@ -102,95 +117,123 @@
 </div>
 
 <style>
+    /* Hero Section */
     .projects-hero {
-        background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-        position: relative;
-        overflow: hidden;
+        background: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%);
+        min-height: 400px;
+        display: flex;
+        align-items: center;
     }
 
+    .hero-bg-pattern {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+        background-size: 30px 30px;
+        opacity: 0.5;
+    }
+
+    /* Project Card */
     .project-card {
-        transition: all 0.3s ease;
-        border-radius: 12px;
+        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        background: white;
+        border-radius: 16px;
     }
 
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
+    .project-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1) !important;
+    }
 
-    .image-wrapper {
-        aspect-ratio: 16 / 9;
+    .card-img-wrapper {
+        height: 240px;
         overflow: hidden;
-        position: relative;
     }
 
     .project-image {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        object-position: center;
-        display: block;
-        transition: transform 0.3s ease;
+        transition: transform 0.6s ease;
     }
 
     .project-card:hover .project-image {
-        transform: scale(1.05);
+        transform: scale(1.1);
     }
 
-    .project-year-badge {
-        position: absolute;
-        top: 15px;
-        right: 15px;
-        background-color: rgba(0, 0, 0, 0.7);
-        color: white;
-        padding: 5px 12px;
-        border-radius: 20px;
-        font-size: 0.85rem;
-        font-weight: 600;
-    }
-
-    .project-hover-overlay {
+    .project-overlay {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        background: rgba(30, 41, 59, 0.85);
         opacity: 0;
         transition: all 0.3s ease;
+        backdrop-filter: blur(4px);
     }
 
-    .project-card:hover .project-hover-overlay {
+    .project-card:hover .project-overlay {
         opacity: 1;
     }
 
-    .project-technologies {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        margin-top: 1rem;
+    .project-date-badge {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: rgba(255, 255, 255, 0.9);
+        color: #1e293b;
+        padding: 6px 14px;
+        border-radius: 30px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 1;
     }
 
-    .tech-badge {
-        background-color: #f1f5f9;
-        color: #334155;
-        padding: 4px 12px;
-        border-radius: 20px;
-        font-size: 0.75rem;
-        font-weight: 500;
+    .transform-scale {
+        transition: transform 0.2s ease;
+    }
+    
+    .transform-scale:hover {
+        transform: scale(1.05);
+    }
+
+    .hover-scale {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hover-scale:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2) !important;
+    }
+
+    .text-truncate-2 {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .text-truncate-3 {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
     }
 
     @@media (max-width: 768px) {
         .projects-hero {
-            padding-top: 4rem;
-            padding-bottom: 4rem;
+            min-height: auto;
+            padding-top: 3rem !important;
+            padding-bottom: 3rem !important;
         }
-
-        .image-wrapper {
-            aspect-ratio: 16 / 10;
+        
+        .card-img-wrapper {
+            height: 200px;
         }
     }
 </style>
