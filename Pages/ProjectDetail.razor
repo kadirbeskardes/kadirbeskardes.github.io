@@ -3,8 +3,9 @@
 @using Personal.Services
 @inject ProjectService ProjectService
 @inject NavigationManager NavigationManager
+@inject LocalizationService L
 
-<PageTitle>@(project?.Title ?? "Proje Detayı")</PageTitle>
+<PageTitle>@(project?.Title ?? L["ProjectDetail_Title_Default"])</PageTitle>
 
 @if (project == null)
 {
@@ -13,7 +14,7 @@
         {
             <div class="d-flex justify-content-center align-items-center" style="height: 300px;">
                 <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
-                    <span class="visually-hidden">Yükleniyor...</span>
+                    <span class="visually-hidden">@L["ProjectDetail_Loading"]</span>
                 </div>
             </div>
         }
@@ -22,10 +23,10 @@
             <div class="alert alert-danger shadow-sm py-5">
                 <div class="d-flex flex-column align-items-center">
                     <i class="bi bi-exclamation-octagon-fill text-danger fs-1 mb-3"></i>
-                    <h4 class="alert-heading">Proje Bulunamadı</h4>
-                    <p class="mb-4">Belirtilen ID ile bir proje bulunamadı veya yüklenirken bir hata oluştu.</p>
+                    <h4 class="alert-heading">@L["ProjectDetail_NotFound_Title"]</h4>
+                    <p class="mb-4">@L["ProjectDetail_NotFound_Message"]</p>
                     <button class="btn btn-primary px-4 py-2 rounded-pill" @onclick="NavigateToProjects">
-                        <i class="bi bi-arrow-left me-2"></i>Proje Listesine Dön
+                        <i class="bi bi-arrow-left me-2"></i>@L["ProjectDetail_BackToProjects"]
                     </button>
                 </div>
             </div>
@@ -41,8 +42,8 @@ else
                 <div class="col-lg-8">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/" class="text-white-50">Ana Sayfa</a></li>
-                            <li class="breadcrumb-item"><a href="/projects" class="text-white-50">Projeler</a></li>
+                            <li class="breadcrumb-item"><a href="/" class="text-white-50">@L["ProjectDetail_Breadcrumb_Home"]</a></li>
+                            <li class="breadcrumb-item"><a href="/projects" class="text-white-50">@L["ProjectDetail_Breadcrumb_Projects"]</a></li>
                             <li class="breadcrumb-item active text-white" aria-current="page">@project.Title</li>
                         </ol>
                     </nav>
@@ -52,13 +53,13 @@ else
                         @if (!string.IsNullOrEmpty(project.ProjectUrl))
                         {
                             <a href="@project.ProjectUrl" target="_blank" class="btn btn-primary px-4 py-2 rounded-pill">
-                                <i class="bi bi-box-arrow-up-right me-2"></i>Canlı Demo
+                                <i class="bi bi-box-arrow-up-right me-2"></i>@L["ProjectDetail_Button_LiveDemo"]
                             </a>
                         }
                         @if (!string.IsNullOrEmpty(project.GitHubUrl))
                         {
                             <a href="@project.GitHubUrl" target="_blank" class="btn btn-outline-light px-4 py-2 rounded-pill">
-                                <i class="bi bi-github me-2"></i>GitHub Repo
+                                <i class="bi bi-github me-2"></i>@L["ProjectDetail_Button_GitHubRepo"]
                             </a>
                         }
                     </div>
@@ -83,7 +84,7 @@ else
                     <div class="card-body p-4">
                         <h2 class="h4 fw-bold mb-4 d-flex align-items-center">
                             <i class="bi bi-file-text text-primary me-3 fs-3"></i>
-                            <span>Proje Detayları</span>
+                            <span>@L["ProjectDetail_Section_Details"]</span>
                         </h2>
                         <div class="project-content">
                             <markdown>@project.FullDescription</markdown>
@@ -98,7 +99,7 @@ else
                         <div class="card-body p-4">
                             <h2 class="h4 fw-bold mb-4 d-flex align-items-center">
                                 <i class="bi bi-list-check text-primary me-3 fs-3"></i>
-                                <span>Öne Çıkan Özellikler</span>
+                                <span>@L["ProjectDetail_Section_Features"]</span>
                             </h2>
                             <div class="row g-3">
                                 @foreach (var feature in project.Features)
@@ -122,14 +123,14 @@ else
                         <div class="card-body p-4">
                             <h2 class="h4 fw-bold mb-4 d-flex align-items-center">
                                 <i class="bi bi-lightbulb text-primary me-3 fs-3"></i>
-                                <span>Zorluklar ve Çözümler</span>
+                                <span>@L["ProjectDetail_Section_ChallengesSolutions"]</span>
                             </h2>
 
                             @if (!string.IsNullOrEmpty(project.Challenges))
                             {
                                 <div class="mb-4">
                                     <h3 class="h5 text-primary mb-3">
-                                        <i class="bi bi-exclamation-triangle me-2"></i>Karşılaşılan Zorluklar
+                                        <i class="bi bi-exclamation-triangle me-2"></i>@L["ProjectDetail_Section_Challenges"]
                                     </h3>
                                     <div class="project-content">
                                         <markdown>@project.Challenges</markdown>
@@ -141,7 +142,7 @@ else
                             {
                                 <div>
                                     <h3 class="h5 text-primary mb-3">
-                                        <i class="bi bi-check-circle me-2"></i>Uygulanan Çözümler
+                                        <i class="bi bi-check-circle me-2"></i>@L["ProjectDetail_Section_Solutions"]
                                     </h3>
                                     <div class="project-content">
                                         <markdown>@project.Solutions</markdown>
@@ -160,7 +161,7 @@ else
                     <div class="card-body p-4">
                         <h2 class="h4 fw-bold mb-4 d-flex align-items-center">
                             <i class="bi bi-stack text-primary me-3 fs-3"></i>
-                            <span>Teknoloji Yığını</span>
+                            <span>@L["ProjectDetail_Section_TechStack"]</span>
                         </h2>
                         <div class="tech-stack">
                             @foreach (var tech in project.Technologies)
@@ -185,7 +186,7 @@ else
                         <div class="card-body p-4">
                             <h2 class="h4 fw-bold mb-4 d-flex align-items-center">
                                 <i class="bi bi-images text-primary me-3 fs-3"></i>
-                                <span>Ekran Görüntüleri</span>
+                                <span>@L["ProjectDetail_Section_Screenshots"]</span>
                             </h2>
                             <div class="project-gallery">
                                 <div class="row g-2">
@@ -213,7 +214,7 @@ else
                     <div class="card-body p-4">
                         <h2 class="h4 fw-bold mb-4 d-flex align-items-center">
                             <i class="bi bi-info-circle text-primary me-3 fs-3"></i>
-                            <span>Proje Bilgileri</span>
+                            <span>@L["ProjectDetail_Section_Info"]</span>
                         </h2>
                         <div class="project-info">
                             <div class="info-item mb-3">
@@ -222,7 +223,7 @@ else
                                         <i class="bi bi-calendar"></i>
                                     </div>
                                     <div>
-                                        <h3 class="h6 mb-1">Oluşturulma Tarihi</h3>
+                                        <h3 class="h6 mb-1">@L["ProjectDetail_Info_CreatedDate"]</h3>
                                         <p class="mb-0">@project.CreatedDate.ToString("dd MMMM yyyy")</p>
                                     </div>
                                 </div>
@@ -233,7 +234,7 @@ else
                                         <i class="bi bi-tags"></i>
                                     </div>
                                     <div>
-                                        <h3 class="h6 mb-1">Kategori</h3>
+                                        <h3 class="h6 mb-1">@L["ProjectDetail_Info_Category"]</h3>
                                         <p class="mb-0">@project.Category</p>
                                     </div>
                                 </div>
@@ -244,15 +245,15 @@ else
                                         <i class="bi bi-check-circle"></i>
                                     </div>
                                     <div>
-                                        <h3 class="h6 mb-1">Durum</h3>
+                                        <h3 class="h6 mb-1">@L["ProjectDetail_Info_Status"]</h3>
                                         <p class="mb-0">
                                             @if (!string.IsNullOrEmpty(project.ProjectUrl))
                                             {
-                                                <span class="badge bg-success">Canlı</span>
+                                                <span class="badge bg-success">@L["ProjectDetail_Status_Live"]</span>
                                             }
                                             else
                                             {
-                                                <span class="badge bg-secondary">Geliştirme Aşamasında</span>
+                                                <span class="badge bg-secondary">@L["ProjectDetail_Status_Development"]</span>
                                             }
                                         </p>
                                     </div>
