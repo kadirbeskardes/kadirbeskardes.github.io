@@ -9,284 +9,393 @@
 
 @if (project == null)
 {
-    <div class="container py-5 my-5 text-center">
+    <div class="project-loading-wrapper">
         @if (isLoading)
         {
-            <div class="d-flex justify-content-center align-items-center" style="height: 300px;">
-                <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
-                    <span class="visually-hidden">@L["ProjectDetail_Loading"]</span>
+            <div class="loading-container">
+                <div class="loading-spinner-large">
+                    <div class="spinner-orbit"></div>
+                    <div class="spinner-orbit"></div>
+                    <div class="spinner-orbit"></div>
+                    <div class="spinner-core">
+                        <i class="bi bi-code-slash"></i>
+                    </div>
                 </div>
+                <p class="loading-text">@L["ProjectDetail_Loading"]</p>
             </div>
         }
         else
         {
-            <div class="alert alert-danger shadow-sm py-5">
-                <div class="d-flex flex-column align-items-center">
-                    <i class="bi bi-exclamation-octagon-fill text-danger fs-1 mb-3"></i>
-                    <h4 class="alert-heading">@L["ProjectDetail_NotFound_Title"]</h4>
-                    <p class="mb-4">@L["ProjectDetail_NotFound_Message"]</p>
-                    <button class="btn btn-primary px-4 py-2 rounded-pill" @onclick="NavigateToProjects">
-                        <i class="bi bi-arrow-left me-2"></i>@L["ProjectDetail_BackToProjects"]
-                    </button>
+            <div class="error-container">
+                <div class="error-icon-wrapper">
+                    <div class="error-icon-bg"></div>
+                    <i class="bi bi-exclamation-triangle error-icon"></i>
                 </div>
+                <h2 class="error-title">@L["ProjectDetail_NotFound_Title"]</h2>
+                <p class="error-message">@L["ProjectDetail_NotFound_Message"]</p>
+                <button class="back-button" @onclick="NavigateToProjects">
+                    <i class="bi bi-arrow-left me-2"></i>@L["ProjectDetail_BackToProjects"]
+                </button>
             </div>
         }
     </div>
 }
 else
 {
-    <!-- Hero Section -->
-    <section class="project-hero bg-dark text-white py-5">
-        <div class="container py-4">
-            <div class="row align-items-center">
-                <div class="col-lg-8">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/" class="text-white-50">@L["ProjectDetail_Breadcrumb_Home"]</a></li>
-                            <li class="breadcrumb-item"><a href="/projects" class="text-white-50">@L["ProjectDetail_Breadcrumb_Projects"]</a></li>
-                            <li class="breadcrumb-item active text-white" aria-current="page">@project.Title</li>
-                        </ol>
-                    </nav>
-                    <h1 class="display-4 fw-bold mb-3">@project.Title</h1>
-                    <p class="lead mb-4">@project.ShortDescription</p>
-                    <div class="d-flex flex-wrap gap-3">
-                        @if (!string.IsNullOrEmpty(project.ProjectUrl))
-                        {
-                            <a href="@project.ProjectUrl" target="_blank" class="btn btn-primary px-4 py-2 rounded-pill">
-                                <i class="bi bi-box-arrow-up-right me-2"></i>@L["ProjectDetail_Button_LiveDemo"]
-                            </a>
-                        }
-                        @if (!string.IsNullOrEmpty(project.GitHubUrl))
-                        {
-                            <a href="@project.GitHubUrl" target="_blank" class="btn btn-outline-light px-4 py-2 rounded-pill">
-                                <i class="bi bi-github me-2"></i>@L["ProjectDetail_Button_GitHubRepo"]
-                            </a>
-                        }
-                    </div>
+    <div class="project-detail-wrapper">
+        <!-- Hero Section -->
+        <section class="project-hero-section">
+            <div class="hero-background">
+                <div class="hero-image-container">
+                    <img src="@project.ImageUrl" alt="@project.Title" class="hero-bg-image">
+                    <div class="hero-overlay"></div>
                 </div>
-                <div class="col-lg-4 mt-4 mt-lg-0">
-                    <div class="project-badge">
-                        <i class="bi bi-calendar-check me-2"></i>
-                        @project.CreatedDate.ToString("MMMM yyyy")
-                    </div>
+                <div class="hero-particles">
+                    @for (int i = 0; i < 15; i++)
+                    {
+                        <div class="particle-dot" style="--delay: @(i * 0.3)s; --x: @(Random.Shared.Next(0, 100))%; --y: @(Random.Shared.Next(0, 100))%;"></div>
+                    }
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Project Content -->
-    <div class="container py-5">
-        <div class="row g-4">
-            <!-- Main Content -->
-            <div class="col-lg-8">
-                <!-- Project Overview -->
-                <section class="card shadow-sm border-0 rounded-3 mb-4">
-                    <div class="card-body p-4">
-                        <h2 class="h4 fw-bold mb-4 d-flex align-items-center">
-                            <i class="bi bi-file-text text-primary me-3 fs-3"></i>
-                            <span>@L["ProjectDetail_Section_Details"]</span>
-                        </h2>
-                        <div class="project-content">
-                            <markdown>@project.FullDescription</markdown>
-                        </div>
-                    </div>
-                </section>
+            <div class="container position-relative" style="z-index: 10;">
+                <!-- Breadcrumb -->
+                <nav class="breadcrumb-nav">
+                    <a href="/" class="breadcrumb-link">
+                        <i class="bi bi-house-door"></i>
+                        <span>@L["ProjectDetail_Breadcrumb_Home"]</span>
+                    </a>
+                    <i class="bi bi-chevron-right breadcrumb-separator"></i>
+                    <a href="/projects" class="breadcrumb-link">
+                        <i class="bi bi-folder2-open"></i>
+                        <span>@L["ProjectDetail_Breadcrumb_Projects"]</span>
+                    </a>
+                    <i class="bi bi-chevron-right breadcrumb-separator"></i>
+                    <span class="breadcrumb-current">@project.Title</span>
+                </nav>
 
-                <!-- Key Features -->
-                @if (project.Features?.Any() == true)
-                {
-                    <section class="card shadow-sm border-0 rounded-3 mb-4">
-                        <div class="card-body p-4">
-                            <h2 class="h4 fw-bold mb-4 d-flex align-items-center">
-                                <i class="bi bi-list-check text-primary me-3 fs-3"></i>
-                                <span>@L["ProjectDetail_Section_Features"]</span>
-                            </h2>
-                            <div class="row g-3">
-                                @foreach (var feature in project.Features)
+                <div class="hero-content">
+                    <div class="row align-items-center">
+                        <div class="col-lg-8">
+                            <!-- Category & Date -->
+                            <div class="hero-meta">
+                                @if (!string.IsNullOrEmpty(project.Category))
                                 {
-                                    <div class="col-md-6">
-                                        <div class="feature-item p-3 bg-light rounded-2">
-                                            <i class="bi bi-check-circle-fill text-success me-2"></i>
-                                            <span>@feature</span>
-                                        </div>
-                                    </div>
+                                    <span class="meta-category">
+                                        <i class="bi bi-tag"></i>
+                                        @project.Category
+                                    </span>
+                                }
+                                <span class="meta-date">
+                                    <i class="bi bi-calendar3"></i>
+                                    @project.CreatedDate.ToString("MMMM yyyy")
+                                </span>
+                            </div>
+
+                            <!-- Title -->
+                            <h1 class="hero-title">@project.Title</h1>
+
+                            <!-- Description -->
+                            <p class="hero-description">@project.ShortDescription</p>
+
+                            <!-- Action Buttons -->
+                            <div class="hero-actions">
+                                @if (!string.IsNullOrEmpty(project.ProjectUrl))
+                                {
+                                    <a href="@project.ProjectUrl" target="_blank" class="action-btn primary">
+                                        <i class="bi bi-rocket-takeoff"></i>
+                                        <span>@L["ProjectDetail_Button_LiveDemo"]</span>
+                                    </a>
+                                }
+                                @if (!string.IsNullOrEmpty(project.GitHubUrl))
+                                {
+                                    <a href="@project.GitHubUrl" target="_blank" class="action-btn secondary">
+                                        <i class="bi bi-github"></i>
+                                        <span>@L["ProjectDetail_Button_GitHubRepo"]</span>
+                                    </a>
                                 }
                             </div>
                         </div>
-                    </section>
-                }
 
-                <!-- Challenges & Solutions -->
-                @if (!string.IsNullOrEmpty(project.Challenges) || !string.IsNullOrEmpty(project.Solutions))
-                {
-                    <section class="card shadow-sm border-0 rounded-3 mb-4">
-                        <div class="card-body p-4">
-                            <h2 class="h4 fw-bold mb-4 d-flex align-items-center">
-                                <i class="bi bi-lightbulb text-primary me-3 fs-3"></i>
-                                <span>@L["ProjectDetail_Section_ChallengesSolutions"]</span>
-                            </h2>
-
-                            @if (!string.IsNullOrEmpty(project.Challenges))
-                            {
-                                <div class="mb-4">
-                                    <h3 class="h5 text-primary mb-3">
-                                        <i class="bi bi-exclamation-triangle me-2"></i>@L["ProjectDetail_Section_Challenges"]
-                                    </h3>
-                                    <div class="project-content">
-                                        <markdown>@project.Challenges</markdown>
+                        <div class="col-lg-4">
+                            <!-- Quick Stats Card -->
+                            <div class="quick-stats-card">
+                                <div class="stat-item">
+                                    <div class="stat-icon">
+                                        <i class="bi bi-stack"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <span class="stat-value">@project.Technologies.Length</span>
+                                        <span class="stat-label">Technologies</span>
                                     </div>
                                 </div>
-                            }
-
-                            @if (!string.IsNullOrEmpty(project.Solutions))
-                            {
-                                <div>
-                                    <h3 class="h5 text-primary mb-3">
-                                        <i class="bi bi-check-circle me-2"></i>@L["ProjectDetail_Section_Solutions"]
-                                    </h3>
-                                    <div class="project-content">
-                                        <markdown>@project.Solutions</markdown>
-                                    </div>
-                                </div>
-                            }
-                        </div>
-                    </section>
-                }
-            </div>
-
-            <!-- Sidebar -->
-            <div class="col-lg-4">
-                <!-- Technology Stack -->
-                <section class="card shadow-sm border-0 rounded-3 mb-4">
-                    <div class="card-body p-4">
-                        <h2 class="h4 fw-bold mb-4 d-flex align-items-center">
-                            <i class="bi bi-stack text-primary me-3 fs-3"></i>
-                            <span>@L["ProjectDetail_Section_TechStack"]</span>
-                        </h2>
-                        <div class="tech-stack">
-                            @foreach (var tech in project.Technologies)
-                            {
-                                <div class="tech-item mb-3">
-                                    <div class="d-flex align-items-center">
-                                        <div class="tech-icon me-3">
-                                            <i class="bi bi-check-circle-fill text-primary"></i>
+                                @if (project.Features?.Any() == true)
+                                {
+                                    <div class="stat-item">
+                                        <div class="stat-icon">
+                                            <i class="bi bi-star"></i>
                                         </div>
-                                        <span class="fw-medium">@tech</span>
+                                        <div class="stat-content">
+                                            <span class="stat-value">@project.Features.Length</span>
+                                            <span class="stat-label">Features</span>
+                                        </div>
+                                    </div>
+                                }
+                                <div class="stat-item">
+                                    <div class="stat-icon">
+                                        <i class="bi bi-check-circle"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <span class="stat-value status">
+                                            @if (!string.IsNullOrEmpty(project.ProjectUrl))
+                                            {
+                                                <span class="status-live">@L["ProjectDetail_Status_Live"]</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="status-dev">@L["ProjectDetail_Status_Development"]</span>
+                                            }
+                                        </span>
+                                        <span class="stat-label">Status</span>
                                     </div>
                                 </div>
-                            }
+                            </div>
                         </div>
                     </div>
-                </section>
+                </div>
+            </div>
 
-                <!-- Project Gallery -->
-                @if (project.Screenshots?.Any() == true)
-                {
-                    <section class="card shadow-sm border-0 rounded-3 mb-4">
-                        <div class="card-body p-4">
-                            <h2 class="h4 fw-bold mb-4 d-flex align-items-center">
-                                <i class="bi bi-images text-primary me-3 fs-3"></i>
-                                <span>@L["ProjectDetail_Section_Screenshots"]</span>
-                            </h2>
-                            <div class="project-gallery">
-                                <div class="row g-2">
-                                    @foreach (var screenshot in project.Screenshots)
-                                    {
-                                        <div class="col-6">
-                                            <a href="#" @onclick="() => OpenLightbox(screenshot)"
-                                            @onclick:preventDefault
-                                               class="gallery-thumbnail">
-                                                <img src="@screenshot" class="img-fluid rounded" alt="Ekran görüntüsü">
-                                                <div class="gallery-overlay">
-                                                    <i class="bi bi-zoom-in text-white fs-4"></i>
+            <!-- Wave Separator -->
+            <div class="hero-wave">
+                <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+                    <path d="M0,64L60,58.7C120,53,240,43,360,48C480,53,600,75,720,80C840,85,960,75,1080,64C1200,53,1320,43,1380,37.3L1440,32L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"></path>
+                </svg>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <section class="project-content-section">
+            <div class="container">
+                <div class="row g-4">
+                    <!-- Main Content Column -->
+                    <div class="col-lg-8">
+                        <!-- Project Description -->
+                        <article class="content-card">
+                            <div class="card-header-custom">
+                                <div class="header-icon">
+                                    <i class="bi bi-file-earmark-text"></i>
+                                </div>
+                                <h2 class="header-title">@L["ProjectDetail_Section_Details"]</h2>
+                            </div>
+                            <div class="card-body-custom">
+                                <div class="markdown-content">
+                                    <markdown>@project.FullDescription</markdown>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Features Section -->
+                        @if (project.Features?.Any() == true)
+                        {
+                            <article class="content-card">
+                                <div class="card-header-custom">
+                                    <div class="header-icon features">
+                                        <i class="bi bi-lightning-charge"></i>
+                                    </div>
+                                    <h2 class="header-title">@L["ProjectDetail_Section_Features"]</h2>
+                                </div>
+                                <div class="card-body-custom">
+                                    <div class="features-grid">
+                                        @foreach (var feature in project.Features)
+                                        {
+                                            <div class="feature-card">
+                                                <div class="feature-icon">
+                                                    <i class="bi bi-check2-circle"></i>
                                                 </div>
-                                            </a>
+                                                <span class="feature-text">@feature</span>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </article>
+                        }
+
+                        <!-- Challenges & Solutions -->
+                        @if (!string.IsNullOrEmpty(project.Challenges) || !string.IsNullOrEmpty(project.Solutions))
+                        {
+                            <article class="content-card">
+                                <div class="card-header-custom">
+                                    <div class="header-icon challenges">
+                                        <i class="bi bi-puzzle"></i>
+                                    </div>
+                                    <h2 class="header-title">@L["ProjectDetail_Section_ChallengesSolutions"]</h2>
+                                </div>
+                                <div class="card-body-custom">
+                                    @if (!string.IsNullOrEmpty(project.Challenges))
+                                    {
+                                        <div class="challenge-block">
+                                            <div class="block-header challenges">
+                                                <i class="bi bi-exclamation-diamond"></i>
+                                                <h3>@L["ProjectDetail_Section_Challenges"]</h3>
+                                            </div>
+                                            <div class="block-content">
+                                                <markdown>@project.Challenges</markdown>
+                                            </div>
+                                        </div>
+                                    }
+
+                                    @if (!string.IsNullOrEmpty(project.Solutions))
+                                    {
+                                        <div class="solution-block">
+                                            <div class="block-header solutions">
+                                                <i class="bi bi-lightbulb"></i>
+                                                <h3>@L["ProjectDetail_Section_Solutions"]</h3>
+                                            </div>
+                                            <div class="block-content">
+                                                <markdown>@project.Solutions</markdown>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </article>
+                        }
+                    </div>
+
+                    <!-- Sidebar -->
+                    <div class="col-lg-4">
+                        <!-- Technology Stack -->
+                        <aside class="sidebar-card">
+                            <div class="sidebar-header">
+                                <div class="header-icon tech">
+                                    <i class="bi bi-layers"></i>
+                                </div>
+                                <h3>@L["ProjectDetail_Section_TechStack"]</h3>
+                            </div>
+                            <div class="sidebar-body">
+                                <div class="tech-list">
+                                    @foreach (var tech in project.Technologies)
+                                    {
+                                        <div class="tech-item">
+                                            <div class="tech-bullet"></div>
+                                            <span class="tech-name">@tech</span>
                                         </div>
                                     }
                                 </div>
                             </div>
-                        </div>
-                    </section>
-                }
+                        </aside>
 
-                <!-- Project Info -->
-                <section class="card shadow-sm border-0 rounded-3">
-                    <div class="card-body p-4">
-                        <h2 class="h4 fw-bold mb-4 d-flex align-items-center">
-                            <i class="bi bi-info-circle text-primary me-3 fs-3"></i>
-                            <span>@L["ProjectDetail_Section_Info"]</span>
-                        </h2>
-                        <div class="project-info">
-                            <div class="info-item mb-3">
-                                <div class="d-flex">
-                                    <div class="info-icon me-3 text-primary">
-                                        <i class="bi bi-calendar"></i>
+                        <!-- Screenshots Gallery -->
+                        @if (project.Screenshots?.Any() == true)
+                        {
+                            <aside class="sidebar-card">
+                                <div class="sidebar-header">
+                                    <div class="header-icon gallery">
+                                        <i class="bi bi-images"></i>
                                     </div>
-                                    <div>
-                                        <h3 class="h6 mb-1">@L["ProjectDetail_Info_CreatedDate"]</h3>
-                                        <p class="mb-0">@project.CreatedDate.ToString("dd MMMM yyyy")</p>
+                                    <h3>@L["ProjectDetail_Section_Screenshots"]</h3>
+                                </div>
+                                <div class="sidebar-body">
+                                    <div class="gallery-grid">
+                                        @foreach (var screenshot in project.Screenshots)
+                                        {
+                                            <div class="gallery-item" @onclick="() => OpenLightbox(screenshot)">
+                                                <img src="@screenshot" alt="Screenshot" loading="lazy">
+                                                <div class="gallery-overlay">
+                                                    <i class="bi bi-zoom-in"></i>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </aside>
+                        }
+
+                        <!-- Project Info -->
+                        <aside class="sidebar-card">
+                            <div class="sidebar-header">
+                                <div class="header-icon info">
+                                    <i class="bi bi-info-circle"></i>
+                                </div>
+                                <h3>@L["ProjectDetail_Section_Info"]</h3>
+                            </div>
+                            <div class="sidebar-body">
+                                <div class="info-list">
+                                    <div class="info-item">
+                                        <div class="info-icon">
+                                            <i class="bi bi-calendar-event"></i>
+                                        </div>
+                                        <div class="info-content">
+                                            <span class="info-label">@L["ProjectDetail_Info_CreatedDate"]</span>
+                                            <span class="info-value">@project.CreatedDate.ToString("dd MMMM yyyy")</span>
+                                        </div>
+                                    </div>
+                                    <div class="info-item">
+                                        <div class="info-icon">
+                                            <i class="bi bi-bookmark"></i>
+                                        </div>
+                                        <div class="info-content">
+                                            <span class="info-label">@L["ProjectDetail_Info_Category"]</span>
+                                            <span class="info-value">@project.Category</span>
+                                        </div>
+                                    </div>
+                                    <div class="info-item">
+                                        <div class="info-icon">
+                                            <i class="bi bi-activity"></i>
+                                        </div>
+                                        <div class="info-content">
+                                            <span class="info-label">@L["ProjectDetail_Info_Status"]</span>
+                                            <span class="info-value">
+                                                @if (!string.IsNullOrEmpty(project.ProjectUrl))
+                                                {
+                                                    <span class="status-badge live">
+                                                        <span class="status-dot"></span>
+                                                        @L["ProjectDetail_Status_Live"]
+                                                    </span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="status-badge dev">
+                                                        <span class="status-dot"></span>
+                                                        @L["ProjectDetail_Status_Development"]
+                                                    </span>
+                                                }
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="info-item mb-3">
-                                <div class="d-flex">
-                                    <div class="info-icon me-3 text-primary">
-                                        <i class="bi bi-tags"></i>
-                                    </div>
-                                    <div>
-                                        <h3 class="h6 mb-1">@L["ProjectDetail_Info_Category"]</h3>
-                                        <p class="mb-0">@project.Category</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="info-item">
-                                <div class="d-flex">
-                                    <div class="info-icon me-3 text-primary">
-                                        <i class="bi bi-check-circle"></i>
-                                    </div>
-                                    <div>
-                                        <h3 class="h6 mb-1">@L["ProjectDetail_Info_Status"]</h3>
-                                        <p class="mb-0">
-                                            @if (!string.IsNullOrEmpty(project.ProjectUrl))
-                                            {
-                                                <span class="badge bg-success">@L["ProjectDetail_Status_Live"]</span>
-                                            }
-                                            else
-                                            {
-                                                <span class="badge bg-secondary">@L["ProjectDetail_Status_Development"]</span>
-                                            }
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+                        </aside>
+
+                        <!-- Back to Projects -->
+                        <div class="back-to-projects">
+                            <a href="/projects" class="back-link">
+                                <i class="bi bi-arrow-left"></i>
+                                <span>@L["ProjectDetail_BackToProjects"]</span>
+                            </a>
                         </div>
                     </div>
-                </section>
+                </div>
             </div>
-        </div>
+        </section>
     </div>
 
     <!-- Lightbox Modal -->
     @if (showLightbox)
     {
-        <div class="lightbox-modal">
-            <div class="lightbox-container">
+        <div class="lightbox-modal" @onclick="CloseLightbox">
+            <div class="lightbox-content" @onclick:stopPropagation>
                 <button class="lightbox-close" @onclick="CloseLightbox">
                     <i class="bi bi-x-lg"></i>
                 </button>
-                <div class="lightbox-content">
-                    <img src="@currentScreenshot" class="lightbox-image" alt="Ekran görüntüsü">
+                <div class="lightbox-image-container">
+                    <img src="@currentScreenshot" alt="Screenshot" class="lightbox-image">
                 </div>
-                <div class="lightbox-footer">
-                    <button class="lightbox-nav" @onclick="PrevScreenshot"
-                            disabled="@(currentScreenshotIndex <= 0)">
+                <div class="lightbox-controls">
+                    <button class="lightbox-nav prev" @onclick="PrevScreenshot" disabled="@(currentScreenshotIndex <= 0)">
                         <i class="bi bi-chevron-left"></i>
                     </button>
-                    <span class="lightbox-counter">
-                        @(currentScreenshotIndex + 1) / @project.Screenshots.Length
-                    </span>
-                    <button class="lightbox-nav" @onclick="NextScreenshot"
-                            disabled="@(currentScreenshotIndex >= project.Screenshots.Length - 1)">
+                    <span class="lightbox-counter">@(currentScreenshotIndex + 1) / @project.Screenshots.Length</span>
+                    <button class="lightbox-nav next" @onclick="NextScreenshot" disabled="@(currentScreenshotIndex >= project.Screenshots.Length - 1)">
                         <i class="bi bi-chevron-right"></i>
                     </button>
                 </div>
@@ -348,191 +457,940 @@ else
 }
 
 <style>
-    /* Hero Section */
-    .project-hero {
-        background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-        position: relative;
-        overflow: hidden;
-    }
+    /* ========================================
+       PROJECT DETAIL - MODERN DESIGN SYSTEM
+       ======================================== */
 
-    .project-badge {
-        background-color: rgba(255, 255, 255, 0.1);
-        color: white;
-        padding: 8px 16px;
-        border-radius: 20px;
-        font-size: 1rem;
-        font-weight: 500;
-        display: inline-flex;
-        align-items: center;
-    }
-
-    /* Project Content */
-    .project-content {
-        line-height: 1.8;
-    }
-
-        .project-content img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            margin: 1rem 0;
-        }
-
-    /* Feature Items */
-    .feature-item {
-        transition: all 0.3s ease;
-        border-left: 3px solid #3b82f6;
-    }
-
-        .feature-item:hover {
-            background-color: rgba(59, 130, 246, 0.05);
-            transform: translateX(5px);
-        }
-
-    /* Technology Stack */
-    .tech-item {
-        padding: 8px 12px;
-        border-radius: 6px;
-        background-color: #f8f9fa;
-        transition: all 0.3s ease;
-    }
-
-        .tech-item:hover {
-            background-color: #e9ecef;
-            transform: translateX(5px);
-        }
-
-    .tech-icon {
-        width: 24px;
-        height: 24px;
+    /* Loading & Error States */
+    .project-loading-wrapper {
+        min-height: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;
+        background: linear-gradient(180deg, #0a0f1e 0%, #0d1424 100%);
     }
 
-    /* Gallery */
-    .gallery-thumbnail {
+    .loading-container, .error-container {
+        text-align: center;
+        padding: 3rem;
+    }
+
+    .loading-spinner-large {
         position: relative;
-        display: block;
-        border-radius: 6px;
+        width: 120px;
+        height: 120px;
+        margin: 0 auto 2rem;
+    }
+
+    .spinner-orbit {
+        position: absolute;
+        inset: 0;
+        border: 2px solid transparent;
+        border-top-color: #6366f1;
+        border-radius: 50%;
+        animation: orbit 2s linear infinite;
+    }
+
+    .spinner-orbit:nth-child(2) {
+        inset: 15px;
+        border-top-color: #8b5cf6;
+        animation-duration: 3s;
+        animation-direction: reverse;
+    }
+
+    .spinner-orbit:nth-child(3) {
+        inset: 30px;
+        border-top-color: #06b6d4;
+        animation-duration: 4s;
+    }
+
+    .spinner-core {
+        position: absolute;
+        inset: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        color: #a5b4fc;
+    }
+
+    @@keyframes orbit {
+        to { transform: rotate(360deg); }
+    }
+
+    .loading-text {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 1rem;
+    }
+
+    /* Error State */
+    .error-icon-wrapper {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        margin: 0 auto 2rem;
+    }
+
+    .error-icon-bg {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(239, 68, 68, 0.2) 0%, rgba(239, 68, 68, 0.1) 100%);
+        border-radius: 50%;
+        animation: pulse-error 2s ease-in-out infinite;
+    }
+
+    .error-icon {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        color: #ef4444;
+    }
+
+    @@keyframes pulse-error {
+        0%, 100% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.1); opacity: 0.7; }
+    }
+
+    .error-title {
+        font-size: 1.5rem;
+        color: #fff;
+        margin-bottom: 0.5rem;
+    }
+
+    .error-message {
+        color: rgba(255, 255, 255, 0.5);
+        margin-bottom: 2rem;
+    }
+
+    .back-button {
+        padding: 12px 28px;
+        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        border: none;
+        border-radius: 50px;
+        color: #fff;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .back-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+    }
+
+    /* Project Detail Wrapper */
+    .project-detail-wrapper {
+        background: #0d1424;
+        min-height: 100vh;
+    }
+
+    /* Hero Section */
+    .project-hero-section {
+        position: relative;
+        min-height: 70vh;
+        display: flex;
+        align-items: center;
         overflow: hidden;
+        padding: 6rem 0 8rem;
+    }
+
+    .hero-background {
+        position: absolute;
+        inset: 0;
+    }
+
+    .hero-image-container {
+        position: absolute;
+        inset: 0;
+    }
+
+    .hero-bg-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.15;
+        filter: blur(3px);
+    }
+
+    .hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: 
+            linear-gradient(180deg, rgba(10, 15, 30, 0.7) 0%, rgba(13, 20, 36, 0.95) 100%),
+            radial-gradient(ellipse 80% 50% at 50% -10%, rgba(99, 102, 241, 0.3) 0%, transparent 60%);
+    }
+
+    .hero-particles {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+    }
+
+    .particle-dot {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: rgba(99, 102, 241, 0.5);
+        border-radius: 50%;
+        left: var(--x);
+        top: var(--y);
+        animation: twinkle 3s ease-in-out infinite;
+        animation-delay: var(--delay);
+    }
+
+    @@keyframes twinkle {
+        0%, 100% { opacity: 0.2; transform: scale(1); }
+        50% { opacity: 1; transform: scale(1.5); }
+    }
+
+    /* Breadcrumb */
+    .breadcrumb-nav {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .breadcrumb-link {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: rgba(255, 255, 255, 0.5);
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: color 0.3s ease;
+    }
+
+    .breadcrumb-link:hover {
+        color: #a5b4fc;
+    }
+
+    .breadcrumb-separator {
+        color: rgba(255, 255, 255, 0.3);
+        font-size: 0.75rem;
+    }
+
+    .breadcrumb-current {
+        color: #a5b4fc;
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+
+    /* Hero Content */
+    .hero-content {
+        position: relative;
+    }
+
+    .hero-meta {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+        flex-wrap: wrap;
+    }
+
+    .meta-category, .meta-date {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 6px 16px;
+        background: rgba(99, 102, 241, 0.1);
+        border: 1px solid rgba(99, 102, 241, 0.2);
+        border-radius: 30px;
+        color: #a5b4fc;
+        font-size: 0.85rem;
+    }
+
+    .hero-title {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-weight: 800;
+        color: #fff;
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+    }
+
+    .hero-description {
+        font-size: 1.125rem;
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.7;
+        margin-bottom: 2rem;
+        max-width: 600px;
+    }
+
+    .hero-actions {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .action-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 14px 28px;
+        border-radius: 50px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .action-btn.primary {
+        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        color: #fff;
+        box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+    }
+
+    .action-btn.primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 35px rgba(99, 102, 241, 0.5);
+    }
+
+    .action-btn.secondary {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #fff;
+        backdrop-filter: blur(10px);
+    }
+
+    .action-btn.secondary:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    /* Quick Stats Card */
+    .quick-stats-card {
+        background: rgba(30, 41, 59, 0.6);
+        border: 1px solid rgba(99, 102, 241, 0.2);
+        border-radius: 20px;
+        padding: 1.5rem;
+        backdrop-filter: blur(20px);
+    }
+
+    .quick-stats-card .stat-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem 0;
+        border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+    }
+
+    .quick-stats-card .stat-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    .quick-stats-card .stat-item:first-child {
+        padding-top: 0;
+    }
+
+    .quick-stats-card .stat-icon {
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%);
+        border-radius: 12px;
+        color: #a5b4fc;
+        font-size: 1.25rem;
+    }
+
+    .quick-stats-card .stat-content {
+        flex: 1;
+    }
+
+    .quick-stats-card .stat-value {
+        display: block;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #fff;
+        line-height: 1;
+    }
+
+    .quick-stats-card .stat-value.status {
+        font-size: 1rem;
+    }
+
+    .status-live {
+        color: #22c55e;
+    }
+
+    .status-dev {
+        color: #f59e0b;
+    }
+
+    .quick-stats-card .stat-label {
+        display: block;
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.5);
+        margin-top: 0.25rem;
+    }
+
+    /* Hero Wave */
+    .hero-wave {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        line-height: 0;
+    }
+
+    .hero-wave svg {
+        width: 100%;
+        height: 120px;
+    }
+
+    .hero-wave path {
+        fill: #0d1424;
+    }
+
+    /* Content Section */
+    .project-content-section {
+        background: #0d1424;
+        padding: 4rem 0 6rem;
+    }
+
+    /* Content Card */
+    .content-card {
+        background: linear-gradient(145deg, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.8) 100%);
+        border: 1px solid rgba(99, 102, 241, 0.1);
+        border-radius: 20px;
+        overflow: hidden;
+        margin-bottom: 2rem;
+        transition: all 0.3s ease;
+    }
+
+    .content-card:hover {
+        border-color: rgba(99, 102, 241, 0.2);
+    }
+
+    .card-header-custom {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1.5rem 2rem;
+        background: rgba(15, 23, 42, 0.5);
+        border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+    }
+
+    .header-icon {
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(99, 102, 241, 0.1) 100%);
+        border-radius: 12px;
+        color: #6366f1;
+        font-size: 1.25rem;
+    }
+
+    .header-icon.features {
+        background: linear-gradient(135deg, rgba(34, 197, 94, 0.2) 0%, rgba(34, 197, 94, 0.1) 100%);
+        color: #22c55e;
+    }
+
+    .header-icon.challenges {
+        background: linear-gradient(135deg, rgba(245, 158, 11, 0.2) 0%, rgba(245, 158, 11, 0.1) 100%);
+        color: #f59e0b;
+    }
+
+    .header-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #fff;
+        margin: 0;
+    }
+
+    .card-body-custom {
+        padding: 2rem;
+    }
+
+    /* Markdown Content */
+    .markdown-content {
+        color: rgba(255, 255, 255, 0.8);
+        line-height: 1.8;
+    }
+
+    .markdown-content p {
+        margin-bottom: 1rem;
+    }
+
+    .markdown-content h1, .markdown-content h2, .markdown-content h3 {
+        color: #fff;
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .markdown-content ul, .markdown-content ol {
+        padding-left: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .markdown-content li {
+        margin-bottom: 0.5rem;
+    }
+
+    .markdown-content code {
+        background: rgba(99, 102, 241, 0.1);
+        padding: 2px 8px;
+        border-radius: 4px;
+        color: #a5b4fc;
+    }
+
+    .markdown-content pre {
+        background: rgba(15, 23, 42, 0.8);
+        padding: 1rem;
+        border-radius: 10px;
+        overflow-x: auto;
+        margin: 1rem 0;
+    }
+
+    .markdown-content a {
+        color: #6366f1;
+    }
+
+    .markdown-content a:hover {
+        color: #8b5cf6;
+    }
+
+    /* Features Grid */
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1rem;
+    }
+
+    .feature-card {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem 1.25rem;
+        background: rgba(34, 197, 94, 0.05);
+        border: 1px solid rgba(34, 197, 94, 0.1);
+        border-radius: 12px;
+        transition: all 0.3s ease;
+    }
+
+    .feature-card:hover {
+        background: rgba(34, 197, 94, 0.1);
+        border-color: rgba(34, 197, 94, 0.2);
+        transform: translateX(5px);
+    }
+
+    .feature-icon {
+        color: #22c55e;
+        font-size: 1.25rem;
+    }
+
+    .feature-text {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 0.95rem;
+    }
+
+    /* Challenges & Solutions Blocks */
+    .challenge-block, .solution-block {
+        margin-bottom: 2rem;
+    }
+
+    .challenge-block:last-child, .solution-block:last-child {
+        margin-bottom: 0;
+    }
+
+    .block-header {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+    }
+
+    .block-header.challenges {
+        color: #ef4444;
+    }
+
+    .block-header.solutions {
+        color: #22c55e;
+    }
+
+    .block-header i {
+        font-size: 1.25rem;
+    }
+
+    .block-header h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin: 0;
+    }
+
+    .block-content {
+        padding-left: 2rem;
+        border-left: 2px solid rgba(99, 102, 241, 0.2);
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* Sidebar Cards */
+    .sidebar-card {
+        background: linear-gradient(145deg, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.8) 100%);
+        border: 1px solid rgba(99, 102, 241, 0.1);
+        border-radius: 20px;
+        overflow: hidden;
+        margin-bottom: 1.5rem;
+    }
+
+    .sidebar-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1.25rem 1.5rem;
+        background: rgba(15, 23, 42, 0.5);
+        border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+    }
+
+    .sidebar-header .header-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .sidebar-header .header-icon.tech {
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(99, 102, 241, 0.1) 100%);
+        color: #6366f1;
+    }
+
+    .sidebar-header .header-icon.gallery {
+        background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(139, 92, 246, 0.1) 100%);
+        color: #8b5cf6;
+    }
+
+    .sidebar-header .header-icon.info {
+        background: linear-gradient(135deg, rgba(6, 182, 212, 0.2) 0%, rgba(6, 182, 212, 0.1) 100%);
+        color: #06b6d4;
+    }
+
+    .sidebar-header h3 {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #fff;
+        margin: 0;
+    }
+
+    .sidebar-body {
+        padding: 1.5rem;
+    }
+
+    /* Tech List */
+    .tech-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .tech-item {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.75rem 1rem;
+        background: rgba(99, 102, 241, 0.05);
+        border-radius: 10px;
+        transition: all 0.3s ease;
+    }
+
+    .tech-item:hover {
+        background: rgba(99, 102, 241, 0.1);
+        transform: translateX(5px);
+    }
+
+    .tech-bullet {
+        width: 8px;
+        height: 8px;
+        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        border-radius: 50%;
+    }
+
+    .tech-name {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 0.9rem;
+    }
+
+    /* Gallery Grid */
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+    }
+
+    .gallery-item {
+        position: relative;
+        border-radius: 10px;
+        overflow: hidden;
+        cursor: pointer;
+        aspect-ratio: 4/3;
+    }
+
+    .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover img {
+        transform: scale(1.1);
     }
 
     .gallery-overlay {
         position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
+        inset: 0;
+        background: rgba(99, 102, 241, 0.7);
         display: flex;
         align-items: center;
         justify-content: center;
         opacity: 0;
-        transition: all 0.3s ease;
+        transition: opacity 0.3s ease;
     }
 
-    .gallery-thumbnail:hover .gallery-overlay {
+    .gallery-item:hover .gallery-overlay {
         opacity: 1;
     }
 
-    .gallery-thumbnail img {
+    .gallery-overlay i {
+        font-size: 1.5rem;
+        color: #fff;
+    }
+
+    /* Info List */
+    .info-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .info-item {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .info-icon {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(6, 182, 212, 0.1);
+        border-radius: 10px;
+        color: #06b6d4;
+        font-size: 1rem;
+        flex-shrink: 0;
+    }
+
+    .info-content {
+        flex: 1;
+    }
+
+    .info-label {
+        display: block;
+        font-size: 0.75rem;
+        color: rgba(255, 255, 255, 0.5);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 0.25rem;
+    }
+
+    .info-value {
+        color: #fff;
+        font-size: 0.9rem;
+    }
+
+    .status-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 500;
+    }
+
+    .status-badge.live {
+        background: rgba(34, 197, 94, 0.1);
+        color: #22c55e;
+    }
+
+    .status-badge.dev {
+        background: rgba(245, 158, 11, 0.1);
+        color: #f59e0b;
+    }
+
+    .status-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: currentColor;
+        animation: pulse-status 2s ease-in-out infinite;
+    }
+
+    @@keyframes pulse-status {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.5; }
+    }
+
+    /* Back to Projects */
+    .back-to-projects {
+        margin-top: 2rem;
+    }
+
+    .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 12px 24px;
+        background: rgba(99, 102, 241, 0.1);
+        border: 1px solid rgba(99, 102, 241, 0.2);
+        border-radius: 50px;
+        color: #a5b4fc;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+
+    .back-link:hover {
+        background: rgba(99, 102, 241, 0.2);
+        border-color: rgba(99, 102, 241, 0.3);
+        color: #fff;
+    }
+
+    .back-link i {
         transition: transform 0.3s ease;
     }
 
-    .gallery-thumbnail:hover img {
-        transform: scale(1.05);
+    .back-link:hover i {
+        transform: translateX(-5px);
     }
 
     /* Lightbox */
     .lightbox-modal {
         position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.9);
-        z-index: 1050;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.95);
+        z-index: 9999;
         display: flex;
         align-items: center;
         justify-content: center;
-        animation: fadeIn 0.3s ease;
+        padding: 2rem;
+        animation: fade-in 0.3s ease;
     }
 
-    .lightbox-container {
+    @@keyframes fade-in {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    .lightbox-content {
         position: relative;
-        max-width: 90%;
+        max-width: 90vw;
         max-height: 90vh;
-        width: auto;
     }
 
     .lightbox-close {
         position: absolute;
-        top: -40px;
+        top: -50px;
         right: 0;
-        background: none;
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.1);
         border: none;
-        color: white;
-        font-size: 1.5rem;
+        border-radius: 50%;
+        color: #fff;
+        font-size: 1.25rem;
         cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .lightbox-close:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    .lightbox-image-container {
+        border-radius: 15px;
+        overflow: hidden;
     }
 
     .lightbox-image {
-        max-height: 80vh;
-        width: auto;
-        border-radius: 8px;
+        max-width: 85vw;
+        max-height: 75vh;
+        object-fit: contain;
     }
 
-    .lightbox-footer {
+    .lightbox-controls {
         display: flex;
-        justify-content: center;
         align-items: center;
-        margin-top: 1rem;
-        color: white;
+        justify-content: center;
+        gap: 2rem;
+        margin-top: 1.5rem;
     }
 
     .lightbox-nav {
-        background: none;
+        width: 50px;
+        height: 50px;
+        background: rgba(255, 255, 255, 0.1);
         border: none;
-        color: white;
-        font-size: 1.5rem;
+        border-radius: 50%;
+        color: #fff;
+        font-size: 1.25rem;
         cursor: pointer;
-        margin: 0 1rem;
+        transition: all 0.3s ease;
     }
 
-        .lightbox-nav:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
+    .lightbox-nav:hover:not(:disabled) {
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    .lightbox-nav:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+    }
 
     .lightbox-counter {
-        margin: 0 1rem;
-        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.9rem;
     }
 
-    @@keyframes fadeIn {
-        from {
-            opacity: 0;
+    /* Responsive */
+    @@media (max-width: 992px) {
+        .project-hero-section {
+            min-height: auto;
+            padding: 4rem 0 6rem;
         }
 
-        to {
-            opacity: 1;
+        .hero-title {
+            font-size: 2rem;
+        }
+
+        .quick-stats-card {
+            margin-top: 2rem;
         }
     }
 
-    /* Responsive Adjustments */
     @@media (max-width: 768px) {
-        .project-hero {
-            padding-top: 3rem;
-            padding-bottom: 3rem;
+        .hero-actions {
+            flex-direction: column;
         }
 
-            .project-hero h1 {
-                font-size: 2rem;
-            }
+        .action-btn {
+            width: 100%;
+            justify-content: center;
+        }
 
-        .lightbox-container {
-            max-width: 95%;
+        .features-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .card-body-custom {
+            padding: 1.5rem;
         }
     }
 </style>
