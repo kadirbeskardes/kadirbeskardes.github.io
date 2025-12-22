@@ -20,17 +20,17 @@
     <div class="container position-relative py-5" style="z-index: 2;">
         <div class="row align-items-center min-vh-60 py-5">
             <div class="col-lg-7">
-                <div class="badge bg-primary bg-opacity-10 text-primary mb-3 px-3 py-2 rounded-pill">@L["About_Badge"]</div>
-                <h1 class="display-3 fw-bold mb-4 animate__animated animate__fadeInDown">@L["About_Name"]</h1>
-                <p class="lead mb-4 animate__animated animate__fadeIn animate__delay-1s">@L["About_Subtitle"]</p>
-                <p class="mb-5 animate__animated animate__fadeIn animate__delay-1s">
+                <div class="badge bg-primary bg-opacity-10 text-primary mb-3 px-3 py-2 rounded-pill hero-badge-mobile">@L["About_Badge"]</div>
+                <h1 class="display-3 fw-bold mb-4 animate__animated animate__fadeInDown about-hero-title">@L["About_Name"]</h1>
+                <p class="lead mb-4 animate__animated animate__fadeIn animate__delay-1s about-hero-subtitle">@L["About_Subtitle"]</p>
+                <p class="mb-5 animate__animated animate__fadeIn animate__delay-1s about-hero-description">
                     @L["About_Description"]
                 </p>
-                <div class="d-flex flex-wrap gap-3 animate__animated animate__fadeIn animate__delay-2s">
-                    <a href="contact" class="btn btn-primary btn-lg px-4 rounded-pill">
+                <div class="d-flex flex-wrap gap-3 animate__animated animate__fadeIn animate__delay-2s about-hero-buttons">
+                    <a href="contact" class="btn btn-primary btn-lg px-4 rounded-pill about-hero-btn">
                         <i class="bi bi-envelope me-2"></i>@L["About_ContactButton"]
                     </a>
-                    <a href="files/CV Kadir Beskardes.pdf" download class="btn btn-outline-light btn-lg px-4 rounded-pill">
+                    <a href="files/CV Kadir Beskardes.pdf" download class="btn btn-outline-light btn-lg px-4 rounded-pill about-hero-btn">
                         <i class="bi bi-download me-2"></i>@L["About_DownloadCV"]
                     </a>
                 </div>
@@ -54,128 +54,128 @@
 </section>
 
 <!-- Main Content -->
-<div id="main-content" class="container py-5">
+<div id="main-content" class="container py-5 about-main-content">
     <div class="row g-4">
         <!-- Left Column - Profile Card -->
         <div class="col-lg-4">
-            <div class="card border-0 shadow-lg h-100 sticky-top" style="top: 20px;">
+            <div class="card border-0 shadow-lg h-100 about-profile-card" style="position: sticky; top: 20px;">
                 <div class="card-body p-4">
                     <div class="profile-image-container mx-auto mb-4">
                         <img src="img/pp.jpg" alt="@L["About_Name"]" class="img-fluid rounded-circle shadow border border-4 border-white">
                     </div>
-                    <h3 class="card-title fw-bold text-center mb-2">@L["About_Name"]</h3>
-                    <p class="text-muted text-center mb-3">@L["About_JobTitle"]</p>
+                    <h3 class="card-title fw-bold text-center mb-2 profile-name">@L["About_Name"]</h3>
+                    <p class="text-muted text-center mb-3 profile-job-title">@L["About_JobTitle"]</p>
 
-                    <div class="d-flex justify-content-center gap-3 mb-4">
+                    <div class="d-flex justify-content-center gap-3 mb-4 profile-social-links">
                         <a href="https://github.com/kadirbeskardes" class="social-icon bg-github"><i class="bi bi-github"></i></a>
                         <a href="https://www.linkedin.com/in/kadirbeskardes/" class="social-icon bg-linkedin"><i class="bi bi-linkedin"></i></a>
                         <a href="https://x.com/beskardeskadirr" class="social-icon bg-twitter"><i class="bi bi-twitter-x"></i></a>
                         <a href="#" class="social-icon bg-instagram"><i class="bi bi-instagram"></i></a>
                     </div>
 
-                    <div class="mb-4">
+                    <div class="mb-4 profile-contact-info">
                         <div class="d-flex align-items-center mb-3">
-                            <i class="bi bi-geo-alt-fill text-primary me-2 fs-5"></i>
-                            <span>@L["About_Location"]</span>
+                            <i class="bi bi-geo-alt-fill text-primary me-2 fs-5 flex-shrink-0"></i>
+                            <span class="contact-text">@L["About_Location"]</span>
                         </div>
                         <div class="d-flex align-items-center mb-3">
-                            <i class="bi bi-envelope-fill text-primary me-2 fs-5"></i>
-                            <span>kadir.beskardes11@gmail.com</span>
+                            <i class="bi bi-envelope-fill text-primary me-2 fs-5 flex-shrink-0"></i>
+                            <span class="contact-text email-text">kadir.beskardes11@gmail.com</span>
                         </div>
                         <div class="d-flex align-items-center">
-                            <i class="bi bi-phone-fill text-primary me-2 fs-5"></i>
-                            <span>+90 507 275 67 47</span>
+                            <i class="bi bi-phone-fill text-primary me-2 fs-5 flex-shrink-0"></i>
+                            <span class="contact-text">+90 507 275 67 47</span>
                         </div>
                     </div>
 
                     <div class="skills-section mb-4">
-                        <h5 class="fw-bold mb-3"><i class="bi bi-code-slash me-2"></i>@L["About_TechnicalSkillsTitle"]</h5>
-                        <div class="d-flex flex-wrap gap-2">
+                        <h5 class="fw-bold mb-3 skills-section-title"><i class="bi bi-code-slash me-2"></i>@L["About_TechnicalSkillsTitle"]</h5>
+                        <div class="d-flex flex-wrap gap-2 skills-badges">
                             <!-- .NET Teknolojileri -->
-                            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill">
+                            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill skill-badge">
                                 <i class="fab fa-microsoft me-1"></i> .NET
                             </span>
-                            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill">
+                            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill skill-badge">
                                 <i class="fas fa-code me-1"></i> C#
                             </span>
-                            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill">
+                            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill skill-badge">
                                 <i class="fas fa-mobile-alt me-1"></i> Xamarin
                             </span>
 
                             <!-- Veritabanı -->
-                            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill">
+                            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill skill-badge">
                                 <i class="fas fa-database me-1"></i> SQL
                             </span>
 
                             <!-- Python -->
-                            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill">
+                            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill skill-badge">
                                 <i class="fab fa-python me-1"></i> Python
                             </span>
 
                             <!-- Frontend -->
-                            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill">
+                            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill skill-badge">
                                 <i class="fab fa-html5 me-1"></i> HTML
                             </span>
-                            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill">
+                            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill skill-badge">
                                 <i class="fab fa-css3-alt me-1"></i> CSS
                             </span>
 
                             <!-- Design Patterns -->
-                            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill">
+                            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill skill-badge">
                                 <i class="fas fa-cubes me-1"></i> Unit of Work
                             </span>
-                            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill">
+                            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill skill-badge">
                                 <i class="fas fa-boxes me-1"></i> Repository Pattern
                             </span>
-                            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill">
+                            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill skill-badge">
                                 <i class="fas fa-project-diagram me-1"></i> EAV Pattern
                             </span>
                         </div>
                     </div>
 
                     <div class="references-section mb-4">
-                        <h5 class="fw-bold mb-3"><i class="bi bi-person-lines-fill me-2"></i>@L["About_ReferencesTitle"]</h5>
+                        <h5 class="fw-bold mb-3 references-title"><i class="bi bi-person-lines-fill me-2"></i>@L["About_ReferencesTitle"]</h5>
                         <div class="reference-item mb-3">
-                            <h6 class="fw-bold mb-1">@L["About_Reference_1_Name"]</h6>
-                            <p class="text-muted mb-1">
+                            <h6 class="fw-bold mb-1 reference-name">@L["About_Reference_1_Name"]</h6>
+                            <p class="text-muted mb-1 reference-position">
                                 @L["About_Reference_1_Title"]
                             </p>
-                            <p class="small mb-1">+90 554 774 69 09, alkanfatih@hotmail.com.tr</p>
+                            <p class="small mb-1 reference-contact">+90 554 774 69 09, alkanfatih@hotmail.com.tr</p>
                         </div>
                     </div>
 
                     <div class="certificates-section">
-                        <h5 class="fw-bold mb-3"><i class="bi bi-award-fill me-2"></i>@L["About_CertificatesTitle"]</h5>
+                        <h5 class="fw-bold mb-3 certificates-title"><i class="bi bi-award-fill me-2"></i>@L["About_CertificatesTitle"]</h5>
 
                         <div class="certificate-item mb-3 p-3 bg-light rounded-3">
-                            <div class="d-flex justify-content-between align-items-start">
-                                <div>
-                                    <h6 class="fw-bold mb-1">
+                            <div class="d-flex justify-content-between align-items-start flex-wrap gap-2">
+                                <div class="certificate-info">
+                                    <h6 class="fw-bold mb-1 certificate-name">
                                         <a href="files/KADİR BEŞKARDEŞ Katılım Sertifikası BilgeAdam.pdf" target="_blank" class="text-decoration-none">
                                             <i class="bi bi-link-45deg"></i> @L["About_Certificate_1_Name"]
                                         </a>
                                     </h6>
-                                    <p class="text-muted mb-1 small">
+                                    <p class="text-muted mb-1 small certificate-issuer">
                                         <i class="bi bi-building"></i> @L["About_Certificate_1_Issuer"]
                                     </p>
                                 </div>
-                                <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-1">2025</span>
+                                <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-1 certificate-year">2025</span>
                             </div>
                         </div>
 
                         <div class="certificate-item mb-3 p-3 bg-light rounded-3">
-                            <div class="d-flex justify-content-between align-items-start">
-                                <div>
-                                    <h6 class="fw-bold mb-1">
+                            <div class="d-flex justify-content-between align-items-start flex-wrap gap-2">
+                                <div class="certificate-info">
+                                    <h6 class="fw-bold mb-1 certificate-name">
                                         <a href="files/C#_Programlama_Sertifika.pdf" target="_blank" class="text-decoration-none">
                                             <i class="bi bi-link-45deg"></i> @L["About_Certificate_2_Name"]
                                         </a>
                                     </h6>
-                                    <p class="text-muted mb-1 small">
+                                    <p class="text-muted mb-1 small certificate-issuer">
                                         <i class="bi bi-building"></i> @L["About_Certificate_2_Issuer"]
                                     </p>
                                 </div>
-                                <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-1">2024</span>
+                                <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-1 certificate-year">2024</span>
                             </div>
                         </div>
                     </div>
@@ -184,50 +184,50 @@
         </div>
 
         <div class="col-lg-8">
-            <div class="card border-0 shadow-sm mb-4">
+            <div class="card border-0 shadow-sm mb-4 about-card">
                 <div class="card-body p-4">
-                    <h3 class="card-title fw-bold mb-4 d-flex align-items-center">
+                    <h3 class="card-title fw-bold mb-4 d-flex align-items-center about-card-title">
                         <span class="icon-circle bg-primary-light me-3"><i class="bi bi-person-lines-fill text-primary"></i></span>
                         <span>@L["About_ProfessionalSummaryTitle"]</span>
                     </h3>
-                    <div class="ps-4">
-                        <p class="card-text fs-5 mb-4">
+                    <div class="ps-4 about-card-content">
+                        <p class="card-text fs-5 mb-4 summary-text">
                             @L["About_ProfessionalSummaryText1"]
                         </p>
-                        <p class="card-text fs-5 mb-4">
+                        <p class="card-text fs-5 mb-4 summary-text">
                             @L["About_ProfessionalSummaryText2"]
                         </p>
-                        <div class="row g-3">
+                        <div class="row g-3 skills-detail-row">
                             <div class="col-md-6">
-                                <div class="d-flex">
-                                    <div class="me-3 text-primary">
+                                <div class="d-flex skill-detail-item">
+                                    <div class="me-3 text-primary flex-shrink-0">
                                         <i class="bi bi-check-circle-fill fs-5"></i>
                                     </div>
                                     <div>
-                                        <h6 class="fw-bold mb-1">@L["About_Skill_Backend"]</h6>
-                                        <p class="text-muted mb-0">C#, Python, .NET Framework, .NET Core, Web API</p>
+                                        <h6 class="fw-bold mb-1 skill-detail-title">@L["About_Skill_Backend"]</h6>
+                                        <p class="text-muted mb-0 skill-detail-text">C#, Python, .NET Framework, .NET Core, Web API</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="d-flex">
-                                    <div class="me-3 text-primary">
+                                <div class="d-flex skill-detail-item">
+                                    <div class="me-3 text-primary flex-shrink-0">
                                         <i class="bi bi-check-circle-fill fs-5"></i>
                                     </div>
                                     <div>
-                                        <h6 class="fw-bold mb-1">@L["About_Skill_Frontend"]</h6>
-                                        <p class="text-muted mb-0">Blazor, Razor</p>
+                                        <h6 class="fw-bold mb-1 skill-detail-title">@L["About_Skill_Frontend"]</h6>
+                                        <p class="text-muted mb-0 skill-detail-text">Blazor, Razor</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="d-flex">
-                                    <div class="me-3 text-primary">
+                                <div class="d-flex skill-detail-item">
+                                    <div class="me-3 text-primary flex-shrink-0">
                                         <i class="bi bi-check-circle-fill fs-5"></i>
                                     </div>
                                     <div>
-                                        <h6 class="fw-bold mb-1">@L["About_Skill_Database"]</h6>
-                                        <p class="text-muted mb-0">SQL Server, MySQL</p>
+                                        <h6 class="fw-bold mb-1 skill-detail-title">@L["About_Skill_Database"]</h6>
+                                        <p class="text-muted mb-0 skill-detail-text">SQL Server, MySQL</p>
                                     </div>
                                 </div>
                             </div>
@@ -238,9 +238,9 @@
             </div>
 
             <!-- Experience Section -->
-            <div class="card border-0 shadow-sm mb-4">
+            <div class="card border-0 shadow-sm mb-4 about-card">
                 <div class="card-body p-4">
-                    <h3 class="card-title fw-bold mb-4 d-flex align-items-center">
+                    <h3 class="card-title fw-bold mb-4 d-flex align-items-center about-card-title">
                         <span class="icon-circle bg-primary-light me-3"><i class="bi bi-briefcase-fill text-primary"></i></span>
                         <span>@L["About_ExperienceTitle"]</span>
                     </h3>
@@ -250,11 +250,11 @@
                         <div class="timeline-item position-relative pb-4">
                             <div class="timeline-period bg-primary text-white">@L["About_Experience_1_Date"]</div>
                             <div class="timeline-content p-4 rounded-3">
-                                <h5 class="fw-bold mb-1">@L["About_Experience_1_Title"]</h5>
-                                <h6 class="text-primary mb-2">
+                                <h5 class="fw-bold mb-1 timeline-job-title">@L["About_Experience_1_Title"]</h5>
+                                <h6 class="text-primary mb-2 timeline-company">
                                     @L["About_Experience_1_Company"]
                                 </h6>
-                                <ul class="mb-0 ps-3">
+                                <ul class="mb-0 ps-3 timeline-description">
                                     <li>@L["About_Experience_1_Desc1"]</li>
                                     <li>@L["About_Experience_1_Desc2"]</li>
                                     <li>@L["About_Experience_1_Desc3"]</li>
@@ -266,11 +266,11 @@
                         <div class="timeline-item position-relative pb-4">
                             <div class="timeline-period bg-primary text-white">@L["About_Experience_2_Date"]</div>
                             <div class="timeline-content p-4 rounded-3">
-                                <h5 class="fw-bold mb-1">@L["About_Experience_2_Title"]</h5>
-                                <h6 class="text-primary mb-2">
+                                <h5 class="fw-bold mb-1 timeline-job-title">@L["About_Experience_2_Title"]</h5>
+                                <h6 class="text-primary mb-2 timeline-company">
                                     @L["About_Experience_2_Company"]
                                 </h6>
-                                <ul class="mb-0 ps-3">
+                                <ul class="mb-0 ps-3 timeline-description">
                                     <li>@L["About_Experience_2_Desc1"]</li>
                                     <li>@L["About_Experience_2_Desc2"]</li>
                                     <li>@L["About_Experience_2_Desc3"]</li>
@@ -283,11 +283,11 @@
                         <div class="timeline-item position-relative pb-4">
                             <div class="timeline-period bg-primary text-white">@L["About_Experience_3_Date"]</div>
                             <div class="timeline-content p-4 rounded-3">
-                                <h5 class="fw-bold mb-1">@L["About_Experience_3_Title"]</h5>
-                                <h6 class="text-primary mb-2">
+                                <h5 class="fw-bold mb-1 timeline-job-title">@L["About_Experience_3_Title"]</h5>
+                                <h6 class="text-primary mb-2 timeline-company">
                                     @L["About_Experience_3_Company"]
                                 </h6>
-                                <ul class="mb-0 ps-3">
+                                <ul class="mb-0 ps-3 timeline-description">
                                     <li>@L["About_Experience_3_Desc1"]</li>
                                     <li>@L["About_Experience_3_Desc2"]</li>
 
@@ -299,11 +299,11 @@
                         <div class="timeline-item position-relative pb-4">
                             <div class="timeline-period bg-primary text-white">@L["About_Experience_4_Date"]</div>
                             <div class="timeline-content p-4 rounded-3">
-                                <h5 class="fw-bold mb-1">@L["About_Experience_4_Title"]</h5>
-                                <h6 class="text-primary mb-2">
+                                <h5 class="fw-bold mb-1 timeline-job-title">@L["About_Experience_4_Title"]</h5>
+                                <h6 class="text-primary mb-2 timeline-company">
                                     @L["About_Experience_4_Company"]
                                 </h6>
-                                <ul class="mb-0 ps-3">
+                                <ul class="mb-0 ps-3 timeline-description">
                                     <li>@L["About_Experience_4_Desc1"]</li>
                                     <li>@L["About_Experience_4_Desc2"]</li>
                                 </ul>
@@ -314,9 +314,9 @@
             </div>
 
             <!-- Education Section -->
-            <div class="card border-0 shadow-sm mb-4">
+            <div class="card border-0 shadow-sm mb-4 about-card">
                 <div class="card-body p-4">
-                    <h3 class="card-title fw-bold mb-4 d-flex align-items-center">
+                    <h3 class="card-title fw-bold mb-4 d-flex align-items-center about-card-title">
                         <span class="icon-circle bg-primary-light me-3"><i class="bi bi-mortarboard-fill text-primary"></i></span>
                         <span>@L["About_EducationTitle"]</span>
                     </h3>
@@ -325,9 +325,9 @@
                         <div class="timeline-item position-relative">
                             <div class="timeline-period bg-primary text-white">@L["About_Education_1_Date"]</div>
                             <div class="timeline-content p-4 rounded-3">
-                                <h5 class="fw-bold mb-1">@L["About_Education_1_Title"]</h5>
-                                <h6 class="text-primary mb-2">@L["About_Education_1_School"]</h6>
-                                <div class="d-flex flex-wrap gap-4 mb-2">
+                                <h5 class="fw-bold mb-1 timeline-job-title">@L["About_Education_1_Title"]</h5>
+                                <h6 class="text-primary mb-2 timeline-company">@L["About_Education_1_School"]</h6>
+                                <div class="d-flex flex-wrap gap-4 mb-2 education-details">
                                     <div>
                                         <i class="bi bi-building text-primary me-2"></i>
                                         <span>@L["About_Education_1_Detail"]</span>
@@ -343,9 +343,9 @@
                         <div class="timeline-item position-relative">
                             <div class="timeline-period bg-primary text-white">@L["About_Education_2_Date"]</div>
                             <div class="timeline-content p-4 rounded-3">
-                                <h5 class="fw-bold mb-1">@L["About_Education_2_School"]</h5>
-                                <h6 class="text-primary mb-2">@L["About_Education_2_Title"]</h6>
-                                <div class="d-flex flex-wrap gap-4 mb-2">
+                                <h5 class="fw-bold mb-1 timeline-job-title">@L["About_Education_2_School"]</h5>
+                                <h6 class="text-primary mb-2 timeline-company">@L["About_Education_2_Title"]</h6>
+                                <div class="d-flex flex-wrap gap-4 mb-2 education-details">
                                     <div>
                                         <i class="bi bi-award text-primary me-2"></i>
                                         <span>@L["About_Education_2_GPA"]</span>
@@ -362,37 +362,37 @@
 </div>
 
 <!-- Technologies Section -->
-<section class="bg-light py-5">
+<section class="bg-light py-5 tech-section">
     <div class="container py-4">
         <div class="text-center mb-5">
-            <h2 class="fw-bold mb-3">@L["About_TechnologiesTitle"]</h2>
-            <p class="text-muted mx-auto" style="max-width: 600px;">
+            <h2 class="fw-bold mb-3 tech-section-title">@L["About_TechnologiesTitle"]</h2>
+            <p class="text-muted mx-auto tech-section-description" style="max-width: 600px;">
                 @L["About_TechnologiesDescription"]
             </p>
         </div>
-        <div class="row g-4">
+        <div class="row g-4 tech-cards-row">
             <div class="col-6 col-md-3">
                 <div class="tech-card p-4 text-center rounded-3">
-                    <i class="fab fa-microsoft fa-3x text-primary mb-3"></i>
-                    <h5 class="fw-bold mb-0">@L["Tech_DotNetEcosystem"]</h5>
+                    <i class="fab fa-microsoft fa-3x text-primary mb-3 tech-card-icon"></i>
+                    <h5 class="fw-bold mb-0 tech-card-title">@L["Tech_DotNetEcosystem"]</h5>
                 </div>
             </div>
             <div class="col-6 col-md-3">
                 <div class="tech-card p-4 text-center rounded-3">
-                    <i class="fab fa-python fa-3x text-primary mb-3"></i>
-                    <h5 class="fw-bold mb-0">Python</h5>
+                    <i class="fab fa-python fa-3x text-primary mb-3 tech-card-icon"></i>
+                    <h5 class="fw-bold mb-0 tech-card-title">Python</h5>
                 </div>
             </div>
             <div class="col-6 col-md-3">
                 <div class="tech-card p-4 text-center rounded-3">
-                    <i class="fas fa-database fa-3x text-primary mb-3"></i>
-                    <h5 class="fw-bold mb-0">@L["Tech_Databases"]</h5>
+                    <i class="fas fa-database fa-3x text-primary mb-3 tech-card-icon"></i>
+                    <h5 class="fw-bold mb-0 tech-card-title">@L["Tech_Databases"]</h5>
                 </div>
             </div>
             <div class="col-6 col-md-3">
                 <div class="tech-card p-4 text-center rounded-3">
-                    <i class="fas fa-cloud fa-3x text-primary mb-3"></i>
-                    <h5 class="fw-bold mb-0">@L["Tech_Cloud"]</h5>
+                    <i class="fas fa-cloud fa-3x text-primary mb-3 tech-card-icon"></i>
+                    <h5 class="fw-bold mb-0 tech-card-title">@L["Tech_Cloud"]</h5>
                 </div>
             </div>
         </div>
@@ -537,6 +537,7 @@
         align-items: center;
         justify-content: center;
         font-size: 1.25rem;
+        flex-shrink: 0;
     }
 
     /* Timeline Stilleri */
@@ -566,6 +567,7 @@
         z-index: 2;
         box-shadow: 0 2px 10px rgba(0,0,0,0.08);
         flex-shrink: 0;
+        font-size: 0.85rem;
     }
 
     .timeline-content {
@@ -635,43 +637,355 @@
                 color: #3b82f6;
                 text-decoration: underline !important;
             }
-    /* Responsive Adjustments */
+    
+    /* Mobile Responsive Styles */
     @@media (max-width: 768px) {
+        /* About Hero Mobile */
         .about-hero {
             text-align: center;
+            margin-bottom: 2rem;
+            padding: 2rem 0 !important;
         }
-
-        .hero-image-container {
-            margin-top: 30px;
+        
+        .about-hero .container {
+            padding: 1rem !important;
         }
-
-        .timeline-item {
-            padding-left: 0;
+        
+        .about-hero .row {
+            padding: 1rem 0 !important;
         }
-
-        .timeline-period {
-            position: relative;
-            left: 0;
-            top: 0;
-            margin-bottom: 10px;
-            display: inline-flex;
+        
+        .about-hero-title {
+            font-size: 1.75rem !important;
+            margin-bottom: 1rem !important;
+        }
+        
+        .about-hero-subtitle {
+            font-size: 1rem !important;
+            margin-bottom: 0.75rem !important;
+        }
+        
+        .about-hero-description {
+            font-size: 0.9rem !important;
+            margin-bottom: 1.5rem !important;
+        }
+        
+        .about-hero-buttons {
             flex-direction: column;
-            align-items: center;
+            gap: 0.75rem !important;
             justify-content: center;
-            font-size: 0.85rem;
-            padding: 5px 10px;
-            border-radius: 999px;
         }
-
+        
+        .about-hero-btn {
+            width: 100%;
+            justify-content: center;
+            padding: 0.875rem 1.5rem !important;
+            font-size: 1rem !important;
+        }
+        
+        .hero-badge-mobile {
+            font-size: 0.8rem;
+            padding: 0.5rem 1rem !important;
+        }
+        
+        .hero-scroll-indicator {
+            display: none;
+        }
+        
+        /* Profile Card Mobile */
+        .about-profile-card {
+            position: relative !important;
+            top: auto !important;
+            margin-bottom: 1.5rem;
+        }
+        
+        .about-profile-card .card-body {
+            padding: 1.25rem !important;
+        }
+        
+        .profile-image-container {
+            width: 140px;
+            height: 140px;
+        }
+        
+        .profile-name {
+            font-size: 1.25rem !important;
+        }
+        
+        .profile-job-title {
+            font-size: 0.9rem !important;
+        }
+        
+        .profile-social-links {
+            gap: 0.75rem !important;
+        }
+        
+        .social-icon {
+            width: 44px;
+            height: 44px;
+            font-size: 1.1rem;
+        }
+        
+        .contact-text {
+            font-size: 0.9rem;
+        }
+        
+        .email-text {
+            font-size: 0.8rem;
+            word-break: break-all;
+        }
+        
+        .skills-section-title,
+        .references-title,
+        .certificates-title {
+            font-size: 1rem !important;
+        }
+        
+        .skill-badge {
+            font-size: 0.75rem !important;
+            padding: 0.4rem 0.6rem !important;
+        }
+        
+        .reference-name {
+            font-size: 0.95rem !important;
+        }
+        
+        .reference-position {
+            font-size: 0.8rem !important;
+        }
+        
+        .reference-contact {
+            font-size: 0.75rem !important;
+            word-break: break-word;
+        }
+        
+        .certificate-item {
+            padding: 0.75rem !important;
+        }
+        
+        .certificate-name {
+            font-size: 0.85rem !important;
+        }
+        
+        .certificate-name a {
+            display: block;
+        }
+        
+        .certificate-issuer {
+            font-size: 0.75rem !important;
+        }
+        
+        .certificate-year {
+            font-size: 0.7rem !important;
+        }
+        
+        /* About Cards Mobile */
+        .about-main-content {
+            padding: 1.5rem 0 !important;
+        }
+        
+        .about-card .card-body {
+            padding: 1.25rem !important;
+        }
+        
+        .about-card-title {
+            font-size: 1.1rem !important;
+            flex-wrap: wrap;
+        }
+        
+        .icon-circle {
+            width: 40px;
+            height: 40px;
+            font-size: 1rem;
+        }
+        
+        .about-card-content {
+            padding-left: 0 !important;
+        }
+        
+        .summary-text {
+            font-size: 0.9rem !important;
+        }
+        
+        .skill-detail-item {
+            margin-bottom: 1rem;
+        }
+        
+        .skill-detail-title {
+            font-size: 0.9rem !important;
+        }
+        
+        .skill-detail-text {
+            font-size: 0.8rem !important;
+        }
+        
+        /* Timeline Mobile */
+        .timeline {
+            padding-left: 0 !important;
+        }
+        
+        .timeline-item {
+            flex-direction: column;
+            gap: 0.75rem !important;
+        }
+        
+        .timeline-period {
+            width: auto;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
         .timeline-content {
             border-left: none;
             padding-left: 0;
-            margin-left: 0;
+            padding: 1rem !important;
+            background: rgba(59, 130, 246, 0.05);
+            border-radius: 12px;
         }
+        
+        .timeline-content:before {
+            display: none;
+        }
+        
+        .timeline-content:hover {
+            transform: none;
+        }
+        
+        .timeline-job-title {
+            font-size: 1rem !important;
+        }
+        
+        .timeline-company {
+            font-size: 0.9rem !important;
+        }
+        
+        .timeline-description {
+            font-size: 0.85rem !important;
+            padding-left: 1.25rem !important;
+        }
+        
+        .timeline-description li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .education-details {
+            flex-direction: column;
+            gap: 0.5rem !important;
+            font-size: 0.85rem;
+        }
+        
+        /* Tech Section Mobile */
+        .tech-section {
+            padding: 2.5rem 0 !important;
+        }
+        
+        .tech-section-title {
+            font-size: 1.5rem !important;
+        }
+        
+        .tech-section-description {
+            font-size: 0.9rem !important;
+        }
+        
+        .tech-card {
+            padding: 1.25rem !important;
+        }
+        
+        .tech-card-icon {
+            font-size: 2rem !important;
+        }
+        
+        .tech-card-title {
+            font-size: 0.9rem !important;
+        }
+    }
 
-            .timeline-content:before {
-                display: none;
-            }
+    /* Extra Small Mobile */
+    @@media (max-width: 480px) {
+        .about-hero-title {
+            font-size: 1.5rem !important;
+        }
+        
+        .profile-image-container {
+            width: 120px;
+            height: 120px;
+        }
+        
+        .profile-name {
+            font-size: 1.1rem !important;
+        }
+        
+        .about-card .card-body {
+            padding: 1rem !important;
+        }
+        
+        .about-card-title {
+            font-size: 1rem !important;
+        }
+        
+        .icon-circle {
+            width: 36px;
+            height: 36px;
+            font-size: 0.9rem;
+        }
+        
+        .skill-badge {
+            font-size: 0.7rem !important;
+            padding: 0.35rem 0.5rem !important;
+        }
+        
+        .timeline-job-title {
+            font-size: 0.95rem !important;
+        }
+        
+        .timeline-company {
+            font-size: 0.85rem !important;
+        }
+        
+        .timeline-description {
+            font-size: 0.8rem !important;
+        }
+        
+        .tech-card {
+            padding: 1rem !important;
+        }
+        
+        .tech-card-icon {
+            font-size: 1.75rem !important;
+            margin-bottom: 0.5rem !important;
+        }
+        
+        .tech-card-title {
+            font-size: 0.8rem !important;
+        }
+    }
+
+    /* Touch Device Specific */
+    @@media (hover: none) and (pointer: coarse) {
+        .social-icon:hover {
+            transform: none;
+        }
+        
+        .social-icon:active {
+            transform: scale(0.95);
+        }
+        
+        .tech-card:hover {
+            transform: none;
+        }
+        
+        .tech-card:active {
+            transform: scale(0.98);
+        }
+        
+        .timeline-content:hover {
+            transform: none;
+        }
+        
+        .certificate-item:hover {
+            transform: none;
+        }
     }
 </style>
 

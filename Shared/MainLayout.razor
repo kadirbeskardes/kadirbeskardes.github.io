@@ -8,37 +8,37 @@
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="/" style="transition: all 0.3s ease;">
                     <i class="bi bi-code-slash fs-3 text-primary me-2" style="text-shadow: 0 0 8px rgba(13, 110, 253, 0.6);"></i>
-                    <span class="fw-bold fs-4 gradient-text">@L["Nav_Portfolio"]</span>
+                    <span class="fw-bold fs-4 gradient-text brand-text">@L["Nav_Portfolio"]</span>
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
+                <button class="navbar-toggler mobile-menu-btn" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
+                    <ul class="navbar-nav ms-auto mobile-nav-menu">
                         <li class="nav-item mx-1">
-                            <NavLink class="nav-link d-flex align-items-center py-3 px-3 rounded hover-effect" href="" Match="NavLinkMatch.All" active-class="active">
+                            <NavLink class="nav-link d-flex align-items-center py-3 px-3 rounded hover-effect mobile-nav-link" href="" Match="NavLinkMatch.All" active-class="active">
                                 <i class="bi bi-house-door me-2"></i> @L["Nav_Home"]
                             </NavLink>
                         </li>
                         <li class="nav-item mx-1">
-                            <NavLink class="nav-link d-flex align-items-center py-3 px-3 rounded hover-effect" href="about" active-class="active">
+                            <NavLink class="nav-link d-flex align-items-center py-3 px-3 rounded hover-effect mobile-nav-link" href="about" active-class="active">
                                 <i class="bi bi-person me-2"></i> @L["Nav_About"]
                             </NavLink>
                         </li>
                         <li class="nav-item mx-1">
-                            <NavLink class="nav-link d-flex align-items-center py-3 px-3 rounded hover-effect" href="projects" active-class="active">
+                            <NavLink class="nav-link d-flex align-items-center py-3 px-3 rounded hover-effect mobile-nav-link" href="projects" active-class="active">
                                 <i class="bi bi-briefcase me-2"></i> @L["Nav_Projects"]
                             </NavLink>
                         </li>
                         <li class="nav-item mx-1">
-                            <NavLink class="nav-link d-flex align-items-center py-3 px-3 rounded hover-effect" href="contact" active-class="active">
+                            <NavLink class="nav-link d-flex align-items-center py-3 px-3 rounded hover-effect mobile-nav-link" href="contact" active-class="active">
                                 <i class="bi bi-envelope me-2"></i> @L["Nav_Contact"]
                             </NavLink>
                         </li>
-                        <li class="nav-item mx-1 d-flex align-items-center">
+                        <li class="nav-item mx-1 d-flex align-items-center mobile-culture-switcher">
                             <CultureSwitcher />
                         </li>
-                        <li class="nav-item ms-2 d-flex align-items-center">
+                        <li class="nav-item ms-2 d-flex align-items-center mobile-cv-btn">
                             <a class="btn btn-primary d-flex align-items-center py-2 px-3 rounded-pill glow-on-hover" href="files/CV Kadir Beskardes.pdf" download>
                                 <i class="bi bi-download me-2"></i> @L["Nav_DownloadCV"]
                             </a>
@@ -68,13 +68,13 @@
     <footer class="footer-modern py-5 mt-auto">
         <div class="container">
             <div class="row g-4">
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-4 col-md-6 col-12">
                     <div class="footer-brand mb-4">
                         <i class="bi bi-code-slash fs-2 text-primary me-2"></i>
                         <span class="fw-bold fs-4 gradient-text">@L["Nav_Portfolio"]</span>
                     </div>
-                    <p class="text-light opacity-75 mb-4">@L["Footer_AboutText"]</p>
-                    <div class="social-links d-flex gap-3">
+                    <p class="text-light opacity-75 mb-4 footer-about-text">@L["Footer_AboutText"]</p>
+                    <div class="social-links d-flex gap-3 footer-social">
                         <a href="https://github.com/kadirbeskardes" class="social-icon-footer" target="_blank" aria-label="GitHub">
                             <i class="bi bi-github"></i>
                         </a>
@@ -86,7 +86,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-6">
+                <div class="col-lg-2 col-md-6 col-6">
                     <h5 class="footer-title mb-4">@L["Footer_Links"]</h5>
                     <ul class="footer-links list-unstyled">
                         <li><a href="/"><i class="bi bi-chevron-right me-2"></i>@L["Nav_Home"]</a></li>
@@ -95,34 +95,34 @@
                         <li><a href="contact"><i class="bi bi-chevron-right me-2"></i>@L["Nav_Contact"]</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-3 col-md-6">
+                <div class="col-lg-3 col-md-6 col-6">
                     <h5 class="footer-title mb-4">@L["Contact_ContactInfo"]</h5>
                     <ul class="footer-contact list-unstyled">
                         <li class="d-flex align-items-start mb-3">
-                            <i class="bi bi-geo-alt-fill text-primary me-3 mt-1"></i>
-                            <span class="text-light opacity-75">@L["Contact_Location"]</span>
+                            <i class="bi bi-geo-alt-fill text-primary me-2 mt-1 flex-shrink-0"></i>
+                            <span class="text-light opacity-75 footer-contact-text">@L["Contact_Location"]</span>
                         </li>
                         <li class="d-flex align-items-start mb-3">
-                            <i class="bi bi-envelope-fill text-primary me-3 mt-1"></i>
-                            <a href="mailto:kadir.beskardes11@gmail.com" class="text-light opacity-75 text-decoration-none">kadir.beskardes11@gmail.com</a>
+                            <i class="bi bi-envelope-fill text-primary me-2 mt-1 flex-shrink-0"></i>
+                            <a href="mailto:kadir.beskardes11@gmail.com" class="text-light opacity-75 text-decoration-none footer-email">kadir.beskardes11@gmail.com</a>
                         </li>
                         <li class="d-flex align-items-start">
-                            <i class="bi bi-phone-fill text-primary me-3 mt-1"></i>
+                            <i class="bi bi-phone-fill text-primary me-2 mt-1 flex-shrink-0"></i>
                             <a href="tel:+905072756747" class="text-light opacity-75 text-decoration-none">+90 507 275 67 47</a>
                         </li>
                     </ul>
                 </div>
-                <div class="col-lg-3 col-md-6">
+                <div class="col-lg-3 col-md-6 col-12">
                     <h5 class="footer-title mb-4">@L["Nav_DownloadCV"]</h5>
-                    <p class="text-light opacity-75 mb-3">@L["Footer_CVDescription"]</p>
-                    <a href="files/CV Kadir Beskardes.pdf" download class="btn btn-primary rounded-pill px-4">
+                    <p class="text-light opacity-75 mb-3 footer-cv-text">@L["Footer_CVDescription"]</p>
+                    <a href="files/CV Kadir Beskardes.pdf" download class="btn btn-primary rounded-pill px-4 footer-cv-btn">
                         <i class="bi bi-download me-2"></i>@L["Nav_DownloadCV"]
                     </a>
                 </div>
             </div>
             <hr class="my-4 border-secondary opacity-25">
-            <div class="row align-items-center">
-                <div class="col-md-6 text-center text-md-start">
+            <div class="row align-items-center footer-bottom">
+                <div class="col-md-6 text-center text-md-start mb-2 mb-md-0">
                     <p class="mb-0 text-light opacity-50 small">@L["Footer_Copyright"]</p>
                 </div>
                 <div class="col-md-6 text-center text-md-end">
@@ -275,5 +275,195 @@
 
     .footer-contact a:hover {
         color: #06b6d4 !important;
+    }
+
+    /* Mobile Navigation Styles */
+    @@media (max-width: 991px) {
+        .navbar-collapse {
+            background: rgba(10, 15, 30, 0.98);
+            backdrop-filter: blur(20px);
+            margin-top: 1rem;
+            border-radius: 16px;
+            padding: 1rem;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        .mobile-nav-menu {
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .mobile-nav-link {
+            padding: 1rem 1.25rem !important;
+            border-radius: 12px !important;
+            margin: 0.25rem 0;
+            font-size: 1rem;
+            min-height: 50px;
+        }
+        
+        .mobile-nav-link:hover,
+        .mobile-nav-link.active {
+            background-color: rgba(99, 102, 241, 0.2) !important;
+        }
+        
+        .mobile-nav-link::after {
+            display: none;
+        }
+        
+        .mobile-menu-btn {
+            width: 44px;
+            height: 44px;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+        }
+        
+        .mobile-culture-switcher {
+            padding: 0.75rem 1.25rem;
+            justify-content: center;
+            border-top: 1px solid rgba(99, 102, 241, 0.1);
+            margin-top: 0.5rem;
+            padding-top: 1rem;
+        }
+        
+        .mobile-cv-btn {
+            margin: 0.5rem 0 !important;
+            justify-content: center;
+        }
+        
+        .mobile-cv-btn .btn {
+            width: 100%;
+            justify-content: center;
+            padding: 0.875rem 1.5rem !important;
+            font-size: 1rem;
+        }
+        
+        .brand-text {
+            font-size: 1.25rem !important;
+        }
+        
+        .navbar-brand i {
+            font-size: 1.5rem !important;
+        }
+    }
+
+    /* Mobile Footer Styles */
+    @@media (max-width: 768px) {
+        .footer-modern {
+            padding: 3rem 0 2rem !important;
+        }
+        
+        .footer-brand {
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-about-text {
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        
+        .footer-social {
+            justify-content: center !important;
+            margin-bottom: 1.5rem;
+        }
+        
+        .social-icon-footer {
+            width: 48px;
+            height: 48px;
+            font-size: 1.25rem;
+        }
+        
+        .footer-title {
+            font-size: 1rem;
+            margin-bottom: 1rem !important;
+            text-align: left;
+        }
+        
+        .footer-title::after {
+            width: 30px;
+            height: 2px;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            font-size: 0.9rem;
+            padding: 0.25rem 0;
+        }
+        
+        .footer-contact-text,
+        .footer-email {
+            font-size: 0.85rem;
+            word-break: break-word;
+        }
+        
+        .footer-cv-text {
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        
+        .footer-cv-btn {
+            width: 100%;
+            justify-content: center;
+            padding: 0.875rem 1.5rem;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+        }
+        
+        .footer-bottom .col-md-6 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-bottom p {
+            font-size: 0.8rem;
+        }
+    }
+
+    /* Extra Small Mobile Footer */
+    @@media (max-width: 480px) {
+        .footer-modern .row > div {
+            text-align: center;
+        }
+        
+        .footer-title::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .footer-links li {
+            margin: 0;
+        }
+        
+        .footer-links a {
+            padding: 0.5rem 0.75rem;
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+        
+        .footer-links a i {
+            display: none;
+        }
+        
+        .footer-contact li {
+            justify-content: center;
+            flex-wrap: wrap;
+        }
     }
 </style>

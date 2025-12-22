@@ -889,4 +889,334 @@ html {
     .icon-container-enhanced:hover {
         transform: scale(1.1) rotate(5deg);
     }
+
+    /* Mobile Typography */
+    h1 {
+        font-size: 1.75rem !important;
+        line-height: 1.2;
+    }
+    
+    h2 {
+        font-size: 1.5rem !important;
+    }
+    
+    h3 {
+        font-size: 1.25rem !important;
+    }
+    
+    .display-3 {
+        font-size: 2rem !important;
+    }
+    
+    .display-4 {
+        font-size: 1.75rem !important;
+    }
+    
+    .lead {
+        font-size: 1rem !important;
+    }
+    
+    .fs-5 {
+        font-size: 0.95rem !important;
+    }
+    
+    /* Mobile Buttons */
+    .btn {
+        padding: 0.6rem 1.25rem;
+        font-size: 0.9rem;
+    }
+    
+    .btn-lg {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+    }
+    
+    .btn-sm {
+        padding: 0.4rem 1rem;
+        font-size: 0.8rem;
+    }
+    
+    /* Mobile Card Improvements */
+    .card-enhanced {
+        border-radius: 16px;
+        margin-bottom: 1rem;
+    }
+    
+    .card-body {
+        padding: 1.25rem !important;
+    }
+    
+    /* Mobile Icon Container */
+    .icon-container-enhanced {
+        width: 60px;
+        height: 60px;
+        border-radius: 14px;
+    }
+    
+    .icon-container-enhanced i {
+        font-size: 1.5rem !important;
+    }
+    
+    /* Mobile Section Spacing */
+    section {
+        padding-top: 3rem !important;
+        padding-bottom: 3rem !important;
+    }
+    
+    .py-5 {
+        padding-top: 2.5rem !important;
+        padding-bottom: 2.5rem !important;
+    }
+    
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    /* Mobile Section Title */
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .section-title::after {
+        width: 50px;
+        height: 3px;
+        bottom: -8px;
+    }
+    
+    /* Mobile Badge */
+    .badge {
+        font-size: 0.7rem;
+        padding: 0.35rem 0.6rem;
+    }
+    
+    /* Mobile Skill List */
+    .skill-list li {
+        padding: 8px 0;
+        font-size: 0.9rem;
+    }
+    
+    /* Mobile Gap Adjustments */
+    .gap-3 {
+        gap: 0.75rem !important;
+    }
+    
+    .gap-4 {
+        gap: 1rem !important;
+    }
+    
+    .g-4 {
+        --bs-gutter-x: 1rem;
+        --bs-gutter-y: 1rem;
+    }
+}
+
+/* Extra Small Mobile Devices */
+@media (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+    
+    h1 {
+        font-size: 1.5rem !important;
+    }
+    
+    h2 {
+        font-size: 1.3rem !important;
+    }
+    
+    .display-3 {
+        font-size: 1.6rem !important;
+    }
+    
+    .display-4 {
+        font-size: 1.4rem !important;
+    }
+    
+    .container {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
+    
+    .btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .btn-lg {
+        padding: 0.65rem 1.25rem;
+        font-size: 0.9rem;
+    }
+    
+    /* Stack buttons on very small screens */
+    .d-flex.gap-3 {
+        flex-direction: column;
+        gap: 0.75rem !important;
+    }
+    
+    .card-body {
+        padding: 1rem !important;
+    }
+    
+    .icon-container-enhanced {
+        width: 50px;
+        height: 50px;
+        border-radius: 12px;
+    }
+    
+    .icon-container-enhanced i {
+        font-size: 1.25rem !important;
+    }
+    
+    .py-5 {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+    }
+    
+    .mb-4 {
+        margin-bottom: 1rem !important;
+    }
+    
+    .mb-5 {
+        margin-bottom: 1.5rem !important;
+    }
+    
+    /* Mobile row adjustments */
+    .row {
+        margin-left: -0.5rem;
+        margin-right: -0.5rem;
+    }
+    
+    .row > * {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+}
+
+/* Tablet Specific (768px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .container {
+        max-width: 720px;
+    }
+    
+    h1 {
+        font-size: 2.25rem !important;
+    }
+    
+    .display-3 {
+        font-size: 2.5rem !important;
+    }
+    
+    .card-body {
+        padding: 1.5rem !important;
+    }
+    
+    .icon-container-enhanced {
+        width: 70px;
+        height: 70px;
+    }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .hover-effect:hover {
+        transform: none;
+    }
+    
+    .hover-effect:active {
+        transform: scale(0.98);
+    }
+    
+    .btn:active {
+        transform: scale(0.95);
+    }
+    
+    .card-enhanced:active {
+        transform: scale(0.99);
+    }
+    
+    /* Larger touch targets */
+    .nav-link {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .btn {
+        min-height: 44px;
+    }
+    
+    /* Remove hover effects that don't work on touch */
+    .hover-effect::before {
+        display: none;
+    }
+}
+
+/* Landscape Mode Mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero-section {
+        min-height: auto;
+        padding: 2rem 0;
+    }
+    
+    section {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+    }
+}
+
+/* High DPI / Retina Screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .card-enhanced {
+        border-width: 0.5px;
+    }
+    
+    .btn {
+        border-width: 0.5px;
+    }
+}
+
+/* Safe Area for Notched Devices */
+@supports (padding: max(0px)) {
+    .navbar {
+        padding-left: max(1rem, env(safe-area-inset-left));
+        padding-right: max(1rem, env(safe-area-inset-right));
+    }
+    
+    .footer-modern {
+        padding-bottom: max(2rem, env(safe-area-inset-bottom));
+    }
+}
+
+/* Mobile Animation Reduction for Performance */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Dark Mode Mobile Improvements */
+@media (max-width: 768px) {
+    .navbar {
+        backdrop-filter: blur(15px);
+    }
+    
+    .card-enhanced {
+        background: rgba(30, 41, 59, 0.6);
+    }
+    
+    /* Better text readability on mobile */
+    .text-light {
+        color: rgba(255, 255, 255, 0.9) !important;
+    }
+    
+    .opacity-75 {
+        opacity: 0.85 !important;
+    }
 }

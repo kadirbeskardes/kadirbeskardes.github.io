@@ -9,16 +9,16 @@
     <div class="container py-5">
         <div class="row align-items-center">
             <div class="col-lg-6 order-lg-1 order-2">
-                <h1 class="display-3 fw-bold mb-4 animate__animated animate__fadeInDown">@L["Home_Greeting"] <span class="text-highlight">Kadir Beşkardeş</span></h1>
-                <p class="lead mb-4 text-light animate__animated animate__fadeIn animate__delay-1s">@L["Home_JobTitle"]</p>
-                <p class="mb-4 fs-5 text-light animate__animated animate__fadeIn animate__delay-1s">
+                <h1 class="display-3 fw-bold mb-4 animate__animated animate__fadeInDown hero-title">@L["Home_Greeting"] <span class="text-highlight">Kadir Beşkardeş</span></h1>
+                <p class="lead mb-4 text-light animate__animated animate__fadeIn animate__delay-1s hero-subtitle">@L["Home_JobTitle"]</p>
+                <p class="mb-4 fs-5 text-light animate__animated animate__fadeIn animate__delay-1s hero-description">
                     @L["Home_Description"]
                 </p>
-                <div class="d-flex gap-3 animate__animated animate__fadeIn animate__delay-2s">
-                    <a href="about" class="btn btn-light btn-lg px-4 rounded-pill shadow-sm">
+                <div class="d-flex gap-3 animate__animated animate__fadeIn animate__delay-2s hero-buttons">
+                    <a href="about" class="btn btn-light btn-lg px-4 rounded-pill shadow-sm hero-btn">
                         <i class="bi bi-person me-2"></i>@L["Home_AboutButton"]
                     </a>
-                    <a href="contact" class="btn btn-outline-light btn-lg px-4 rounded-pill shadow-sm">
+                    <a href="contact" class="btn btn-outline-light btn-lg px-4 rounded-pill shadow-sm hero-btn">
                         <i class="bi bi-envelope me-2"></i>@L["Home_ContactButton"]
                     </a>
                 </div>
@@ -28,8 +28,7 @@
                     <img src="img/pp.jpg" 
                          alt="@L["Image_Alt"]" 
                          title="@L["Image_Title"]"
-                         class="img-fluid rounded-circle shadow-lg border border-4 border-white" 
-                         style="max-width: 300px;"
+                         class="img-fluid rounded-circle shadow-lg border border-4 border-white profile-img" 
                          loading="eager"
                          decoding="async"
                          itemscope 
@@ -41,21 +40,21 @@
 </section>
 
 <!-- Skills Section -->
-<section class="py-5" style="background: rgba(30, 41, 59, 0.5);">
+<section class="py-5 skills-section" style="background: rgba(30, 41, 59, 0.5);">
     <div class="container py-5">
         <div class="text-center mb-5">
             <h2 class="section-title fw-bold position-relative d-inline-block text-white">@L["Home_Skills"]</h2>
-            <p class="text-light opacity-75 fs-5">@L["Home_SkillsSubtitle"]</p>
+            <p class="text-light opacity-75 fs-5 section-subtitle">@L["Home_SkillsSubtitle"]</p>
         </div>
 
-        <div class="row g-4">
-            <div class="col-md-4">
-                <div class="card-enhanced h-100 border-0 shadow-sm hover-effect animate-in">
+        <div class="row g-4 skills-row">
+            <div class="col-lg-4 col-md-6 col-12">
+                <div class="card-enhanced h-100 border-0 shadow-sm hover-effect animate-in skill-card">
                     <div class="card-body text-center p-4">
                         <div class="icon-container-enhanced mb-4 mx-auto">
                             <i class="bi bi-code-slash fs-1"></i>
                         </div>
-                        <h3 class="h4 mb-3 fw-bold text-white">@L["Home_Frontend"]</h3>
+                        <h3 class="h4 mb-3 fw-bold text-white skill-title">@L["Home_Frontend"]</h3>
                         <ul class="list-unstyled skill-list">
                             <li><i class="bi bi-check-circle-fill text-info me-2"></i><span class="text-light">Blazor WebAssembly</span></li>
                             <li><i class="bi bi-check-circle-fill text-info me-2"></i><span class="text-light">HTML5/CSS3</span></li>
@@ -66,13 +65,13 @@
                 </div>
             </div>
 
-            <div class="col-md-4">
-                <div class="card-enhanced h-100 border-0 shadow-sm hover-effect animate-in">
+            <div class="col-lg-4 col-md-6 col-12">
+                <div class="card-enhanced h-100 border-0 shadow-sm hover-effect animate-in skill-card">
                     <div class="card-body text-center p-4">
                         <div class="icon-container-enhanced mb-4 mx-auto">
                             <i class="bi bi-server fs-1"></i>
                         </div>
-                        <h3 class="h4 mb-3 fw-bold text-white">@L["Home_Backend"]</h3>
+                        <h3 class="h4 mb-3 fw-bold text-white skill-title">@L["Home_Backend"]</h3>
                         <ul class="list-unstyled skill-list">
                             <li><i class="bi bi-check-circle-fill text-info me-2"></i><span class="text-light">.NET</span></li>
                             <li><i class="bi bi-check-circle-fill text-info me-2"></i><span class="text-light">Python</span></li>
@@ -84,13 +83,13 @@
                 </div>
             </div>
 
-            <div class="col-md-4">
-                <div class="card-enhanced h-100 border-0 shadow-sm hover-effect animate-in">
+            <div class="col-lg-4 col-md-12 col-12">
+                <div class="card-enhanced h-100 border-0 shadow-sm hover-effect animate-in skill-card">
                     <div class="card-body text-center p-4">
                         <div class="icon-container-enhanced mb-4 mx-auto">
                             <i class="bi bi-tools fs-1"></i>
                         </div>
-                        <h3 class="h4 mb-3 fw-bold text-white">@L["Home_Tools"]</h3>
+                        <h3 class="h4 mb-3 fw-bold text-white skill-title">@L["Home_Tools"]</h3>
                         <ul class="list-unstyled skill-list">
                             <li><i class="bi bi-check-circle-fill text-success me-2"></i><span class="text-light">Visual Studio</span></li>
                             <li><i class="bi bi-check-circle-fill text-success me-2"></i><span class="text-light">Git/GitHub</span></li>
@@ -105,11 +104,11 @@
 </section>
 
 <!-- Projects Section -->
-<section class="py-5" style="background: var(--dark-color);">
+<section class="py-5 projects-section" style="background: var(--dark-color);">
     <div class="container py-5">
         <div class="text-center mb-5">
             <h2 class="section-title fw-bold position-relative d-inline-block text-white">@L["Home_RecentProjects"]</h2>
-            <p class="text-light fs-5">@L["Home_RecentProjectsSubtitle"]</p>
+            <p class="text-light fs-5 section-subtitle">@L["Home_RecentProjectsSubtitle"]</p>
         </div>
 
         @if (featuredProjects == null)
@@ -122,11 +121,11 @@
         }
         else
         {
-            <div class="row g-4">
+            <div class="row g-4 projects-row">
                 @foreach (var project in featuredProjects)
                 {
-                    <div class="col-lg-4 col-md-6">
-                        <div class="card-enhanced h-100 border-0 shadow-sm overflow-hidden hover-effect animate-in">
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <div class="card-enhanced h-100 border-0 shadow-sm overflow-hidden hover-effect animate-in project-card">
                             <div class="project-image-container position-relative">
                                 <img src="@project.ImageUrl" class="card-img-top" alt="@project.Title" style="height: 200px; object-fit: cover;">
                                 <div class="overlay d-flex align-items-center justify-content-center">
@@ -136,17 +135,17 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <h5 class="card-title fw-bold text-white">@project.Title</h5>
-                                <p class="card-text text-light opacity-75">@project.ShortDescription</p>
-                                <div class="mb-3">
+                                <h5 class="card-title fw-bold text-white project-title">@project.Title</h5>
+                                <p class="card-text text-light opacity-75 project-description">@project.ShortDescription</p>
+                                <div class="mb-3 project-tech-tags">
                                     @foreach (var tech in project.Technologies.Take(3))
                                     {
-                                        <span class="badge rounded-pill me-1" style="background: var(--primary-color); color: white;">@tech</span>
+                                        <span class="badge rounded-pill me-1 mb-1" style="background: var(--primary-color); color: white;">@tech</span>
                                     }
                                 </div>
                             </div>
-                            <div class="card-footer bg-transparent border-0 pt-0 d-flex justify-content-between">
-                                <a href="@($"project/{project.Id}")" class="btn btn-sm btn-enhanced rounded-pill" style="background: var(--primary-color); color: white; position: relative; overflow: hidden;">
+                            <div class="card-footer bg-transparent border-0 pt-0 d-flex justify-content-between project-footer">
+                                <a href="@($"project/{project.Id}")" class="btn btn-sm btn-enhanced rounded-pill project-detail-btn" style="background: var(--primary-color); color: white; position: relative; overflow: hidden;">
                                     @L["Home_ViewDetails"] <i class="bi bi-arrow-right ms-2"></i>
                                 </a>
                                 @if (!string.IsNullOrWhiteSpace(project.GitHubUrl))
@@ -162,7 +161,7 @@
             </div>
 
             <div class="text-center mt-5">
-                <a href="projects" class="btn btn-enhanced btn-lg px-4 rounded-pill shadow-sm animate-in" style="background: var(--accent-color); color: white; position: relative; overflow: hidden;">
+                <a href="projects" class="btn btn-enhanced btn-lg px-4 rounded-pill shadow-sm animate-in all-projects-btn" style="background: var(--accent-color); color: white; position: relative; overflow: hidden;">
                     <i class="bi bi-collection me-2"></i>@L["Home_AllProjects"]
                 </a>
             </div>
@@ -348,5 +347,262 @@
     .btn-glass:hover {
         background: rgba(255, 255, 255, 0.2);
         color: #fff;
+    }
+
+    /* Mobile Responsive Styles */
+    @@media (max-width: 768px) {
+        /* Hero Section Mobile */
+        .hero-section {
+            padding: 2rem 0 !important;
+        }
+        
+        .hero-section .container {
+            padding-top: 1rem !important;
+            padding-bottom: 1rem !important;
+        }
+        
+        .hero-title {
+            font-size: 1.75rem !important;
+            line-height: 1.3;
+            margin-bottom: 1rem !important;
+        }
+        
+        .hero-subtitle {
+            font-size: 1rem !important;
+            margin-bottom: 0.75rem !important;
+        }
+        
+        .hero-description {
+            font-size: 0.9rem !important;
+            margin-bottom: 1.5rem !important;
+        }
+        
+        .hero-buttons {
+            flex-direction: column;
+            gap: 0.75rem !important;
+        }
+        
+        .hero-btn {
+            width: 100%;
+            justify-content: center;
+            padding: 0.875rem 1.5rem !important;
+            font-size: 1rem !important;
+        }
+        
+        .profile-img {
+            max-width: 200px !important;
+        }
+        
+        .profile-image-container {
+            margin-bottom: 2rem;
+        }
+        
+        /* Skills Section Mobile */
+        .skills-section {
+            padding: 2.5rem 0 !important;
+        }
+        
+        .skills-section .container {
+            padding-top: 1rem !important;
+            padding-bottom: 1rem !important;
+        }
+        
+        .section-title {
+            font-size: 1.5rem !important;
+            padding-bottom: 10px;
+        }
+        
+        .section-title:after {
+            width: 50px;
+            height: 3px;
+        }
+        
+        .section-subtitle {
+            font-size: 0.9rem !important;
+        }
+        
+        .skill-card {
+            border-radius: 16px !important;
+        }
+        
+        .skill-card .card-body {
+            padding: 1.25rem !important;
+        }
+        
+        .icon-container-enhanced {
+            width: 60px;
+            height: 60px;
+            border-radius: 14px;
+        }
+        
+        .icon-container-enhanced i {
+            font-size: 1.5rem !important;
+        }
+        
+        .skill-title {
+            font-size: 1.1rem !important;
+            margin-bottom: 0.75rem !important;
+        }
+        
+        .skill-list li {
+            padding: 8px 0;
+            font-size: 0.9rem;
+        }
+        
+        .skill-list li:hover {
+            transform: none;
+            padding-left: 0;
+        }
+        
+        /* Projects Section Mobile */
+        .projects-section {
+            padding: 2.5rem 0 !important;
+        }
+        
+        .projects-section .container {
+            padding-top: 1rem !important;
+            padding-bottom: 1rem !important;
+        }
+        
+        .project-card {
+            border-radius: 16px !important;
+        }
+        
+        .project-image-container {
+            height: 180px;
+            border-radius: 16px 16px 0 0 !important;
+        }
+        
+        .project-card .card-body {
+            padding: 1.25rem !important;
+        }
+        
+        .project-title {
+            font-size: 1.1rem !important;
+            margin-bottom: 0.5rem !important;
+        }
+        
+        .project-description {
+            font-size: 0.85rem !important;
+            margin-bottom: 0.75rem !important;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .project-tech-tags .badge {
+            font-size: 0.7rem;
+            padding: 0.35rem 0.6rem;
+        }
+        
+        .project-footer {
+            flex-direction: column;
+            gap: 0.5rem;
+            padding: 1rem 1.25rem !important;
+        }
+        
+        .project-footer .btn {
+            width: 100%;
+            justify-content: center;
+            padding: 0.625rem 1rem !important;
+        }
+        
+        .project-detail-btn {
+            font-size: 0.85rem !important;
+        }
+        
+        .all-projects-btn {
+            width: 100%;
+            padding: 0.875rem 1.5rem !important;
+            font-size: 1rem !important;
+        }
+        
+        /* Hover effect adjustments for touch */
+        .hover-effect:hover {
+            transform: translateY(-5px);
+        }
+        
+        .project-image-container .overlay {
+            opacity: 0.7;
+            background: linear-gradient(180deg, transparent 0%, rgba(99, 102, 241, 0.8) 100%;
+        }
+        
+        .hover-effect:hover .project-image-container .overlay {
+            opacity: 0.8;
+        }
+    }
+    
+    /* Extra Small Mobile */
+    @@media (max-width: 480px) {
+        .hero-title {
+            font-size: 1.5rem !important;
+        }
+        
+        .profile-img {
+            max-width: 160px !important;
+        }
+        
+        .section-title {
+            font-size: 1.25rem !important;
+        }
+        
+        .skill-card .card-body,
+        .project-card .card-body {
+            padding: 1rem !important;
+        }
+        
+        .icon-container-enhanced {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+        }
+        
+        .icon-container-enhanced i {
+            font-size: 1.25rem !important;
+        }
+        
+        .skill-title,
+        .project-title {
+            font-size: 1rem !important;
+        }
+        
+        .project-image-container {
+            height: 160px;
+        }
+        
+        .text-highlight {
+            display: block;
+            margin-top: 0.25rem;
+        }
+    }
+    
+    /* Touch Device Specific */
+    @@media (hover: none) and (pointer: coarse) {
+        .hover-effect:hover {
+            transform: none;
+        }
+        
+        .hover-effect:active {
+            transform: scale(0.98);
+        }
+        
+        .skill-list li:hover {
+            transform: none;
+            background: none;
+            padding-left: 0;
+        }
+        
+        .icon-container-enhanced:hover {
+            transform: none;
+        }
+        
+        .project-image-container .overlay {
+            opacity: 0;
+        }
+        
+        .hover-effect:active .project-image-container .overlay {
+            opacity: 0.9;
+        }
     }
 </style>
