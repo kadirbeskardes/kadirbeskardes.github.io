@@ -17,6 +17,7 @@ builder.Services.AddScoped<ProjectService>();
 builder.Services.AddScoped<MarkdownService>();
 builder.Services.AddScoped<CultureService>();
 builder.Services.AddScoped<LocalizationService>();
+builder.Services.AddScoped<AdminService>();
 
 // Add localization services
 builder.Services.AddLocalization();

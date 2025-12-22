@@ -1,8 +1,10 @@
 ﻿using Markdig;
+using Microsoft.JSInterop;
 using Personal.Models;
 using System.Globalization;
 using System.Net.Http;
 using System.Net.Http.Json;
+using System.Text.Json;
 using System.Text.RegularExpressions;
 
 namespace Personal.Services
@@ -24,14 +26,16 @@ namespace Personal.Services
     public class ProjectService
     {
         private readonly HttpClient _http;
+        private readonly IJSRuntime _jsRuntime;
         private List<ProjectDetail>? _projects;
         private string _currentCulture = "tr";
         private bool _isLoaded = false;
         public string CurrentCulture => _currentCulture;
 
-        public ProjectService(HttpClient http)
+        public ProjectService(HttpClient http, IJSRuntime jsRuntime)
         {
             _http = http;
+            _jsRuntime = jsRuntime;
         }
 
         public async Task<List<ProjectDetail>> GetProjectListingsAsync()
@@ -46,6 +50,7 @@ namespace Personal.Services
                 Technologies = p.Technologies,
                 CreatedDate = p.CreatedDate,
                 GitHubUrl = p.GitHubUrl,
+                Category = p.Category
             }).ToList() ?? new List<ProjectDetail>();
         }
 
@@ -61,7 +66,29 @@ namespace Personal.Services
             {
                 try
                 {
-                    _currentCulture = CultureInfo.CurrentUICulture.Name.StartsWith("en") ? "en" : "tr"; ;
+                    _currentCulture = CultureInfo.CurrentUICulture.Name.StartsWith("en") ? "en" : "tr";
+                    
+                    // Önce localStorage'dan kontrol et (admin panelinden yapılan değişiklikler)
+                    try
+                    {
+                        var savedJson = await _jsRuntime.InvokeAsync<string>("localStorage.getItem", AdminSettings.ProjectsStorageKey);
+                        
+                        if (!string.IsNullOrEmpty(savedJson))
+                        {
+                            _projects = JsonSerializer.Deserialize<List<ProjectDetail>>(savedJson, new JsonSerializerOptions
+                            {
+                                PropertyNameCaseInsensitive = true
+                            });
+                            _isLoaded = true;
+                            return;
+                        }
+                    }
+                    catch
+                    {
+                        // localStorage erişilemezse devam et
+                    }
+                    
+                    // localStorage boşsa JSON dosyasından yükle
                     var projects = await _http.GetFromJsonAsync<List<ProjectDetail>>($"data/projects.{_currentCulture}.json");
                     _projects = projects ?? new List<ProjectDetail>();
                     _isLoaded = true;
