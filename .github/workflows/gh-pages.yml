@@ -34,6 +34,15 @@ jobs:
         
       - name: Publish
         run: dotnet publish -c Release -o published --no-restore
+
+      - name: Create admin config
+        run: |
+          echo '{
+            "adminPassword": "${{ secrets.ADMIN_PASSWORD }}",
+            "sessionTimeoutMinutes": 60,
+            "maxLoginAttempts": 5,
+            "lockoutMinutes": 15
+          }' > published/wwwroot/data/admin.config.json
         
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
