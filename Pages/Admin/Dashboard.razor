@@ -699,7 +699,6 @@ else
         remainingMinutes = AdminService.GetRemainingSessionMinutes();
         await LoadProjects();
 
-        // Session süresini her dakika kontrol et
         sessionTimer = new Timer(async _ =>
         {
             var stillAuth = await AdminService.IsAuthenticatedAsync();
@@ -786,7 +785,6 @@ else
             return;
         }
 
-        // Parse technologies and features
         currentProject.Technologies = technologiesInput?
             .Split(',', StringSplitOptions.RemoveEmptyEntries)
             .Select(t => t.Trim())
