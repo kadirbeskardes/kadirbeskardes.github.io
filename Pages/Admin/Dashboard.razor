@@ -1,6 +1,7 @@
 @page "/admin/dashboard"
 @using Personal.Models
 @using Personal.Services
+@using Microsoft.AspNetCore.Components.Forms
 @inject AdminService AdminService
 @inject NavigationManager Navigation
 @inject IJSRuntime JS
@@ -162,19 +163,97 @@ else
                                 <input type="text" @bind="currentProject.Category" placeholder="Örn: Web Uygulamas?" />
                             </div>
                             <div class="form-group">
-                                <label>Görsel URL</label>
-                                <input type="text" @bind="currentProject.ImageUrl" placeholder="img/proje.jpg" />
-                            </div>
-                        </div>
-
-                        <div class="form-row two-col">
-                            <div class="form-group">
                                 <label>GitHub URL</label>
                                 <input type="text" @bind="currentProject.GitHubUrl" placeholder="https://github.com/..." />
                             </div>
+                        </div>
+
+                        <div class="form-row">
                             <div class="form-group">
                                 <label>Proje URL</label>
                                 <input type="text" @bind="currentProject.ProjectUrl" placeholder="https://..." />
+                            </div>
+                        </div>
+
+                        <!-- Görsel Yükleme Bölümü -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label><i class="bi bi-image me-2"></i>Proje Görseli</label>
+                                <div class="image-upload-container">
+                                    @if (!string.IsNullOrEmpty(imagePreview) || !string.IsNullOrEmpty(currentProject.ImageUrl))
+                                    {
+                                        <div class="image-preview-wrapper">
+                                            <img src="@(imagePreview ?? currentProject.ImageUrl)" alt="Proje Görseli" class="image-preview" />
+                                            <button type="button" class="remove-image-btn" @onclick="RemoveImage" title="Görseli Kald?r">
+                                                <i class="bi bi-x-lg"></i>
+                                            </button>
+                                        </div>
+                                    }
+                                    <div class="upload-area @(isUploading ? "uploading" : "")">
+                                        <InputFile OnChange="HandleImageUpload" accept="image/*" class="file-input" id="imageUpload" disabled="@isUploading" />
+                                        <label for="imageUpload" class="upload-label">
+                                            @if (isUploading)
+                                            {
+                                                <div class="upload-spinner"></div>
+                                                <span>Yükleniyor...</span>
+                                            }
+                                            else
+                                            {
+                                                <i class="bi bi-cloud-arrow-up"></i>
+                                                <span>Görsel Yükle</span>
+                                                <small>PNG, JPG, GIF (Maks. 5MB)</small>
+                                            }
+                                        </label>
+                                    </div>
+                                    <div class="image-url-input">
+                                        <span class="or-divider">veya URL girin</span>
+                                        <input type="text" @bind="currentProject.ImageUrl" placeholder="https://example.com/image.jpg" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Ekran Görüntüleri -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label><i class="bi bi-images me-2"></i>Ekran Görüntüleri</label>
+                                <div class="screenshots-container">
+                                    @if (screenshotsList.Any())
+                                    {
+                                        <div class="screenshots-grid">
+                                            @foreach (var (screenshot, index) in screenshotsList.Select((s, i) => (s, i)))
+                                            {
+                                                <div class="screenshot-item">
+                                                    <img src="@screenshot" alt="Ekran Görüntüsü @(index + 1)" />
+                                                    <button type="button" class="remove-screenshot-btn" @onclick="() => RemoveScreenshot(index)" title="Kald?r">
+                                                        <i class="bi bi-x"></i>
+                                                    </button>
+                                                </div>
+                                            }
+                                        </div>
+                                    }
+                                    <div class="upload-area small @(isUploadingScreenshot ? "uploading" : "")">
+                                        <InputFile OnChange="HandleScreenshotUpload" accept="image/*" multiple class="file-input" id="screenshotUpload" disabled="@isUploadingScreenshot" />
+                                        <label for="screenshotUpload" class="upload-label">
+                                            @if (isUploadingScreenshot)
+                                            {
+                                                <div class="upload-spinner"></div>
+                                                <span>Yükleniyor...</span>
+                                            }
+                                            else
+                                            {
+                                                <i class="bi bi-plus-lg"></i>
+                                                <span>Ekran Görüntüsü Ekle</span>
+                                            }
+                                        </label>
+                                    </div>
+                                    <div class="screenshots-url-input">
+                                        <input type="text" @bind="newScreenshotUrl" placeholder="Ekran görüntüsü URL'si" />
+                                        <button type="button" class="add-url-btn" @onclick="AddScreenshotUrl" disabled="@string.IsNullOrWhiteSpace(newScreenshotUrl)">
+                                            <i class="bi bi-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -195,7 +274,7 @@ else
 
                     <div class="modal-footer">
                         <button class="btn-secondary" @onclick="CloseModal">?ptal</button>
-                        <button class="btn-primary" @onclick="SaveProject">
+                        <button class="btn-primary" @onclick="SaveProject" disabled="@isUploading">
                             <i class="bi bi-check-lg me-2"></i>@(isEditing ? "Güncelle" : "Ekle")
                         </button>
                     </div>
@@ -321,9 +400,14 @@ else
         color: #fff;
     }
 
-    .btn-primary:hover {
+    .btn-primary:hover:not(:disabled) {
         transform: translateY(-2px);
         box-shadow: 0 5px 20px rgba(99, 102, 241, 0.4);
+    }
+
+    .btn-primary:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
     }
 
     .btn-secondary {
@@ -508,7 +592,7 @@ else
         border: 1px solid rgba(99, 102, 241, 0.2);
         border-radius: 16px;
         width: 100%;
-        max-width: 600px;
+        max-width: 700px;
         max-height: 90vh;
         overflow-y: auto;
     }
@@ -590,6 +674,229 @@ else
         color: rgba(255, 255, 255, 0.3);
     }
 
+    /* Image Upload Styles */
+    .image-upload-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .image-preview-wrapper {
+        position: relative;
+        display: inline-block;
+        max-width: 200px;
+    }
+
+    .image-preview {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 12px;
+        border: 2px solid rgba(99, 102, 241, 0.3);
+    }
+
+    .remove-image-btn {
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        border: none;
+        background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+        color: #fff;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 8px rgba(239, 68, 68, 0.4);
+    }
+
+    .remove-image-btn:hover {
+        transform: scale(1.1);
+    }
+
+    .upload-area {
+        position: relative;
+        border: 2px dashed rgba(99, 102, 241, 0.3);
+        border-radius: 12px;
+        padding: 2rem;
+        text-align: center;
+        transition: all 0.3s ease;
+        background: rgba(99, 102, 241, 0.05);
+    }
+
+    .upload-area:hover {
+        border-color: rgba(99, 102, 241, 0.5);
+        background: rgba(99, 102, 241, 0.1);
+    }
+
+    .upload-area.uploading {
+        border-color: rgba(34, 197, 94, 0.5);
+        background: rgba(34, 197, 94, 0.1);
+    }
+
+    .upload-area.small {
+        padding: 1rem;
+    }
+
+    .file-input {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    .file-input:disabled {
+        cursor: not-allowed;
+    }
+
+    .upload-label {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        color: #a5b4fc;
+        cursor: pointer;
+    }
+
+    .upload-label i {
+        font-size: 2rem;
+    }
+
+    .upload-area.small .upload-label i {
+        font-size: 1.5rem;
+    }
+
+    .upload-label small {
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 0.75rem;
+    }
+
+    .upload-spinner {
+        width: 24px;
+        height: 24px;
+        border: 2px solid rgba(34, 197, 94, 0.2);
+        border-top-color: #22c55e;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+    }
+
+    .image-url-input {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .or-divider {
+        text-align: center;
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 0.8rem;
+        position: relative;
+    }
+
+    .or-divider::before,
+    .or-divider::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        width: 40%;
+        height: 1px;
+        background: rgba(99, 102, 241, 0.2);
+    }
+
+    .or-divider::before {
+        left: 0;
+    }
+
+    .or-divider::after {
+        right: 0;
+    }
+
+    /* Screenshots Styles */
+    .screenshots-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .screenshots-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: 0.75rem;
+    }
+
+    .screenshot-item {
+        position: relative;
+        aspect-ratio: 16/9;
+        border-radius: 8px;
+        overflow: hidden;
+        border: 1px solid rgba(99, 102, 241, 0.2);
+    }
+
+    .screenshot-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .remove-screenshot-btn {
+        position: absolute;
+        top: 4px;
+        right: 4px;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        border: none;
+        background: rgba(239, 68, 68, 0.9);
+        color: #fff;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.7rem;
+        opacity: 0;
+        transition: all 0.3s ease;
+    }
+
+    .screenshot-item:hover .remove-screenshot-btn {
+        opacity: 1;
+    }
+
+    .screenshots-url-input {
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    .screenshots-url-input input {
+        flex: 1;
+    }
+
+    .add-url-btn {
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        border: none;
+        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        color: #fff;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+    }
+
+    .add-url-btn:hover:not(:disabled) {
+        transform: scale(1.05);
+    }
+
+    .add-url-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
     .modal-footer {
         display: flex;
         justify-content: flex-end;
@@ -614,7 +921,7 @@ else
     }
 
     .toast.success {
-        background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+        background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%;
     }
 
     .toast.error {
@@ -667,6 +974,10 @@ else
         .modal-content {
             margin: 0.5rem;
         }
+
+        .screenshots-grid {
+            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+        }
     }
 </style>
 
@@ -685,6 +996,14 @@ else
 
     private int remainingMinutes = 0;
     private Timer? sessionTimer;
+
+    // Image upload fields
+    private string? imagePreview;
+    private bool isUploading = false;
+    private bool isUploadingScreenshot = false;
+    private List<string> screenshotsList = new();
+    private string newScreenshotUrl = "";
+    private const long MaxFileSize = 5 * 1024 * 1024; // 5MB
 
     protected override async Task OnInitializedAsync()
     {
@@ -744,6 +1063,9 @@ else
         };
         technologiesInput = "";
         featuresInput = "";
+        imagePreview = null;
+        screenshotsList = new List<string>();
+        newScreenshotUrl = "";
         showModal = true;
     }
 
@@ -769,12 +1091,124 @@ else
         };
         technologiesInput = string.Join(", ", currentProject.Technologies);
         featuresInput = string.Join(", ", currentProject.Features);
+        imagePreview = null;
+        screenshotsList = currentProject.Screenshots?.ToList() ?? new List<string>();
+        newScreenshotUrl = "";
         showModal = true;
     }
 
     private void CloseModal()
     {
         showModal = false;
+        imagePreview = null;
+    }
+
+    private async Task HandleImageUpload(InputFileChangeEventArgs e)
+    {
+        var file = e.File;
+        
+        if (file.Size > MaxFileSize)
+        {
+            ShowToast("Dosya boyutu 5MB'dan küçük olmal?d?r.", "error");
+            return;
+        }
+
+        if (!file.ContentType.StartsWith("image/"))
+        {
+            ShowToast("Lütfen geçerli bir görsel dosyas? seçin.", "error");
+            return;
+        }
+
+        isUploading = true;
+        StateHasChanged();
+
+        try
+        {
+            using var stream = file.OpenReadStream(MaxFileSize);
+            using var memoryStream = new MemoryStream();
+            await stream.CopyToAsync(memoryStream);
+            var bytes = memoryStream.ToArray();
+            var base64 = Convert.ToBase64String(bytes);
+            imagePreview = $"data:{file.ContentType};base64,{base64}";
+            currentProject.ImageUrl = imagePreview;
+            ShowToast("Görsel ba?ar?yla yüklendi.", "success");
+        }
+        catch (Exception ex)
+        {
+            ShowToast($"Görsel yüklenirken hata olu?tu: {ex.Message}", "error");
+        }
+        finally
+        {
+            isUploading = false;
+            StateHasChanged();
+        }
+    }
+
+    private async Task HandleScreenshotUpload(InputFileChangeEventArgs e)
+    {
+        isUploadingScreenshot = true;
+        StateHasChanged();
+
+        try
+        {
+            foreach (var file in e.GetMultipleFiles(10))
+            {
+                if (file.Size > MaxFileSize)
+                {
+                    ShowToast($"{file.Name} dosyas? çok büyük. Atlan?yor...", "error");
+                    continue;
+                }
+
+                if (!file.ContentType.StartsWith("image/"))
+                {
+                    continue;
+                }
+
+                using var stream = file.OpenReadStream(MaxFileSize);
+                using var memoryStream = new MemoryStream();
+                await stream.CopyToAsync(memoryStream);
+                var bytes = memoryStream.ToArray();
+                var base64 = Convert.ToBase64String(bytes);
+                var dataUrl = $"data:{file.ContentType};base64,{base64}";
+                screenshotsList.Add(dataUrl);
+            }
+            ShowToast("Ekran görüntüleri yüklendi.", "success");
+        }
+        catch (Exception ex)
+        {
+            ShowToast($"Yükleme hatas?: {ex.Message}", "error");
+        }
+        finally
+        {
+            isUploadingScreenshot = false;
+            StateHasChanged();
+        }
+    }
+
+    private void RemoveImage()
+    {
+        imagePreview = null;
+        currentProject.ImageUrl = "";
+        StateHasChanged();
+    }
+
+    private void RemoveScreenshot(int index)
+    {
+        if (index >= 0 && index < screenshotsList.Count)
+        {
+            screenshotsList.RemoveAt(index);
+            StateHasChanged();
+        }
+    }
+
+    private void AddScreenshotUrl()
+    {
+        if (!string.IsNullOrWhiteSpace(newScreenshotUrl))
+        {
+            screenshotsList.Add(newScreenshotUrl.Trim());
+            newScreenshotUrl = "";
+            StateHasChanged();
+        }
     }
 
     private async Task SaveProject()
@@ -796,6 +1230,8 @@ else
             .Select(f => f.Trim())
             .Where(f => !string.IsNullOrEmpty(f))
             .ToArray() ?? Array.Empty<string>();
+
+        currentProject.Screenshots = screenshotsList.ToArray();
 
         if (isEditing)
         {
