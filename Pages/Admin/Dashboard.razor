@@ -20,7 +20,7 @@ else
         <!-- Header -->
         <header class="admin-header">
             <div class="header-left">
-                <h1><i class="bi bi-grid-3x3-gap me-2"></i>Proje Yonetimi</h1>
+                <h1><i class="bi bi-grid-3x3-gap me-2"></i>Proje Yönetimi</h1>
             </div>
             <div class="header-center">
                 <div class="session-info">
@@ -36,13 +36,13 @@ else
             </div>
             <div class="header-right">
                 <button class="btn-secondary" @onclick="ExportJson">
-                    <i class="bi bi-download me-2"></i>JSON Disa Aktar
+                    <i class="bi bi-download me-2"></i>JSON D??a Aktar
                 </button>
                 <button class="btn-secondary" @onclick="ResetProjects">
-                    <i class="bi bi-arrow-counterclockwise me-2"></i>Sifirla
+                    <i class="bi bi-arrow-counterclockwise me-2"></i>S?f?rla
                 </button>
                 <button class="btn-danger" @onclick="Logout">
-                    <i class="bi bi-box-arrow-right me-2"></i>Cikis
+                    <i class="bi bi-box-arrow-right me-2"></i>Ç?k??
                 </button>
             </div>
         </header>
@@ -64,15 +64,15 @@ else
             {
                 <div class="loading-state">
                     <div class="spinner"></div>
-                    <p>Projeler yukleniyor...</p>
+                    <p>Projeler yükleniyor...</p>
                 </div>
             }
             else if (!projects.Any())
             {
                 <div class="empty-state">
                     <i class="bi bi-inbox"></i>
-                    <h3>Henuz proje yok</h3>
-                    <p>Yeni bir proje ekleyerek baslayin.</p>
+                    <h3>Henüz proje yok</h3>
+                    <p>Yeni bir proje ekleyerek ba?lay?n.</p>
                 </div>
             }
             else
@@ -82,10 +82,10 @@ else
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Baslik</th>
+                                <th>Ba?l?k</th>
                                 <th>Kategori</th>
                                 <th>Tarih</th>
-                                <th>Islemler</th>
+                                <th>??lemler</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -107,7 +107,7 @@ else
                                     </td>
                                     <td>@project.CreatedDate.ToString("dd.MM.yyyy")</td>
                                     <td class="actions-cell">
-                                        <button class="btn-icon edit" @onclick="() => ShowEditModal(project)" title="Duzenle">
+                                        <button class="btn-icon edit" @onclick="() => ShowEditModal(project)" title="Düzenle">
                                             <i class="bi bi-pencil"></i>
                                         </button>
                                         <button class="btn-icon delete" @onclick="() => DeleteProject(project.Id)" title="Sil">
@@ -128,7 +128,7 @@ else
             <div class="modal-overlay" @onclick="CloseModal">
                 <div class="modal-content" @onclick:stopPropagation="true">
                     <div class="modal-header">
-                        <h2>@(isEditing ? "Proje Duzenle" : "Yeni Proje Ekle")</h2>
+                        <h2>@(isEditing ? "Proje Düzenle" : "Yeni Proje Ekle")</h2>
                         <button class="modal-close" @onclick="CloseModal">
                             <i class="bi bi-x-lg"></i>
                         </button>
@@ -137,32 +137,32 @@ else
                     <div class="modal-body">
                         <div class="form-row">
                             <div class="form-group">
-                                <label>Baslik *</label>
-                                <input type="text" @bind="currentProject.Title" placeholder="Proje basligi" />
+                                <label>Ba?l?k *</label>
+                                <input type="text" @bind="currentProject.Title" placeholder="Proje ba?l???" />
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group">
-                                <label>Kisa Aciklama *</label>
-                                <textarea @bind="currentProject.ShortDescription" rows="2" placeholder="Kisa aciklama"></textarea>
+                                <label>K?sa Aç?klama *</label>
+                                <textarea @bind="currentProject.ShortDescription" rows="2" placeholder="K?sa aç?klama"></textarea>
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group">
-                                <label>Detayli Aciklama</label>
-                                <textarea @bind="currentProject.FullDescription" rows="4" placeholder="Detayli aciklama"></textarea>
+                                <label>Detayl? Aç?klama</label>
+                                <textarea @bind="currentProject.FullDescription" rows="4" placeholder="Detayl? aç?klama"></textarea>
                             </div>
                         </div>
 
                         <div class="form-row two-col">
                             <div class="form-group">
                                 <label>Kategori</label>
-                                <input type="text" @bind="currentProject.Category" placeholder="Orn: Web Uygulamasi" />
+                                <input type="text" @bind="currentProject.Category" placeholder="Örn: Web Uygulamas?" />
                             </div>
                             <div class="form-group">
-                                <label>Gorsel URL</label>
+                                <label>Görsel URL</label>
                                 <input type="text" @bind="currentProject.ImageUrl" placeholder="img/proje.jpg" />
                             </div>
                         </div>
@@ -180,23 +180,23 @@ else
 
                         <div class="form-row">
                             <div class="form-group">
-                                <label>Teknolojiler (virgulle ayirin)</label>
+                                <label>Teknolojiler (virgülle ay?r?n)</label>
                                 <input type="text" @bind="technologiesInput" placeholder="C#, .NET, Blazor" />
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group">
-                                <label>Ozellikler (virgulle ayirin)</label>
-                                <textarea @bind="featuresInput" rows="2" placeholder="Ozellik 1, Ozellik 2"></textarea>
+                                <label>Özellikler (virgülle ay?r?n)</label>
+                                <textarea @bind="featuresInput" rows="2" placeholder="Özellik 1, Özellik 2"></textarea>
                             </div>
                         </div>
                     </div>
 
                     <div class="modal-footer">
-                        <button class="btn-secondary" @onclick="CloseModal">Iptal</button>
+                        <button class="btn-secondary" @onclick="CloseModal">?ptal</button>
                         <button class="btn-primary" @onclick="SaveProject">
-                            <i class="bi bi-check-lg me-2"></i>@(isEditing ? "Guncelle" : "Ekle")
+                            <i class="bi bi-check-lg me-2"></i>@(isEditing ? "Güncelle" : "Ekle")
                         </button>
                     </div>
                 </div>
@@ -720,7 +720,7 @@ else
     {
         await AdminService.ExtendSessionAsync();
         remainingMinutes = AdminService.GetRemainingSessionMinutes();
-        ShowToast("Oturum suresi uzatildi.", "success");
+        ShowToast("Oturum süresi uzat?ld?.", "success");
     }
 
     public void Dispose()
@@ -781,7 +781,7 @@ else
     {
         if (string.IsNullOrWhiteSpace(currentProject.Title) || string.IsNullOrWhiteSpace(currentProject.ShortDescription))
         {
-            ShowToast("Baslik ve kisa aciklama zorunludur.", "error");
+            ShowToast("Ba?l?k ve k?sa aç?klama zorunludur.", "error");
             return;
         }
 
@@ -800,7 +800,7 @@ else
         if (isEditing)
         {
             await AdminService.UpdateProjectAsync(currentProject);
-            ShowToast("Proje guncellendi.", "success");
+            ShowToast("Proje güncellendi.", "success");
         }
         else
         {
@@ -814,7 +814,7 @@ else
 
     private async Task DeleteProject(int id)
     {
-        var confirmed = await JS.InvokeAsync<bool>("confirm", "Bu projeyi silmek istediginizden emin misiniz?");
+        var confirmed = await JS.InvokeAsync<bool>("confirm", "Bu projeyi silmek istedi?inizden emin misiniz?");
         
         if (confirmed)
         {
@@ -828,18 +828,18 @@ else
     {
         var json = await AdminService.ExportProjectsJsonAsync();
         await JS.InvokeVoidAsync("navigator.clipboard.writeText", json);
-        ShowToast("JSON panoya kopyalandi.", "success");
+        ShowToast("JSON panoya kopyaland?.", "success");
     }
 
     private async Task ResetProjects()
     {
-        var confirmed = await JS.InvokeAsync<bool>("confirm", "Tum degisiklikler silinecek ve orijinal projeler yuklenecek. Devam etmek istiyor musunuz?");
+        var confirmed = await JS.InvokeAsync<bool>("confirm", "Tüm de?i?iklikler silinecek ve orijinal projeler yüklenecek. Devam etmek istiyor musunuz?");
         
         if (confirmed)
         {
             await AdminService.ResetToOriginalAsync();
             await LoadProjects();
-            ShowToast("Projeler sifirlandi.", "success");
+            ShowToast("Projeler s?f?rland?.", "success");
         }
     }
 
