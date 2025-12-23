@@ -11,6 +11,7 @@
     align-items: center;
     z-index: 9999;
     transition: opacity 0.5s ease;
+    padding: 1rem;
 }
 
 .app-loading-container {
@@ -77,4 +78,112 @@
 /* Blazor error UI */
 #blazor-error-ui {
     display: none;
+}
+
+/* ================================================
+   MOBILE RESPONSIVE STYLES
+   ================================================ */
+@media (max-width: 768px) {
+    .app-loading {
+        padding: 1rem;
+        align-items: center;
+    }
+    
+    .app-loading-container {
+        padding: 1.5rem;
+        border-radius: 16px;
+        width: 92%;
+        max-width: none;
+    }
+    
+    .app-loading-text h2,
+    .app-loading-text h1 {
+        font-size: 1.25rem !important;
+        margin-bottom: 0.5rem;
+    }
+    
+    .app-loading-text p,
+    .app-loading-text .lead {
+        font-size: 0.85rem !important;
+    }
+    
+    .loading-progress {
+        height: 6px;
+        border-radius: 3px;
+        margin: 1.5rem 0;
+    }
+    
+    .loading-message {
+        margin-top: 1rem;
+        font-size: 0.8rem;
+    }
+    
+    .loading-message small {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .app-loading-container {
+        padding: 1.25rem;
+        border-radius: 14px;
+        width: 94%;
+    }
+    
+    .app-loading-text h2,
+    .app-loading-text h1 {
+        font-size: 1.1rem !important;
+    }
+    
+    .app-loading-text p,
+    .app-loading-text .lead {
+        font-size: 0.8rem !important;
+    }
+    
+    .loading-progress {
+        height: 5px;
+        margin: 1.25rem 0;
+    }
+    
+    .loading-message {
+        margin-top: 0.75rem;
+    }
+    
+    .loading-message small {
+        font-size: 0.7rem;
+    }
+}
+
+/* Landscape mode on mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    .app-loading-container {
+        padding: 1rem;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+    
+    .app-loading-text h2,
+    .app-loading-text h1 {
+        font-size: 1rem !important;
+        margin-bottom: 0.25rem;
+    }
+    
+    .loading-progress {
+        margin: 0.75rem 0;
+        height: 4px;
+    }
+    
+    .loading-message {
+        margin-top: 0.5rem;
+    }
+}
+
+/* Safe area for notched devices */
+@supports (padding: max(0px)) {
+    .app-loading {
+        padding-left: max(1rem, env(safe-area-inset-left));
+        padding-right: max(1rem, env(safe-area-inset-right));
+        padding-top: max(1rem, env(safe-area-inset-top));
+        padding-bottom: max(1rem, env(safe-area-inset-bottom));
+    }
 }

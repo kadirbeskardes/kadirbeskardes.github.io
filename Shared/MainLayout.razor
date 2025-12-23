@@ -68,7 +68,7 @@
     <footer class="footer-modern py-5 mt-auto">
         <div class="container">
             <div class="row g-4">
-                <div class="col-lg-4 col-md-6 col-12">
+                <div class="col-lg-4 col-md-6 col-12 footer-brand-col">
                     <div class="footer-brand mb-4">
                         <i class="bi bi-code-slash fs-2 text-primary me-2"></i>
                         <span class="fw-bold fs-4 gradient-text">@L["Nav_Portfolio"]</span>
@@ -86,7 +86,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-6 col-6">
+                <div class="col-lg-2 col-md-6 col-6 footer-links-col">
                     <h5 class="footer-title mb-4">@L["Footer_Links"]</h5>
                     <ul class="footer-links list-unstyled">
                         <li><a href="/"><i class="bi bi-chevron-right me-2"></i>@L["Nav_Home"]</a></li>
@@ -95,7 +95,7 @@
                         <li><a href="contact"><i class="bi bi-chevron-right me-2"></i>@L["Nav_Contact"]</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-3 col-md-6 col-6">
+                <div class="col-lg-3 col-md-6 col-6 footer-contact-col">
                     <h5 class="footer-title mb-4">@L["Contact_ContactInfo"]</h5>
                     <ul class="footer-contact list-unstyled">
                         <li class="d-flex align-items-start mb-3">
@@ -112,7 +112,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col-lg-3 col-md-6 col-12">
+                <div class="col-lg-3 col-md-6 col-12 footer-cv-col">
                     <h5 class="footer-title mb-4">@L["Nav_DownloadCV"]</h5>
                     <p class="text-light opacity-75 mb-3 footer-cv-text">@L["Footer_CVDescription"]</p>
                     <a href="files/CV Kadir Beskardes.pdf" download class="btn btn-primary rounded-pill px-4 footer-cv-btn">
@@ -279,6 +279,15 @@
 
     /* Mobile Navigation Styles */
     @@media (max-width: 991px) {
+        .navbar {
+            padding: 0.75rem 0;
+        }
+        
+        .navbar .container {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        
         .navbar-collapse {
             background: rgba(10, 15, 30, 0.98);
             backdrop-filter: blur(20px);
@@ -287,19 +296,22 @@
             padding: 1rem;
             border: 1px solid rgba(99, 102, 241, 0.2);
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            max-height: calc(100vh - 100px);
+            overflow-y: auto;
         }
         
         .mobile-nav-menu {
             flex-direction: column;
-            gap: 0.5rem;
+            gap: 0.25rem;
         }
         
         .mobile-nav-link {
-            padding: 1rem 1.25rem !important;
+            padding: 0.875rem 1rem !important;
             border-radius: 12px !important;
-            margin: 0.25rem 0;
-            font-size: 1rem;
-            min-height: 50px;
+            margin: 0.125rem 0;
+            font-size: 0.95rem;
+            min-height: 48px;
+            justify-content: flex-start;
         }
         
         .mobile-nav-link:hover,
@@ -323,7 +335,7 @@
         }
         
         .mobile-culture-switcher {
-            padding: 0.75rem 1.25rem;
+            padding: 0.75rem 1rem;
             justify-content: center;
             border-top: 1px solid rgba(99, 102, 241, 0.1);
             margin-top: 0.5rem;
@@ -338,81 +350,148 @@
         .mobile-cv-btn .btn {
             width: 100%;
             justify-content: center;
-            padding: 0.875rem 1.5rem !important;
-            font-size: 1rem;
+            padding: 0.75rem 1.5rem !important;
+            font-size: 0.95rem;
         }
         
         .brand-text {
-            font-size: 1.25rem !important;
+            font-size: 1.1rem !important;
         }
         
         .navbar-brand i {
-            font-size: 1.5rem !important;
+            font-size: 1.25rem !important;
         }
     }
 
     /* Mobile Footer Styles */
     @@media (max-width: 768px) {
         .footer-modern {
-            padding: 3rem 0 2rem !important;
+            padding: 2.5rem 0 1.5rem !important;
+        }
+        
+        .footer-modern .container {
+            padding-left: 1.25rem;
+            padding-right: 1.25rem;
+        }
+        
+        .footer-modern .row {
+            gap: 0 !important;
+        }
+        
+        .footer-brand-col {
+            text-align: center;
+            margin-bottom: 1.5rem;
         }
         
         .footer-brand {
             justify-content: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem !important;
+        }
+        
+        .footer-brand i {
+            font-size: 1.5rem !important;
+        }
+        
+        .footer-brand .gradient-text {
+            font-size: 1.25rem !important;
         }
         
         .footer-about-text {
             text-align: center;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+            margin-bottom: 1rem !important;
+            line-height: 1.6;
         }
         
         .footer-social {
             justify-content: center !important;
-            margin-bottom: 1.5rem;
+            margin-bottom: 0;
         }
         
         .social-icon-footer {
-            width: 48px;
-            height: 48px;
-            font-size: 1.25rem;
+            width: 44px;
+            height: 44px;
+            font-size: 1.1rem;
+        }
+        
+        .footer-links-col,
+        .footer-contact-col {
+            margin-bottom: 1.5rem;
         }
         
         .footer-title {
-            font-size: 1rem;
-            margin-bottom: 1rem !important;
+            font-size: 0.95rem;
+            margin-bottom: 0.75rem !important;
             text-align: left;
         }
         
         .footer-title::after {
-            width: 30px;
+            width: 25px;
             height: 2px;
         }
         
         .footer-links li {
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
         
         .footer-links a {
-            font-size: 0.9rem;
-            padding: 0.25rem 0;
+            font-size: 0.85rem;
+            padding: 0.2rem 0;
+        }
+        
+        .footer-links a i {
+            font-size: 0.6rem;
+            margin-right: 0.35rem !important;
+        }
+        
+        .footer-contact li {
+            margin-bottom: 0.625rem !important;
+        }
+        
+        .footer-contact i {
+            font-size: 0.85rem;
+            margin-top: 0.15rem !important;
         }
         
         .footer-contact-text,
-        .footer-email {
-            font-size: 0.85rem;
+        .footer-email,
+        .footer-contact a {
+            font-size: 0.8rem;
             word-break: break-word;
+            line-height: 1.4;
+        }
+        
+        .footer-cv-col {
+            text-align: center;
+            padding-top: 0.5rem;
+            border-top: 1px solid rgba(99, 102, 241, 0.1);
+            margin-top: 0.5rem;
+        }
+        
+        .footer-cv-col .footer-title {
+            text-align: center;
+        }
+        
+        .footer-cv-col .footer-title::after {
+            left: 50%;
+            transform: translateX(-50%);
         }
         
         .footer-cv-text {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             text-align: center;
         }
         
         .footer-cv-btn {
             width: 100%;
+            max-width: 250px;
             justify-content: center;
-            padding: 0.875rem 1.5rem;
+            padding: 0.75rem 1.25rem;
+            font-size: 0.9rem;
+        }
+        
+        .footer-modern hr {
+            margin: 1.5rem 0 !important;
         }
         
         .footer-bottom {
@@ -420,50 +499,112 @@
         }
         
         .footer-bottom .col-md-6 {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.25rem;
         }
         
         .footer-bottom p {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
         }
     }
 
     /* Extra Small Mobile Footer */
     @@media (max-width: 480px) {
-        .footer-modern .row > div {
-            text-align: center;
+        .footer-modern {
+            padding: 2rem 0 1rem !important;
         }
         
-        .footer-title::after {
-            left: 50%;
-            transform: translateX(-50%);
+        .footer-modern .container {
+            padding-left: 1rem;
+            padding-right: 1rem;
         }
         
-        .footer-links {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 0.5rem;
+        .footer-brand i {
+            font-size: 1.25rem !important;
         }
         
-        .footer-links li {
-            margin: 0;
+        .footer-brand .gradient-text {
+            font-size: 1.1rem !important;
+        }
+        
+        .footer-about-text {
+            font-size: 0.8rem;
+        }
+        
+        .social-icon-footer {
+            width: 40px;
+            height: 40px;
+            font-size: 1rem;
+        }
+        
+        .footer-links-col,
+        .footer-contact-col {
+            padding-left: 0.75rem;
+            padding-right: 0.75rem;
+        }
+        
+        .footer-title {
+            font-size: 0.875rem;
         }
         
         .footer-links a {
-            padding: 0.5rem 0.75rem;
-            background: rgba(99, 102, 241, 0.1);
-            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        .footer-contact-text,
+        .footer-email,
+        .footer-contact a {
+            font-size: 0.75rem;
+        }
+        
+        .footer-cv-btn {
+            padding: 0.625rem 1rem;
             font-size: 0.85rem;
         }
         
-        .footer-links a i {
+        .footer-bottom p {
+            font-size: 0.7rem;
+        }
+    }
+
+    /* Touch Device Optimizations */
+    @@media (hover: none) and (pointer: coarse) {
+        .hover-effect:hover {
+            transform: none;
+            background-color: transparent !important;
+        }
+        
+        .hover-effect:active {
+            background-color: rgba(99, 102, 241, 0.2) !important;
+        }
+        
+        .hover-effect::after {
             display: none;
         }
         
-        .footer-contact li {
-            justify-content: center;
-            flex-wrap: wrap;
+        .social-icon-footer:hover {
+            transform: none;
+        }
+        
+        .social-icon-footer:active {
+            transform: scale(0.95);
+            background: linear-gradient(135deg, #6366f1, #06b6d4);
+        }
+        
+        .glow-on-hover:hover {
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .glow-on-hover:active {
+            transform: scale(0.98);
+        }
+        
+        .footer-links a:hover {
+            transform: none;
+        }
+        
+        .footer-links a:active {
+            color: #06b6d4;
         }
     }
 </style>

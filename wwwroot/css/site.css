@@ -65,6 +65,11 @@
     --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Base Reset for Mobile */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Inter', 'Poppins', sans-serif;
     background: var(--gradient-dark);
@@ -74,6 +79,8 @@ body {
     line-height: 1.7;
     letter-spacing: -0.01em;
     min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /* Typography Improvements */
@@ -164,6 +171,10 @@ html {
     background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: float 6s ease-in-out infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
 }
 
 .loading-progress {
@@ -611,33 +622,6 @@ html {
 }
 
 /* Enhanced Interactive Effects */
-.hover-effect {
-    transition: var(--transition-base);
-    position: relative;
-    overflow: hidden;
-}
-
-.hover-effect::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-    transition: left 0.6s ease;
-    z-index: 1;
-}
-
-.hover-effect:hover::before {
-    left: 100%;
-}
-
-.hover-effect:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-xl);
-}
-
 .icon-container-enhanced {
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     position: relative;
@@ -852,10 +836,22 @@ html {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* Mobile Responsive */
+/* ================================================
+   MOBILE RESPONSIVE STYLES - IMPROVED
+   ================================================ */
+
+/* Small devices (landscape phones, 576px and up) */
 @media (max-width: 768px) {
+    /* Container adjustments */
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    /* Loading Screen Mobile */
     .app-loading-container {
-        padding: 1rem;
+        padding: 1.5rem;
+        width: 95%;
     }
     
     .loading-logo {
@@ -865,11 +861,29 @@ html {
     }
     
     .logo-icon {
-        font-size: 2.5rem;
+        font-size: 2.25rem;
+    }
+    
+    .logo-circle {
+        border-width: 2px;
+    }
+    
+    .app-loading-text h1 {
+        font-size: 1.5rem !important;
+        margin-bottom: 0.75rem !important;
+    }
+    
+    .app-loading-text .lead {
+        font-size: 0.9rem !important;
+    }
+    
+    .loading-progress {
+        height: 5px;
+        margin: 2rem 0;
     }
     
     .tech-stack {
-        gap: 15px;
+        gap: 12px;
         margin: 2rem 0;
     }
     
@@ -878,22 +892,22 @@ html {
     }
     
     .social-links {
-        gap: 15px;
+        gap: 12px;
         margin-top: 2rem;
     }
     
-    .hover-effect:hover {
-        transform: translateY(-4px);
+    .social-link {
+        font-size: 1.1rem;
     }
     
-    .icon-container-enhanced:hover {
-        transform: scale(1.1) rotate(5deg);
+    .loading-message small {
+        font-size: 0.8rem;
     }
 
-    /* Mobile Typography */
+    /* Typography Mobile */
     h1 {
         font-size: 1.75rem !important;
-        line-height: 1.2;
+        line-height: 1.25;
     }
     
     h2 {
@@ -904,170 +918,34 @@ html {
         font-size: 1.25rem !important;
     }
     
+    h4 {
+        font-size: 1.1rem !important;
+    }
+    
     .display-3 {
-        font-size: 2rem !important;
+        font-size: 1.875rem !important;
     }
     
     .display-4 {
-        font-size: 1.75rem !important;
+        font-size: 1.625rem !important;
+    }
+    
+    .display-5 {
+        font-size: 1.5rem !important;
     }
     
     .lead {
-        font-size: 1rem !important;
-    }
-    
-    .fs-5 {
         font-size: 0.95rem !important;
     }
     
-    /* Mobile Buttons */
-    .btn {
-        padding: 0.6rem 1.25rem;
-        font-size: 0.9rem;
+    .fs-5 {
+        font-size: 0.9rem !important;
     }
     
-    .btn-lg {
-        padding: 0.75rem 1.5rem;
-        font-size: 1rem;
-    }
-    
-    .btn-sm {
-        padding: 0.4rem 1rem;
-        font-size: 0.8rem;
-    }
-    
-    /* Mobile Card Improvements */
-    .card-enhanced {
-        border-radius: 16px;
-        margin-bottom: 1rem;
-    }
-    
-    .card-body {
-        padding: 1.25rem !important;
-    }
-    
-    /* Mobile Icon Container */
-    .icon-container-enhanced {
-        width: 60px;
-        height: 60px;
-        border-radius: 14px;
-    }
-    
-    .icon-container-enhanced i {
-        font-size: 1.5rem !important;
-    }
-    
-    /* Mobile Section Spacing */
+    /* Section Spacing Mobile */
     section {
-        padding-top: 3rem !important;
-        padding-bottom: 3rem !important;
-    }
-    
-    .py-5 {
         padding-top: 2.5rem !important;
         padding-bottom: 2.5rem !important;
-    }
-    
-    .container {
-        padding-left: 1rem;
-        padding-right: 1rem;
-    }
-    
-    /* Mobile Section Title */
-    .section-title {
-        font-size: 1.5rem;
-    }
-    
-    .section-title::after {
-        width: 50px;
-        height: 3px;
-        bottom: -8px;
-    }
-    
-    /* Mobile Badge */
-    .badge {
-        font-size: 0.7rem;
-        padding: 0.35rem 0.6rem;
-    }
-    
-    /* Mobile Skill List */
-    .skill-list li {
-        padding: 8px 0;
-        font-size: 0.9rem;
-    }
-    
-    /* Mobile Gap Adjustments */
-    .gap-3 {
-        gap: 0.75rem !important;
-    }
-    
-    .gap-4 {
-        gap: 1rem !important;
-    }
-    
-    .g-4 {
-        --bs-gutter-x: 1rem;
-        --bs-gutter-y: 1rem;
-    }
-}
-
-/* Extra Small Mobile Devices */
-@media (max-width: 480px) {
-    body {
-        font-size: 14px;
-    }
-    
-    h1 {
-        font-size: 1.5rem !important;
-    }
-    
-    h2 {
-        font-size: 1.3rem !important;
-    }
-    
-    .display-3 {
-        font-size: 1.6rem !important;
-    }
-    
-    .display-4 {
-        font-size: 1.4rem !important;
-    }
-    
-    .container {
-        padding-left: 0.75rem;
-        padding-right: 0.75rem;
-    }
-    
-    .btn {
-        padding: 0.5rem 1rem;
-        font-size: 0.85rem;
-        width: 100%;
-        justify-content: center;
-    }
-    
-    .btn-lg {
-        padding: 0.65rem 1.25rem;
-        font-size: 0.9rem;
-    }
-    
-    /* Stack buttons on very small screens */
-    .d-flex.gap-3 {
-        flex-direction: column;
-        gap: 0.75rem !important;
-    }
-    
-    .card-body {
-        padding: 1rem !important;
-    }
-    
-    .icon-container-enhanced {
-        width: 50px;
-        height: 50px;
-        border-radius: 12px;
-    }
-    
-    .icon-container-enhanced i {
-        font-size: 1.25rem !important;
     }
     
     .py-5 {
@@ -1083,7 +961,90 @@ html {
         margin-bottom: 1.5rem !important;
     }
     
-    /* Mobile row adjustments */
+    /* Button Mobile */
+    .btn {
+        padding: 0.625rem 1.25rem;
+        font-size: 0.9rem;
+        border-radius: 8px;
+    }
+    
+    .btn-lg {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.95rem;
+    }
+    
+    .btn-sm {
+        padding: 0.4rem 0.875rem;
+        font-size: 0.8rem;
+    }
+    
+    .rounded-pill {
+        border-radius: 50px !important;
+    }
+    
+    /* Card Mobile */
+    .card-enhanced {
+        border-radius: 14px;
+        margin-bottom: 1rem;
+    }
+    
+    .card-body {
+        padding: 1.25rem !important;
+    }
+    
+    /* Icon Container Mobile */
+    .icon-container-enhanced {
+        width: 56px;
+        height: 56px;
+        border-radius: 12px;
+    }
+    
+    .icon-container-enhanced i {
+        font-size: 1.5rem !important;
+    }
+    
+    /* Section Title Mobile */
+    .section-title {
+        font-size: 1.375rem;
+    }
+    
+    .section-title::after {
+        width: 50px;
+        height: 3px;
+        bottom: -8px;
+    }
+    
+    .section-title::before {
+        display: none;
+    }
+    
+    /* Badge Mobile */
+    .badge {
+        font-size: 0.7rem;
+        padding: 0.3rem 0.55rem;
+    }
+    
+    /* Skill List Mobile */
+    .skill-list li {
+        padding: 6px 0;
+        font-size: 0.875rem;
+    }
+    
+    /* Gap Adjustments */
+    .gap-3 {
+        gap: 0.75rem !important;
+    }
+    
+    .gap-4 {
+        gap: 1rem !important;
+    }
+    
+    .g-4 {
+        --bs-gutter-x: 1rem;
+        --bs-gutter-y: 1rem;
+    }
+    
+    /* Row adjustments */
     .row {
         margin-left: -0.5rem;
         margin-right: -0.5rem;
@@ -1093,20 +1054,186 @@ html {
         padding-left: 0.5rem;
         padding-right: 0.5rem;
     }
+    
+    /* Hover Effects Mobile */
+    .hover-effect:hover {
+        transform: translateY(-4px);
+    }
+    
+    .hover-effect::before {
+        display: none;
+    }
+    
+    .icon-container-enhanced:hover {
+        transform: scale(1.08);
+    }
+    
+    /* Card Enhanced Mobile */
+    .card-enhanced:hover {
+        transform: translateY(-4px);
+    }
+
+    /* Better text readability on mobile */
+    .text-light {
+        color: rgba(255, 255, 255, 0.9) !important;
+    }
+    
+    .opacity-75 {
+        opacity: 0.8 !important;
+    }
+    
+    /* Navbar Mobile */
+    .navbar {
+        backdrop-filter: blur(15px);
+        padding: 0.5rem 0;
+    }
+}
+
+/* Extra Small Mobile Devices (max-width: 480px) */
+@media (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+    
+    .container {
+        padding-left: 0.875rem;
+        padding-right: 0.875rem;
+    }
+    
+    /* Loading Screen XS */
+    .loading-logo {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 1.5rem;
+    }
+    
+    .logo-icon {
+        font-size: 2rem;
+    }
+    
+    .app-loading-text h1 {
+        font-size: 1.25rem !important;
+    }
+    
+    .app-loading-text .lead {
+        font-size: 0.85rem !important;
+    }
+    
+    .tech-stack {
+        gap: 10px;
+        margin: 1.5rem 0;
+    }
+    
+    .tech-icon {
+        font-size: 1.25rem;
+    }
+    
+    .social-links {
+        gap: 10px;
+    }
+    
+    .social-link {
+        font-size: 1rem;
+    }
+    
+    /* Typography XS */
+    h1 {
+        font-size: 1.5rem !important;
+    }
+    
+    h2 {
+        font-size: 1.25rem !important;
+    }
+    
+    h3 {
+        font-size: 1.1rem !important;
+    }
+    
+    .display-3 {
+        font-size: 1.5rem !important;
+    }
+    
+    .display-4 {
+        font-size: 1.375rem !important;
+    }
+    
+    .display-5 {
+        font-size: 1.25rem !important;
+    }
+    
+    /* Button XS */
+    .btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+    }
+    
+    .btn-lg {
+        padding: 0.625rem 1.25rem;
+        font-size: 0.9rem;
+    }
+    
+    /* Flex direction column on very small screens */
+    .d-flex.gap-3:not(.social-links):not(.footer-social) {
+        flex-direction: column;
+        gap: 0.625rem !important;
+    }
+    
+    .d-flex.gap-3 .btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    /* Card XS */
+    .card-body {
+        padding: 1rem !important;
+    }
+    
+    .icon-container-enhanced {
+        width: 48px;
+        height: 48px;
+        border-radius: 10px;
+    }
+    
+    .icon-container-enhanced i {
+        font-size: 1.25rem !important;
+    }
+    
+    /* Section spacing XS */
+    .py-5 {
+        padding-top: 1.5rem !important;
+        padding-bottom: 1.5rem !important;
+    }
+    
+    section {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+    }
+    
+    /* Section Title XS */
+    .section-title {
+        font-size: 1.25rem;
+    }
+    
+    .section-title::after {
+        width: 40px;
+        height: 2px;
+    }
 }
 
 /* Tablet Specific (768px - 1024px) */
 @media (min-width: 769px) and (max-width: 1024px) {
     .container {
         max-width: 720px;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
     }
     
     h1 {
-        font-size: 2.25rem !important;
+        font-size: 2rem !important;
     }
     
     .display-3 {
-        font-size: 2.5rem !important;
+        font-size: 2.25rem !important;
     }
     
     .card-body {
@@ -1114,27 +1241,44 @@ html {
     }
     
     .icon-container-enhanced {
-        width: 70px;
-        height: 70px;
+        width: 68px;
+        height: 68px;
     }
 }
 
 /* Touch Device Optimizations */
 @media (hover: none) and (pointer: coarse) {
+    /* Disable hover transforms on touch */
     .hover-effect:hover {
         transform: none;
+        box-shadow: inherit;
     }
     
     .hover-effect:active {
         transform: scale(0.98);
+        opacity: 0.9;
+    }
+    
+    .btn:hover {
+        transform: none;
     }
     
     .btn:active {
-        transform: scale(0.95);
+        transform: scale(0.97);
+    }
+    
+    .card-enhanced:hover {
+        transform: none;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     }
     
     .card-enhanced:active {
         transform: scale(0.99);
+    }
+    
+    .icon-container-enhanced:hover {
+        transform: none;
+        filter: none;
     }
     
     /* Larger touch targets */
@@ -1152,18 +1296,80 @@ html {
     .hover-effect::before {
         display: none;
     }
+    
+    .glow-on-hover:hover {
+        box-shadow: none;
+        transform: none;
+    }
+    
+    .glow-on-hover:active {
+        transform: scale(0.98);
+    }
+    
+    /* Skill list touch */
+    .skill-list li:hover {
+        transform: none;
+        background: none;
+        padding-left: 0;
+    }
+    
+    .skill-list li:active {
+        background: rgba(255, 255, 255, 0.05);
+    }
+    
+    /* Badge touch */
+    .badge:hover {
+        transform: none;
+    }
+    
+    .badge:active {
+        transform: scale(0.95);
+    }
+    
+    /* Social link touch */
+    .social-link:hover {
+        transform: none;
+    }
+    
+    .social-link:active {
+        transform: scale(0.95);
+        color: var(--accent-color);
+    }
+    
+    /* Project image container touch */
+    .project-image-container:hover .overlay {
+        opacity: 0;
+    }
+    
+    .project-image-container:hover img {
+        transform: none;
+    }
 }
 
 /* Landscape Mode Mobile */
 @media (max-height: 500px) and (orientation: landscape) {
     .hero-section {
         min-height: auto;
-        padding: 2rem 0;
+        padding: 1.5rem 0;
     }
     
     section {
-        padding-top: 2rem !important;
-        padding-bottom: 2rem !important;
+        padding-top: 1.5rem !important;
+        padding-bottom: 1.5rem !important;
+    }
+    
+    .loading-logo {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 1rem;
+    }
+    
+    .logo-icon {
+        font-size: 1.75rem;
+    }
+    
+    .tech-stack {
+        margin: 1rem 0;
     }
 }
 
@@ -1176,21 +1382,33 @@ html {
     .btn {
         border-width: 0.5px;
     }
+    
+    .section-title::after {
+        height: 3px;
+    }
 }
 
-/* Safe Area for Notched Devices */
+/* Safe Area for Notched Devices (iPhone X+) */
 @supports (padding: max(0px)) {
     .navbar {
         padding-left: max(1rem, env(safe-area-inset-left));
         padding-right: max(1rem, env(safe-area-inset-right));
+        padding-top: max(0.5rem, env(safe-area-inset-top));
     }
     
     .footer-modern {
-        padding-bottom: max(2rem, env(safe-area-inset-bottom));
+        padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
+        padding-left: max(1rem, env(safe-area-inset-left));
+        padding-right: max(1rem, env(safe-area-inset-right));
+    }
+    
+    .app-loading-container {
+        padding-left: max(1rem, env(safe-area-inset-left));
+        padding-right: max(1rem, env(safe-area-inset-right));
     }
 }
 
-/* Mobile Animation Reduction for Performance */
+/* Reduced Motion Preference */
 @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
@@ -1198,25 +1416,34 @@ html {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    .hover-effect:hover {
+        transform: none;
+    }
+    
+    .card-enhanced:hover {
+        transform: none;
     }
 }
 
-/* Dark Mode Mobile Improvements */
-@media (max-width: 768px) {
-    .navbar {
-        backdrop-filter: blur(15px);
+/* Print Styles */
+@media print {
+    .navbar,
+    .footer-modern,
+    .app-loading {
+        display: none !important;
+    }
+    
+    body {
+        background: white !important;
+        color: black !important;
     }
     
     .card-enhanced {
-        background: rgba(30, 41, 59, 0.6);
-    }
-    
-    /* Better text readability on mobile */
-    .text-light {
-        color: rgba(255, 255, 255, 0.9) !important;
-    }
-    
-    .opacity-75 {
-        opacity: 0.85 !important;
+        background: white !important;
+        border: 1px solid #ccc !important;
+        box-shadow: none !important;
     }
 }
