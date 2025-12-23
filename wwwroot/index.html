@@ -198,6 +198,18 @@
             }
         };
     </script>
+
+    <!-- GitHub Pages SPA Redirect Handler -->
+    <script>
+        (function() {
+            var redirect = sessionStorage.getItem('redirect');
+            if (redirect) {
+                sessionStorage.removeItem('redirect');
+                // Blazor yüklendikten sonra doğru sayfaya yönlendir
+                window.__blazorRedirect = '/' + redirect;
+            }
+        })();
+    </script>
 </head>
 
 <body>

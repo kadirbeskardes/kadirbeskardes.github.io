@@ -19,11 +19,29 @@
 
 @code {
     [Inject] private IJSRuntime JSRuntime { get; set; } = default!;
+    [Inject] private NavigationManager NavigationManager { get; set; } = default!;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {            
+            // GitHub Pages SPA redirect'ini kontrol et
+            try 
+            {
+                var redirect = await JSRuntime.InvokeAsync<string>("eval", "window.__blazorRedirect || ''");
+                if (!string.IsNullOrEmpty(redirect))
+                {
+                    // Redirect değişkenini temizle
+                    await JSRuntime.InvokeVoidAsync("eval", "window.__blazorRedirect = null");
+                    // Doğru sayfaya yönlendir
+                    NavigationManager.NavigateTo(redirect);
+                }
+            }
+            catch 
+            {
+                // Ignore errors
+            }
+
             // Uygulama yüklendiğinde loading ekranını gizle
             try 
             {
