@@ -4,7 +4,7 @@
 @inject AdminService AdminService
 @inject NavigationManager Navigation
 
-<PageTitle>Admin Giri?i</PageTitle>
+<PageTitle>Admin Girişi</PageTitle>
 
 <div class="admin-login-wrapper">
     <div class="login-container">
@@ -14,7 +14,7 @@
                     <i class="bi bi-shield-lock"></i>
                 </div>
                 <h1>Admin Paneli</h1>
-                <p>Devam etmek i�in giri? yap?n</p>
+                <p>Devam etmek için giriş yapın</p>
             </div>
 
             @if (isLockedOut)
@@ -41,20 +41,20 @@
                 {
                     <div class="warning-message">
                         <i class="bi bi-exclamation-circle me-2"></i>
-                        Kalan deneme hakk?: @remainingAttempts
+                        Kalan deneme hakkı: @remainingAttempts
                     </div>
                 }
 
                 <div class="login-form">
                     <div class="form-group">
                         <label for="password">
-                            <i class="bi bi-key me-2"></i>?ifre
+                            <i class="bi bi-key me-2"></i>Şifre
                         </label>
                         <input type="password" 
                                id="password" 
                                @bind="password" 
                                @onkeypress="HandleKeyPress"
-                               placeholder="?ifrenizi girin"
+                               placeholder="Şifrenizi girin"
                                class="form-input" 
                                disabled="@isLoading" />
                     </div>
@@ -63,12 +63,12 @@
                         @if (isLoading)
                         {
                             <span class="spinner"></span>
-                            <span>Giri? yap?l?yor...</span>
+                            <span>Giriş yapılıyor...</span>
                         }
                         else
                         {
                             <i class="bi bi-box-arrow-in-right me-2"></i>
-                            <span>Giri? Yap</span>
+                            <span>Giriş Yap</span>
                         }
                     </button>
                 </div>
@@ -76,13 +76,13 @@
 
             <div class="login-footer">
                 <a href="/" class="back-link">
-                    <i class="bi bi-arrow-left me-2"></i>Ana Sayfaya D�n
+                    <i class="bi bi-arrow-left me-2"></i>Ana Sayfaya Dön
                 </a>
             </div>
 
             <div class="security-info">
                 <i class="bi bi-shield-check me-1"></i>
-                <span>G�venli ba?lant?</span>
+                <span>Güvenli bağlantı</span>
             </div>
         </div>
     </div>
@@ -328,7 +328,7 @@
         {
             isLockedOut = true;
             var remainingMinutes = (int)Math.Ceiling((attempts.LockoutUntil!.Value - DateTime.UtcNow).TotalMinutes);
-            lockoutMessage = $"�ok fazla ba?ar?s?z deneme. {remainingMinutes} dakika sonra tekrar deneyin.";
+            lockoutMessage = $"Çok fazla başarısız deneme. {remainingMinutes} dakika sonra tekrar deneyin.";
         }
         else
         {
@@ -356,7 +356,7 @@
         {
             if (string.IsNullOrWhiteSpace(password))
             {
-                errorMessage = "L�tfen ?ifrenizi girin.";
+                errorMessage = "Lütfen şifrenizi girin.";
                 return;
             }
 
