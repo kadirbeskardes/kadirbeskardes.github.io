@@ -11,75 +11,75 @@ namespace Personal.Services
 {
     public class MarkdownService
     {
-        public string ToHtml(string markdown)
+        public string ConvertMarkdownToHtml(string markdownContent)
         {
-            if (string.IsNullOrEmpty(markdown))
+            if (string.IsNullOrEmpty(markdownContent))
                 return string.Empty;
 
-            var pipeline = new MarkdownPipelineBuilder()
+            var markdownPipeline = new MarkdownPipelineBuilder()
                 .UseAdvancedExtensions()
                 .Build();
 
-            return Markdig.Markdown.ToHtml(markdown, pipeline);
+            return Markdig.Markdown.ToHtml(markdownContent, markdownPipeline);
         }
     }
     public class ProjectService
     {
-        private readonly HttpClient _http;
+        private readonly HttpClient _httpClient;
         private readonly IJSRuntime _jsRuntime;
-        private List<ProjectDetail>? _projects;
-        private string _currentCulture = "tr";
-        private bool _isLoaded = false;
-        public string CurrentCulture => _currentCulture;
+        private List<ProjectDetail>? _cachedProjects;
+        private string _currentCultureCode = "tr";
+        private bool _isProjectDataLoaded = false;
+        public string CurrentCulture => _currentCultureCode;
 
-        public ProjectService(HttpClient http, IJSRuntime jsRuntime)
+        public ProjectService(HttpClient httpClient, IJSRuntime jsRuntime)
         {
-            _http = http;
+            _httpClient = httpClient;
             _jsRuntime = jsRuntime;
         }
 
         public async Task<List<ProjectDetail>> GetProjectListingsAsync()
         {
             await LoadProjectsIfNeededAsync();
-            return _projects?.Select(p => new ProjectDetail
+            return _cachedProjects?.Select(project => new ProjectDetail
             {
-                Id = p.Id,
-                Title = p.Title,
-                ShortDescription = p.ShortDescription,
-                ImageUrl = p.ImageUrl,
-                Technologies = p.Technologies,
-                CreatedDate = p.CreatedDate,
-                GitHubUrl = p.GitHubUrl,
-                Category = p.Category
+                Id = project.Id,
+                Title = project.Title,
+                ShortDescription = project.ShortDescription,
+                ImageUrl = project.ImageUrl,
+                Technologies = project.Technologies,
+                CreatedDate = project.CreatedDate,
+                GitHubUrl = project.GitHubUrl,
+                Category = project.Category
             }).ToList() ?? new List<ProjectDetail>();
         }
 
         public async Task<ProjectDetail?> GetProjectDetailAsync(int id)
         {
             await LoadProjectsIfNeededAsync();
-            return _projects?.FirstOrDefault(p => p.Id == id);
+            return _cachedProjects?.FirstOrDefault(project => project.Id == id);
         }
 
         private async Task LoadProjectsIfNeededAsync()
         {
-            if (_projects == null)
+            if (_cachedProjects == null)
             {
                 try
                 {
-                    _currentCulture = CultureInfo.CurrentUICulture.Name.StartsWith("en") ? "en" : "tr";
+                    _currentCultureCode = CultureInfo.CurrentUICulture.Name.StartsWith("en") ? "en" : "tr";
                     
                     // Önce localStorage'dan kontrol et (admin panelinden yapılan değişiklikler)
                     try
                     {
-                        var savedJson = await _jsRuntime.InvokeAsync<string>("localStorage.getItem", AdminSettings.ProjectsStorageKey);
+                        var savedProjectsJson = await _jsRuntime.InvokeAsync<string>("localStorage.getItem", AdminSettings.ProjectsStorageKey);
                         
-                        if (!string.IsNullOrEmpty(savedJson))
+                        if (!string.IsNullOrEmpty(savedProjectsJson))
                         {
-                            _projects = JsonSerializer.Deserialize<List<ProjectDetail>>(savedJson, new JsonSerializerOptions
+                            _cachedProjects = JsonSerializer.Deserialize<List<ProjectDetail>>(savedProjectsJson, new JsonSerializerOptions
                             {
                                 PropertyNameCaseInsensitive = true
                             });
-                            _isLoaded = true;
+                            _isProjectDataLoaded = true;
                             return;
                         }
                     }
@@ -89,13 +89,13 @@ namespace Personal.Services
                     }
                     
                     // localStorage boşsa JSON dosyasından yükle
-                    var projects = await _http.GetFromJsonAsync<List<ProjectDetail>>($"data/projects.{_currentCulture}.json");
-                    _projects = projects ?? new List<ProjectDetail>();
-                    _isLoaded = true;
+                    var projectsFromFile = await _httpClient.GetFromJsonAsync<List<ProjectDetail>>($"data/projects.{_currentCultureCode}.json");
+                    _cachedProjects = projectsFromFile ?? new List<ProjectDetail>();
+                    _isProjectDataLoaded = true;
                 }
                 catch
                 {
-                    _projects = new List<ProjectDetail>();
+                    _cachedProjects = new List<ProjectDetail>();
                 }
             }
         }

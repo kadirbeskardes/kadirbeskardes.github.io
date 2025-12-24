@@ -2,17 +2,17 @@
 @using Personal.Models
 @using Personal.Services
 @inject ProjectService ProjectService
-@inject LocalizationService L
+@inject LocalizationService Localization
 
-<PageTitle>@L["Meta_ProjectsOgTitle"]</PageTitle>
+<PageTitle>@Localization["Meta_ProjectsOgTitle"]</PageTitle>
 <HeadContent>
-    <meta name="description" content="@L["Meta_ProjectsDescription"]">
-    <meta property="og:title" content="@L["Meta_ProjectsOgTitle"]">
-    <meta property="og:description" content="@L["Meta_ProjectsOgDescription"]">
+    <meta name="description" content="@Localization["Meta_ProjectsDescription"]">
+    <meta property="og:title" content="@Localization["Meta_ProjectsOgTitle"]">
+    <meta property="og:description" content="@Localization["Meta_ProjectsOgDescription"]">
     <meta property="og:url" content="https://kadirbeskardes.github.io/projects">
     <meta property="og:type" content="website">
-    <meta name="twitter:title" content="@L["Meta_ProjectsTwitterTitle"]">
-    <meta name="twitter:description" content="@L["Meta_ProjectsTwitterDescription"]">
+    <meta name="twitter:title" content="@Localization["Meta_ProjectsTwitterTitle"]">
+    <meta name="twitter:description" content="@Localization["Meta_ProjectsTwitterDescription"]">
     <link rel="canonical" href="https://kadirbeskardes.github.io/projects">
 </HeadContent>
 
@@ -36,12 +36,12 @@
                         </span>
                     </div>
                     <h1 class="hero-title">
-                        <span class="title-line">@L["Projects_Title"]</span>
+                        <span class="title-line">@Localization["Projects_Title"]</span>
                     </h1>
-                    <p class="hero-subtitle">@L["Projects_Subtitle"]</p>
+                    <p class="hero-subtitle">@Localization["Projects_Subtitle"]</p>
                     <div class="hero-stats mt-5">
                         <div class="stat-item">
-                            <span class="stat-number">@(projects?.Count ?? 0)+</span>
+                            <span class="stat-number">@(projectsList?.Count ?? 0)+</span>
                             <span class="stat-label">Projects</span>
                         </div>
                         <div class="stat-divider"></div>
@@ -57,7 +57,7 @@
                     </div>
                     <div class="scroll-indicator mt-5">
                         <a href="#projects-grid" class="scroll-btn">
-                            <span class="scroll-text">@L["Projects_Explore"]</span>
+                            <span class="scroll-text">@Localization["Projects_Explore"]</span>
                             <i class="bi bi-chevron-double-down scroll-icon"></i>
                         </a>
                     </div>
@@ -87,7 +87,7 @@
                 </div>
             </div>
 
-            @if (projects == null)
+            @if (projectsList == null)
             {
                 <div class="loading-state">
                     <div class="loading-spinner">
@@ -96,26 +96,26 @@
                         <div class="spinner-ring"></div>
                         <i class="bi bi-code-slash spinner-icon"></i>
                     </div>
-                    <p class="loading-text">@L["Projects_Loading"]</p>
+                    <p class="loading-text">@Localization["Projects_Loading"]</p>
                 </div>
             }
-            else if (!projects.Any())
+            else if (!projectsList.Any())
             {
                 <div class="empty-state">
                     <div class="empty-icon">
                         <i class="bi bi-inbox"></i>
                     </div>
-                    <h3 class="empty-title">@L["Projects_NoProjects"]</h3>
-                    <p class="empty-description">@L["Projects_NoProjectsDescription"]</p>
+                    <h3 class="empty-title">@Localization["Projects_NoProjects"]</h3>
+                    <p class="empty-description">@Localization["Projects_NoProjectsDescription"]</p>
                 </div>
             }
             else
             {
                 <div class="projects-masonry">
-                    @{int index = 0;}
-                    @foreach (var project in projects)
+                    @{int projectIndex = 0;}
+                    @foreach (var project in projectsList)
                     {
-                        <div class="project-item @(index % 3 == 0 ? "featured" : "")" style="--animation-order: @index;" @key="project.Id">
+                        <div class="project-item @(projectIndex % 3 == 0 ? "featured" : "")" style="--animation-order: @projectIndex;" @key="project.Id">
                             <article class="project-card-modern">
                                 <!-- Image Container -->
                                 <div class="card-image-container">
@@ -176,7 +176,7 @@
                                     <!-- Card Footer -->
                                     <div class="card-footer-custom">
                                         <a href="@($"project/{project.Id}")" class="view-project-btn">
-                                            <span>@L["Projects_ViewDetails"]</span>
+                                            <span>@Localization["Projects_ViewDetails"]</span>
                                             <i class="bi bi-arrow-right"></i>
                                         </a>
                                     </div>
@@ -186,7 +186,7 @@
                                 <div class="card-glow"></div>
                             </article>
                         </div>
-                        index++;
+                        projectIndex++;
                     }
                 </div>
             }
@@ -1207,10 +1207,10 @@
 </script>
 
 @code {
-    private List<Personal.Models.ProjectDetail>? projects;
+    private List<Personal.Models.ProjectDetail>? projectsList;
 
     protected override async Task OnInitializedAsync()
     {
-        projects = await ProjectService.GetProjectListingsAsync();
+        projectsList = await ProjectService.GetProjectListingsAsync();
     }
 }

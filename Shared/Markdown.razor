@@ -4,7 +4,7 @@
 @if (!string.IsNullOrEmpty(Text))
 {
     <div @attributes="AdditionalAttributes">
-        @((MarkupString)MarkdownService.ToHtml(Text))
+        @((MarkupString)MarkdownService.ConvertMarkdownToHtml(Text))
     </div>
 }
 

@@ -2,32 +2,32 @@
 @using Personal.Models
 @using Personal.Services
 @inject ProjectService ProjectService
-@inject LocalizationService L
+@inject LocalizationService Localization
 
 <!-- Hero Section -->
 <section class="hero-section bg-gradient-primary text-white py-5">
     <div class="container py-5">
         <div class="row align-items-center">
             <div class="col-lg-6 order-lg-1 order-2">
-                <h1 class="display-3 fw-bold mb-4 animate__animated animate__fadeInDown hero-title">@L["Home_Greeting"] <span class="text-highlight">Kadir Beşkardeş</span></h1>
-                <p class="lead mb-4 text-light animate__animated animate__fadeIn animate__delay-1s hero-subtitle">@L["Home_JobTitle"]</p>
+                <h1 class="display-3 fw-bold mb-4 animate__animated animate__fadeInDown hero-title">@Localization["Home_Greeting"] <span class="text-highlight">Kadir Beşkardeş</span></h1>
+                <p class="lead mb-4 text-light animate__animated animate__fadeIn animate__delay-1s hero-subtitle">@Localization["Home_JobTitle"]</p>
                 <p class="mb-4 fs-5 text-light animate__animated animate__fadeIn animate__delay-1s hero-description">
-                    @L["Home_Description"]
+                    @Localization["Home_Description"]
                 </p>
                 <div class="d-flex gap-3 animate__animated animate__fadeIn animate__delay-2s hero-buttons">
                     <a href="about" class="btn btn-light btn-lg px-4 rounded-pill shadow-sm hero-btn">
-                        <i class="bi bi-person me-2"></i>@L["Home_AboutButton"]
+                        <i class="bi bi-person me-2"></i>@Localization["Home_AboutButton"]
                     </a>
                     <a href="contact" class="btn btn-outline-light btn-lg px-4 rounded-pill shadow-sm hero-btn">
-                        <i class="bi bi-envelope me-2"></i>@L["Home_ContactButton"]
+                        <i class="bi bi-envelope me-2"></i>@Localization["Home_ContactButton"]
                     </a>
                 </div>
             </div>
             <div class="col-lg-6 order-lg-2 order-1 mb-4 mb-lg-0 text-center animate__animated animate__fadeIn">
                 <div class="profile-image-container mx-auto">
                     <img src="img/pp.jpg" 
-                         alt="@L["Image_Alt"]" 
-                         title="@L["Image_Title"]"
+                         alt="@Localization["Image_Alt"]" 
+                         title="@Localization["Image_Title"]"
                          class="img-fluid rounded-circle shadow-lg border border-4 border-white profile-img" 
                          loading="eager"
                          decoding="async"
@@ -43,8 +43,8 @@
 <section class="py-5 skills-section" style="background: rgba(30, 41, 59, 0.5);">
     <div class="container py-5">
         <div class="text-center mb-5">
-            <h2 class="section-title fw-bold position-relative d-inline-block text-white">@L["Home_Skills"]</h2>
-            <p class="text-light opacity-75 fs-5 section-subtitle">@L["Home_SkillsSubtitle"]</p>
+            <h2 class="section-title fw-bold position-relative d-inline-block text-white">@Localization["Home_Skills"]</h2>
+            <p class="text-light opacity-75 fs-5 section-subtitle">@Localization["Home_SkillsSubtitle"]</p>
         </div>
 
         <div class="row g-4 skills-row">
@@ -54,7 +54,7 @@
                         <div class="icon-container-enhanced mb-4 mx-auto">
                             <i class="bi bi-code-slash fs-1"></i>
                         </div>
-                        <h3 class="h4 mb-3 fw-bold text-white skill-title">@L["Home_Frontend"]</h3>
+                        <h3 class="h4 mb-3 fw-bold text-white skill-title">@Localization["Home_Frontend"]</h3>
                         <ul class="list-unstyled skill-list">
                             <li><i class="bi bi-check-circle-fill text-info me-2"></i><span class="text-light">Blazor WebAssembly</span></li>
                             <li><i class="bi bi-check-circle-fill text-info me-2"></i><span class="text-light">HTML5/CSS3</span></li>
@@ -71,7 +71,7 @@
                         <div class="icon-container-enhanced mb-4 mx-auto">
                             <i class="bi bi-server fs-1"></i>
                         </div>
-                        <h3 class="h4 mb-3 fw-bold text-white skill-title">@L["Home_Backend"]</h3>
+                        <h3 class="h4 mb-3 fw-bold text-white skill-title">@Localization["Home_Backend"]</h3>
                         <ul class="list-unstyled skill-list">
                             <li><i class="bi bi-check-circle-fill text-info me-2"></i><span class="text-light">.NET</span></li>
                             <li><i class="bi bi-check-circle-fill text-info me-2"></i><span class="text-light">Python</span></li>
@@ -89,7 +89,7 @@
                         <div class="icon-container-enhanced mb-4 mx-auto">
                             <i class="bi bi-tools fs-1"></i>
                         </div>
-                        <h3 class="h4 mb-3 fw-bold text-white skill-title">@L["Home_Tools"]</h3>
+                        <h3 class="h4 mb-3 fw-bold text-white skill-title">@Localization["Home_Tools"]</h3>
                         <ul class="list-unstyled skill-list">
                             <li><i class="bi bi-check-circle-fill text-success me-2"></i><span class="text-light">Visual Studio</span></li>
                             <li><i class="bi bi-check-circle-fill text-success me-2"></i><span class="text-light">Git/GitHub</span></li>
@@ -107,11 +107,11 @@
 <section class="py-5 projects-section" style="background: var(--dark-color);">
     <div class="container py-5">
         <div class="text-center mb-5">
-            <h2 class="section-title fw-bold position-relative d-inline-block text-white">@L["Home_RecentProjects"]</h2>
-            <p class="text-light fs-5 section-subtitle">@L["Home_RecentProjectsSubtitle"]</p>
+            <h2 class="section-title fw-bold position-relative d-inline-block text-white">@Localization["Home_RecentProjects"]</h2>
+            <p class="text-light fs-5 section-subtitle">@Localization["Home_RecentProjectsSubtitle"]</p>
         </div>
 
-        @if (featuredProjects == null)
+        @if (recentFeaturedProjects == null)
         {
             <div class="text-center py-5">
                 <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
@@ -122,7 +122,7 @@
         else
         {
             <div class="row g-4 projects-row">
-                @foreach (var project in featuredProjects)
+                @foreach (var project in recentFeaturedProjects)
                 {
                     <div class="col-lg-4 col-md-6 col-12">
                         <div class="card-enhanced h-100 border-0 shadow-sm overflow-hidden hover-effect animate-in project-card">
@@ -130,7 +130,7 @@
                                 <img src="@project.ImageUrl" class="card-img-top" alt="@project.Title" style="height: 200px; object-fit: cover;">
                                 <div class="overlay d-flex align-items-center justify-content-center">
                                     <a href="@($"project/{project.Id}")" class="btn btn-enhanced btn-glass rounded-pill px-4 shadow">
-                                        <i class="bi bi-eye-fill me-2"></i>@L["Home_ViewProject"]
+                                        <i class="bi bi-eye-fill me-2"></i>@Localization["Home_ViewProject"]
                                     </a>
                                 </div>
                             </div>
@@ -146,7 +146,7 @@
                             </div>
                             <div class="card-footer bg-transparent border-0 pt-0 d-flex justify-content-between project-footer">
                                 <a href="@($"project/{project.Id}")" class="btn btn-sm btn-enhanced rounded-pill project-detail-btn" style="background: var(--primary-color); color: white; position: relative; overflow: hidden;">
-                                    @L["Home_ViewDetails"] <i class="bi bi-arrow-right ms-2"></i>
+                                    @Localization["Home_ViewDetails"] <i class="bi bi-arrow-right ms-2"></i>
                                 </a>
                                 @if (!string.IsNullOrWhiteSpace(project.GitHubUrl))
                                 {
@@ -162,7 +162,7 @@
 
             <div class="text-center mt-5">
                 <a href="projects" class="btn btn-enhanced btn-lg px-4 rounded-pill shadow-sm animate-in all-projects-btn" style="background: var(--accent-color); color: white; position: relative; overflow: hidden;">
-                    <i class="bi bi-collection me-2"></i>@L["Home_AllProjects"]
+                    <i class="bi bi-collection me-2"></i>@Localization["Home_AllProjects"]
                 </a>
             </div>
         }
@@ -170,12 +170,12 @@
 </section>
 
 @code {
-    private List<Personal.Models.ProjectDetail>? featuredProjects;
+    private List<Personal.Models.ProjectDetail>? recentFeaturedProjects;
 
     protected override async Task OnInitializedAsync()
     {
         var allProjects = await ProjectService.GetProjectListingsAsync();
-        featuredProjects = allProjects.OrderByDescending(p => p.CreatedDate).Take(3).ToList();
+        recentFeaturedProjects = allProjects.OrderByDescending(project => project.CreatedDate).Take(3).ToList();
     }
 }
 
