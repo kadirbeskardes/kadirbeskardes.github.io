@@ -23,7 +23,7 @@ namespace Personal.Services
         #region Config Loading
 
         /// <summary>
-        /// Config dosyas?n? y�kler
+        /// Config dosyasını yükler
         /// </summary>
         public async Task LoadConfigAsync()
         {
@@ -40,7 +40,7 @@ namespace Personal.Services
             }
             catch
             {
-                // Config dosyas? bulunamazsa varsay?lan de?erler kullan?l?r
+                // Config dosyası bulunamazsa varsayılan değerler kullanılır
                 var defaultConfig = new AdminConfig();
                 AdminSettings.LoadConfig(defaultConfig);
                 _configLoaded = true;
@@ -52,7 +52,7 @@ namespace Personal.Services
         #region Authentication
 
         /// <summary>
-        /// Kullan?c?n?n oturum a�?p a�mad???n? ve oturumun ge�erli olup olmad???n? kontrol eder
+        /// Kullanıcının oturum açıp açmadığını ve oturumun geçerli olup olmadığını kontrol eder
         /// </summary>
         public async Task<bool> IsAuthenticatedAsync()
         {
@@ -86,7 +86,7 @@ namespace Personal.Services
         }
 
         /// <summary>
-        /// Giri? denemesi bilgilerini getirir
+        /// Giriş denemesi bilgilerini getirir
         /// </summary>
         public async Task<LoginAttemptInfo> GetLoginAttemptsAsync()
         {
@@ -103,7 +103,7 @@ namespace Personal.Services
                     
                     if (info != null)
                     {
-                        // Kilitleme s�resi dolduysa s?f?rla
+                        // Kilitleme süresi dolduysa sıfırla
                         if (info.LockoutUntil.HasValue && DateTime.UtcNow >= info.LockoutUntil.Value)
                         {
                             info = new LoginAttemptInfo();
@@ -119,7 +119,7 @@ namespace Personal.Services
         }
 
         /// <summary>
-        /// Giri? denemesi bilgilerini kaydeder
+        /// Giriş denemesi bilgilerini kaydeder
         /// </summary>
         private async Task SaveLoginAttemptsAsync(LoginAttemptInfo info)
         {
@@ -128,26 +128,26 @@ namespace Personal.Services
         }
 
         /// <summary>
-        /// Giri? yapar ve session token olu?turur
+        /// Giriş yapar ve session token oluşturur
         /// </summary>
         public async Task<(bool Success, string Message)> LoginAsync(string password)
         {
-            // Config'i y�kle
+            // Config'i yükle
             await LoadConfigAsync();
 
-            // Kilitleme kontrol�
+            // Kilitleme kontrolü
             var attempts = await GetLoginAttemptsAsync();
             
             if (attempts.IsLockedOut)
             {
                 var remainingMinutes = (int)Math.Ceiling((attempts.LockoutUntil!.Value - DateTime.UtcNow).TotalMinutes);
-                return (false, $"�ok fazla ba?ar?s?z deneme. {remainingMinutes} dakika sonra tekrar deneyin.");
+                return (false, $"Çok fazla başarısız deneme. {remainingMinutes} dakika sonra tekrar deneyin.");
             }
 
-            // ?ifre do?rulama
+            // Şifre doğrulama
             if (AdminSettings.VerifyPassword(password))
             {
-                // Ba?ar?l? giri? - session olu?tur
+                // Başarılı giriş - session oluştur
                 var session = new AdminSession
                 {
                     Token = AdminSettings.GenerateSessionToken(),
@@ -158,15 +158,15 @@ namespace Personal.Services
                 var sessionJson = JsonSerializer.Serialize(session);
                 await _jsRuntime.InvokeVoidAsync("localStorage.setItem", AdminSettings.AdminStorageKey, sessionJson);
                 
-                // Giri? denemelerini s?f?rla
+                // Giriş denemelerini sıfırla
                 await SaveLoginAttemptsAsync(new LoginAttemptInfo());
                 
                 _currentSession = session;
-                return (true, "Giri? ba?ar?l?.");
+                return (true, "Giriş başarılı.");
             }
             else
             {
-                // Ba?ar?s?z giri? - deneme say?s?n? art?r
+                // Başarısız giriş - deneme sayısını artır
                 attempts.AttemptCount++;
                 attempts.LastAttempt = DateTime.UtcNow;
 
@@ -174,16 +174,16 @@ namespace Personal.Services
                 {
                     attempts.LockoutUntil = DateTime.UtcNow.AddMinutes(AdminSettings.LockoutMinutes);
                     await SaveLoginAttemptsAsync(attempts);
-                    return (false, $"�ok fazla ba?ar?s?z deneme. {AdminSettings.LockoutMinutes} dakika boyunca giri? yap?lamaz.");
+                    return (false, $"Çok fazla başarısız deneme. {AdminSettings.LockoutMinutes} dakika boyunca giriş yapılamaz.");
                 }
 
                 await SaveLoginAttemptsAsync(attempts);
-                return (false, $"Hatal? ?ifre. Kalan deneme: {attempts.RemainingAttempts}");
+                return (false, $"Hatalı şifre. Kalan deneme: {attempts.RemainingAttempts}");
             }
         }
 
         /// <summary>
-        /// Oturumu sonland?r?r
+        /// Oturumu sonlandırır
         /// </summary>
         public async Task LogoutAsync()
         {
@@ -192,7 +192,7 @@ namespace Personal.Services
         }
 
         /// <summary>
-        /// Oturum s�resini uzat?r
+        /// Oturum süresini uzatır
         /// </summary>
         public async Task ExtendSessionAsync()
         {
@@ -205,7 +205,7 @@ namespace Personal.Services
         }
 
         /// <summary>
-        /// Kalan oturum s�resini dakika cinsinden d�nd�r�r
+        /// Kalan oturum süresini dakika cinsinden döndürür
         /// </summary>
         public int GetRemainingSessionMinutes()
         {
@@ -223,7 +223,7 @@ namespace Personal.Services
         {
             try
             {
-                // �nce localStorage'dan kontrol et
+                // Önce localStorage'dan kontrol et
                 var savedJson = await _jsRuntime.InvokeAsync<string>("localStorage.getItem", AdminSettings.ProjectsStorageKey);
                 
                 if (!string.IsNullOrEmpty(savedJson))
@@ -235,7 +235,7 @@ namespace Personal.Services
                 }
                 else
                 {
-                    // localStorage bo?sa, JSON dosyas?ndan y�kle
+                    // localStorage boşsa, JSON dosyasından yükle
                     var currentCulture = CultureInfo.CurrentUICulture.Name.StartsWith("en") ? "en" : "tr";
                     _adminProjects = await _http.GetFromJsonAsync<List<ProjectDetail>>($"data/projects.{currentCulture}.json");
                     
