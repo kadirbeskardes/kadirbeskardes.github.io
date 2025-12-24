@@ -1,16 +1,16 @@
 @page "/about"
 @using Personal.Services
-@inject LocalizationService L
+@inject LocalizationService Localization
 
-<PageTitle>@L["About_Title"] - @L["About_Name"]</PageTitle>
+<PageTitle>@Localization["About_Title"] - @Localization["About_Name"]</PageTitle>
 <HeadContent>
-    <meta name="description" content="@L["About_ProfessionalSummaryText1"]">
-    <meta property="og:title" content="@L["About_Title"] - @L["About_Name"]">
-    <meta property="og:description" content="@L["About_Subtitle"]">
+    <meta name="description" content="@Localization["About_ProfessionalSummaryText1"]">
+    <meta property="og:title" content="@Localization["About_Title"] - @Localization["About_Name"]">
+    <meta property="og:description" content="@Localization["About_Subtitle"]">
     <meta property="og:url" content="https://kadirbeskardes.github.io/about">
     <meta property="og:type" content="profile">
-    <meta name="twitter:title" content="@L["About_Title"] - @L["About_Name"]">
-    <meta name="twitter:description" content="@L["About_Subtitle"]">
+    <meta name="twitter:title" content="@Localization["About_Title"] - @Localization["About_Name"]">
+    <meta name="twitter:description" content="@Localization["About_Subtitle"]">
     <link rel="canonical" href="https://kadirbeskardes.github.io/about">
 </HeadContent>
 
@@ -20,24 +20,24 @@
     <div class="container position-relative py-5" style="z-index: 2;">
         <div class="row align-items-center min-vh-60 py-5">
             <div class="col-lg-7">
-                <div class="badge bg-primary bg-opacity-10 text-primary mb-3 px-3 py-2 rounded-pill hero-badge-mobile">@L["About_Badge"]</div>
-                <h1 class="display-3 fw-bold mb-4 animate__animated animate__fadeInDown about-hero-title">@L["About_Name"]</h1>
-                <p class="lead mb-4 animate__animated animate__fadeIn animate__delay-1s about-hero-subtitle">@L["About_Subtitle"]</p>
+                <div class="badge bg-primary bg-opacity-10 text-primary mb-3 px-3 py-2 rounded-pill hero-badge-mobile">@Localization["About_Badge"]</div>
+                <h1 class="display-3 fw-bold mb-4 animate__animated animate__fadeInDown about-hero-title">@Localization["About_Name"]</h1>
+                <p class="lead mb-4 animate__animated animate__fadeIn animate__delay-1s about-hero-subtitle">@Localization["About_Subtitle"]</p>
                 <p class="mb-5 animate__animated animate__fadeIn animate__delay-1s about-hero-description">
-                    @L["About_Description"]
+                    @Localization["About_Description"]
                 </p>
                 <div class="d-flex flex-wrap gap-3 animate__animated animate__fadeIn animate__delay-2s about-hero-buttons">
                     <a href="contact" class="btn btn-primary btn-lg px-4 rounded-pill about-hero-btn">
-                        <i class="bi bi-envelope me-2"></i>@L["About_ContactButton"]
+                        <i class="bi bi-envelope me-2"></i>@Localization["About_ContactButton"]
                     </a>
                     <a href="files/CV Kadir Beskardes.pdf" download class="btn btn-outline-light btn-lg px-4 rounded-pill about-hero-btn">
-                        <i class="bi bi-download me-2"></i>@L["About_DownloadCV"]
+                        <i class="bi bi-download me-2"></i>@Localization["About_DownloadCV"]
                     </a>
                 </div>
             </div>
             <div class="col-lg-5 d-none d-lg-block">
                 <div class="hero-image-container position-relative">
-                    <img src="img/pp.jpg" alt="@L["About_Name"]" class="img-fluid rounded-4 shadow-lg border border-4 border-white">
+                    <img src="img/pp.jpg" alt="@Localization["About_Name"]" class="img-fluid rounded-4 shadow-lg border border-4 border-white">
                     <div class="tech-badge dotnet-badge">
                         <i class="fab fa-microsoft"></i>
                     </div>
@@ -61,10 +61,10 @@
             <div class="card border-0 shadow-lg h-100 about-profile-card" style="position: sticky; top: 20px;">
                 <div class="card-body p-4">
                     <div class="profile-image-container mx-auto mb-4">
-                        <img src="img/pp.jpg" alt="@L["About_Name"]" class="img-fluid rounded-circle shadow border border-4 border-white">
+                        <img src="img/pp.jpg" alt="@Localization["About_Name"]" class="img-fluid rounded-circle shadow border border-4 border-white">
                     </div>
-                    <h3 class="card-title fw-bold text-center mb-2 profile-name">@L["About_Name"]</h3>
-                    <p class="text-muted text-center mb-3 profile-job-title">@L["About_JobTitle"]</p>
+                    <h3 class="card-title fw-bold text-center mb-2 profile-name">@Localization["About_Name"]</h3>
+                    <p class="text-muted text-center mb-3 profile-job-title">@Localization["About_JobTitle"]</p>
 
                     <div class="d-flex justify-content-center gap-3 mb-4 profile-social-links">
                         <a href="https://github.com/kadirbeskardes" class="social-icon bg-github"><i class="bi bi-github"></i></a>
@@ -76,7 +76,7 @@
                     <div class="mb-4 profile-contact-info">
                         <div class="d-flex align-items-center mb-3">
                             <i class="bi bi-geo-alt-fill text-primary me-2 fs-5 flex-shrink-0"></i>
-                            <span class="contact-text">@L["About_Location"]</span>
+                            <span class="contact-text">@Localization["About_Location"]</span>
                         </div>
                         <div class="d-flex align-items-center mb-3">
                             <i class="bi bi-envelope-fill text-primary me-2 fs-5 flex-shrink-0"></i>
@@ -89,7 +89,7 @@
                     </div>
 
                     <div class="skills-section mb-4">
-                        <h5 class="fw-bold mb-3 skills-section-title"><i class="bi bi-code-slash me-2"></i>@L["About_TechnicalSkillsTitle"]</h5>
+                        <h5 class="fw-bold mb-3 skills-section-title"><i class="bi bi-code-slash me-2"></i>@Localization["About_TechnicalSkillsTitle"]</h5>
                         <div class="d-flex flex-wrap gap-2 skills-badges">
                             <!-- .NET Teknolojileri -->
                             <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill skill-badge">
@@ -134,29 +134,29 @@
                     </div>
 
                     <div class="references-section mb-4">
-                        <h5 class="fw-bold mb-3 references-title"><i class="bi bi-person-lines-fill me-2"></i>@L["About_ReferencesTitle"]</h5>
+                        <h5 class="fw-bold mb-3 references-title"><i class="bi bi-person-lines-fill me-2"></i>@Localization["About_ReferencesTitle"]</h5>
                         <div class="reference-item mb-3">
-                            <h6 class="fw-bold mb-1 reference-name">@L["About_Reference_1_Name"]</h6>
+                            <h6 class="fw-bold mb-1 reference-name">@Localization["About_Reference_1_Name"]</h6>
                             <p class="text-muted mb-1 reference-position">
-                                @L["About_Reference_1_Title"]
+                                @Localization["About_Reference_1_Title"]
                             </p>
                             <p class="small mb-1 reference-contact">+90 554 774 69 09, alkanfatih@hotmail.com.tr</p>
                         </div>
                     </div>
 
                     <div class="certificates-section">
-                        <h5 class="fw-bold mb-3 certificates-title"><i class="bi bi-award-fill me-2"></i>@L["About_CertificatesTitle"]</h5>
+                        <h5 class="fw-bold mb-3 certificates-title"><i class="bi bi-award-fill me-2"></i>@Localization["About_CertificatesTitle"]</h5>
 
                         <div class="certificate-item mb-3 p-3 bg-light rounded-3">
                             <div class="d-flex justify-content-between align-items-start flex-wrap gap-2">
                                 <div class="certificate-info">
                                     <h6 class="fw-bold mb-1 certificate-name">
                                         <a href="files/KADİR BEŞKARDEŞ Katılım Sertifikası BilgeAdam.pdf" target="_blank" class="text-decoration-none">
-                                            <i class="bi bi-link-45deg"></i> @L["About_Certificate_1_Name"]
+                                            <i class="bi bi-link-45deg"></i> @Localization["About_Certificate_1_Name"]
                                         </a>
                                     </h6>
                                     <p class="text-muted mb-1 small certificate-issuer">
-                                        <i class="bi bi-building"></i> @L["About_Certificate_1_Issuer"]
+                                        <i class="bi bi-building"></i> @Localization["About_Certificate_1_Issuer"]
                                     </p>
                                 </div>
                                 <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-1 certificate-year">2025</span>
@@ -168,11 +168,11 @@
                                 <div class="certificate-info">
                                     <h6 class="fw-bold mb-1 certificate-name">
                                         <a href="files/C#_Programlama_Sertifika.pdf" target="_blank" class="text-decoration-none">
-                                            <i class="bi bi-link-45deg"></i> @L["About_Certificate_2_Name"]
+                                            <i class="bi bi-link-45deg"></i> @Localization["About_Certificate_2_Name"]
                                         </a>
                                     </h6>
                                     <p class="text-muted mb-1 small certificate-issuer">
-                                        <i class="bi bi-building"></i> @L["About_Certificate_2_Issuer"]
+                                        <i class="bi bi-building"></i> @Localization["About_Certificate_2_Issuer"]
                                     </p>
                                 </div>
                                 <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-1 certificate-year">2024</span>
@@ -188,14 +188,14 @@
                 <div class="card-body p-4">
                     <h3 class="card-title fw-bold mb-4 d-flex align-items-center about-card-title">
                         <span class="icon-circle bg-primary-light me-3"><i class="bi bi-person-lines-fill text-primary"></i></span>
-                        <span>@L["About_ProfessionalSummaryTitle"]</span>
+                        <span>@Localization["About_ProfessionalSummaryTitle"]</span>
                     </h3>
                     <div class="ps-4 about-card-content">
                         <p class="card-text fs-5 mb-4 summary-text">
-                            @L["About_ProfessionalSummaryText1"]
+                            @Localization["About_ProfessionalSummaryText1"]
                         </p>
                         <p class="card-text fs-5 mb-4 summary-text">
-                            @L["About_ProfessionalSummaryText2"]
+                            @Localization["About_ProfessionalSummaryText2"]
                         </p>
                         <div class="row g-3 skills-detail-row">
                             <div class="col-md-6">
@@ -204,7 +204,7 @@
                                         <i class="bi bi-check-circle-fill fs-5"></i>
                                     </div>
                                     <div>
-                                        <h6 class="fw-bold mb-1 skill-detail-title">@L["About_Skill_Backend"]</h6>
+                                        <h6 class="fw-bold mb-1 skill-detail-title">@Localization["About_Skill_Backend"]</h6>
                                         <p class="text-muted mb-0 skill-detail-text">C#, Python, .NET Framework, .NET Core, Web API</p>
                                     </div>
                                 </div>
@@ -215,7 +215,7 @@
                                         <i class="bi bi-check-circle-fill fs-5"></i>
                                     </div>
                                     <div>
-                                        <h6 class="fw-bold mb-1 skill-detail-title">@L["About_Skill_Frontend"]</h6>
+                                        <h6 class="fw-bold mb-1 skill-detail-title">@Localization["About_Skill_Frontend"]</h6>
                                         <p class="text-muted mb-0 skill-detail-text">Blazor, Razor</p>
                                     </div>
                                 </div>
@@ -226,7 +226,7 @@
                                         <i class="bi bi-check-circle-fill fs-5"></i>
                                     </div>
                                     <div>
-                                        <h6 class="fw-bold mb-1 skill-detail-title">@L["About_Skill_Database"]</h6>
+                                        <h6 class="fw-bold mb-1 skill-detail-title">@Localization["About_Skill_Database"]</h6>
                                         <p class="text-muted mb-0 skill-detail-text">SQL Server, MySQL</p>
                                     </div>
                                 </div>
@@ -242,54 +242,54 @@
                 <div class="card-body p-4">
                     <h3 class="card-title fw-bold mb-4 d-flex align-items-center about-card-title">
                         <span class="icon-circle bg-primary-light me-3"><i class="bi bi-briefcase-fill text-primary"></i></span>
-                        <span>@L["About_ExperienceTitle"]</span>
+                        <span>@Localization["About_ExperienceTitle"]</span>
                     </h3>
 
                     <div class="timeline ps-4">
                         <!-- New Experience -->
                         <div class="timeline-item position-relative pb-4">
-                            <div class="timeline-period bg-primary text-white">@L["About_Experience_1_Date"]</div>
+                            <div class="timeline-period bg-primary text-white">@Localization["About_Experience_1_Date"]</div>
                             <div class="timeline-content p-4 rounded-3">
-                                <h5 class="fw-bold mb-1 timeline-job-title">@L["About_Experience_1_Title"]</h5>
+                                <h5 class="fw-bold mb-1 timeline-job-title">@Localization["About_Experience_1_Title"]</h5>
                                 <h6 class="text-primary mb-2 timeline-company">
-                                    @L["About_Experience_1_Company"]
+                                    @Localization["About_Experience_1_Company"]
                                 </h6>
                                 <ul class="mb-0 ps-3 timeline-description">
-                                    <li>@L["About_Experience_1_Desc1"]</li>
-                                    <li>@L["About_Experience_1_Desc2"]</li>
-                                    <li>@L["About_Experience_1_Desc3"]</li>
+                                    <li>@Localization["About_Experience_1_Desc1"]</li>
+                                    <li>@Localization["About_Experience_1_Desc2"]</li>
+                                    <li>@Localization["About_Experience_1_Desc3"]</li>
                                 </ul>
                             </div>
                         </div>
 
                         <!-- Experience 1 -->
                         <div class="timeline-item position-relative pb-4">
-                            <div class="timeline-period bg-primary text-white">@L["About_Experience_2_Date"]</div>
+                            <div class="timeline-period bg-primary text-white">@Localization["About_Experience_2_Date"]</div>
                             <div class="timeline-content p-4 rounded-3">
-                                <h5 class="fw-bold mb-1 timeline-job-title">@L["About_Experience_2_Title"]</h5>
+                                <h5 class="fw-bold mb-1 timeline-job-title">@Localization["About_Experience_2_Title"]</h5>
                                 <h6 class="text-primary mb-2 timeline-company">
-                                    @L["About_Experience_2_Company"]
+                                    @Localization["About_Experience_2_Company"]
                                 </h6>
                                 <ul class="mb-0 ps-3 timeline-description">
-                                    <li>@L["About_Experience_2_Desc1"]</li>
-                                    <li>@L["About_Experience_2_Desc2"]</li>
-                                    <li>@L["About_Experience_2_Desc3"]</li>
-                                    <li>@L["About_Experience_2_Desc4"]</li>
+                                    <li>@Localization["About_Experience_2_Desc1"]</li>
+                                    <li>@Localization["About_Experience_2_Desc2"]</li>
+                                    <li>@Localization["About_Experience_2_Desc3"]</li>
+                                    <li>@Localization["About_Experience_2_Desc4"]</li>
                                 </ul>
                             </div>
                         </div>
 
                         <!-- Experience 2 -->
                         <div class="timeline-item position-relative pb-4">
-                            <div class="timeline-period bg-primary text-white">@L["About_Experience_3_Date"]</div>
+                            <div class="timeline-period bg-primary text-white">@Localization["About_Experience_3_Date"]</div>
                             <div class="timeline-content p-4 rounded-3">
-                                <h5 class="fw-bold mb-1 timeline-job-title">@L["About_Experience_3_Title"]</h5>
+                                <h5 class="fw-bold mb-1 timeline-job-title">@Localization["About_Experience_3_Title"]</h5>
                                 <h6 class="text-primary mb-2 timeline-company">
-                                    @L["About_Experience_3_Company"]
+                                    @Localization["About_Experience_3_Company"]
                                 </h6>
                                 <ul class="mb-0 ps-3 timeline-description">
-                                    <li>@L["About_Experience_3_Desc1"]</li>
-                                    <li>@L["About_Experience_3_Desc2"]</li>
+                                    <li>@Localization["About_Experience_3_Desc1"]</li>
+                                    <li>@Localization["About_Experience_3_Desc2"]</li>
 
                                 </ul>
                             </div>
@@ -297,15 +297,15 @@
 
                         <!-- Experience 3 -->
                         <div class="timeline-item position-relative pb-4">
-                            <div class="timeline-period bg-primary text-white">@L["About_Experience_4_Date"]</div>
+                            <div class="timeline-period bg-primary text-white">@Localization["About_Experience_4_Date"]</div>
                             <div class="timeline-content p-4 rounded-3">
-                                <h5 class="fw-bold mb-1 timeline-job-title">@L["About_Experience_4_Title"]</h5>
+                                <h5 class="fw-bold mb-1 timeline-job-title">@Localization["About_Experience_4_Title"]</h5>
                                 <h6 class="text-primary mb-2 timeline-company">
-                                    @L["About_Experience_4_Company"]
+                                    @Localization["About_Experience_4_Company"]
                                 </h6>
                                 <ul class="mb-0 ps-3 timeline-description">
-                                    <li>@L["About_Experience_4_Desc1"]</li>
-                                    <li>@L["About_Experience_4_Desc2"]</li>
+                                    <li>@Localization["About_Experience_4_Desc1"]</li>
+                                    <li>@Localization["About_Experience_4_Desc2"]</li>
                                 </ul>
                             </div>
                         </div>
@@ -318,37 +318,37 @@
                 <div class="card-body p-4">
                     <h3 class="card-title fw-bold mb-4 d-flex align-items-center about-card-title">
                         <span class="icon-circle bg-primary-light me-3"><i class="bi bi-mortarboard-fill text-primary"></i></span>
-                        <span>@L["About_EducationTitle"]</span>
+                        <span>@Localization["About_EducationTitle"]</span>
                     </h3>
 
                     <div class="timeline ps-4">
                         <div class="timeline-item position-relative">
-                            <div class="timeline-period bg-primary text-white">@L["About_Education_1_Date"]</div>
+                            <div class="timeline-period bg-primary text-white">@Localization["About_Education_1_Date"]</div>
                             <div class="timeline-content p-4 rounded-3">
-                                <h5 class="fw-bold mb-1 timeline-job-title">@L["About_Education_1_Title"]</h5>
-                                <h6 class="text-primary mb-2 timeline-company">@L["About_Education_1_School"]</h6>
+                                <h5 class="fw-bold mb-1 timeline-job-title">@Localization["About_Education_1_Title"]</h5>
+                                <h6 class="text-primary mb-2 timeline-company">@Localization["About_Education_1_School"]</h6>
                                 <div class="d-flex flex-wrap gap-4 mb-2 education-details">
                                     <div>
                                         <i class="bi bi-building text-primary me-2"></i>
-                                        <span>@L["About_Education_1_Detail"]</span>
+                                        <span>@Localization["About_Education_1_Detail"]</span>
                                     </div>
                                     <div>
                                         <i class="bi bi-award text-primary me-2"></i>
-                                        <span>@L["About_Education_1_GPA"]</span>
+                                        <span>@Localization["About_Education_1_GPA"]</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="timeline-item position-relative">
-                            <div class="timeline-period bg-primary text-white">@L["About_Education_2_Date"]</div>
+                            <div class="timeline-period bg-primary text-white">@Localization["About_Education_2_Date"]</div>
                             <div class="timeline-content p-4 rounded-3">
-                                <h5 class="fw-bold mb-1 timeline-job-title">@L["About_Education_2_School"]</h5>
-                                <h6 class="text-primary mb-2 timeline-company">@L["About_Education_2_Title"]</h6>
+                                <h5 class="fw-bold mb-1 timeline-job-title">@Localization["About_Education_2_School"]</h5>
+                                <h6 class="text-primary mb-2 timeline-company">@Localization["About_Education_2_Title"]</h6>
                                 <div class="d-flex flex-wrap gap-4 mb-2 education-details">
                                     <div>
                                         <i class="bi bi-award text-primary me-2"></i>
-                                        <span>@L["About_Education_2_GPA"]</span>
+                                        <span>@Localization["About_Education_2_GPA"]</span>
                                     </div>
                                     
                                 </div>
@@ -365,16 +365,16 @@
 <section class="bg-light py-5 tech-section">
     <div class="container py-4">
         <div class="text-center mb-5">
-            <h2 class="fw-bold mb-3 tech-section-title">@L["About_TechnologiesTitle"]</h2>
+            <h2 class="fw-bold mb-3 tech-section-title">@Localization["About_TechnologiesTitle"]</h2>
             <p class="text-muted mx-auto tech-section-description" style="max-width: 600px;">
-                @L["About_TechnologiesDescription"]
+                @Localization["About_TechnologiesDescription"]
             </p>
         </div>
         <div class="row g-4 tech-cards-row">
             <div class="col-6 col-md-3">
                 <div class="tech-card p-4 text-center rounded-3">
                     <i class="fab fa-microsoft fa-3x text-primary mb-3 tech-card-icon"></i>
-                    <h5 class="fw-bold mb-0 tech-card-title">@L["Tech_DotNetEcosystem"]</h5>
+                    <h5 class="fw-bold mb-0 tech-card-title">@Localization["Tech_DotNetEcosystem"]</h5>
                 </div>
             </div>
             <div class="col-6 col-md-3">
@@ -386,13 +386,13 @@
             <div class="col-6 col-md-3">
                 <div class="tech-card p-4 text-center rounded-3">
                     <i class="fas fa-database fa-3x text-primary mb-3 tech-card-icon"></i>
-                    <h5 class="fw-bold mb-0 tech-card-title">@L["Tech_Databases"]</h5>
+                    <h5 class="fw-bold mb-0 tech-card-title">@Localization["Tech_Databases"]</h5>
                 </div>
             </div>
             <div class="col-6 col-md-3">
                 <div class="tech-card p-4 text-center rounded-3">
                     <i class="fas fa-cloud fa-3x text-primary mb-3 tech-card-icon"></i>
-                    <h5 class="fw-bold mb-0 tech-card-title">@L["Tech_Cloud"]</h5>
+                    <h5 class="fw-bold mb-0 tech-card-title">@Localization["Tech_Cloud"]</h5>
                 </div>
             </div>
         </div>

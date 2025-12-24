@@ -3,14 +3,14 @@
 @using Personal.Services
 @inject ProjectService ProjectService
 @inject NavigationManager NavigationManager
-@inject LocalizationService L
+@inject LocalizationService Localization
 
-<PageTitle>@(project?.Title ?? L["ProjectDetail_Title_Default"])</PageTitle>
+<PageTitle>@(projectDetail?.Title ?? Localization["ProjectDetail_Title_Default"])</PageTitle>
 
-@if (project == null)
+@if (projectDetail == null)
 {
     <div class="project-loading-wrapper">
-        @if (isLoading)
+        @if (isLoadingProject)
         {
             <div class="loading-container">
                 <div class="loading-spinner-large">
@@ -21,7 +21,7 @@
                         <i class="bi bi-code-slash"></i>
                     </div>
                 </div>
-                <p class="loading-text">@L["ProjectDetail_Loading"]</p>
+                <p class="loading-text">@Localization["ProjectDetail_Loading"]</p>
             </div>
         }
         else
@@ -31,10 +31,10 @@
                     <div class="error-icon-bg"></div>
                     <i class="bi bi-exclamation-triangle error-icon"></i>
                 </div>
-                <h2 class="error-title">@L["ProjectDetail_NotFound_Title"]</h2>
-                <p class="error-message">@L["ProjectDetail_NotFound_Message"]</p>
-                <button class="back-button" @onclick="NavigateToProjects">
-                    <i class="bi bi-arrow-left me-2"></i>@L["ProjectDetail_BackToProjects"]
+                <h2 class="error-title">@Localization["ProjectDetail_NotFound_Title"]</h2>
+                <p class="error-message">@Localization["ProjectDetail_NotFound_Message"]</p>
+                <button class="back-button" @onclick="NavigateToProjectsPage">
+                    <i class="bi bi-arrow-left me-2"></i>@Localization["ProjectDetail_BackToProjects"]
                 </button>
             </div>
         }
@@ -47,7 +47,7 @@ else
         <section class="project-hero-section">
             <div class="hero-background">
                 <div class="hero-image-container">
-                    <img src="@project.ImageUrl" alt="@project.Title" class="hero-bg-image">
+                    <img src="@projectDetail.ImageUrl" alt="@projectDetail.Title" class="hero-bg-image">
                     <div class="hero-overlay"></div>
                 </div>
                 <div class="hero-particles">
@@ -63,15 +63,15 @@ else
                 <nav class="breadcrumb-nav">
                     <a href="/" class="breadcrumb-link">
                         <i class="bi bi-house-door"></i>
-                        <span>@L["ProjectDetail_Breadcrumb_Home"]</span>
+                        <span>@Localization["ProjectDetail_Breadcrumb_Home"]</span>
                     </a>
                     <i class="bi bi-chevron-right breadcrumb-separator"></i>
                     <a href="/projects" class="breadcrumb-link">
                         <i class="bi bi-folder2-open"></i>
-                        <span>@L["ProjectDetail_Breadcrumb_Projects"]</span>
+                        <span>@Localization["ProjectDetail_Breadcrumb_Projects"]</span>
                     </a>
                     <i class="bi bi-chevron-right breadcrumb-separator"></i>
-                    <span class="breadcrumb-current">@project.Title</span>
+                    <span class="breadcrumb-current">@projectDetail.Title</span>
                 </nav>
 
                 <div class="hero-content">
@@ -79,39 +79,39 @@ else
                         <div class="col-lg-8">
                             <!-- Category & Date -->
                             <div class="hero-meta">
-                                @if (!string.IsNullOrEmpty(project.Category))
+                                @if (!string.IsNullOrEmpty(projectDetail.Category))
                                 {
                                     <span class="meta-category">
                                         <i class="bi bi-tag"></i>
-                                        @project.Category
+                                        @projectDetail.Category
                                     </span>
                                 }
                                 <span class="meta-date">
                                     <i class="bi bi-calendar3"></i>
-                                    @project.CreatedDate.ToString("MMMM yyyy")
+                                    @projectDetail.CreatedDate.ToString("MMMM yyyy")
                                 </span>
                             </div>
 
                             <!-- Title -->
-                            <h1 class="hero-title">@project.Title</h1>
+                            <h1 class="hero-title">@projectDetail.Title</h1>
 
                             <!-- Description -->
-                            <p class="hero-description">@project.ShortDescription</p>
+                            <p class="hero-description">@projectDetail.ShortDescription</p>
 
                             <!-- Action Buttons -->
                             <div class="hero-actions">
-                                @if (!string.IsNullOrEmpty(project.ProjectUrl))
+                                @if (!string.IsNullOrEmpty(projectDetail.ProjectUrl))
                                 {
-                                    <a href="@project.ProjectUrl" target="_blank" class="action-btn primary">
+                                    <a href="@projectDetail.ProjectUrl" target="_blank" class="action-btn primary">
                                         <i class="bi bi-rocket-takeoff"></i>
-                                        <span>@L["ProjectDetail_Button_LiveDemo"]</span>
+                                        <span>@Localization["ProjectDetail_Button_LiveDemo"]</span>
                                     </a>
                                 }
-                                @if (!string.IsNullOrEmpty(project.GitHubUrl))
+                                @if (!string.IsNullOrEmpty(projectDetail.GitHubUrl))
                                 {
-                                    <a href="@project.GitHubUrl" target="_blank" class="action-btn secondary">
+                                    <a href="@projectDetail.GitHubUrl" target="_blank" class="action-btn secondary">
                                         <i class="bi bi-github"></i>
-                                        <span>@L["ProjectDetail_Button_GitHubRepo"]</span>
+                                        <span>@Localization["ProjectDetail_Button_GitHubRepo"]</span>
                                     </a>
                                 }
                             </div>
@@ -125,18 +125,18 @@ else
                                         <i class="bi bi-stack"></i>
                                     </div>
                                     <div class="stat-content">
-                                        <span class="stat-value">@project.Technologies.Length</span>
+                                        <span class="stat-value">@projectDetail.Technologies.Length</span>
                                         <span class="stat-label">Technologies</span>
                                     </div>
                                 </div>
-                                @if (project.Features?.Any() == true)
+                                @if (projectDetail.Features?.Any() == true)
                                 {
                                     <div class="stat-item">
                                         <div class="stat-icon">
                                             <i class="bi bi-star"></i>
                                         </div>
                                         <div class="stat-content">
-                                            <span class="stat-value">@project.Features.Length</span>
+                                            <span class="stat-value">@projectDetail.Features.Length</span>
                                             <span class="stat-label">Features</span>
                                         </div>
                                     </div>
@@ -147,13 +147,13 @@ else
                                     </div>
                                     <div class="stat-content">
                                         <span class="stat-value status">
-                                            @if (!string.IsNullOrEmpty(project.ProjectUrl))
+                                            @if (!string.IsNullOrEmpty(projectDetail.ProjectUrl))
                                             {
-                                                <span class="status-live">@L["ProjectDetail_Status_Live"]</span>
+                                                <span class="status-live">@Localization["ProjectDetail_Status_Live"]</span>
                                             }
                                             else
                                             {
-                                                <span class="status-dev">@L["ProjectDetail_Status_Development"]</span>
+                                                <span class="status-dev">@Localization["ProjectDetail_Status_Development"]</span>
                                             }
                                         </span>
                                         <span class="stat-label">Status</span>
@@ -185,28 +185,28 @@ else
                                 <div class="header-icon">
                                     <i class="bi bi-file-earmark-text"></i>
                                 </div>
-                                <h2 class="header-title">@L["ProjectDetail_Section_Details"]</h2>
+                                <h2 class="header-title">@Localization["ProjectDetail_Section_Details"]</h2>
                             </div>
                             <div class="card-body-custom">
                                 <div class="markdown-content">
-                                    <markdown>@project.FullDescription</markdown>
+                                    <markdown>@projectDetail.FullDescription</markdown>
                                 </div>
                             </div>
                         </article>
 
                         <!-- Features Section -->
-                        @if (project.Features?.Any() == true)
+                        @if (projectDetail.Features?.Any() == true)
                         {
                             <article class="content-card">
                                 <div class="card-header-custom">
                                     <div class="header-icon features">
                                         <i class="bi bi-lightning-charge"></i>
                                     </div>
-                                    <h2 class="header-title">@L["ProjectDetail_Section_Features"]</h2>
+                                    <h2 class="header-title">@Localization["ProjectDetail_Section_Features"]</h2>
                                 </div>
                                 <div class="card-body-custom">
                                     <div class="features-grid">
-                                        @foreach (var feature in project.Features)
+                                        @foreach (var feature in projectDetail.Features)
                                         {
                                             <div class="feature-card">
                                                 <div class="feature-icon">
@@ -221,38 +221,38 @@ else
                         }
 
                         <!-- Challenges & Solutions -->
-                        @if (!string.IsNullOrEmpty(project.Challenges) || !string.IsNullOrEmpty(project.Solutions))
+                        @if (!string.IsNullOrEmpty(projectDetail.Challenges) || !string.IsNullOrEmpty(projectDetail.Solutions))
                         {
                             <article class="content-card">
                                 <div class="card-header-custom">
                                     <div class="header-icon challenges">
                                         <i class="bi bi-puzzle"></i>
                                     </div>
-                                    <h2 class="header-title">@L["ProjectDetail_Section_ChallengesSolutions"]</h2>
+                                    <h2 class="header-title">@Localization["ProjectDetail_Section_ChallengesSolutions"]</h2>
                                 </div>
                                 <div class="card-body-custom">
-                                    @if (!string.IsNullOrEmpty(project.Challenges))
+                                    @if (!string.IsNullOrEmpty(projectDetail.Challenges))
                                     {
                                         <div class="challenge-block">
                                             <div class="block-header challenges">
                                                 <i class="bi bi-exclamation-diamond"></i>
-                                                <h3>@L["ProjectDetail_Section_Challenges"]</h3>
+                                                <h3>@Localization["ProjectDetail_Section_Challenges"]</h3>
                                             </div>
                                             <div class="block-content">
-                                                <markdown>@project.Challenges</markdown>
+                                                <markdown>@projectDetail.Challenges</markdown>
                                             </div>
                                         </div>
                                     }
 
-                                    @if (!string.IsNullOrEmpty(project.Solutions))
+                                    @if (!string.IsNullOrEmpty(projectDetail.Solutions))
                                     {
                                         <div class="solution-block">
                                             <div class="block-header solutions">
                                                 <i class="bi bi-lightbulb"></i>
-                                                <h3>@L["ProjectDetail_Section_Solutions"]</h3>
+                                                <h3>@Localization["ProjectDetail_Section_Solutions"]</h3>
                                             </div>
                                             <div class="block-content">
-                                                <markdown>@project.Solutions</markdown>
+                                                <markdown>@projectDetail.Solutions</markdown>
                                             </div>
                                         </div>
                                     }
@@ -269,11 +269,11 @@ else
                                 <div class="header-icon tech">
                                     <i class="bi bi-layers"></i>
                                 </div>
-                                <h3>@L["ProjectDetail_Section_TechStack"]</h3>
+                                <h3>@Localization["ProjectDetail_Section_TechStack"]</h3>
                             </div>
                             <div class="sidebar-body">
                                 <div class="tech-list">
-                                    @foreach (var tech in project.Technologies)
+                                    @foreach (var tech in projectDetail.Technologies)
                                     {
                                         <div class="tech-item">
                                             <div class="tech-bullet"></div>
@@ -285,20 +285,20 @@ else
                         </aside>
 
                         <!-- Screenshots Gallery -->
-                        @if (project.Screenshots?.Any() == true)
+                        @if (projectDetail.Screenshots?.Any() == true)
                         {
                             <aside class="sidebar-card">
                                 <div class="sidebar-header">
                                     <div class="header-icon gallery">
                                         <i class="bi bi-images"></i>
                                     </div>
-                                    <h3>@L["ProjectDetail_Section_Screenshots"]</h3>
+                                    <h3>@Localization["ProjectDetail_Section_Screenshots"]</h3>
                                 </div>
                                 <div class="sidebar-body">
                                     <div class="gallery-grid">
-                                        @foreach (var screenshot in project.Screenshots)
+                                        @foreach (var screenshot in projectDetail.Screenshots)
                                         {
-                                            <div class="gallery-item" @onclick="() => OpenLightbox(screenshot)">
+                                            <div class="gallery-item" @onclick="() => OpenScreenshotLightbox(screenshot)">
                                                 <img src="@screenshot" alt="Screenshot" loading="lazy">
                                                 <div class="gallery-overlay">
                                                     <i class="bi bi-zoom-in"></i>
@@ -316,7 +316,7 @@ else
                                 <div class="header-icon info">
                                     <i class="bi bi-info-circle"></i>
                                 </div>
-                                <h3>@L["ProjectDetail_Section_Info"]</h3>
+                                <h3>@Localization["ProjectDetail_Section_Info"]</h3>
                             </div>
                             <div class="sidebar-body">
                                 <div class="info-list">
@@ -325,8 +325,8 @@ else
                                             <i class="bi bi-calendar-event"></i>
                                         </div>
                                         <div class="info-content">
-                                            <span class="info-label">@L["ProjectDetail_Info_CreatedDate"]</span>
-                                            <span class="info-value">@project.CreatedDate.ToString("dd MMMM yyyy")</span>
+                                            <span class="info-label">@Localization["ProjectDetail_Info_CreatedDate"]</span>
+                                            <span class="info-value">@projectDetail.CreatedDate.ToString("dd MMMM yyyy")</span>
                                         </div>
                                     </div>
                                     <div class="info-item">
@@ -334,8 +334,8 @@ else
                                             <i class="bi bi-bookmark"></i>
                                         </div>
                                         <div class="info-content">
-                                            <span class="info-label">@L["ProjectDetail_Info_Category"]</span>
-                                            <span class="info-value">@project.Category</span>
+                                            <span class="info-label">@Localization["ProjectDetail_Info_Category"]</span>
+                                            <span class="info-value">@projectDetail.Category</span>
                                         </div>
                                     </div>
                                     <div class="info-item">
@@ -343,20 +343,20 @@ else
                                             <i class="bi bi-activity"></i>
                                         </div>
                                         <div class="info-content">
-                                            <span class="info-label">@L["ProjectDetail_Info_Status"]</span>
+                                            <span class="info-label">@Localization["ProjectDetail_Info_Status"]</span>
                                             <span class="info-value">
-                                                @if (!string.IsNullOrEmpty(project.ProjectUrl))
+                                                @if (!string.IsNullOrEmpty(projectDetail.ProjectUrl))
                                                 {
                                                     <span class="status-badge live">
                                                         <span class="status-dot"></span>
-                                                        @L["ProjectDetail_Status_Live"]
+                                                        @Localization["ProjectDetail_Status_Live"]
                                                     </span>
                                                 }
                                                 else
                                                 {
                                                     <span class="status-badge dev">
                                                         <span class="status-dot"></span>
-                                                        @L["ProjectDetail_Status_Development"]
+                                                        @Localization["ProjectDetail_Status_Development"]
                                                     </span>
                                                 }
                                             </span>
@@ -370,7 +370,7 @@ else
                         <div class="back-to-projects">
                             <a href="/projects" class="back-link">
                                 <i class="bi bi-arrow-left"></i>
-                                <span>@L["ProjectDetail_BackToProjects"]</span>
+                                <span>@Localization["ProjectDetail_BackToProjects"]</span>
                             </a>
                         </div>
                     </div>
@@ -380,22 +380,22 @@ else
     </div>
 
     <!-- Lightbox Modal -->
-    @if (showLightbox)
+    @if (isLightboxOpen)
     {
-        <div class="lightbox-modal" @onclick="CloseLightbox">
+        <div class="lightbox-modal" @onclick="CloseScreenshotLightbox">
             <div class="lightbox-content" @onclick:stopPropagation>
-                <button class="lightbox-close" @onclick="CloseLightbox">
+                <button class="lightbox-close" @onclick="CloseScreenshotLightbox">
                     <i class="bi bi-x-lg"></i>
                 </button>
                 <div class="lightbox-image-container">
-                    <img src="@currentScreenshot" alt="Screenshot" class="lightbox-image">
+                    <img src="@selectedScreenshotUrl" alt="Screenshot" class="lightbox-image">
                 </div>
                 <div class="lightbox-controls">
-                    <button class="lightbox-nav prev" @onclick="PrevScreenshot" disabled="@(currentScreenshotIndex <= 0)">
+                    <button class="lightbox-nav prev" @onclick="ShowPreviousScreenshot" disabled="@(selectedScreenshotIndex <= 0)">
                         <i class="bi bi-chevron-left"></i>
                     </button>
-                    <span class="lightbox-counter">@(currentScreenshotIndex + 1) / @project.Screenshots.Length</span>
-                    <button class="lightbox-nav next" @onclick="NextScreenshot" disabled="@(currentScreenshotIndex >= project.Screenshots.Length - 1)">
+                    <span class="lightbox-counter">@(selectedScreenshotIndex + 1) / @projectDetail.Screenshots.Length</span>
+                    <button class="lightbox-nav next" @onclick="ShowNextScreenshot" disabled="@(selectedScreenshotIndex >= projectDetail.Screenshots.Length - 1)">
                         <i class="bi bi-chevron-right"></i>
                     </button>
                 </div>
@@ -407,52 +407,52 @@ else
 @code {
     [Parameter] public int Id { get; set; }
 
-    private Personal.Models.ProjectDetail? project;
-    private bool isLoading = true;
-    private bool showLightbox = false;
-    private string? currentScreenshot;
-    private int currentScreenshotIndex = 0;
+    private Personal.Models.ProjectDetail? projectDetail;
+    private bool isLoadingProject = true;
+    private bool isLightboxOpen = false;
+    private string? selectedScreenshotUrl;
+    private int selectedScreenshotIndex = 0;
 
     protected override async Task OnParametersSetAsync()
     {
-        isLoading = true;
-        project = await ProjectService.GetProjectDetailAsync(Id);
-        isLoading = false;
+        isLoadingProject = true;
+        projectDetail = await ProjectService.GetProjectDetailAsync(Id);
+        isLoadingProject = false;
     }
 
-    private void NavigateToProjects()
+    private void NavigateToProjectsPage()
     {
         NavigationManager.NavigateTo("/projects");
     }
 
-    private void OpenLightbox(string screenshot)
+    private void OpenScreenshotLightbox(string screenshotUrl)
     {
-        if (project?.Screenshots == null) return;
+        if (projectDetail?.Screenshots == null) return;
 
-        currentScreenshot = screenshot;
-        currentScreenshotIndex = Array.IndexOf(project.Screenshots, screenshot);
-        showLightbox = true;
+        selectedScreenshotUrl = screenshotUrl;
+        selectedScreenshotIndex = Array.IndexOf(projectDetail.Screenshots, screenshotUrl);
+        isLightboxOpen = true;
     }
 
-    private void CloseLightbox()
+    private void CloseScreenshotLightbox()
     {
-        showLightbox = false;
+        isLightboxOpen = false;
     }
 
-    private void PrevScreenshot()
+    private void ShowPreviousScreenshot()
     {
-        if (project?.Screenshots == null || currentScreenshotIndex <= 0) return;
+        if (projectDetail?.Screenshots == null || selectedScreenshotIndex <= 0) return;
 
-        currentScreenshotIndex--;
-        currentScreenshot = project.Screenshots[currentScreenshotIndex];
+        selectedScreenshotIndex--;
+        selectedScreenshotUrl = projectDetail.Screenshots[selectedScreenshotIndex];
     }
 
-    private void NextScreenshot()
+    private void ShowNextScreenshot()
     {
-        if (project?.Screenshots == null || currentScreenshotIndex >= project.Screenshots.Length - 1) return;
+        if (projectDetail?.Screenshots == null || selectedScreenshotIndex >= projectDetail.Screenshots.Length - 1) return;
 
-        currentScreenshotIndex++;
-        currentScreenshot = project.Screenshots[currentScreenshotIndex];
+        selectedScreenshotIndex++;
+        selectedScreenshotUrl = projectDetail.Screenshots[selectedScreenshotIndex];
     }
 }
 

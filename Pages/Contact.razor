@@ -1,25 +1,25 @@
 @page "/contact"
 @using Personal.Components
 @using Personal.Services
-@inject LocalizationService L
+@inject LocalizationService Localization
 
-<PageTitle>@L["Meta_ContactOgTitle"]</PageTitle>
+<PageTitle>@Localization["Meta_ContactOgTitle"]</PageTitle>
 <HeadContent>
-    <meta name="description" content="@L["Meta_ContactDescription"]">
-    <meta property="og:title" content="@L["Meta_ContactOgTitle"]">
-    <meta property="og:description" content="@L["Meta_ContactOgDescription"]">
+    <meta name="description" content="@Localization["Meta_ContactDescription"]">
+    <meta property="og:title" content="@Localization["Meta_ContactOgTitle"]">
+    <meta property="og:description" content="@Localization["Meta_ContactOgDescription"]">
     <meta property="og:url" content="https://kadirbeskardes.github.io/contact">
     <meta property="og:type" content="website">
-    <meta name="twitter:title" content="@L["Meta_ContactTwitterTitle"]">
-    <meta name="twitter:description" content="@L["Meta_ContactTwitterDescription"]">
+    <meta name="twitter:title" content="@Localization["Meta_ContactTwitterTitle"]">
+    <meta name="twitter:description" content="@Localization["Meta_ContactTwitterDescription"]">
     <link rel="canonical" href="https://kadirbeskardes.github.io/contact">
 </HeadContent>
 
 <div class="contact-page">
     <div class="container py-5">
         <div class="text-center mb-5 contact-header">
-            <h2 class="display-5 fw-bold text-gradient contact-title">@L["Contact_Title"]</h2>
-            <p class="lead text-muted contact-subtitle">@L["Contact_GetInTouch"]</p>
+            <h2 class="display-5 fw-bold text-gradient contact-title">@Localization["Contact_Title"]</h2>
+            <p class="lead text-muted contact-subtitle">@Localization["Contact_GetInTouch"]</p>
             <div class="divider mx-auto"></div>
         </div>
 
@@ -27,15 +27,15 @@
             <div class="col-lg-5 col-md-6 col-12">
                 <div class="contact-info-card card h-100 border-0 shadow-lg">
                     <div class="card-body p-4 p-lg-5">
-                        <h3 class="h4 mb-4 fw-bold text-primary contact-card-title">@L["Contact_ContactInfo"]</h3>
+                        <h3 class="h4 mb-4 fw-bold text-primary contact-card-title">@Localization["Contact_ContactInfo"]</h3>
 
                         <div class="contact-item d-flex mb-4">
                             <div class="contact-icon me-3">
                                 <i class="bi bi-geo-alt-fill fs-3 text-gradient"></i>
                             </div>
                             <div class="contact-item-content">
-                                <h5 class="h6 mb-1 fw-semibold">@L["Contact_Address"]</h5>
-                                <p class="text-muted mb-0 contact-text">@L["Contact_Location"]</p>
+                                <h5 class="h6 mb-1 fw-semibold">@Localization["Contact_Address"]</h5>
+                                <p class="text-muted mb-0 contact-text">@Localization["Contact_Location"]</p>
                             </div>
                         </div>
 
@@ -44,7 +44,7 @@
                                 <i class="bi bi-envelope-fill fs-3 text-gradient"></i>
                             </div>
                             <div class="contact-item-content">
-                                <h5 class="h6 mb-1 fw-semibold">@L["Contact_Email"]</h5>
+                                <h5 class="h6 mb-1 fw-semibold">@Localization["Contact_Email"]</h5>
                                 <p class="text-muted mb-0 contact-text contact-email">kadir.beskardes11@gmail.com</p>
                             </div>
                         </div>
@@ -54,13 +54,13 @@
                                 <i class="bi bi-telephone-fill fs-3 text-gradient"></i>
                             </div>
                             <div class="contact-item-content">
-                                <h5 class="h6 mb-1 fw-semibold">@L["Contact_Phone"]</h5>
+                                <h5 class="h6 mb-1 fw-semibold">@Localization["Contact_Phone"]</h5>
                                 <p class="text-muted mb-0 contact-text">+90 507 275 67 47</p>
                             </div>
                         </div>
 
                         <div class="mt-5 pt-3 social-section">
-                            <h5 class="h6 mb-3 fw-semibold social-title">@L["Contact_SocialMedia"]</h5>
+                            <h5 class="h6 mb-3 fw-semibold social-title">@Localization["Contact_SocialMedia"]</h5>
                             <div class="social-links d-flex gap-3">
                                 <a href="https://github.com/kadirbeskardes" class="social-icon btn btn-outline-primary rounded-circle p-2" target="_blank" rel="noopener">
                                     <i class="bi bi-github fs-5"></i>
@@ -83,8 +83,8 @@
             <div class="col-lg-7 col-md-6 col-12">
                 <div class="contact-form-card card border-0 shadow-lg">
                     <div class="card-body p-4 p-lg-5">
-                        <h3 class="h4 mb-4 fw-bold text-primary contact-card-title">@L["Contact_SendMessageTitle"]</h3>
-                        <p class="text-muted mb-4 form-description">@L["Contact_SendMessageDescription"]</p>
+                        <h3 class="h4 mb-4 fw-bold text-primary contact-card-title">@Localization["Contact_SendMessageTitle"]</h3>
+                        <p class="text-muted mb-4 form-description">@Localization["Contact_SendMessageDescription"]</p>
                         <ContactForm />
                     </div>
                 </div>

@@ -4,7 +4,7 @@
 @using Microsoft.AspNetCore.Components.Forms
 @inject AdminService AdminService
 @inject NavigationManager Navigation
-@inject IJSRuntime JS
+@inject IJSRuntime JSRuntime
 @implements IDisposable
 
 <PageTitle>Admin Dashboard</PageTitle>
@@ -21,7 +21,7 @@ else
         <!-- Header -->
         <header class="admin-header">
             <div class="header-left">
-                <h1><i class="bi bi-grid-3x3-gap me-2"></i>Proje Yönetimi</h1>
+                <h1><i class="bi bi-grid-3x3-gap me-2"></i>Proje Yï¿½netimi</h1>
             </div>
             <div class="header-center">
                 <div class="session-info">
@@ -43,7 +43,7 @@ else
                     <i class="bi bi-arrow-counterclockwise me-2"></i>S?f?rla
                 </button>
                 <button class="btn-danger" @onclick="Logout">
-                    <i class="bi bi-box-arrow-right me-2"></i>Ç?k??
+                    <i class="bi bi-box-arrow-right me-2"></i>ï¿½?k??
                 </button>
             </div>
         </header>
@@ -65,14 +65,14 @@ else
             {
                 <div class="loading-state">
                     <div class="spinner"></div>
-                    <p>Projeler yükleniyor...</p>
+                    <p>Projeler yï¿½kleniyor...</p>
                 </div>
             }
             else if (!projects.Any())
             {
                 <div class="empty-state">
                     <i class="bi bi-inbox"></i>
-                    <h3>Henüz proje yok</h3>
+                    <h3>Henï¿½z proje yok</h3>
                     <p>Yeni bir proje ekleyerek ba?lay?n.</p>
                 </div>
             }
@@ -108,7 +108,7 @@ else
                                     </td>
                                     <td>@project.CreatedDate.ToString("dd.MM.yyyy")</td>
                                     <td class="actions-cell">
-                                        <button class="btn-icon edit" @onclick="() => ShowEditModal(project)" title="Düzenle">
+                                        <button class="btn-icon edit" @onclick="() => ShowEditModal(project)" title="Dï¿½zenle">
                                             <i class="bi bi-pencil"></i>
                                         </button>
                                         <button class="btn-icon delete" @onclick="() => DeleteProject(project.Id)" title="Sil">
@@ -129,7 +129,7 @@ else
             <div class="modal-overlay" @onclick="CloseModal">
                 <div class="modal-content" @onclick:stopPropagation="true">
                     <div class="modal-header">
-                        <h2>@(isEditing ? "Proje Düzenle" : "Yeni Proje Ekle")</h2>
+                        <h2>@(isEditing ? "Proje Dï¿½zenle" : "Yeni Proje Ekle")</h2>
                         <button class="modal-close" @onclick="CloseModal">
                             <i class="bi bi-x-lg"></i>
                         </button>
@@ -145,22 +145,22 @@ else
 
                         <div class="form-row">
                             <div class="form-group">
-                                <label>K?sa Aç?klama *</label>
-                                <textarea @bind="currentProject.ShortDescription" rows="2" placeholder="K?sa aç?klama"></textarea>
+                                <label>K?sa Aï¿½?klama *</label>
+                                <textarea @bind="currentProject.ShortDescription" rows="2" placeholder="K?sa aï¿½?klama"></textarea>
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group">
-                                <label>Detayl? Aç?klama</label>
-                                <textarea @bind="currentProject.FullDescription" rows="4" placeholder="Detayl? aç?klama"></textarea>
+                                <label>Detayl? Aï¿½?klama</label>
+                                <textarea @bind="currentProject.FullDescription" rows="4" placeholder="Detayl? aï¿½?klama"></textarea>
                             </div>
                         </div>
 
                         <div class="form-row two-col">
                             <div class="form-group">
                                 <label>Kategori</label>
-                                <input type="text" @bind="currentProject.Category" placeholder="Örn: Web Uygulamas?" />
+                                <input type="text" @bind="currentProject.Category" placeholder="ï¿½rn: Web Uygulamas?" />
                             </div>
                             <div class="form-group">
                                 <label>GitHub URL</label>
@@ -175,16 +175,16 @@ else
                             </div>
                         </div>
 
-                        <!-- Görsel Yükleme Bölümü -->
+                        <!-- Gï¿½rsel Yï¿½kleme Bï¿½lï¿½mï¿½ -->
                         <div class="form-row">
                             <div class="form-group">
-                                <label><i class="bi bi-image me-2"></i>Proje Görseli</label>
+                                <label><i class="bi bi-image me-2"></i>Proje Gï¿½rseli</label>
                                 <div class="image-upload-container">
                                     @if (!string.IsNullOrEmpty(imagePreview) || !string.IsNullOrEmpty(currentProject.ImageUrl))
                                     {
                                         <div class="image-preview-wrapper">
-                                            <img src="@(imagePreview ?? currentProject.ImageUrl)" alt="Proje Görseli" class="image-preview" />
-                                            <button type="button" class="remove-image-btn" @onclick="RemoveImage" title="Görseli Kald?r">
+                                            <img src="@(imagePreview ?? currentProject.ImageUrl)" alt="Proje Gï¿½rseli" class="image-preview" />
+                                            <button type="button" class="remove-image-btn" @onclick="RemoveImage" title="Gï¿½rseli Kald?r">
                                                 <i class="bi bi-x-lg"></i>
                                             </button>
                                         </div>
@@ -195,12 +195,12 @@ else
                                             @if (isUploading)
                                             {
                                                 <div class="upload-spinner"></div>
-                                                <span>Yükleniyor...</span>
+                                                <span>Yï¿½kleniyor...</span>
                                             }
                                             else
                                             {
                                                 <i class="bi bi-cloud-arrow-up"></i>
-                                                <span>Görsel Yükle</span>
+                                                <span>Gï¿½rsel Yï¿½kle</span>
                                                 <small>PNG, JPG, GIF (Maks. 5MB)</small>
                                             }
                                         </label>
@@ -213,10 +213,10 @@ else
                             </div>
                         </div>
 
-                        <!-- Ekran Görüntüleri -->
+                        <!-- Ekran Gï¿½rï¿½ntï¿½leri -->
                         <div class="form-row">
                             <div class="form-group">
-                                <label><i class="bi bi-images me-2"></i>Ekran Görüntüleri</label>
+                                <label><i class="bi bi-images me-2"></i>Ekran Gï¿½rï¿½ntï¿½leri</label>
                                 <div class="screenshots-container">
                                     @if (screenshotsList.Any())
                                     {
@@ -224,7 +224,7 @@ else
                                             @foreach (var (screenshot, index) in screenshotsList.Select((s, i) => (s, i)))
                                             {
                                                 <div class="screenshot-item">
-                                                    <img src="@screenshot" alt="Ekran Görüntüsü @(index + 1)" />
+                                                    <img src="@screenshot" alt="Ekran Gï¿½rï¿½ntï¿½sï¿½ @(index + 1)" />
                                                     <button type="button" class="remove-screenshot-btn" @onclick="() => RemoveScreenshot(index)" title="Kald?r">
                                                         <i class="bi bi-x"></i>
                                                     </button>
@@ -238,17 +238,17 @@ else
                                             @if (isUploadingScreenshot)
                                             {
                                                 <div class="upload-spinner"></div>
-                                                <span>Yükleniyor...</span>
+                                                <span>Yï¿½kleniyor...</span>
                                             }
                                             else
                                             {
                                                 <i class="bi bi-plus-lg"></i>
-                                                <span>Ekran Görüntüsü Ekle</span>
+                                                <span>Ekran Gï¿½rï¿½ntï¿½sï¿½ Ekle</span>
                                             }
                                         </label>
                                     </div>
                                     <div class="screenshots-url-input">
-                                        <input type="text" @bind="newScreenshotUrl" placeholder="Ekran görüntüsü URL'si" />
+                                        <input type="text" @bind="newScreenshotUrl" placeholder="Ekran gï¿½rï¿½ntï¿½sï¿½ URL'si" />
                                         <button type="button" class="add-url-btn" @onclick="AddScreenshotUrl" disabled="@string.IsNullOrWhiteSpace(newScreenshotUrl)">
                                             <i class="bi bi-plus"></i>
                                         </button>
@@ -259,15 +259,15 @@ else
 
                         <div class="form-row">
                             <div class="form-group">
-                                <label>Teknolojiler (virgülle ay?r?n)</label>
+                                <label>Teknolojiler (virgï¿½lle ay?r?n)</label>
                                 <input type="text" @bind="technologiesInput" placeholder="C#, .NET, Blazor" />
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group">
-                                <label>Özellikler (virgülle ay?r?n)</label>
-                                <textarea @bind="featuresInput" rows="2" placeholder="Özellik 1, Özellik 2"></textarea>
+                                <label>ï¿½zellikler (virgï¿½lle ay?r?n)</label>
+                                <textarea @bind="featuresInput" rows="2" placeholder="ï¿½zellik 1, ï¿½zellik 2"></textarea>
                             </div>
                         </div>
                     </div>
@@ -275,7 +275,7 @@ else
                     <div class="modal-footer">
                         <button class="btn-secondary" @onclick="CloseModal">?ptal</button>
                         <button class="btn-primary" @onclick="SaveProject" disabled="@isUploading">
-                            <i class="bi bi-check-lg me-2"></i>@(isEditing ? "Güncelle" : "Ekle")
+                            <i class="bi bi-check-lg me-2"></i>@(isEditing ? "Gï¿½ncelle" : "Ekle")
                         </button>
                     </div>
                 </div>
@@ -1039,7 +1039,7 @@ else
     {
         await AdminService.ExtendSessionAsync();
         remainingMinutes = AdminService.GetRemainingSessionMinutes();
-        ShowToast("Oturum süresi uzat?ld?.", "success");
+        ShowToast("Oturum sï¿½resi uzat?ld?.", "success");
     }
 
     public void Dispose()
@@ -1109,13 +1109,13 @@ else
         
         if (file.Size > MaxFileSize)
         {
-            ShowToast("Dosya boyutu 5MB'dan küçük olmal?d?r.", "error");
+            ShowToast("Dosya boyutu 5MB'dan kï¿½ï¿½ï¿½k olmal?d?r.", "error");
             return;
         }
 
         if (!file.ContentType.StartsWith("image/"))
         {
-            ShowToast("Lütfen geçerli bir görsel dosyas? seçin.", "error");
+            ShowToast("Lï¿½tfen geï¿½erli bir gï¿½rsel dosyas? seï¿½in.", "error");
             return;
         }
 
@@ -1131,11 +1131,11 @@ else
             var base64 = Convert.ToBase64String(bytes);
             imagePreview = $"data:{file.ContentType};base64,{base64}";
             currentProject.ImageUrl = imagePreview;
-            ShowToast("Görsel ba?ar?yla yüklendi.", "success");
+            ShowToast("Gï¿½rsel ba?ar?yla yï¿½klendi.", "success");
         }
         catch (Exception ex)
         {
-            ShowToast($"Görsel yüklenirken hata olu?tu: {ex.Message}", "error");
+            ShowToast($"Gï¿½rsel yï¿½klenirken hata olu?tu: {ex.Message}", "error");
         }
         finally
         {
@@ -1155,7 +1155,7 @@ else
             {
                 if (file.Size > MaxFileSize)
                 {
-                    ShowToast($"{file.Name} dosyas? çok büyük. Atlan?yor...", "error");
+                    ShowToast($"{file.Name} dosyas? ï¿½ok bï¿½yï¿½k. Atlan?yor...", "error");
                     continue;
                 }
 
@@ -1172,11 +1172,11 @@ else
                 var dataUrl = $"data:{file.ContentType};base64,{base64}";
                 screenshotsList.Add(dataUrl);
             }
-            ShowToast("Ekran görüntüleri yüklendi.", "success");
+            ShowToast("Ekran gï¿½rï¿½ntï¿½leri yï¿½klendi.", "success");
         }
         catch (Exception ex)
         {
-            ShowToast($"Yükleme hatas?: {ex.Message}", "error");
+            ShowToast($"Yï¿½kleme hatas?: {ex.Message}", "error");
         }
         finally
         {
@@ -1215,7 +1215,7 @@ else
     {
         if (string.IsNullOrWhiteSpace(currentProject.Title) || string.IsNullOrWhiteSpace(currentProject.ShortDescription))
         {
-            ShowToast("Ba?l?k ve k?sa aç?klama zorunludur.", "error");
+            ShowToast("Ba?l?k ve k?sa aï¿½?klama zorunludur.", "error");
             return;
         }
 
@@ -1236,7 +1236,7 @@ else
         if (isEditing)
         {
             await AdminService.UpdateProjectAsync(currentProject);
-            ShowToast("Proje güncellendi.", "success");
+            ShowToast("Proje gï¿½ncellendi.", "success");
         }
         else
         {
@@ -1250,7 +1250,7 @@ else
 
     private async Task DeleteProject(int id)
     {
-        var confirmed = await JS.InvokeAsync<bool>("confirm", "Bu projeyi silmek istedi?inizden emin misiniz?");
+        var confirmed = await JSRuntime.InvokeAsync<bool>("confirm", "Bu projeyi silmek istedi?inizden emin misiniz?");
         
         if (confirmed)
         {
@@ -1263,13 +1263,13 @@ else
     private async Task ExportJson()
     {
         var json = await AdminService.ExportProjectsJsonAsync();
-        await JS.InvokeVoidAsync("navigator.clipboard.writeText", json);
+        await JSRuntime.InvokeVoidAsync("navigator.clipboard.writeText", json);
         ShowToast("JSON panoya kopyaland?.", "success");
     }
 
     private async Task ResetProjects()
     {
-        var confirmed = await JS.InvokeAsync<bool>("confirm", "Tüm de?i?iklikler silinecek ve orijinal projeler yüklenecek. Devam etmek istiyor musunuz?");
+        var confirmed = await JSRuntime.InvokeAsync<bool>("confirm", "Tï¿½m de?i?iklikler silinecek ve orijinal projeler yï¿½klenecek. Devam etmek istiyor musunuz?");
         
         if (confirmed)
         {

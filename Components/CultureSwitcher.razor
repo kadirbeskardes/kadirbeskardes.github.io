@@ -5,16 +5,16 @@
 <div class="dropdown culture-switcher">
     <button class="btn btn-outline-light btn-sm dropdown-toggle d-flex align-items-center" type="button" id="cultureDropdown" data-bs-toggle="dropdown" aria-expanded="false">
         <i class="bi bi-globe me-1"></i>
-        @GetCurrentCultureDisplay()
+        @GetCurrentCultureDisplayName()
     </button>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="cultureDropdown">
         <li>
-            <button class="dropdown-item @(IsCurrentCulture("tr-TR") ? "active" : "")" @onclick="@(() => ChangeCultureAsync("tr-TR"))">
+            <button class="dropdown-item @(IsCurrentCultureSelected("tr-TR") ? "active" : "")" @onclick="@(() => SwitchCultureAsync("tr-TR"))">
                 🇹🇷 Türkçe
             </button>
         </li>
         <li>
-            <button class="dropdown-item @(IsCurrentCulture("en-US") ? "active" : "")" @onclick="@(() => ChangeCultureAsync("en-US"))">
+            <button class="dropdown-item @(IsCurrentCultureSelected("en-US") ? "active" : "")" @onclick="@(() => SwitchCultureAsync("en-US"))">
                 🇺🇸 English
             </button>
         </li>
@@ -47,7 +47,7 @@
 </style>
 
 @code {
-    private string GetCurrentCultureDisplay()
+    private string GetCurrentCultureDisplayName()
     {
         return CultureInfo.CurrentUICulture.Name switch
         {
@@ -57,16 +57,16 @@
         };
     }
 
-    private bool IsCurrentCulture(string cultureName)
+    private bool IsCurrentCultureSelected(string targetCultureName)
     {
-        return CultureInfo.CurrentUICulture.Name == cultureName;
+        return CultureInfo.CurrentUICulture.Name == targetCultureName;
     }
 
-    private async Task ChangeCultureAsync(string cultureName)
+    private async Task SwitchCultureAsync(string targetCultureName)
     {
-        if (CultureInfo.CurrentUICulture.Name != cultureName)
+        if (CultureInfo.CurrentUICulture.Name != targetCultureName)
         {
-            await CultureService.SetCultureAsync(cultureName);
+            await CultureService.SetCultureAsync(targetCultureName);
         }
     }
 }

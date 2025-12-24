@@ -14,13 +14,13 @@ namespace Personal.Services
 
         public string CurrentCulture => CultureInfo.CurrentUICulture.Name;
 
-        public async Task SetCultureAsync(string cultureName)
+        public async Task SetCultureAsync(string targetCultureName)
         {
-            var culture = new CultureInfo(cultureName);
-            CultureInfo.DefaultThreadCurrentCulture = culture;
-            CultureInfo.DefaultThreadCurrentUICulture = culture;
+            var targetCulture = new CultureInfo(targetCultureName);
+            CultureInfo.DefaultThreadCurrentCulture = targetCulture;
+            CultureInfo.DefaultThreadCurrentUICulture = targetCulture;
 
-            await _jsRuntime.InvokeVoidAsync("blazorCulture.set", cultureName);
+            await _jsRuntime.InvokeVoidAsync("blazorCulture.set", targetCultureName);
             
             // Reload the page to apply the new culture
             await _jsRuntime.InvokeVoidAsync("location.reload");
