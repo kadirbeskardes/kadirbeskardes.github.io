@@ -1,9 +1,13 @@
+using Personal.Services.Interfaces;
 using System.Globalization;
 using System.Net.Http.Json;
 
 namespace Personal.Services
 {
-    public class LocalizationService
+    /// <summary>
+    /// Çoklu dil desteği için çeviri servisi
+    /// </summary>
+    public class LocalizationService : ILocalizationService
     {
         private readonly HttpClient _httpClient;
         private Dictionary<string, string> _translationDictionary = new();
