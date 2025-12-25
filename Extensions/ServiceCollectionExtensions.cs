@@ -16,19 +16,20 @@ namespace Personal.Extensions
         /// <returns>Servis koleksiyonu</returns>
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
-            // Core services
-            services.AddScoped<IProjectService, ProjectService>();
-            services.AddScoped<IMarkdownService, MarkdownService>();
-            services.AddScoped<ILocalizationService, LocalizationService>();
-            services.AddScoped<ICultureService, CultureService>();
-            services.AddScoped<IAdminService, AdminService>();
-
-            // Backward compatibility - concrete types can still be injected
+            // Register concrete service implementations
+            // These are registered first so they can be used by both interface and concrete type injection
             services.AddScoped<ProjectService>();
             services.AddScoped<MarkdownService>();
             services.AddScoped<LocalizationService>();
             services.AddScoped<CultureService>();
             services.AddScoped<AdminService>();
+
+            // Register interfaces that resolve to the same scoped instances
+            services.AddScoped<IProjectService>(sp => sp.GetRequiredService<ProjectService>());
+            services.AddScoped<IMarkdownService>(sp => sp.GetRequiredService<MarkdownService>());
+            services.AddScoped<ILocalizationService>(sp => sp.GetRequiredService<LocalizationService>());
+            services.AddScoped<ICultureService>(sp => sp.GetRequiredService<CultureService>());
+            services.AddScoped<IAdminService>(sp => sp.GetRequiredService<AdminService>());
 
             return services;
         }

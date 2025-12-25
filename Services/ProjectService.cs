@@ -30,17 +30,7 @@ namespace Personal.Services
         public async Task<List<ProjectDetail>> GetProjectListingsAsync()
         {
             await LoadProjectsIfNeededAsync();
-            return _cachedProjects?.Select(project => new ProjectDetail
-            {
-                Id = project.Id,
-                Title = project.Title,
-                ShortDescription = project.ShortDescription,
-                ImageUrl = project.ImageUrl,
-                Technologies = project.Technologies,
-                CreatedDate = project.CreatedDate,
-                GitHubUrl = project.GitHubUrl,
-                Category = project.Category
-            }).ToList() ?? new List<ProjectDetail>();
+            return _cachedProjects ?? new List<ProjectDetail>();
         }
 
         /// <inheritdoc />
