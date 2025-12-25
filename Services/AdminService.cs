@@ -1,12 +1,16 @@
 using Microsoft.JSInterop;
 using Personal.Models;
+using Personal.Services.Interfaces;
 using System.Globalization;
 using System.Net.Http.Json;
 using System.Text.Json;
 
 namespace Personal.Services
 {
-    public class AdminService
+    /// <summary>
+    /// Admin paneli işlemleri servisi
+    /// </summary>
+    public class AdminService : IAdminService
     {
         private readonly IJSRuntime _jsRuntime;
         private readonly HttpClient _http;

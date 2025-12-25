@@ -1,9 +1,13 @@
+using Personal.Services.Interfaces;
 using System.Globalization;
 using Microsoft.JSInterop;
 
 namespace Personal.Services
 {
-    public class CultureService
+    /// <summary>
+    /// Kültür değişikliği servisi
+    /// </summary>
+    public class CultureService : ICultureService
     {
         private readonly IJSRuntime _jsRuntime;
 
