@@ -102,7 +102,7 @@ else
                             <div class="hero-actions">
                                 @if (!string.IsNullOrEmpty(projectDetail.ProjectUrl))
                                 {
-                                    <a href="@projectDetail.ProjectUrl" target="_blank" class="action-btn primary">
+                                    <a href="@projectDetail.ProjectUrl" target="_blank" class="action-btn primary pulse-btn">
                                         <i class="bi bi-rocket-takeoff"></i>
                                         <span>@Localization["ProjectDetail_Button_LiveDemo"]</span>
                                     </a>
@@ -747,6 +747,22 @@ else
     .action-btn.primary:hover {
         transform: translateY(-3px);
         box-shadow: 0 15px 35px rgba(99, 102, 241, 0.5);
+    }
+
+    .pulse-btn {
+        animation: pulse-glow 2s infinite;
+    }
+
+    @@keyframes pulse-glow {
+        0% {
+            box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.7);
+        }
+        70% {
+            box-shadow: 0 0 0 10px rgba(99, 102, 241, 0);
+        }
+        100% {
+            box-shadow: 0 0 0 0 rgba(99, 102, 241, 0);
+        }
     }
 
     .action-btn.secondary {

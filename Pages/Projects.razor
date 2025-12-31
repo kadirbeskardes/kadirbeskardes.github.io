@@ -87,7 +87,23 @@
                 </div>
             </div>
 
-            @if (projectsList == null)
+            <!-- Category Filter (New) -->
+            <div class="d-flex justify-content-center flex-wrap gap-2 mb-5 filter-buttons">
+                <button class="btn btn-filter @(selectedCategory == "All" ? "active" : "")" @onclick="@(() => FilterProjects("All"))">
+                    All
+                </button>
+                @if (categories != null)
+                {
+                    @foreach (var category in categories)
+                    {
+                        <button class="btn btn-filter @(selectedCategory == category ? "active" : "")" @onclick="@(() => FilterProjects(category))">
+                            @category
+                        </button>
+                    }
+                }
+            </div>
+
+            @if (filteredProjects == null)
             {
                 <div class="loading-state">
                     <div class="loading-spinner">
@@ -99,7 +115,7 @@
                     <p class="loading-text">@Localization["Projects_Loading"]</p>
                 </div>
             }
-            else if (!projectsList.Any())
+            else if (!filteredProjects.Any())
             {
                 <div class="empty-state">
                     <div class="empty-icon">
@@ -113,7 +129,7 @@
             {
                 <div class="projects-masonry">
                     @{int projectIndex = 0;}
-                    @foreach (var project in projectsList)
+                    @foreach (var project in filteredProjects)
                     {
                         <div class="project-item @(projectIndex % 3 == 0 ? "featured" : "")" style="--animation-order: @projectIndex;" @key="project.Id">
                             <article class="project-card-modern">
@@ -553,6 +569,29 @@
 
     .empty-description {
         color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* Filter Buttons */
+    .btn-filter {
+        background: rgba(30, 41, 59, 0.4);
+        border: 1px solid rgba(99, 102, 241, 0.2);
+        color: rgba(255, 255, 255, 0.7);
+        border-radius: 50px;
+        padding: 8px 20px;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+    }
+
+    .btn-filter:hover {
+        background: rgba(99, 102, 241, 0.1);
+        color: #fff;
+    }
+
+    .btn-filter.active {
+        background: var(--primary-color);
+        color: #fff;
+        border-color: var(--primary-color);
+        box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
     }
 
     /* Projects Masonry Grid */
@@ -1208,9 +1247,36 @@
 
 @code {
     private List<Personal.Models.ProjectDetail>? projectsList;
+    private List<Personal.Models.ProjectDetail>? filteredProjects;
+    private List<string>? categories;
+    private string selectedCategory = "All";
 
     protected override async Task OnInitializedAsync()
     {
         projectsList = await ProjectService.GetProjectListingsAsync();
+        if (projectsList != null)
+        {
+            categories = projectsList
+                .Where(p => !string.IsNullOrEmpty(p.Category))
+                .Select(p => p.Category)
+                .Distinct()
+                .OrderBy(c => c)
+                .ToList();
+            
+            FilterProjects("All");
+        }
+    }
+
+    private void FilterProjects(string category)
+    {
+        selectedCategory = category;
+        if (category == "All")
+        {
+            filteredProjects = projectsList;
+        }
+        else
+        {
+            filteredProjects = projectsList?.Where(p => p.Category == category).ToList();
+        }
     }
 }

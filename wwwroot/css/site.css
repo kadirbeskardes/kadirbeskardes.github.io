@@ -407,10 +407,11 @@ html {
 }
 
 /* Enhanced Card Styles - Daha Koyu */
-.card-enhanced {
+.card-enhanced, .glass-card {
     background: rgba(30, 41, 59, 0.4);
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(99, 102, 241, 0.2);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: var(--radius-xl);
     transition: all var(--transition-base);
     position: relative;
@@ -418,7 +419,7 @@ html {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
-.card-enhanced::before {
+.card-enhanced::before, .glass-card::before {
     content: '';
     position: absolute;
     top: 0;
@@ -428,7 +429,7 @@ html {
     background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
 }
 
-.card-enhanced:hover {
+.card-enhanced:hover, .glass-card:hover {
     background: rgba(30, 41, 59, 0.6);
     border-color: rgba(99, 102, 241, 0.5);
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), 0 0 30px rgba(99, 102, 241, 0.2);

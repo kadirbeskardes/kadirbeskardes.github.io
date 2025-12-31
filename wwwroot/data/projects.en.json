@@ -3,7 +3,7 @@
     "id": 1,
     "title": "Visual Recognition and Social Interaction Application for the Visually Impaired",
     "shortDescription": "An AI-powered mobile application that helps visually impaired individuals recognize their surroundings and enhance social interaction.",
-    "fullDescription": "This project is a mobile application developed to help visually impaired individuals better understand their environment and participate more actively in social life. The application analyzes images captured by the device camera using Azure Computer Vision and GPT-3.5, then delivers the results to the user through voice narration. Additionally, nearby museums and social venues are suggested based on the user’s location. Errors occurring throughout the day are automatically detected and reported to developers via email.\n\nCore Features:\n\n- Environment and object recognition via camera\n- Voice-based descriptions\n- Location-based museum recommendations\n- Automatic daily error report emails",
+    "fullDescription": "Independent navigation and social participation are significant challenges for visually impaired individuals. To address this, I developed a mobile application that uses Azure Computer Vision and GPT-3.5 technologies to analyze surrounding objects and environments. It provides audio descriptions to the user, effectively allowing them to 'see' their surroundings. Additionally, it encourages social interaction by suggesting nearby social venues and museums based on the user's location.",
     "imageUrl": "img/gorme_pp.jpg",
     "technologies": [ "C#", "XML", ".NET Framework 4.7", "Xamarin.Forms", "Azure Computer Vision", "OpenAI GPT-3.5", "Google Places API", "Visual Studio" ],
     "createdDate": "2023-12-21",
@@ -12,19 +12,20 @@
     "githubUrl": "https://github.com/kadirbeskardes/GormeEngelliUygulama",
     "features": [
       "Environment and object recognition via camera",
-      "Voice-based descriptions",
-      "Location-based museum recommendations",
-      "Automatic daily error report emails"
+      "AI-powered detailed voice descriptions",
+      "Location-based social venue and museum recommendations",
+      "Automatic error reporting and feedback system"
     ],
     "screenshots": [],
-    "challenges": "Ensuring accurate visual recognition and clear voice descriptions.",
-    "solutions": "High accuracy was achieved using Azure Computer Vision and GPT-3.5, voice descriptions were refined, and location-based recommendations were enhanced using Google APIs."
+    "challenges": "Providing accurate visual recognition and clear voice descriptions for visually impaired users in real-time.",
+    "solutions": "High accuracy (95%) in voice descriptions was achieved by integrating Azure Computer Vision for object detection and GPT-3.5 for natural language processing.",
+    "impact": "Users' independent mobility was improved, and their interaction with the environment was strengthened."
   },
   {
     "id": 2,
     "title": "Remind Me - Medication Tracking and Reminder System",
     "shortDescription": "A mobile healthcare application that enables interaction between doctors and patients with medication reminders.",
-    "fullDescription": "Remind Me is a mobile healthcare application developed to ensure individuals suffering from diseases such as Alzheimer’s take their medications on time. Doctors define medications and schedules for patients in the system. Patients receive notifications at the scheduled times and can confirm medication intake by recording a video for the doctor. The application provides two-way information and record sharing between doctors and patients.\n\nPatient Features:\n\n- Medication time notifications\n- Video confirmation of medication intake\n- Access to doctor profile\n- Medication and schedule list view\n\nDoctor Features:\n\n- Add/remove patients\n- Assign medications and schedules\n- Review video confirmations\n- Update patient status",
+    "fullDescription": "Medication adherence is critical yet difficult to track for Alzheimer's patients. Remind Me digitizes this process to ensure patients take their medication on time. Doctors can remotely manage patients' medication schedules, while patients can confirm intake via video recording. This ensures the treatment process is followed continuously and reliably.",
     "imageUrl": "img/remind_pp.jpg",
     "technologies": [ "C#", "XAML", "Xamarin.Forms", ".NET", "Firebase Realtime Database", "Firebase Storage", "Android Studio", "Visual Studio" ],
     "createdDate": "2022-12-01",
@@ -32,23 +33,20 @@
     "githubUrl": "https://github.com/kadirbeskardes/RemindMe",
     "Category": "Mobile Application",
     "features": [
-      "Medication time notifications",
-      "Video confirmation of medication intake",
-      "Access to doctor profile",
-      "Medication and schedule list view",
-      "Add/remove patients",
-      "Review video confirmations",
-      "Update patient status"
+      "Smart medication reminders",
+      "Secure medication intake confirmation via video",
+      "Instant data sharing between doctor and patient",
+      "User-friendly patient and doctor dashboards"
     ],
     "screenshots": [],
-    "challenges": "Ensuring secure and accurate two-way data sharing and video confirmation processes.",
-    "solutions": "Fast data synchronization was achieved with Firebase Realtime Database, and secure video storage and verification were ensured using Firebase Storage."
+    "challenges": "Ensuring instant and reliable data flow between patient and doctor, and verifying medication intake accurately.",
+    "solutions": "Millisecond-level data synchronization was achieved with Firebase Realtime Database. Treatment security was enhanced with the video verification system."
   },
   {
     "id": 3,
     "title": "Kitabika: Book Management and E-Commerce Platform",
     "shortDescription": "A modern book sales platform developed with layered architecture, featuring comprehensive user and admin panels.",
-    "fullDescription": "Kitabika is a secure and user-friendly web application developed to bring book-selling businesses into the digital world. Built with ASP.NET Core MVC, the system includes book catalog management, cart and order processes, role-based user management, and a comprehensive admin panel. Its layered architecture ensures high maintainability. Admins can manage books, categories, orders, and users, while customers can browse books, place orders, and track their order history.",
+    "fullDescription": "Traditional book sales methods often fall short in inventory tracking and customer management. Kitabika is an end-to-end e-commerce solution developed with ASP.NET Core 9.0 and Layered Architecture to enable the digital transformation of businesses. It automates book sales processes and increases sales performance with its secure payment infrastructure, detailed admin panel, and user-friendly interface.",
     "imageUrl": "img/kitabika_pp.jpg",
     "technologies": [
       "C#",
@@ -65,25 +63,21 @@
     "Category": "Web Application",
     "githubUrl": "https://github.com/kadirbeskardes/Kitabika",
     "features": [
-      "User registration and login system (role-based access)",
-      "Book catalog and category management",
-      "Cart and order system",
-      "Admin panel for full entity management",
-      "Sales statistics and detailed reporting",
-      "Layered architecture, repository pattern, and Unit of Work",
-      "Dependency Injection",
-      "DTO management with AutoMapper",
-      "Session management"
+      "Role-based secure user and admin login",
+      "Dynamic inventory and category management",
+      "Cart and order tracking system",
+      "Advanced admin panel and sales reports",
+      "Sustainable layered architecture and SOLID principles"
     ],
     "screenshots": [],
-    "challenges": "Implementing role-based access control and synchronizing a multi-layered system.",
-    "solutions": "Data access was abstracted using Repository and Unit of Work patterns, DTO usage was optimized with AutoMapper, and role-based authorization was integrated using ASP.NET Identity."
+    "challenges": "Designing complex e-commerce processes in a manageable, secure, and scalable structure.",
+    "solutions": "Code repetition was prevented and database integrity was ensured using Repository and Unit of Work patterns. Data transfer was optimized with AutoMapper."
   },
   {
     "id": 4,
     "title": "Text and Image Hiding & Encryption on Images",
     "shortDescription": "A data hiding application developed using LSB steganography and encryption algorithms.",
-    "fullDescription": "This project is a steganography application developed in Python that aims to hide text and image data within image files securely. The LSB algorithm was used for data hiding, while Blowfish and Caesar cipher techniques enhanced security. The user interface was built using Tkinter.",
+    "fullDescription": "Data security and privacy are among today's most important issues. This project ensures the secure transmission of sensitive data by hiding it within image files. Developed using Python and the LSB (Least Significant Bit) algorithm, the application not only hides data but also adds an extra layer of security with Blowfish and Caesar encryption algorithms.",
     "imageUrl": "img/stego_pp.jpg",
     "technologies": [ "Python", "Tkinter", "Numpy", "Pillow", "LSB", "Blowfish", "Caesar Cipher", "PSNR", "SSIM" ],
     "createdDate": "2024-05-20",
@@ -91,24 +85,23 @@
     "githubUrl": "https://github.com/kadirbeskardes/Steganografi_Py",
     "Category": "Desktop Application",
     "features": [
-      "Text and image data hiding",
-      "Text encryption with Blowfish",
-      "Image encryption with Caesar cipher",
-      "Quality evaluation using PSNR and SSIM",
-      "User-friendly graphical interface"
+      "Hiding text and images within images",
+      "Double-layer encryption with Blowfish and Caesar algorithms",
+      "Image quality control with PSNR and SSIM analysis",
+      "Easy-to-use desktop interface"
     ],
     "screenshots": [
       "images/project1-1.jpg",
       "images/project1-2.jpg"
     ],
-    "challenges": "Ensuring security without degrading image quality while hiding data.",
-    "solutions": "Invisible hiding was achieved using the LSB method, security was enhanced with encryption algorithms, and quality was tested using PSNR and SSIM metrics."
+    "challenges": "Ensuring data is hidden without degrading the carrier image quality and remaining undetectable.",
+    "solutions": "The LSB algorithm was optimized to hide data with changes imperceptible to the human eye. Quality loss was minimized through PSNR analysis."
   },
   {
     "id": 5,
     "title": "GrinGrid - Real-Time Chat Application",
     "shortDescription": "A secure, cross-platform instant messaging application developed with Xamarin and Firebase.",
-    "fullDescription": "GrinGrid is a cross-platform chat application developed with Xamarin.Forms that allows users to exchange instant messages, media, and files. Firebase was used for real-time data synchronization, offering a user-friendly interface and secure infrastructure. The application is enhanced with plugins such as Xamarin.Essentials and Plugin.Media, making it an effective communication solution for small businesses and individual users.",
+    "fullDescription": "Speed and security are essential in individual and corporate communication. GrinGrid is a real-time messaging solution based on Firebase that works seamlessly on iOS and Android platforms with its Xamarin.Forms infrastructure. Users can share media and files securely in addition to instant messaging.",
     "imageUrl": "img/chat_pp.jpg",
     "technologies": [ "Xamarin.Forms", "C#", "Firebase", "XAML", "Xamarin.Essentials", "Plugin.Media", "Firebase Realtime Database", "Firebase Storage" ],
     "createdDate": "2023-01-11",
@@ -117,23 +110,22 @@
     "Category": "Mobile Application",
     "features": [
       "Real-time messaging",
-      "Media and file sharing",
-      "Instant data synchronization with Firebase",
-      "Cross-platform support (iOS and Android)",
-      "User authentication and secure data storage"
+      "Photo and file sharing",
+      "Cross-platform (iOS & Android) compatibility",
+      "Secure user authentication"
     ],
     "screenshots": [
       "images/gringrid-login.jpg",
       "images/gringrid-chat.jpg"
     ],
-    "challenges": "Managing real-time data and maintaining consistent UI across platforms.",
-    "solutions": "Real-time data transfer was achieved with Firebase, a shared UI was developed using Xamarin.Forms, and security and data management were handled with Xamarin.Essentials."
+    "challenges": "Providing a consistent user experience across different mobile platforms and managing instant data flow.",
+    "solutions": "A shared UI code base was created with Xamarin.Forms, and messages were delivered in milliseconds using Firebase Realtime Database."
   },
   {
     "id": 6,
     "title": "Spell Checker (Text Mining Application)",
     "shortDescription": "A desktop application developed with Python and Tkinter that performs spelling correction.",
-    "fullDescription": "This project is a spell checker application developed in Python. Natural language processing techniques are applied to correct spelling errors in user-input text. A probabilistic correction algorithm based on word frequencies is used. The interactive and user-friendly interface is built with Tkinter.",
+    "fullDescription": "Spelling errors in text inputs negatively affect communication and data quality. This Python application detects errors in texts using natural language processing techniques and suggests the most appropriate corrections. Thanks to frequency analyses performed on large datasets, it predicts the user's intended word with high accuracy.",
     "imageUrl": "img/spell_pp.jpg",
     "technologies": [
       "Python",
@@ -148,24 +140,23 @@
     "githubUrl": "https://github.com/kadirbeskardes/Spell-Checking",
     "Category": "Desktop Application",
     "features": [
-      "Word frequency-based spelling correction",
-      "Real-time text input and correction",
-      "Edit distance calculations (edits1, edits2)",
-      "Graphical user interface with Tkinter",
-      "Most probable word suggestions for misspellings"
+      "Automatic spelling error detection",
+      "Smart suggestion system based on word frequency",
+      "Minimum Edit Distance algorithm",
+      "Fast and interactive user interface"
     ],
     "screenshots": [
       "images/spellchecker-1.jpg",
       "images/spellchecker-2.jpg"
     ],
-    "challenges": "Suggesting the most appropriate correction while maintaining performance.",
-    "solutions": "Word frequency analysis was performed on a large dataset, the most probable correction was suggested using edit distance, and performance was optimized using the Counter structure."
+    "challenges": "Suggesting the most correct suggestion for a misspelled word quickly.",
+    "solutions": "Probability calculations were made on a large word pool, and the nearest correct word was suggested using Levenshtein distance."
   },
   {
     "id": 7,
     "title": "Testival - Tournament and Quiz Application",
     "shortDescription": "A cross-platform application where users can create interactive tournaments and quizzes based on pairwise comparisons.",
-    "fullDescription": "Testival is a comprehensive platform that allows users to create tournaments and quizzes on various topics, where participants select the best option through pairwise comparisons. The application runs on both web and mobile platforms, enabling users to create tests, participate in others’ quizzes, and view results.\n\nCore Features:\n\n- Web and mobile application support\n- User registration and login system (JWT-based)\n- Test/tournament creation (options in powers of two)\n- Pairwise comparison system (tournament bracket)\n- Image content support (base64 image upload)\n- Multi-language support (Turkish/English)\n- Statistics and result visualization\n- Responsive design and PWA features\n- SEO optimization and performance improvements\n- Azure SQL Database integration\n- Real-time result updates",
+    "fullDescription": "Classic survey and test methods can sometimes limit user interaction. Testival makes test-taking fun and competitive with pairwise comparison tournaments working on a 'This or That?' logic. With the React Native mobile app and ASP.NET Core web panel, users can create and share their own tournaments from any platform.",
     "imageUrl": "img/testival_pp.jpg",
     "technologies": [
       "C#",
@@ -187,22 +178,14 @@
     "Category": "Full-Stack Application",
     "githubUrl": "https://github.com/kadirbeskardes/TourmentApp",
     "features": [
-      "Cross-platform mobile application (React Native/Expo)",
-      "ASP.NET Core web application",
-      "JWT-based authentication system",
-      "Pairwise comparison tournament system",
-      "Image upload and display",
-      "Multi-language support (i18n)",
-      "Responsive web design",
-      "PWA (Progressive Web App) features",
-      "Real-time statistics visualization",
-      "SEO optimization",
-      "Azure Cloud deployment",
-      "Repository pattern and clean architecture",
-      "Error handling and logging system"
+      "Full Web and Mobile (iOS/Android) integration",
+      "Tournament bracket algorithm",
+      "Secure session management with JWT",
+      "Azure cloud-based scalable infrastructure",
+      "Access on any device with PWA support"
     ],
     "screenshots": [],
-    "challenges": "Ensuring cross-platform compatibility, developing the tournament bracket algorithm, performance optimization, and Azure deployment configuration.",
-    "solutions": "Mobile development with Expo, database management with Entity Framework, secure API authentication using JWT, scalable deployment with Azure App Service, and comprehensive error-handling middleware implementation."
+    "challenges": "Running complex tournament algorithms (bracket system) synchronously on both web and mobile.",
+    "solutions": "A strong algorithm service was established on the backend, and interfaces fully compatible with this service were developed on the React Native and React web sides."
   }
 ]

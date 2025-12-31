@@ -55,258 +55,177 @@
 
 <!-- Main Content -->
 <div id="main-content" class="container py-5 about-main-content">
-    <div class="row g-4">
-        <!-- Left Column - Profile Card -->
-        <div class="col-lg-4">
-            <div class="card border-0 shadow-lg h-100 about-profile-card" style="position: sticky; top: 20px;">
-                <div class="card-body p-4">
-                    <div class="profile-image-container mx-auto mb-4">
-                        <img src="img/pp.jpg" alt="@Localization["About_Name"]" class="img-fluid rounded-circle shadow border border-4 border-white">
-                    </div>
-                    <h3 class="card-title fw-bold text-center mb-2 profile-name">@Localization["About_Name"]</h3>
-                    <p class="text-muted text-center mb-3 profile-job-title">@Localization["About_JobTitle"]</p>
-
-                    <div class="d-flex justify-content-center gap-3 mb-4 profile-social-links">
-                        <a href="https://github.com/kadirbeskardes" class="social-icon bg-github"><i class="bi bi-github"></i></a>
-                        <a href="https://www.linkedin.com/in/kadirbeskardes/" class="social-icon bg-linkedin"><i class="bi bi-linkedin"></i></a>
-                        <a href="https://x.com/beskardeskadirr" class="social-icon bg-twitter"><i class="bi bi-twitter-x"></i></a>
-                        <a href="#" class="social-icon bg-instagram"><i class="bi bi-instagram"></i></a>
-                    </div>
-
-                    <div class="mb-4 profile-contact-info">
-                        <div class="d-flex align-items-center mb-3">
-                            <i class="bi bi-geo-alt-fill text-primary me-2 fs-5 flex-shrink-0"></i>
-                            <span class="contact-text">@Localization["About_Location"]</span>
-                        </div>
-                        <div class="d-flex align-items-center mb-3">
-                            <i class="bi bi-envelope-fill text-primary me-2 fs-5 flex-shrink-0"></i>
-                            <span class="contact-text email-text">kadir.beskardes11@gmail.com</span>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <i class="bi bi-phone-fill text-primary me-2 fs-5 flex-shrink-0"></i>
-                            <span class="contact-text">+90 507 275 67 47</span>
-                        </div>
-                    </div>
-
-                    <div class="skills-section mb-4">
-                        <h5 class="fw-bold mb-3 skills-section-title"><i class="bi bi-code-slash me-2"></i>@Localization["About_TechnicalSkillsTitle"]</h5>
-                        <div class="d-flex flex-wrap gap-2 skills-badges">
-                            <!-- .NET Teknolojileri -->
-                            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill skill-badge">
-                                <i class="fab fa-microsoft me-1"></i> .NET
-                            </span>
-                            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill skill-badge">
-                                <i class="fas fa-code me-1"></i> C#
-                            </span>
-                            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill skill-badge">
-                                <i class="fas fa-mobile-alt me-1"></i> Xamarin
-                            </span>
-
-                            <!-- Veritabanı -->
-                            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill skill-badge">
-                                <i class="fas fa-database me-1"></i> SQL
-                            </span>
-
-                            <!-- Python -->
-                            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill skill-badge">
-                                <i class="fab fa-python me-1"></i> Python
-                            </span>
-
-                            <!-- Frontend -->
-                            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill skill-badge">
-                                <i class="fab fa-html5 me-1"></i> HTML
-                            </span>
-                            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill skill-badge">
-                                <i class="fab fa-css3-alt me-1"></i> CSS
-                            </span>
-
-                            <!-- Design Patterns -->
-                            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill skill-badge">
-                                <i class="fas fa-cubes me-1"></i> Unit of Work
-                            </span>
-                            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill skill-badge">
-                                <i class="fas fa-boxes me-1"></i> Repository Pattern
-                            </span>
-                            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill skill-badge">
-                                <i class="fas fa-project-diagram me-1"></i> EAV Pattern
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="references-section mb-4">
-                        <h5 class="fw-bold mb-3 references-title"><i class="bi bi-person-lines-fill me-2"></i>@Localization["About_ReferencesTitle"]</h5>
-                        <div class="reference-item mb-3">
-                            <h6 class="fw-bold mb-1 reference-name">@Localization["About_Reference_1_Name"]</h6>
-                            <p class="text-muted mb-1 reference-position">
-                                @Localization["About_Reference_1_Title"]
-                            </p>
-                            <p class="small mb-1 reference-contact">+90 554 774 69 09, alkanfatih@hotmail.com.tr</p>
-                        </div>
-                    </div>
-
-                    <div class="certificates-section">
-                        <h5 class="fw-bold mb-3 certificates-title"><i class="bi bi-award-fill me-2"></i>@Localization["About_CertificatesTitle"]</h5>
-
-                        <div class="certificate-item mb-3 p-3 bg-light rounded-3">
-                            <div class="d-flex justify-content-between align-items-start flex-wrap gap-2">
-                                <div class="certificate-info">
-                                    <h6 class="fw-bold mb-1 certificate-name">
-                                        <a href="files/KADİR BEŞKARDEŞ Katılım Sertifikası BilgeAdam.pdf" target="_blank" class="text-decoration-none">
-                                            <i class="bi bi-link-45deg"></i> @Localization["About_Certificate_1_Name"]
-                                        </a>
-                                    </h6>
-                                    <p class="text-muted mb-1 small certificate-issuer">
-                                        <i class="bi bi-building"></i> @Localization["About_Certificate_1_Issuer"]
-                                    </p>
-                                </div>
-                                <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-1 certificate-year">2025</span>
+    
+    <!-- Profile Header Section (New Single Column Layout) -->
+    <div class="row justify-content-center mb-5">
+        <div class="col-lg-10">
+            <div class="card border-0 shadow-lg about-profile-card">
+                <div class="card-body p-4 p-md-5">
+                    <div class="row align-items-center">
+                        <div class="col-md-4 text-center mb-4 mb-md-0">
+                            <div class="profile-image-container mx-auto">
+                                <img src="img/pp.jpg" alt="@Localization["About_Name"]" class="img-fluid rounded-circle shadow border border-4 border-white">
                             </div>
                         </div>
-
-                        <div class="certificate-item mb-3 p-3 bg-light rounded-3">
-                            <div class="d-flex justify-content-between align-items-start flex-wrap gap-2">
-                                <div class="certificate-info">
-                                    <h6 class="fw-bold mb-1 certificate-name">
-                                        <a href="files/C#_Programlama_Sertifika.pdf" target="_blank" class="text-decoration-none">
-                                            <i class="bi bi-link-45deg"></i> @Localization["About_Certificate_2_Name"]
-                                        </a>
-                                    </h6>
-                                    <p class="text-muted mb-1 small certificate-issuer">
-                                        <i class="bi bi-building"></i> @Localization["About_Certificate_2_Issuer"]
-                                    </p>
+                        <div class="col-md-8 text-center text-md-start">
+                            <h3 class="fw-bold mb-2 profile-name display-6">@Localization["About_Name"]</h3>
+                            <p class="text-primary fs-5 mb-3 profile-job-title">@Localization["About_JobTitle"]</p>
+                            
+                            <div class="mb-4">
+                                <div class="d-flex align-items-center justify-content-center justify-content-md-start mb-2">
+                                    <i class="bi bi-geo-alt-fill text-primary me-2"></i>
+                                    <span class="text-muted">@Localization["About_Location"]</span>
                                 </div>
-                                <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-1 certificate-year">2024</span>
+                                <div class="d-flex align-items-center justify-content-center justify-content-md-start">
+                                    <i class="bi bi-envelope-fill text-primary me-2"></i>
+                                    <span class="text-muted">kadir.beskardes11@gmail.com</span>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-center justify-content-md-start gap-3 profile-social-links">
+                                <a href="https://github.com/kadirbeskardes" class="social-icon bg-github" target="_blank"><i class="bi bi-github"></i></a>
+                                <a href="https://www.linkedin.com/in/kadirbeskardes/" class="social-icon bg-linkedin" target="_blank"><i class="bi bi-linkedin"></i></a>
+                                <a href="https://x.com/beskardeskadirr" class="social-icon bg-twitter" target="_blank"><i class="bi bi-twitter-x"></i></a>
+                                <a href="#" class="social-icon bg-instagram"><i class="bi bi-instagram"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="col-lg-8">
-            <div class="card border-0 shadow-sm mb-4 about-card">
-                <div class="card-body p-4">
+    <!-- Main Content Row -->
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <!-- Professional Summary (Storytelling) -->
+            <div class="card border-0 shadow-sm mb-5 about-card">
+                <div class="card-body p-4 p-md-5">
                     <h3 class="card-title fw-bold mb-4 d-flex align-items-center about-card-title">
-                        <span class="icon-circle bg-primary-light me-3"><i class="bi bi-person-lines-fill text-primary"></i></span>
+                        <span class="icon-circle bg-primary-light me-3"><i class="bi bi-book-half text-primary"></i></span>
                         <span>@Localization["About_ProfessionalSummaryTitle"]</span>
                     </h3>
-                    <div class="ps-4 about-card-content">
-                        <p class="card-text fs-5 mb-4 summary-text">
-                            @Localization["About_ProfessionalSummaryText1"]
-                        </p>
-                        <p class="card-text fs-5 mb-4 summary-text">
-                            @Localization["About_ProfessionalSummaryText2"]
-                        </p>
-                        <div class="row g-3 skills-detail-row">
-                            <div class="col-md-6">
-                                <div class="d-flex skill-detail-item">
-                                    <div class="me-3 text-primary flex-shrink-0">
-                                        <i class="bi bi-check-circle-fill fs-5"></i>
-                                    </div>
-                                    <div>
-                                        <h6 class="fw-bold mb-1 skill-detail-title">@Localization["About_Skill_Backend"]</h6>
-                                        <p class="text-muted mb-0 skill-detail-text">C#, Python, .NET Framework, .NET Core, Web API</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="d-flex skill-detail-item">
-                                    <div class="me-3 text-primary flex-shrink-0">
-                                        <i class="bi bi-check-circle-fill fs-5"></i>
-                                    </div>
-                                    <div>
-                                        <h6 class="fw-bold mb-1 skill-detail-title">@Localization["About_Skill_Frontend"]</h6>
-                                        <p class="text-muted mb-0 skill-detail-text">Blazor, Razor</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="d-flex skill-detail-item">
-                                    <div class="me-3 text-primary flex-shrink-0">
-                                        <i class="bi bi-check-circle-fill fs-5"></i>
-                                    </div>
-                                    <div>
-                                        <h6 class="fw-bold mb-1 skill-detail-title">@Localization["About_Skill_Database"]</h6>
-                                        <p class="text-muted mb-0 skill-detail-text">SQL Server, MySQL</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
+                    <div class="about-card-content">
+                        <div class="story-content lead" style="font-size: 1.1rem; line-height: 1.8;">
+                            <p class="mb-4">
+                                @Localization["About_ProfessionalSummaryText1"]
+                            </p>
+                            <p class="mb-4">
+                                @Localization["About_ProfessionalSummaryText2"]
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Experience Section -->
-            <div class="card border-0 shadow-sm mb-4 about-card">
-                <div class="card-body p-4">
+            <!-- Skills Section (Moved from Sidebar) -->
+            <div class="card border-0 shadow-sm mb-5 about-card">
+                <div class="card-body p-4 p-md-5">
                     <h3 class="card-title fw-bold mb-4 d-flex align-items-center about-card-title">
+                        <span class="icon-circle bg-primary-light me-3"><i class="bi bi-code-slash text-primary"></i></span>
+                        <span>@Localization["About_TechnicalSkillsTitle"]</span>
+                    </h3>
+                    
+                    <div class="d-flex flex-wrap gap-2 justify-content-center skills-badges p-3">
+                        <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill skill-badge fs-6">
+                            <i class="fab fa-microsoft me-2"></i>.NET / C#
+                        </span>
+                        <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill skill-badge fs-6">
+                            <i class="fas fa-database me-2"></i>SQL Server
+                        </span>
+                        <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill skill-badge fs-6">
+                            <i class="fab fa-python me-2"></i>Python
+                        </span>
+                        <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill skill-badge fs-6">
+                            <i class="fas fa-layer-group me-2"></i>Blazor WASM
+                        </span>
+                        <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill skill-badge fs-6">
+                            <i class="fas fa-mobile-alt me-2"></i>Xamarin
+                        </span>
+                        <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill skill-badge fs-6">
+                            <i class="fas fa-code-branch me-2"></i>Git / GitHub
+                        </span>
+                        <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill skill-badge fs-6">
+                            <i class="fas fa-cubes me-2"></i>Design Patterns
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Experience Section (Center Timeline) -->
+            <div class="card border-0 shadow-sm mb-5 about-card">
+                <div class="card-body p-4 p-md-5">
+                    <h3 class="card-title fw-bold mb-5 d-flex align-items-center about-card-title justify-content-center">
                         <span class="icon-circle bg-primary-light me-3"><i class="bi bi-briefcase-fill text-primary"></i></span>
                         <span>@Localization["About_ExperienceTitle"]</span>
                     </h3>
 
-                    <div class="timeline ps-4">
-                        <!-- New Experience -->
-                        <div class="timeline-item position-relative pb-4">
-                            <div class="timeline-period bg-primary text-white">@Localization["About_Experience_1_Date"]</div>
-                            <div class="timeline-content p-4 rounded-3">
-                                <h5 class="fw-bold mb-1 timeline-job-title">@Localization["About_Experience_1_Title"]</h5>
-                                <h6 class="text-primary mb-2 timeline-company">
-                                    @Localization["About_Experience_1_Company"]
-                                </h6>
-                                <ul class="mb-0 ps-3 timeline-description">
-                                    <li>@Localization["About_Experience_1_Desc1"]</li>
-                                    <li>@Localization["About_Experience_1_Desc2"]</li>
-                                    <li>@Localization["About_Experience_1_Desc3"]</li>
-                                </ul>
+                    <div class="timeline-center">
+                        <!-- Experience Item 1 -->
+                        <div class="timeline-row">
+                            <div class="timeline-time">
+                                @Localization["About_Experience_1_Date"]
+                            </div>
+                            <div class="timeline-content">
+                                <i class="icon-attachment bi bi-briefcase"></i>
+                                <h4>@Localization["About_Experience_1_Title"]</h4>
+                                <h6 class="text-primary">@Localization["About_Experience_1_Company"]</h6>
+                                <p>
+                                    @Localization["About_Experience_1_Desc1"]
+                                </p>
                             </div>
                         </div>
 
-                        <!-- Experience 1 -->
-                        <div class="timeline-item position-relative pb-4">
-                            <div class="timeline-period bg-primary text-white">@Localization["About_Experience_2_Date"]</div>
-                            <div class="timeline-content p-4 rounded-3">
-                                <h5 class="fw-bold mb-1 timeline-job-title">@Localization["About_Experience_2_Title"]</h5>
-                                <h6 class="text-primary mb-2 timeline-company">
-                                    @Localization["About_Experience_2_Company"]
-                                </h6>
-                                <ul class="mb-0 ps-3 timeline-description">
-                                    <li>@Localization["About_Experience_2_Desc1"]</li>
-                                    <li>@Localization["About_Experience_2_Desc2"]</li>
-                                    <li>@Localization["About_Experience_2_Desc3"]</li>
-                                    <li>@Localization["About_Experience_2_Desc4"]</li>
-                                </ul>
+                        <!-- Experience Item 2 -->
+                        <div class="timeline-row">
+                            <div class="timeline-time">
+                                @Localization["About_Experience_2_Date"]
+                            </div>
+                            <div class="timeline-content">
+                                <i class="icon-attachment bi bi-briefcase"></i>
+                                <h4>@Localization["About_Experience_2_Title"]</h4>
+                                <h6 class="text-primary">@Localization["About_Experience_2_Company"]</h6>
+                                <p>
+                                    @Localization["About_Experience_2_Desc1"]
+                                </p>
                             </div>
                         </div>
-
-                        <!-- Experience 2 -->
-                        <div class="timeline-item position-relative pb-4">
-                            <div class="timeline-period bg-primary text-white">@Localization["About_Experience_3_Date"]</div>
-                            <div class="timeline-content p-4 rounded-3">
-                                <h5 class="fw-bold mb-1 timeline-job-title">@Localization["About_Experience_3_Title"]</h5>
-                                <h6 class="text-primary mb-2 timeline-company">
-                                    @Localization["About_Experience_3_Company"]
-                                </h6>
-                                <ul class="mb-0 ps-3 timeline-description">
-                                    <li>@Localization["About_Experience_3_Desc1"]</li>
-                                    <li>@Localization["About_Experience_3_Desc2"]</li>
-
-                                </ul>
+                        
+                        <!-- Experience Item 3 -->
+                        <div class="timeline-row">
+                            <div class="timeline-time">
+                                @Localization["About_Experience_3_Date"]
+                            </div>
+                            <div class="timeline-content">
+                                <i class="icon-attachment bi bi-briefcase"></i>
+                                <h4>@Localization["About_Experience_3_Title"]</h4>
+                                <h6 class="text-primary">@Localization["About_Experience_3_Company"]</h6>
+                                <p>
+                                    @Localization["About_Experience_3_Desc1"]
+                                </p>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
 
-                        <!-- Experience 3 -->
-                        <div class="timeline-item position-relative pb-4">
-                            <div class="timeline-period bg-primary text-white">@Localization["About_Experience_4_Date"]</div>
-                            <div class="timeline-content p-4 rounded-3">
-                                <h5 class="fw-bold mb-1 timeline-job-title">@Localization["About_Experience_4_Title"]</h5>
-                                <h6 class="text-primary mb-2 timeline-company">
-                                    @Localization["About_Experience_4_Company"]
-                                </h6>
-                                <ul class="mb-0 ps-3 timeline-description">
-                                    <li>@Localization["About_Experience_4_Desc1"]</li>
-                                    <li>@Localization["About_Experience_4_Desc2"]</li>
-                                </ul>
+            <!-- References Section -->
+            <div class="card border-0 shadow-sm mb-5 about-card references-section">
+                <div class="card-body p-4 p-md-5">
+                    <h3 class="card-title fw-bold mb-4 d-flex align-items-center about-card-title references-title">
+                        <span class="icon-circle bg-primary-light me-3"><i class="bi bi-people-fill text-primary"></i></span>
+                        <span>@Localization["About_ReferencesTitle"]</span>
+                    </h3>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="p-3 border rounded-3 bg-light h-100">
+                                <h5 class="fw-bold text-primary reference-name">@Localization["About_Reference_1_Name"]</h5>
+                                <p class="text-muted mb-2 reference-position">@Localization["About_Reference_1_Title"]</p>
+                                <div class="d-flex align-items-center text-muted small reference-contact">
+                                    <i class="bi bi-info-circle me-2"></i>
+                                    <span>@Localization["About_Reference_1_Contact"]</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -314,49 +233,77 @@
             </div>
 
             <!-- Education Section -->
-            <div class="card border-0 shadow-sm mb-4 about-card">
-                <div class="card-body p-4">
-                    <h3 class="card-title fw-bold mb-4 d-flex align-items-center about-card-title">
+            <div class="card border-0 shadow-sm mb-5 about-card">
+                <div class="card-body p-4 p-md-5">
+                    <h3 class="card-title fw-bold mb-5 d-flex align-items-center about-card-title justify-content-center">
                         <span class="icon-circle bg-primary-light me-3"><i class="bi bi-mortarboard-fill text-primary"></i></span>
                         <span>@Localization["About_EducationTitle"]</span>
                     </h3>
 
-                    <div class="timeline ps-4">
-                        <div class="timeline-item position-relative">
-                            <div class="timeline-period bg-primary text-white">@Localization["About_Education_1_Date"]</div>
-                            <div class="timeline-content p-4 rounded-3">
-                                <h5 class="fw-bold mb-1 timeline-job-title">@Localization["About_Education_1_Title"]</h5>
-                                <h6 class="text-primary mb-2 timeline-company">@Localization["About_Education_1_School"]</h6>
-                                <div class="d-flex flex-wrap gap-4 mb-2 education-details">
-                                    <div>
-                                        <i class="bi bi-building text-primary me-2"></i>
-                                        <span>@Localization["About_Education_1_Detail"]</span>
-                                    </div>
-                                    <div>
-                                        <i class="bi bi-award text-primary me-2"></i>
-                                        <span>@Localization["About_Education_1_GPA"]</span>
-                                    </div>
-                                </div>
+                    <div class="timeline-center">
+                        <div class="timeline-row">
+                            <div class="timeline-time">
+                                @Localization["About_Education_1_Date"]
+                            </div>
+                            <div class="timeline-content">
+                                <i class="icon-attachment bi bi-mortarboard"></i>
+                                <h4>@Localization["About_Education_1_Title"]</h4>
+                                <h6 class="text-primary">@Localization["About_Education_1_School"]</h6>
+                                <p>@Localization["About_Education_1_Detail"]</p>
                             </div>
                         </div>
-
-                        <div class="timeline-item position-relative">
-                            <div class="timeline-period bg-primary text-white">@Localization["About_Education_2_Date"]</div>
-                            <div class="timeline-content p-4 rounded-3">
-                                <h5 class="fw-bold mb-1 timeline-job-title">@Localization["About_Education_2_School"]</h5>
-                                <h6 class="text-primary mb-2 timeline-company">@Localization["About_Education_2_Title"]</h6>
-                                <div class="d-flex flex-wrap gap-4 mb-2 education-details">
-                                    <div>
-                                        <i class="bi bi-award text-primary me-2"></i>
-                                        <span>@Localization["About_Education_2_GPA"]</span>
-                                    </div>
-                                    
-                                </div>
+                        
+                        <div class="timeline-row">
+                            <div class="timeline-time">
+                                @Localization["About_Education_2_Date"]
+                            </div>
+                            <div class="timeline-content">
+                                <i class="icon-attachment bi bi-mortarboard"></i>
+                                <h4>@Localization["About_Education_2_School"]</h4>
+                                <h6 class="text-primary">@Localization["About_Education_2_Title"]</h6>
+                                <p>@Localization["About_Education_2_GPA"]</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            
+            <!-- Hobbies / Personal Touch (New Section) -->
+            <div class="card border-0 shadow-sm mb-4 about-card">
+                <div class="card-body p-4 p-md-5 text-center">
+                    <h3 class="card-title fw-bold mb-4 d-flex align-items-center justify-content-center about-card-title">
+                        <span class="icon-circle bg-primary-light me-3"><i class="bi bi-heart-fill text-primary"></i></span>
+                        <span>Outside of Work</span>
+                    </h3>
+                    <div class="row justify-content-center g-4">
+                         <div class="col-6 col-md-3">
+                            <div class="p-3">
+                                <i class="bi bi-cup-hot fs-1 text-secondary mb-3"></i>
+                                <h5 class="fw-bold">Coffee</h5>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="p-3">
+                                <i class="bi bi-controller fs-1 text-secondary mb-3"></i>
+                                <h5 class="fw-bold">Gaming</h5>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="p-3">
+                                <i class="bi bi-music-note-beamed fs-1 text-secondary mb-3"></i>
+                                <h5 class="fw-bold">Music</h5>
+                            </div>
+                        </div>
+                         <div class="col-6 col-md-3">
+                            <div class="p-3">
+                                <i class="bi bi-book fs-1 text-secondary mb-3"></i>
+                                <h5 class="fw-bold">Reading</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
@@ -540,61 +487,99 @@
         flex-shrink: 0;
     }
 
-    /* Timeline Stilleri */
-    .timeline {
+    /* Timeline Center (New) */
+    .timeline-center {
         position: relative;
+        padding: 0;
     }
 
-    .timeline-item {
-        position: relative;
-        display: flex;
-        align-items: flex-start;
-        gap: 18px;
-        padding-left: 0;
+    .timeline-center::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 2px;
+        background: linear-gradient(180deg, #6366f1 0%, rgba(99, 102, 241, 0.2) 100%);
+        transform: translateX(-50%);
     }
 
-    .timeline-period {
+    .timeline-row {
         position: relative;
-        width: 120px;
-        padding: 8px 10px;
-        border-radius: 12px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .timeline-row:last-child {
+        margin-bottom: 0;
+    }
+
+    .timeline-time {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        transform: translateX(-50%);
+        background: #0d1424;
+        color: #a5b4fc;
+        padding: 5px 15px;
+        border-radius: 20px;
+        border: 1px solid rgba(99, 102, 241, 0.3);
+        font-size: 0.85rem;
         font-weight: 600;
         z-index: 2;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-        flex-shrink: 0;
-        font-size: 0.85rem;
     }
 
     .timeline-content {
         position: relative;
-        transition: all 0.3s ease;
-        border-left: 2px solid #3b82f6;
-        padding-left: 16px;
-        flex: 1 1 auto;
+        width: 45%;
+        padding: 1.5rem;
+        background: rgba(30, 41, 59, 0.4);
+        border: 1px solid rgba(99, 102, 241, 0.2);
+        border-radius: 15px;
+        margin-left: auto; /* Default to right */
     }
 
-        .timeline-content:before {
-            content: '';
-            position: absolute;
-            left: -7px;
-            top: 15px;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background-color: #3b82f6;
-            border: 2px solid white;
-            z-index: 2;
+    /* Left side content for even children */
+    .timeline-row:nth-child(even) .timeline-content {
+        margin-left: 0;
+        margin-right: auto;
+    }
+
+    .icon-attachment {
+        position: absolute;
+        top: 20px;
+        font-size: 1.5rem;
+        color: #6366f1;
+        background: #0d1424;
+        border-radius: 50%;
+        padding: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+    
+    .timeline-row:nth-child(odd) .icon-attachment {
+        left: -40px; /* Adjust based on positioning */
+        display: none; /* Simplify for now, time dot is enough */
+    }
+
+    /* Mobile Responsive Timeline */
+    @@media (max-width: 768px) {
+        .timeline-center::before {
+            left: 20px;
         }
 
-        .timeline-content:hover {
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
-            transform: translateX(5px);
+        .timeline-time {
+            position: relative;
+            left: 0;
+            transform: none;
+            display: inline-block;
+            margin-bottom: 10px;
+            margin-left: 50px;
         }
+
+        .timeline-content {
+            width: calc(100% - 50px);
+            margin-left: 50px !important;
+        }
+    }
 
     /* Tech Cards */
     .tech-card {
