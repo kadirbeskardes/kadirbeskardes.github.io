@@ -60,10 +60,10 @@
                         </div>
                         <h3 class="h4 mb-3 fw-bold text-white skill-title">@Localization["Home_Frontend"]</h3>
                         <ul class="list-unstyled skill-list">
-                            <li><i class="bi bi-check-circle-fill text-info me-2"></i><span class="text-light">Blazor WebAssembly</span></li>
-                            <li><i class="bi bi-check-circle-fill text-info me-2"></i><span class="text-light">HTML5/CSS3</span></li>
-                            <li><i class="bi bi-check-circle-fill text-info me-2"></i><span class="text-light">JavaScript</span></li>
-                            <li><i class="bi bi-check-circle-fill text-info me-2"></i><span class="text-light">Bootstrap 5</span></li>
+                            <li><i class="bi bi-check-circle-fill text-info me-2"></i><span class="text-light">@Localization["Home_Skill_BlazorWASM"]</span></li>
+                            <li><i class="bi bi-check-circle-fill text-info me-2"></i><span class="text-light">@Localization["Home_Skill_HTMLCSS"]</span></li>
+                            <li><i class="bi bi-check-circle-fill text-info me-2"></i><span class="text-light">@Localization["Home_Skill_JS"]</span></li>
+                            <li><i class="bi bi-check-circle-fill text-info me-2"></i><span class="text-light">@Localization["Home_Skill_Bootstrap"]</span></li>
                         </ul>
                     </div>
                 </div>
@@ -77,11 +77,11 @@
                         </div>
                         <h3 class="h4 mb-3 fw-bold text-white skill-title">@Localization["Home_Backend"]</h3>
                         <ul class="list-unstyled skill-list">
-                            <li><i class="bi bi-check-circle-fill text-info me-2"></i><span class="text-light">.NET</span></li>
-                            <li><i class="bi bi-check-circle-fill text-info me-2"></i><span class="text-light">Python</span></li>
-                            <li><i class="bi bi-check-circle-fill text-info me-2"></i><span class="text-light">Entity Framework</span></li>
-                            <li><i class="bi bi-check-circle-fill text-info me-2"></i><span class="text-light">REST API</span></li>
-                            <li><i class="bi bi-check-circle-fill text-info me-2"></i><span class="text-light">SQL Server</span></li>
+                            <li><i class="bi bi-check-circle-fill text-info me-2"></i><span class="text-light">@Localization["Home_Skill_DotNet"]</span></li>
+                            <li><i class="bi bi-check-circle-fill text-info me-2"></i><span class="text-light">@Localization["Home_Skill_Python"]</span></li>
+                            <li><i class="bi bi-check-circle-fill text-info me-2"></i><span class="text-light">@Localization["Home_Skill_EF"]</span></li>
+                            <li><i class="bi bi-check-circle-fill text-info me-2"></i><span class="text-light">@Localization["Home_Skill_RESTAPI"]</span></li>
+                            <li><i class="bi bi-check-circle-fill text-info me-2"></i><span class="text-light">@Localization["Home_Skill_SQLServer"]</span></li>
                         </ul>
                     </div>
                 </div>
@@ -95,10 +95,10 @@
                         </div>
                         <h3 class="h4 mb-3 fw-bold text-white skill-title">@Localization["Home_Tools"]</h3>
                         <ul class="list-unstyled skill-list">
-                            <li><i class="bi bi-check-circle-fill text-success me-2"></i><span class="text-light">Visual Studio</span></li>
-                            <li><i class="bi bi-check-circle-fill text-success me-2"></i><span class="text-light">Git/GitHub</span></li>
-                            <li><i class="bi bi-check-circle-fill text-success me-2"></i><span class="text-light">Docker</span></li>
-                            <li><i class="bi bi-check-circle-fill text-success me-2"></i><span class="text-light">Postman</span></li>
+                            <li><i class="bi bi-check-circle-fill text-success me-2"></i><span class="text-light">@Localization["Home_Skill_VisualStudio"]</span></li>
+                            <li><i class="bi bi-check-circle-fill text-success me-2"></i><span class="text-light">@Localization["Home_Skill_GitGitHub"]</span></li>
+                            <li><i class="bi bi-check-circle-fill text-success me-2"></i><span class="text-light">@Localization["Home_Skill_Docker"]</span></li>
+                            <li><i class="bi bi-check-circle-fill text-success me-2"></i><span class="text-light">@Localization["Home_Skill_Postman"]</span></li>
                         </ul>
                     </div>
                 </div>
@@ -155,7 +155,7 @@
                                 @if (!string.IsNullOrWhiteSpace(project.GitHubUrl))
                                 {
                                     <a href="@project.GitHubUrl" target="_blank" class="btn btn-sm btn-glass rounded-pill">
-                                        <i class="bi bi-github me-1"></i> GitHub
+                                        <i class="bi bi-github me-1"></i> @Localization["Global_GitHub"]
                                     </a>
                                 }
                             </div>
@@ -176,7 +176,12 @@
 @code {
     private List<Personal.Models.ProjectDetail>? recentFeaturedProjects;
     private string displayedJobTitle = "";
-    private string[] jobTitles = new[] { "Full Stack Developer", "Software Engineer", ".NET Developer", "Mobile Developer" };
+    private string[] jobTitles = new[] { 
+        Localization["Home_JobTitle_1"], 
+        Localization["Home_JobTitle_2"], 
+        Localization["Home_JobTitle_3"], 
+        Localization["Home_JobTitle_4"] 
+    };
     private int currentTitleIndex = 0;
     private bool isDeleting = false;
     private bool disposed = false;

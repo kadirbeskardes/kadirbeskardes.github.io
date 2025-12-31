@@ -32,7 +32,7 @@
                     <div class="hero-badge-wrapper mb-4">
                         <span class="hero-badge">
                             <span class="badge-dot"></span>
-                            <i class="bi bi-code-slash me-2"></i>Portfolio
+                            <i class="bi bi-code-slash me-2"></i>@Localization["Projects_Badge_Portfolio"]
                         </span>
                     </div>
                     <h1 class="hero-title">
@@ -42,17 +42,17 @@
                     <div class="hero-stats mt-5">
                         <div class="stat-item">
                             <span class="stat-number">@(projectsList?.Count ?? 0)+</span>
-                            <span class="stat-label">Projects</span>
+                            <span class="stat-label">@Localization["Projects_Stat_Projects"]</span>
                         </div>
                         <div class="stat-divider"></div>
                         <div class="stat-item">
                             <span class="stat-number">10+</span>
-                            <span class="stat-label">Technologies</span>
+                            <span class="stat-label">@Localization["Projects_Stat_Technologies"]</span>
                         </div>
                         <div class="stat-divider"></div>
                         <div class="stat-item">
                             <span class="stat-number">3+</span>
-                            <span class="stat-label">Years</span>
+                            <span class="stat-label">@Localization["Projects_Stat_Years"]</span>
                         </div>
                     </div>
                     <div class="scroll-indicator mt-5">
@@ -77,9 +77,9 @@
             <!-- Section Header -->
             <div class="section-header text-center mb-5">
                 <span class="section-tag">
-                    <i class="bi bi-folder2-open me-2"></i>My Work
+                    <i class="bi bi-folder2-open me-2"></i>@Localization["Projects_Section_MyWork"]
                 </span>
-                <h2 class="section-title">Featured Projects</h2>
+                <h2 class="section-title">@Localization["Projects_Section_FeaturedProjects"]</h2>
                 <div class="section-divider">
                     <span class="divider-line"></span>
                     <span class="divider-icon"><i class="bi bi-stars"></i></span>
@@ -90,7 +90,7 @@
             <!-- Category Filter (New) -->
             <div class="d-flex justify-content-center flex-wrap gap-2 mb-5 filter-buttons">
                 <button class="btn btn-filter @(selectedCategory == "All" ? "active" : "")" @onclick="@(() => FilterProjects("All"))">
-                    All
+                    @Localization["Projects_Filter_All"]
                 </button>
                 @if (categories != null)
                 {
@@ -142,12 +142,12 @@
                                     
                                     <!-- Floating Actions -->
                                     <div class="card-actions">
-                                        <a href="@($"project/{project.Id}")" class="action-btn primary" title="View Details">
+                                        <a href="@($"project/{project.Id}")" class="action-btn primary" title="@Localization["Global_ViewDetails"]">
                                             <i class="bi bi-arrow-up-right"></i>
                                         </a>
                                         @if (!string.IsNullOrEmpty(project.GitHubUrl))
                                         {
-                                            <a href="@project.GitHubUrl" target="_blank" class="action-btn secondary" title="GitHub">
+                                            <a href="@project.GitHubUrl" target="_blank" class="action-btn secondary" title="@Localization["Global_GitHub"]">
                                                 <i class="bi bi-github"></i>
                                             </a>
                                         }

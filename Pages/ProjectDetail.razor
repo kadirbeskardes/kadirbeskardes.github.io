@@ -126,7 +126,7 @@ else
                                     </div>
                                     <div class="stat-content">
                                         <span class="stat-value">@projectDetail.Technologies.Length</span>
-                                        <span class="stat-label">Technologies</span>
+                                        <span class="stat-label">@Localization["ProjectDetail_Stat_Technologies"]</span>
                                     </div>
                                 </div>
                                 @if (projectDetail.Features?.Any() == true)
@@ -137,7 +137,7 @@ else
                                         </div>
                                         <div class="stat-content">
                                             <span class="stat-value">@projectDetail.Features.Length</span>
-                                            <span class="stat-label">Features</span>
+                                            <span class="stat-label">@Localization["ProjectDetail_Stat_Features"]</span>
                                         </div>
                                     </div>
                                 }
@@ -156,7 +156,7 @@ else
                                                 <span class="status-dev">@Localization["ProjectDetail_Status_Development"]</span>
                                             }
                                         </span>
-                                        <span class="stat-label">Status</span>
+                                        <span class="stat-label">@Localization["ProjectDetail_Stat_Status"]</span>
                                     </div>
                                 </div>
                             </div>
