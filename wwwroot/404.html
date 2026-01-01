@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Yönlendiriliyor...</title>
+    <script>
+        // GitHub Pages SPA routing fix
+        // Tüm 404 isteklerini ana sayfaya yönlendir ve path'i sakla
+        var pathSegmentsToKeep = 0;
+        var l = window.location;
+        var path = l.pathname.slice(1);
+        var query = l.search;
+        var hash = l.hash;
+        
+        // Path'i sessionStorage'a kaydet
+        sessionStorage.setItem('redirect', path + query + hash);
+        
+        // Ana sayfaya yönlendir
+        l.replace(
+            l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') + '/'
+        );
+    </script>
+</head>
+<body>
+    <noscript>
+        <meta http-equiv="refresh" content="0;URL='/'" />
+    </noscript>
+</body>
+</html>

@@ -1,0 +1,6 @@
+{
+  "adminPassword": "BURAYA_KENDI_SIFRENIZI_YAZIN",
+  "sessionTimeoutMinutes": 60,
+  "maxLoginAttempts": 5,
+  "lockoutMinutes": 15
+}

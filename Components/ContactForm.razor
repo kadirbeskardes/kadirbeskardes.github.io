@@ -1,0 +1,64 @@
+﻿@using Personal.Models
+@using Personal.Services
+@inject LocalizationService Localization
+
+<EditForm Model="@contactFormModel" OnValidSubmit="@HandleValidFormSubmission">
+    <DataAnnotationsValidator />
+    <ValidationSummary class="text-danger" />
+
+    <div class="mb-4">
+        <label for="name" class="form-label">@Localization["Contact_Name"]</label>
+        <InputText @bind-Value="contactFormModel.Name" id="name" class="form-control" placeholder="@Localization["Contact_Name"]" />
+        <ValidationMessage For="@(() => contactFormModel.Name)" class="text-danger small" />
+    </div>
+
+    <div class="mb-4">
+        <label for="email" class="form-label">@Localization["Contact_Email"]</label>
+        <InputText @bind-Value="contactFormModel.Email" id="email" class="form-control" placeholder="ornek@email.com" />
+        <ValidationMessage For="@(() => contactFormModel.Email)" class="text-danger small" />
+    </div>
+
+    <div class="mb-4">
+        <label for="subject" class="form-label">@Localization["Contact_Subject"]</label>
+        <InputText @bind-Value="contactFormModel.Subject" id="subject" class="form-control" placeholder="@Localization["Contact_Subject"]" />
+        <ValidationMessage For="@(() => contactFormModel.Subject)" class="text-danger small" />
+    </div>
+
+    <div class="mb-4">
+        <label for="message" class="form-label">@Localization["Contact_Message"]</label>
+        <InputTextArea @bind-Value="contactFormModel.Message" id="message" class="form-control" rows="5" placeholder="@Localization["Contact_Message"]"></InputTextArea>
+        <ValidationMessage For="@(() => contactFormModel.Message)" class="text-danger small" />
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100">
+        <i class="bi bi-send me-2"></i>@Localization["Contact_Send"]
+    </button>
+</EditForm>
+
+@if (isFormSubmittedSuccessfully)
+{
+    <div class="alert alert-success mt-4 d-flex align-items-center" role="alert">
+        <i class="bi bi-check-circle-fill me-2 fs-5"></i>
+        <span>@Localization["Contact_SuccessMessage"]</span>
+    </div>
+}
+
+@code {
+    private ContactModel contactFormModel = new ContactModel();
+    private bool isFormSubmittedSuccessfully = false;
+
+    private async Task HandleValidFormSubmission()
+    {
+        // Burada form verilerini bir API'ye gönderebilir veya e-posta olarak iletebilirsiniz
+        // Örnek:
+        // await httpClient.PostAsJsonAsync("api/contact", contactFormModel);
+
+        // Şimdilik sadece bir başarı mesajı gösteriyoruz
+        isFormSubmittedSuccessfully = true;
+        contactFormModel = new ContactModel();
+
+        // 3 saniye sonra mesajı gizle
+        await Task.Delay(3000);
+        isFormSubmittedSuccessfully = false;
+    }
+}

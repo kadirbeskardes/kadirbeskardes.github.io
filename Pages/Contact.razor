@@ -1,0 +1,465 @@
+@page "/contact"
+@using Personal.Components
+@using Personal.Services
+@inject LocalizationService Localization
+
+<PageTitle>@Localization["Meta_ContactOgTitle"]</PageTitle>
+<HeadContent>
+    <meta name="description" content="@Localization["Meta_ContactDescription"]">
+    <meta property="og:title" content="@Localization["Meta_ContactOgTitle"]">
+    <meta property="og:description" content="@Localization["Meta_ContactOgDescription"]">
+    <meta property="og:url" content="https://kadirbeskardes.github.io/contact">
+    <meta property="og:type" content="website">
+    <meta name="twitter:title" content="@Localization["Meta_ContactTwitterTitle"]">
+    <meta name="twitter:description" content="@Localization["Meta_ContactTwitterDescription"]">
+    <link rel="canonical" href="https://kadirbeskardes.github.io/contact">
+</HeadContent>
+
+<div class="contact-page">
+    <div class="container py-5">
+        <div class="text-center mb-5 contact-header">
+            <h2 class="display-5 fw-bold text-gradient contact-title">@Localization["Contact_Title"]</h2>
+            <p class="lead text-muted contact-subtitle">@Localization["Contact_GetInTouch"]</p>
+            <div class="divider mx-auto"></div>
+        </div>
+
+        <div class="row g-4 justify-content-center contact-row">
+            <div class="col-lg-5 col-md-6 col-12">
+                <div class="contact-info-card card h-100 border-0 shadow-lg">
+                    <div class="card-body p-4 p-lg-5">
+                        <h3 class="h4 mb-4 fw-bold text-primary contact-card-title">@Localization["Contact_ContactInfo"]</h3>
+
+                        <div class="contact-item d-flex mb-4">
+                            <div class="contact-icon me-3">
+                                <i class="bi bi-geo-alt-fill fs-3 text-gradient"></i>
+                            </div>
+                            <div class="contact-item-content">
+                                <h5 class="h6 mb-1 fw-semibold">@Localization["Contact_Address"]</h5>
+                                <p class="text-muted mb-0 contact-text">@Localization["Contact_Location"]</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item d-flex mb-4">
+                            <div class="contact-icon me-3">
+                                <i class="bi bi-envelope-fill fs-3 text-gradient"></i>
+                            </div>
+                            <div class="contact-item-content">
+                                <h5 class="h6 mb-1 fw-semibold">@Localization["Contact_Email"]</h5>
+                                <p class="text-muted mb-0 contact-text contact-email">kadir.beskardes11@gmail.com</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item d-flex mb-4">
+                            <div class="contact-icon me-3">
+                                <i class="bi bi-telephone-fill fs-3 text-gradient"></i>
+                            </div>
+                            <div class="contact-item-content">
+                                <h5 class="h6 mb-1 fw-semibold">@Localization["Contact_Phone"]</h5>
+                                <p class="text-muted mb-1 contact-text">+90 507 275 67 47</p>
+                                <div class="d-flex align-items-center gap-2 mb-1">
+                                    <i class="bi bi-whatsapp text-success"></i>
+                                    <small class="text-success fw-bold">@Localization["Contact_WhatsAppAvailable"]</small>
+                                </div>
+                                <small class="text-muted d-block">@Localization["Contact_WorkingHours"]</small>
+                            </div>
+                        </div>
+
+                        <div class="mt-5 pt-3 social-section">
+                            <h5 class="h6 mb-3 fw-semibold social-title">@Localization["Contact_SocialMedia"]</h5>
+                            <div class="social-links d-flex gap-3">
+                                <a href="https://github.com/kadirbeskardes" class="social-icon btn btn-outline-primary rounded-circle p-2" target="_blank" rel="noopener">
+                                    <i class="bi bi-github fs-5"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/in/kadirbeskardes/" class="social-icon btn btn-outline-primary rounded-circle p-2" target="_blank" rel="noopener">
+                                    <i class="bi bi-linkedin fs-5"></i>
+                                </a>
+                                <a href="https://x.com/beskardeskadirr" class="social-icon btn btn-outline-primary rounded-circle p-2" target="_blank" rel="noopener">
+                                    <i class="bi bi-twitter-x fs-5"></i>
+                                </a>
+                                <a href="#" class="social-icon btn btn-outline-primary rounded-circle p-2">
+                                    <i class="bi bi-instagram fs-5"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-7 col-md-6 col-12">
+                <div class="contact-form-card card border-0 shadow-lg">
+                    <div class="card-body p-4 p-lg-5">
+                        <h3 class="h4 mb-4 fw-bold text-primary contact-card-title">@Localization["Contact_SendMessageTitle"]</h3>
+                        <p class="text-muted mb-4 form-description">@Localization["Contact_SendMessageDescription"]</p>
+                        <ContactForm />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .text-gradient {
+        background: linear-gradient(135deg, #6366f1, #06b6d4);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        display: inline-block;
+    }
+
+    .divider {
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(135deg, #6366f1, #06b6d4);
+        border-radius: 2px;
+        margin: 1rem auto;
+    }
+
+    .contact-info-card {
+        border-radius: 20px;
+        background: rgba(30, 41, 59, 0.6);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(99, 102, 241, 0.2);
+    }
+
+    .contact-info-card h3,
+    .contact-info-card h5,
+    .contact-info-card h6 {
+        color: #fff !important;
+    }
+
+    .contact-info-card .text-muted {
+        color: rgba(255, 255, 255, 0.7) !important;
+    }
+
+    .contact-form-card {
+        border-radius: 20px;
+        background: rgba(30, 41, 59, 0.6);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(99, 102, 241, 0.2);
+    }
+
+    .contact-form-card h3 {
+        color: #06b6d4 !important;
+    }
+
+    .contact-form-card .text-muted {
+        color: rgba(255, 255, 255, 0.7) !important;
+    }
+
+    .contact-icon {
+        width: 55px;
+        height: 55px;
+        min-width: 55px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(6, 182, 212, 0.2));
+        border-radius: 50%;
+        border: 1px solid rgba(99, 102, 241, 0.3);
+        flex-shrink: 0;
+    }
+
+    .social-icon {
+        width: 45px;
+        height: 45px;
+        min-width: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        background: rgba(99, 102, 241, 0.1) !important;
+        border: 1px solid rgba(99, 102, 241, 0.3) !important;
+        color: #fff !important;
+    }
+
+    .social-icon:hover {
+        transform: translateY(-3px);
+        background: linear-gradient(135deg, #6366f1, #06b6d4) !important;
+        border-color: transparent !important;
+        box-shadow: 0 5px 20px rgba(99, 102, 241, 0.4);
+    }
+
+    .contact-page {
+        background: linear-gradient(135deg, #0a0f1e 0%, #1a1f35 50%, #0a0f1e 100%);
+        min-height: 100vh;
+    }
+
+    .contact-page .lead {
+        color: rgba(255, 255, 255, 0.7) !important;
+    }
+
+    /* Form Styles */
+    .contact-form-card .form-control,
+    .contact-form-card .form-select {
+        background: rgba(15, 23, 42, 0.6);
+        border: 1px solid rgba(99, 102, 241, 0.3);
+        color: #fff;
+        border-radius: 10px;
+        padding: 12px 16px;
+    }
+
+    .contact-form-card .form-control:focus,
+    .contact-form-card .form-select:focus {
+        background: rgba(15, 23, 42, 0.8);
+        border-color: #6366f1;
+        box-shadow: 0 0 15px rgba(99, 102, 241, 0.5);
+        color: #fff;
+        transform: translateY(-2px);
+        transition: all 0.3s ease;
+    }
+
+    .contact-form-card .form-control::placeholder {
+        color: rgba(255, 255, 255, 0.5);
+    }
+
+    .contact-form-card .form-label {
+        color: rgba(255, 255, 255, 0.8);
+        font-weight: 500;
+    }
+
+    .contact-form-card .btn-primary {
+        background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        border: none;
+        padding: 12px 30px;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .contact-form-card .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 20px rgba(99, 102, 241, 0.4);
+    }
+
+    /* ================================================
+       MOBILE RESPONSIVE STYLES
+       ================================================ */
+    @@media (max-width: 768px) {
+        .contact-page {
+            min-height: auto;
+        }
+        
+        .contact-page .container {
+            padding: 1.5rem 1rem !important;
+        }
+        
+        .contact-header {
+            margin-bottom: 1.5rem !important;
+        }
+        
+        .contact-title {
+            font-size: 1.5rem !important;
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-subtitle {
+            font-size: 0.9rem !important;
+        }
+        
+        .divider {
+            width: 60px;
+            height: 3px;
+            margin: 0.75rem auto;
+        }
+        
+        .contact-row {
+            gap: 1rem !important;
+        }
+        
+        /* Contact Info Card Mobile */
+        .contact-info-card {
+            border-radius: 16px;
+        }
+        
+        .contact-info-card .card-body {
+            padding: 1.25rem !important;
+        }
+        
+        .contact-card-title {
+            font-size: 1.1rem !important;
+            margin-bottom: 1rem !important;
+        }
+        
+        .contact-item {
+            margin-bottom: 1rem !important;
+            align-items: flex-start;
+        }
+        
+        .contact-icon {
+            width: 44px;
+            height: 44px;
+            min-width: 44px;
+        }
+        
+        .contact-icon i {
+            font-size: 1.25rem !important;
+        }
+        
+        .contact-item-content h5 {
+            font-size: 0.875rem !important;
+            margin-bottom: 0.25rem !important;
+        }
+        
+        .contact-text {
+            font-size: 0.8rem !important;
+            line-height: 1.4;
+        }
+        
+        .contact-email {
+            word-break: break-all;
+        }
+        
+        .social-section {
+            margin-top: 1.5rem !important;
+            padding-top: 1rem !important;
+            border-top: 1px solid rgba(99, 102, 241, 0.1);
+        }
+        
+        .social-title {
+            font-size: 0.9rem !important;
+            margin-bottom: 0.75rem !important;
+        }
+        
+        .social-links {
+            gap: 0.625rem !important;
+            justify-content: flex-start;
+        }
+        
+        .social-icon {
+            width: 42px;
+            height: 42px;
+            min-width: 42px;
+        }
+        
+        .social-icon i {
+            font-size: 1.1rem !important;
+        }
+        
+        /* Contact Form Card Mobile */
+        .contact-form-card {
+            border-radius: 16px;
+        }
+        
+        .contact-form-card .card-body {
+            padding: 1.25rem !important;
+        }
+        
+        .form-description {
+            font-size: 0.85rem !important;
+            margin-bottom: 1rem !important;
+        }
+        
+        .contact-form-card .form-control,
+        .contact-form-card .form-select {
+            padding: 10px 14px;
+            font-size: 0.9rem;
+            border-radius: 8px;
+        }
+        
+        .contact-form-card .form-label {
+            font-size: 0.85rem;
+            margin-bottom: 0.375rem;
+        }
+        
+        .contact-form-card .btn-primary {
+            width: 100%;
+            padding: 0.75rem 1.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .contact-form-card .mb-3 {
+            margin-bottom: 0.875rem !important;
+        }
+    }
+
+    /* Extra Small Mobile */
+    @@media (max-width: 480px) {
+        .contact-page .container {
+            padding: 1.25rem 0.875rem !important;
+        }
+        
+        .contact-title {
+            font-size: 1.375rem !important;
+        }
+        
+        .contact-subtitle {
+            font-size: 0.85rem !important;
+        }
+        
+        .contact-info-card .card-body,
+        .contact-form-card .card-body {
+            padding: 1rem !important;
+        }
+        
+        .contact-card-title {
+            font-size: 1rem !important;
+        }
+        
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+        }
+        
+        .contact-icon i {
+            font-size: 1.1rem !important;
+        }
+        
+        .contact-item-content h5 {
+            font-size: 0.8rem !important;
+        }
+        
+        .contact-text {
+            font-size: 0.75rem !important;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+        }
+        
+        .social-icon i {
+            font-size: 1rem !important;
+        }
+        
+        .contact-form-card .form-control,
+        .contact-form-card .form-select {
+            padding: 9px 12px;
+            font-size: 0.85rem;
+        }
+        
+        .contact-form-card .form-label {
+            font-size: 0.8rem;
+        }
+        
+        .contact-form-card .btn-primary {
+            padding: 0.625rem 1.25rem;
+            font-size: 0.85rem;
+        }
+    }
+
+    /* Touch Device Specific */
+    @@media (hover: none) and (pointer: coarse) {
+        .social-icon:hover {
+            transform: none;
+            background: rgba(99, 102, 241, 0.1) !important;
+            box-shadow: none;
+        }
+        
+        .social-icon:active {
+            transform: scale(0.95);
+            background: linear-gradient(135deg, #6366f1, #06b6d4) !important;
+        }
+        
+        .contact-form-card .btn-primary:hover {
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .contact-form-card .btn-primary:active {
+            transform: scale(0.98);
+        }
+    }
+</style>

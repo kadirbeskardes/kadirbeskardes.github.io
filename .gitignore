@@ -361,3 +361,9 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Admin config file (contains password - DO NOT COMMIT)
+wwwroot/data/admin.config.json
+
+LOCALIZATION_README.md
+SEO_DOCUMENTATION.md

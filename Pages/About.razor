@@ -1,0 +1,1087 @@
+@page "/about"
+@using Personal.Services
+@inject LocalizationService Localization
+
+<PageTitle>@Localization["About_Title"] - @Localization["About_Name"]</PageTitle>
+<HeadContent>
+    <meta name="description" content="@Localization["About_ProfessionalSummaryText1"]">
+    <meta property="og:title" content="@Localization["About_Title"] - @Localization["About_Name"]">
+    <meta property="og:description" content="@Localization["About_Subtitle"]">
+    <meta property="og:url" content="https://kadirbeskardes.github.io/about">
+    <meta property="og:type" content="profile">
+    <meta name="twitter:title" content="@Localization["About_Title"] - @Localization["About_Name"]">
+    <meta name="twitter:description" content="@Localization["About_Subtitle"]">
+    <link rel="canonical" href="https://kadirbeskardes.github.io/about">
+</HeadContent>
+
+<!-- Modern Hero Section with Particles -->
+<section class="about-hero bg-dark text-white position-relative overflow-hidden">
+    <div id="particles-js"></div>
+    <div class="container position-relative py-5" style="z-index: 2;">
+        <div class="row align-items-center min-vh-60 py-5">
+            <div class="col-lg-7">
+                <div class="badge bg-primary bg-opacity-10 text-primary mb-3 px-3 py-2 rounded-pill hero-badge-mobile">@Localization["About_Badge"]</div>
+                <h1 class="display-3 fw-bold mb-4 animate__animated animate__fadeInDown about-hero-title">@Localization["About_Name"]</h1>
+                <p class="lead mb-4 animate__animated animate__fadeIn animate__delay-1s about-hero-subtitle">@Localization["About_Subtitle"]</p>
+                <p class="mb-5 animate__animated animate__fadeIn animate__delay-1s about-hero-description">
+                    @Localization["About_Description"]
+                </p>
+                <div class="d-flex flex-wrap gap-3 animate__animated animate__fadeIn animate__delay-2s about-hero-buttons">
+                    <a href="contact" class="btn btn-primary btn-lg px-4 rounded-pill about-hero-btn">
+                        <i class="bi bi-envelope me-2"></i>@Localization["About_ContactButton"]
+                    </a>
+                    <a href="files/CV Kadir Beskardes.pdf" download class="btn btn-outline-light btn-lg px-4 rounded-pill about-hero-btn">
+                        <i class="bi bi-download me-2"></i>@Localization["About_DownloadCV"]
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-5 d-none d-lg-block">
+                <div class="hero-image-container position-relative">
+                    <img src="img/pp.jpg" alt="@Localization["About_Name"]" class="img-fluid rounded-4 shadow-lg border border-4 border-white">
+                    <div class="tech-badge dotnet-badge">
+                        <i class="fab fa-microsoft"></i>
+                    </div>
+                    <div class="tech-badge python-badge">
+                        <i class="fab fa-python"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hero-scroll-indicator">
+        <a href="#main-content" class="text-white"><i class="bi bi-chevron-down fs-4"></i></a>
+    </div>
+</section>
+
+<!-- Main Content -->
+<div id="main-content" class="container py-5 about-main-content">
+    
+    <!-- Profile Header Section (New Single Column Layout) -->
+    <div class="row justify-content-center mb-5">
+        <div class="col-lg-10">
+            <div class="card border-0 shadow-lg about-profile-card">
+                <div class="card-body p-4 p-md-5">
+                    <div class="row align-items-center">
+                        <div class="col-md-4 text-center mb-4 mb-md-0">
+                            <div class="profile-image-container mx-auto">
+                                <img src="img/pp.jpg" alt="@Localization["About_Name"]" class="img-fluid rounded-circle shadow border border-4 border-white">
+                            </div>
+                        </div>
+                        <div class="col-md-8 text-center text-md-start">
+                            <h3 class="fw-bold mb-2 profile-name display-6">@Localization["About_Name"]</h3>
+                            <p class="text-primary fs-5 mb-3 profile-job-title">@Localization["About_JobTitle"]</p>
+                            
+                            <div class="mb-4">
+                                <div class="d-flex align-items-center justify-content-center justify-content-md-start mb-2">
+                                    <i class="bi bi-geo-alt-fill text-primary me-2"></i>
+                                    <span class="text-muted">@Localization["About_Location"]</span>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-center justify-content-md-start">
+                                    <i class="bi bi-envelope-fill text-primary me-2"></i>
+                                    <span class="text-muted">kadir.beskardes11@gmail.com</span>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-center justify-content-md-start gap-3 profile-social-links">
+                                <a href="https://github.com/kadirbeskardes" class="social-icon bg-github" target="_blank"><i class="bi bi-github"></i></a>
+                                <a href="https://www.linkedin.com/in/kadirbeskardes/" class="social-icon bg-linkedin" target="_blank"><i class="bi bi-linkedin"></i></a>
+                                <a href="https://x.com/beskardeskadirr" class="social-icon bg-twitter" target="_blank"><i class="bi bi-twitter-x"></i></a>
+                                <a href="#" class="social-icon bg-instagram"><i class="bi bi-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Row -->
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <!-- Professional Summary (Storytelling) -->
+            <div class="card border-0 shadow-sm mb-5 about-card">
+                <div class="card-body p-4 p-md-5">
+                    <h3 class="card-title fw-bold mb-4 d-flex align-items-center about-card-title">
+                        <span class="icon-circle bg-primary-light me-3"><i class="bi bi-book-half text-primary"></i></span>
+                        <span>@Localization["About_ProfessionalSummaryTitle"]</span>
+                    </h3>
+                    <div class="about-card-content">
+                        <div class="story-content lead" style="font-size: 1.1rem; line-height: 1.8;">
+                            <p class="mb-4">
+                                @Localization["About_ProfessionalSummaryText1"]
+                            </p>
+                            <p class="mb-4">
+                                @Localization["About_ProfessionalSummaryText2"]
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills Section (Moved from Sidebar) -->
+            <div class="card border-0 shadow-sm mb-5 about-card">
+                <div class="card-body p-4 p-md-5">
+                    <h3 class="card-title fw-bold mb-4 d-flex align-items-center about-card-title">
+                        <span class="icon-circle bg-primary-light me-3"><i class="bi bi-code-slash text-primary"></i></span>
+                        <span>@Localization["About_TechnicalSkillsTitle"]</span>
+                    </h3>
+                    
+                    <div class="d-flex flex-wrap gap-2 justify-content-center skills-badges p-3">
+                        <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill skill-badge fs-6">
+                            <i class="fab fa-microsoft me-2"></i>@Localization["Skill_DotNetCSharp"]
+                        </span>
+                        <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill skill-badge fs-6">
+                            <i class="fas fa-database me-2"></i>@Localization["Skill_SQLServer"]
+                        </span>
+                        <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill skill-badge fs-6">
+                            <i class="fab fa-python me-2"></i>@Localization["Skill_Python"]
+                        </span>
+                        <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill skill-badge fs-6">
+                            <i class="fas fa-layer-group me-2"></i>@Localization["Skill_BlazorWASM"]
+                        </span>
+                        <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill skill-badge fs-6">
+                            <i class="fas fa-mobile-alt me-2"></i>@Localization["Skill_Xamarin"]
+                        </span>
+                        <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill skill-badge fs-6">
+                            <i class="fas fa-code-branch me-2"></i>@Localization["Skill_GitGitHub"]
+                        </span>
+                        <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 py-2 px-3 rounded-pill skill-badge fs-6">
+                            <i class="fas fa-cubes me-2"></i>@Localization["Skill_DesignPatterns"]
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Experience Section (Center Timeline) -->
+            <div class="card border-0 shadow-sm mb-5 about-card">
+                <div class="card-body p-4 p-md-5">
+                    <h3 class="card-title fw-bold mb-5 d-flex align-items-center about-card-title justify-content-center">
+                        <span class="icon-circle bg-primary-light me-3"><i class="bi bi-briefcase-fill text-primary"></i></span>
+                        <span>@Localization["About_ExperienceTitle"]</span>
+                    </h3>
+
+                    <div class="timeline-center">
+                        <!-- Experience Item 1 -->
+                        <div class="timeline-row">
+                            <div class="timeline-time">
+                                @Localization["About_Experience_1_Date"]
+                            </div>
+                            <div class="timeline-content">
+                                <i class="icon-attachment bi bi-briefcase"></i>
+                                <h4>@Localization["About_Experience_1_Title"]</h4>
+                                <h6 class="text-primary">@Localization["About_Experience_1_Company"]</h6>
+                                <p>
+                                    @Localization["About_Experience_1_Desc1"]
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Experience Item 2 -->
+                        <div class="timeline-row">
+                            <div class="timeline-time">
+                                @Localization["About_Experience_2_Date"]
+                            </div>
+                            <div class="timeline-content">
+                                <i class="icon-attachment bi bi-briefcase"></i>
+                                <h4>@Localization["About_Experience_2_Title"]</h4>
+                                <h6 class="text-primary">@Localization["About_Experience_2_Company"]</h6>
+                                <p>
+                                    @Localization["About_Experience_2_Desc1"]
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- Experience Item 3 -->
+                        <div class="timeline-row">
+                            <div class="timeline-time">
+                                @Localization["About_Experience_3_Date"]
+                            </div>
+                            <div class="timeline-content">
+                                <i class="icon-attachment bi bi-briefcase"></i>
+                                <h4>@Localization["About_Experience_3_Title"]</h4>
+                                <h6 class="text-primary">@Localization["About_Experience_3_Company"]</h6>
+                                <p>
+                                    @Localization["About_Experience_3_Desc1"]
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- References Section -->
+            <div class="card border-0 shadow-sm mb-5 about-card references-section">
+                <div class="card-body p-4 p-md-5">
+                    <h3 class="card-title fw-bold mb-4 d-flex align-items-center about-card-title references-title">
+                        <span class="icon-circle bg-primary-light me-3"><i class="bi bi-people-fill text-primary"></i></span>
+                        <span>@Localization["About_ReferencesTitle"]</span>
+                    </h3>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="p-3 border rounded-3 bg-light h-100">
+                                <h5 class="fw-bold text-primary reference-name">@Localization["About_Reference_1_Name"]</h5>
+                                <p class="text-muted mb-2 reference-position">@Localization["About_Reference_1_Title"]</p>
+                                <div class="d-flex align-items-center text-muted small reference-contact">
+                                    <i class="bi bi-info-circle me-2"></i>
+                                    <span>@Localization["About_Reference_1_Contact"]</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Education Section -->
+            <div class="card border-0 shadow-sm mb-5 about-card">
+                <div class="card-body p-4 p-md-5">
+                    <h3 class="card-title fw-bold mb-5 d-flex align-items-center about-card-title justify-content-center">
+                        <span class="icon-circle bg-primary-light me-3"><i class="bi bi-mortarboard-fill text-primary"></i></span>
+                        <span>@Localization["About_EducationTitle"]</span>
+                    </h3>
+
+                    <div class="timeline-center">
+                        <div class="timeline-row">
+                            <div class="timeline-time">
+                                @Localization["About_Education_1_Date"]
+                            </div>
+                            <div class="timeline-content">
+                                <i class="icon-attachment bi bi-mortarboard"></i>
+                                <h4>@Localization["About_Education_1_Title"]</h4>
+                                <h6 class="text-primary">@Localization["About_Education_1_School"]</h6>
+                                <p>@Localization["About_Education_1_Detail"]</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-row">
+                            <div class="timeline-time">
+                                @Localization["About_Education_2_Date"]
+                            </div>
+                            <div class="timeline-content">
+                                <i class="icon-attachment bi bi-mortarboard"></i>
+                                <h4>@Localization["About_Education_2_School"]</h4>
+                                <h6 class="text-primary">@Localization["About_Education_2_Title"]</h6>
+                                <p>@Localization["About_Education_2_GPA"]</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Hobbies / Personal Touch (New Section) -->
+            <div class="card border-0 shadow-sm mb-4 about-card">
+                <div class="card-body p-4 p-md-5 text-center">
+                    <h3 class="card-title fw-bold mb-4 d-flex align-items-center justify-content-center about-card-title">
+                        <span class="icon-circle bg-primary-light me-3"><i class="bi bi-heart-fill text-primary"></i></span>
+                        <span>@Localization["About_OutsideOfWork"]</span>
+                    </h3>
+                    <div class="row justify-content-center g-4">
+                         <div class="col-6 col-md-3">
+                            <div class="p-3">
+                                <i class="bi bi-cup-hot fs-1 text-secondary mb-3"></i>
+                                <h5 class="fw-bold">@Localization["About_Hobby_Coffee"]</h5>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="p-3">
+                                <i class="bi bi-controller fs-1 text-secondary mb-3"></i>
+                                <h5 class="fw-bold">@Localization["About_Hobby_Gaming"]</h5>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="p-3">
+                                <i class="bi bi-music-note-beamed fs-1 text-secondary mb-3"></i>
+                                <h5 class="fw-bold">@Localization["About_Hobby_Music"]</h5>
+                            </div>
+                        </div>
+                         <div class="col-6 col-md-3">
+                            <div class="p-3">
+                                <i class="bi bi-book fs-1 text-secondary mb-3"></i>
+                                <h5 class="fw-bold">@Localization["About_Hobby_Reading"]</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Technologies Section -->
+<section class="bg-light py-5 tech-section">
+    <div class="container py-4">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold mb-3 tech-section-title">@Localization["About_TechnologiesTitle"]</h2>
+            <p class="text-muted mx-auto tech-section-description" style="max-width: 600px;">
+                @Localization["About_TechnologiesDescription"]
+            </p>
+        </div>
+        <div class="row g-4 tech-cards-row">
+            <div class="col-6 col-md-3">
+                <div class="tech-card p-4 text-center rounded-3">
+                    <i class="fab fa-microsoft fa-3x text-primary mb-3 tech-card-icon"></i>
+                    <h5 class="fw-bold mb-0 tech-card-title">@Localization["Tech_DotNetEcosystem"]</h5>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="tech-card p-4 text-center rounded-3">
+                    <i class="fab fa-python fa-3x text-primary mb-3 tech-card-icon"></i>
+                    <h5 class="fw-bold mb-0 tech-card-title">@Localization["Skill_Python"]</h5>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="tech-card p-4 text-center rounded-3">
+                    <i class="fas fa-database fa-3x text-primary mb-3 tech-card-icon"></i>
+                    <h5 class="fw-bold mb-0 tech-card-title">@Localization["Tech_Databases"]</h5>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="tech-card p-4 text-center rounded-3">
+                    <i class="fas fa-cloud fa-3x text-primary mb-3 tech-card-icon"></i>
+                    <h5 class="fw-bold mb-0 tech-card-title">@Localization["Tech_Cloud"]</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    @@keyframes float {
+        0% {
+            transform: translateY(0px);
+        }
+
+        50% {
+            transform: translateY(-15px);
+        }
+
+        100% {
+            transform: translateY(0px);
+        }
+    }
+
+    @@keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {
+            transform: translateY(0) translateX(-50%);
+        }
+
+        40% {
+            transform: translateY(-20px) translateX(-50%);
+        }
+
+        60% {
+            transform: translateY(-10px) translateX(-50%);
+        }
+    }
+
+    /* Özel Stiller */
+    .about-hero {
+        background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        margin-bottom: 3rem;
+        position: relative;
+    }
+
+    .profile-image-container {
+        width: 180px;
+        height: 180px;
+        margin: 0 auto;
+    }
+
+        .profile-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+    .hero-image-container {
+        position: relative;
+    }
+
+        .hero-image-container img {
+            width: 100%;
+            max-width: 350px;
+            height: auto;
+        }
+
+    .tech-badge {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        color: white;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        animation: float 6s ease-in-out infinite;
+    }
+
+    .dotnet-badge {
+        background: linear-gradient(135deg, #512bd4 0%, #0078d4 100%);
+        top: -20px;
+        left: -20px;
+        animation-delay: 0s;
+    }
+
+    .python-badge {
+        background: linear-gradient(135deg, #3776ab 0%, #ffd43b 100%);
+        top: 50%;
+        right: -20px;
+        transform: translateY(-50%);
+        animation-delay: 2s;
+    }
+
+    .social-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        color: white;
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+    }
+
+    .bg-github {
+        background-color: #333;
+    }
+
+    .bg-linkedin {
+        background-color: #0a66c2;
+    }
+
+    .bg-twitter {
+        background-color: #000;
+    }
+
+    .bg-instagram {
+        background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+    }
+
+    .social-icon:hover {
+        transform: translateY(-3px) scale(1.1);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .skills-section, .references-section, .certificates-section {
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .bg-primary-light {
+        background-color: rgba(59, 130, 246, 0.1);
+    }
+
+    .icon-circle {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.25rem;
+        flex-shrink: 0;
+    }
+
+    /* Timeline Center (New) */
+    .timeline-center {
+        position: relative;
+        padding: 0;
+    }
+
+    .timeline-center::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 2px;
+        background: linear-gradient(180deg, #6366f1 0%, rgba(99, 102, 241, 0.2) 100%);
+        transform: translateX(-50%);
+    }
+
+    .timeline-row {
+        position: relative;
+        margin-bottom: 3rem;
+    }
+
+    .timeline-row:last-child {
+        margin-bottom: 0;
+    }
+
+    .timeline-time {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        transform: translateX(-50%);
+        background: #0d1424;
+        color: #a5b4fc;
+        padding: 5px 15px;
+        border-radius: 20px;
+        border: 1px solid rgba(99, 102, 241, 0.3);
+        font-size: 0.85rem;
+        font-weight: 600;
+        z-index: 2;
+    }
+
+    .timeline-content {
+        position: relative;
+        width: 45%;
+        padding: 1.5rem;
+        background: rgba(30, 41, 59, 0.4);
+        border: 1px solid rgba(99, 102, 241, 0.2);
+        border-radius: 15px;
+        margin-left: auto; /* Default to right */
+    }
+
+    /* Left side content for even children */
+    .timeline-row:nth-child(even) .timeline-content {
+        margin-left: 0;
+        margin-right: auto;
+    }
+
+    .icon-attachment {
+        position: absolute;
+        top: 20px;
+        font-size: 1.5rem;
+        color: #6366f1;
+        background: #0d1424;
+        border-radius: 50%;
+        padding: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+    
+    .timeline-row:nth-child(odd) .icon-attachment {
+        left: -40px; /* Adjust based on positioning */
+        display: none; /* Simplify for now, time dot is enough */
+    }
+
+    /* Mobile Responsive Timeline */
+    @@media (max-width: 768px) {
+        .timeline-center::before {
+            left: 20px;
+        }
+
+        .timeline-time {
+            position: relative;
+            left: 0;
+            transform: none;
+            display: inline-block;
+            margin-bottom: 10px;
+            margin-left: 50px;
+        }
+
+        .timeline-content {
+            width: calc(100% - 50px);
+            margin-left: 50px !important;
+        }
+    }
+
+    /* Tech Cards */
+    .tech-card {
+        transition: all 0.3s ease;
+        background-color: white;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+        .tech-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+        }
+
+    /* Hero Scroll Indicator */
+    .hero-scroll-indicator {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        animation: bounce 2s infinite;
+    }
+
+    .certificate-item {
+        transition: all 0.3s ease;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+        .certificate-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-color: rgba(59, 130, 246, 0.2);
+        }
+
+        .certificate-item a {
+            color: #1a365d;
+            transition: color 0.2s ease;
+        }
+
+            .certificate-item a:hover {
+                color: #3b82f6;
+                text-decoration: underline !important;
+            }
+    
+    /* Mobile Responsive Styles */
+    @@media (max-width: 768px) {
+        /* About Hero Mobile */
+        .about-hero {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 2rem 0 !important;
+        }
+        
+        .about-hero .container {
+            padding: 1rem !important;
+        }
+        
+        .about-hero .row {
+            padding: 1rem 0 !important;
+        }
+        
+        .about-hero-title {
+            font-size: 1.75rem !important;
+            margin-bottom: 1rem !important;
+        }
+        
+        .about-hero-subtitle {
+            font-size: 1rem !important;
+            margin-bottom: 0.75rem !important;
+        }
+        
+        .about-hero-description {
+            font-size: 0.9rem !important;
+            margin-bottom: 1.5rem !important;
+        }
+        
+        .about-hero-buttons {
+            flex-direction: column;
+            gap: 0.75rem !important;
+            justify-content: center;
+        }
+        
+        .about-hero-btn {
+            width: 100%;
+            justify-content: center;
+            padding: 0.875rem 1.5rem !important;
+            font-size: 1rem !important;
+        }
+        
+        .hero-badge-mobile {
+            font-size: 0.8rem;
+            padding: 0.5rem 1rem !important;
+        }
+        
+        .hero-scroll-indicator {
+            display: none;
+        }
+        
+        /* Profile Card Mobile */
+        .about-profile-card {
+            position: relative !important;
+            top: auto !important;
+            margin-bottom: 1.5rem;
+        }
+        
+        .about-profile-card .card-body {
+            padding: 1.25rem !important;
+        }
+        
+        .profile-image-container {
+            width: 140px;
+            height: 140px;
+        }
+        
+        .profile-name {
+            font-size: 1.25rem !important;
+        }
+        
+        .profile-job-title {
+            font-size: 0.9rem !important;
+        }
+        
+        .profile-social-links {
+            gap: 0.75rem !important;
+        }
+        
+        .social-icon {
+            width: 44px;
+            height: 44px;
+            font-size: 1.1rem;
+        }
+        
+        .contact-text {
+            font-size: 0.9rem;
+        }
+        
+        .email-text {
+            font-size: 0.8rem;
+            word-break: break-all;
+        }
+        
+        .skills-section-title,
+        .references-title,
+        .certificates-title {
+            font-size: 1rem !important;
+        }
+        
+        .skill-badge {
+            font-size: 0.75rem !important;
+            padding: 0.4rem 0.6rem !important;
+        }
+        
+        .reference-name {
+            font-size: 0.95rem !important;
+        }
+        
+        .reference-position {
+            font-size: 0.8rem !important;
+        }
+        
+        .reference-contact {
+            font-size: 0.75rem !important;
+            word-break: break-word;
+        }
+        
+        .certificate-item {
+            padding: 0.75rem !important;
+        }
+        
+        .certificate-name {
+            font-size: 0.85rem !important;
+        }
+        
+        .certificate-name a {
+            display: block;
+        }
+        
+        .certificate-issuer {
+            font-size: 0.75rem !important;
+        }
+        
+        .certificate-year {
+            font-size: 0.7rem !important;
+        }
+        
+        /* About Cards Mobile */
+        .about-main-content {
+            padding: 1.5rem 0 !important;
+        }
+        
+        .about-card .card-body {
+            padding: 1.25rem !important;
+        }
+        
+        .about-card-title {
+            font-size: 1.1rem !important;
+            flex-wrap: wrap;
+        }
+        
+        .icon-circle {
+            width: 40px;
+            height: 40px;
+            font-size: 1rem;
+        }
+        
+        .about-card-content {
+            padding-left: 0 !important;
+        }
+        
+        .summary-text {
+            font-size: 0.9rem !important;
+        }
+        
+        .skill-detail-item {
+            margin-bottom: 1rem;
+        }
+        
+        .skill-detail-title {
+            font-size: 0.9rem !important;
+        }
+        
+        .skill-detail-text {
+            font-size: 0.8rem !important;
+        }
+        
+        /* Timeline Mobile */
+        .timeline {
+            padding-left: 0 !important;
+        }
+        
+        .timeline-item {
+            flex-direction: column;
+            gap: 0.75rem !important;
+        }
+        
+        .timeline-period {
+            width: auto;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        .timeline-content {
+            border-left: none;
+            padding-left: 0;
+            padding: 1rem !important;
+            background: rgba(59, 130, 246, 0.05);
+            border-radius: 12px;
+        }
+        
+        .timeline-content:before {
+            display: none;
+        }
+        
+        .timeline-content:hover {
+            transform: none;
+        }
+        
+        .timeline-job-title {
+            font-size: 1rem !important;
+        }
+        
+        .timeline-company {
+            font-size: 0.9rem !important;
+        }
+        
+        .timeline-description {
+            font-size: 0.85rem !important;
+            padding-left: 1.25rem !important;
+        }
+        
+        .timeline-description li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .education-details {
+            flex-direction: column;
+            gap: 0.5rem !important;
+            font-size: 0.85rem;
+        }
+        
+        /* Tech Section Mobile */
+        .tech-section {
+            padding: 2.5rem 0 !important;
+        }
+        
+        .tech-section-title {
+            font-size: 1.5rem !important;
+        }
+        
+        .tech-section-description {
+            font-size: 0.9rem !important;
+        }
+        
+        .tech-card {
+            padding: 1.25rem !important;
+        }
+        
+        .tech-card-icon {
+            font-size: 2rem !important;
+        }
+        
+        .tech-card-title {
+            font-size: 0.9rem !important;
+        }
+    }
+
+    /* Extra Small Mobile */
+    @@media (max-width: 480px) {
+        .about-hero-title {
+            font-size: 1.5rem !important;
+        }
+        
+        .profile-image-container {
+            width: 120px;
+            height: 120px;
+        }
+        
+        .profile-name {
+            font-size: 1.1rem !important;
+        }
+        
+        .about-card .card-body {
+            padding: 1rem !important;
+        }
+        
+        .about-card-title {
+            font-size: 1rem !important;
+        }
+        
+        .icon-circle {
+            width: 36px;
+            height: 36px;
+            font-size: 0.9rem;
+        }
+        
+        .skill-badge {
+            font-size: 0.7rem !important;
+            padding: 0.35rem 0.5rem !important;
+        }
+        
+        .timeline-job-title {
+            font-size: 0.95rem !important;
+        }
+        
+        .timeline-company {
+            font-size: 0.85rem !important;
+        }
+        
+        .timeline-description {
+            font-size: 0.8rem !important;
+        }
+        
+        .tech-card {
+            padding: 1rem !important;
+        }
+        
+        .tech-card-icon {
+            font-size: 1.75rem !important;
+            margin-bottom: 0.5rem !important;
+        }
+        
+        .tech-card-title {
+            font-size: 0.8rem !important;
+        }
+    }
+
+    /* Touch Device Specific */
+    @@media (hover: none) and (pointer: coarse) {
+        .social-icon:hover {
+            transform: none;
+        }
+        
+        .social-icon:active {
+            transform: scale(0.95);
+        }
+        
+        .tech-card:hover {
+            transform: none;
+        }
+        
+        .tech-card:active {
+            transform: scale(0.98);
+        }
+        
+        .timeline-content:hover {
+            transform: none;
+        }
+        
+        .certificate-item:hover {
+            transform: none;
+        }
+    }
+</style>
+
+<!-- Particles.js -->
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        particlesJS('particles-js', {
+            "particles": {
+                "number": {
+                    "value": 80,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#ffffff"
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    },
+                    "polygon": {
+                        "nb_sides": 5
+                    }
+                },
+                "opacity": {
+                    "value": 0.3,
+                    "random": false,
+                    "anim": {
+                        "enable": false,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 3,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 40,
+                        "size_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#ffffff",
+                    "opacity": 0.2,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 2,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": {
+                        "enable": false,
+                        "rotateX": 600,
+                        "rotateY": 1200
+                    }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "grab"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 140,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "bubble": {
+                        "distance": 400,
+                        "size": 40,
+                        "duration": 2,
+                        "opacity": 8,
+                        "speed": 3
+                    },
+                    "repulse": {
+                        "distance": 200,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+    });
+</script>

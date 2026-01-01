@@ -1,0 +1,20 @@
+{
+  "name": "Kadir Beşkardeş - Full Stack Developer Portföyü",
+  "short_name": "Kadir Portföy",
+  "description": "Full Stack Developer olarak geliştirdiğim projeler ve yeteneklerim",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1a1a2e",
+  "theme_color": "#4361ee",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["portfolio", "developer", "programming"],
+  "lang": "tr",
+  "dir": "ltr"
+}

@@ -1,0 +1,610 @@
+﻿@inherits LayoutComponentBase
+@using Personal.Services
+@inject LocalizationService L
+
+<div class="d-flex flex-column min-vh-100">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-primary border-3" style="box-shadow: 0 2px 15px rgba(0, 123, 255, 0.2);">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="/" style="transition: all 0.3s ease;">
+                    <i class="bi bi-code-slash fs-3 text-primary me-2" style="text-shadow: 0 0 8px rgba(13, 110, 253, 0.6);"></i>
+                    <span class="fw-bold fs-4 gradient-text brand-text">@L["Nav_Portfolio"]</span>
+                </a>
+                <button class="navbar-toggler mobile-menu-btn" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto mobile-nav-menu">
+                        <li class="nav-item mx-1">
+                            <NavLink class="nav-link d-flex align-items-center py-3 px-3 rounded hover-effect mobile-nav-link" href="" Match="NavLinkMatch.All" active-class="active">
+                                <i class="bi bi-house-door me-2"></i> @L["Nav_Home"]
+                            </NavLink>
+                        </li>
+                        <li class="nav-item mx-1">
+                            <NavLink class="nav-link d-flex align-items-center py-3 px-3 rounded hover-effect mobile-nav-link" href="about" active-class="active">
+                                <i class="bi bi-person me-2"></i> @L["Nav_About"]
+                            </NavLink>
+                        </li>
+                        <li class="nav-item mx-1">
+                            <NavLink class="nav-link d-flex align-items-center py-3 px-3 rounded hover-effect mobile-nav-link" href="projects" active-class="active">
+                                <i class="bi bi-briefcase me-2"></i> @L["Nav_Projects"]
+                            </NavLink>
+                        </li>
+                        <li class="nav-item mx-1">
+                            <NavLink class="nav-link d-flex align-items-center py-3 px-3 rounded hover-effect mobile-nav-link" href="contact" active-class="active">
+                                <i class="bi bi-envelope me-2"></i> @L["Nav_Contact"]
+                            </NavLink>
+                        </li>
+                        <li class="nav-item mx-1 d-flex align-items-center mobile-culture-switcher">
+                            <CultureSwitcher />
+                        </li>
+                        <li class="nav-item ms-2 d-flex align-items-center mobile-cv-btn">
+                            <a class="btn btn-primary d-flex align-items-center py-2 px-3 rounded-pill glow-on-hover" href="files/CV Kadir Beskardes.pdf" download>
+                                <i class="bi bi-download me-2"></i> @L["Nav_DownloadCV"]
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Breadcrumb Navigation -->
+    <nav aria-label="breadcrumb" class="bg-light border-bottom" style="display: none;" id="breadcrumb-nav">
+        <div class="container">
+            <ol class="breadcrumb mb-0 py-2" itemscope itemtype="https://schema.org/BreadcrumbList">
+                <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a href="/" itemprop="item"><span itemprop="name">@L["Nav_Home"]</span></a>
+                    <meta itemprop="position" content="1" />
+                </li>
+            </ol>
+        </div>
+    </nav>
+
+    <main class="flex-grow-1">
+        @Body
+    </main>
+
+    <footer class="footer-modern py-5 mt-auto">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6 col-12 footer-brand-col">
+                    <div class="footer-brand mb-4">
+                        <i class="bi bi-code-slash fs-2 text-primary me-2"></i>
+                        <span class="fw-bold fs-4 gradient-text">@L["Nav_Portfolio"]</span>
+                    </div>
+                    <p class="text-light opacity-75 mb-4 footer-about-text">@L["Footer_AboutText"]</p>
+                    <div class="social-links d-flex gap-3 footer-social">
+                        <a href="https://github.com/kadirbeskardes" class="social-icon-footer" target="_blank" aria-label="GitHub">
+                            <i class="bi bi-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/kadirbeskardes/" class="social-icon-footer" target="_blank" aria-label="LinkedIn">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+                        <a href="https://x.com/beskardeskadirr" class="social-icon-footer" target="_blank" aria-label="Twitter">
+                            <i class="bi bi-twitter-x"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 col-6 footer-links-col">
+                    <h5 class="footer-title mb-4">@L["Footer_Links"]</h5>
+                    <ul class="footer-links list-unstyled">
+                        <li><a href="/"><i class="bi bi-chevron-right me-2"></i>@L["Nav_Home"]</a></li>
+                        <li><a href="about"><i class="bi bi-chevron-right me-2"></i>@L["Nav_About"]</a></li>
+                        <li><a href="projects"><i class="bi bi-chevron-right me-2"></i>@L["Nav_Projects"]</a></li>
+                        <li><a href="contact"><i class="bi bi-chevron-right me-2"></i>@L["Nav_Contact"]</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 col-6 footer-contact-col">
+                    <h5 class="footer-title mb-4">@L["Contact_ContactInfo"]</h5>
+                    <ul class="footer-contact list-unstyled">
+                        <li class="d-flex align-items-start mb-3">
+                            <i class="bi bi-geo-alt-fill text-primary me-2 mt-1 flex-shrink-0"></i>
+                            <span class="text-light opacity-75 footer-contact-text">@L["Contact_Location"]</span>
+                        </li>
+                        <li class="d-flex align-items-start mb-3">
+                            <i class="bi bi-envelope-fill text-primary me-2 mt-1 flex-shrink-0"></i>
+                            <a href="mailto:kadir.beskardes11@gmail.com" class="text-light opacity-75 text-decoration-none footer-email">kadir.beskardes11@gmail.com</a>
+                        </li>
+                        <li class="d-flex align-items-start">
+                            <i class="bi bi-phone-fill text-primary me-2 mt-1 flex-shrink-0"></i>
+                            <a href="tel:+905072756747" class="text-light opacity-75 text-decoration-none">+90 507 275 67 47</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 col-12 footer-cv-col">
+                    <h5 class="footer-title mb-4">@L["Nav_DownloadCV"]</h5>
+                    <p class="text-light opacity-75 mb-3 footer-cv-text">@L["Footer_CVDescription"]</p>
+                    <a href="files/CV Kadir Beskardes.pdf" download class="btn btn-primary rounded-pill px-4 footer-cv-btn">
+                        <i class="bi bi-download me-2"></i>@L["Nav_DownloadCV"]
+                    </a>
+                </div>
+            </div>
+            <hr class="my-4 border-secondary opacity-25">
+            <div class="row align-items-center footer-bottom">
+                <div class="col-md-6 text-center text-md-start mb-2 mb-md-0">
+                    <p class="mb-0 text-light opacity-50 small">@L["Footer_Copyright"]</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0 text-light opacity-50 small">
+                        <i class="bi bi-heart-fill text-danger mx-1"></i> @L["Footer_BuiltWith"]
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<style>
+    /* Navbar Styles */
+    .navbar {
+        z-index: 1050 !important;
+        position: relative;
+    }
+    
+    .gradient-text {
+        background: linear-gradient(135deg, #6366f1, #06b6d4);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .hover-effect {
+        transition: all 0.3s ease;
+        position: relative;
+    }
+
+        .hover-effect:hover {
+            background-color: rgba(99, 102, 241, 0.15) !important;
+            transform: translateY(-2px);
+        }
+
+        .hover-effect::after {
+            content: '';
+            position: absolute;
+            bottom: 8px;
+            left: 15%;
+            width: 70%;
+            height: 2px;
+            background: linear-gradient(90deg, #6366f1, #06b6d4);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .hover-effect:hover::after {
+            transform: scaleX(1);
+        }
+
+    .glow-on-hover {
+        transition: all 0.3s ease;
+        box-shadow: 0 0 10px rgba(99, 102, 241, 0);
+        background: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
+        border: none !important;
+    }
+
+        .glow-on-hover:hover {
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.6);
+            transform: translateY(-2px);
+        }
+
+    .active {
+        background-color: rgba(99, 102, 241, 0.2) !important;
+        font-weight: 500;
+    }
+
+        .active::after {
+            transform: scaleX(1) !important;
+        }
+
+    /* Footer Styles */
+    .footer-modern {
+        background: linear-gradient(180deg, rgba(10, 15, 30, 0.95) 0%, rgba(15, 20, 40, 1) 100%);
+        border-top: 1px solid rgba(99, 102, 241, 0.2);
+    }
+
+    .footer-brand {
+        display: flex;
+        align-items: center;
+    }
+
+    .footer-title {
+        color: #fff;
+        font-weight: 600;
+        position: relative;
+        padding-bottom: 10px;
+    }
+
+    .footer-title::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 40px;
+        height: 3px;
+        background: linear-gradient(90deg, #6366f1, #06b6d4);
+        border-radius: 3px;
+    }
+
+    .footer-links li {
+        margin-bottom: 12px;
+    }
+
+    .footer-links a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .footer-links a:hover {
+        color: #06b6d4;
+        transform: translateX(5px);
+    }
+
+    .footer-links a i {
+        font-size: 0.7rem;
+        transition: transform 0.3s ease;
+    }
+
+    .footer-links a:hover i {
+        transform: translateX(3px);
+    }
+
+    .social-icon-footer {
+        width: 42px;
+        height: 42px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(99, 102, 241, 0.1);
+        border: 1px solid rgba(99, 102, 241, 0.3);
+        border-radius: 50%;
+        color: #fff;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+    }
+
+    .social-icon-footer:hover {
+        background: linear-gradient(135deg, #6366f1, #06b6d4);
+        border-color: transparent;
+        transform: translateY(-3px);
+        box-shadow: 0 5px 20px rgba(99, 102, 241, 0.4);
+        color: #fff;
+    }
+
+    .footer-contact a:hover {
+        color: #06b6d4 !important;
+    }
+
+    /* Mobile Navigation Styles */
+    @@media (max-width: 991px) {
+        .navbar {
+            padding: 0.75rem 0;
+        }
+        
+        .navbar .container {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        
+        .navbar-collapse {
+            background: rgba(10, 15, 30, 0.98);
+            backdrop-filter: blur(20px);
+            margin-top: 1rem;
+            border-radius: 16px;
+            padding: 1rem;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            max-height: calc(100vh - 100px);
+            overflow-y: auto;
+        }
+        
+        .mobile-nav-menu {
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+        
+        .mobile-nav-link {
+            padding: 0.875rem 1rem !important;
+            border-radius: 12px !important;
+            margin: 0.125rem 0;
+            font-size: 0.95rem;
+            min-height: 48px;
+            justify-content: flex-start;
+        }
+        
+        .mobile-nav-link:hover,
+        .mobile-nav-link.active {
+            background-color: rgba(99, 102, 241, 0.2) !important;
+        }
+        
+        .mobile-nav-link::after {
+            display: none;
+        }
+        
+        .mobile-menu-btn {
+            width: 44px;
+            height: 44px;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+        }
+        
+        .mobile-culture-switcher {
+            padding: 0.75rem 1rem;
+            justify-content: center;
+            border-top: 1px solid rgba(99, 102, 241, 0.1);
+            margin-top: 0.5rem;
+            padding-top: 1rem;
+        }
+        
+        .mobile-cv-btn {
+            margin: 0.5rem 0 !important;
+            justify-content: center;
+        }
+        
+        .mobile-cv-btn .btn {
+            width: 100%;
+            justify-content: center;
+            padding: 0.75rem 1.5rem !important;
+            font-size: 0.95rem;
+        }
+        
+        .brand-text {
+            font-size: 1.1rem !important;
+        }
+        
+        .navbar-brand i {
+            font-size: 1.25rem !important;
+        }
+    }
+
+    /* Mobile Footer Styles */
+    @@media (max-width: 768px) {
+        .footer-modern {
+            padding: 2.5rem 0 1.5rem !important;
+        }
+        
+        .footer-modern .container {
+            padding-left: 1.25rem;
+            padding-right: 1.25rem;
+        }
+        
+        .footer-modern .row {
+            gap: 0 !important;
+        }
+        
+        .footer-brand-col {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-brand {
+            justify-content: center;
+            margin-bottom: 1rem !important;
+        }
+        
+        .footer-brand i {
+            font-size: 1.5rem !important;
+        }
+        
+        .footer-brand .gradient-text {
+            font-size: 1.25rem !important;
+        }
+        
+        .footer-about-text {
+            text-align: center;
+            font-size: 0.85rem;
+            margin-bottom: 1rem !important;
+            line-height: 1.6;
+        }
+        
+        .footer-social {
+            justify-content: center !important;
+            margin-bottom: 0;
+        }
+        
+        .social-icon-footer {
+            width: 44px;
+            height: 44px;
+            font-size: 1.1rem;
+        }
+        
+        .footer-links-col,
+        .footer-contact-col {
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-title {
+            font-size: 0.95rem;
+            margin-bottom: 0.75rem !important;
+            text-align: left;
+        }
+        
+        .footer-title::after {
+            width: 25px;
+            height: 2px;
+        }
+        
+        .footer-links li {
+            margin-bottom: 8px;
+        }
+        
+        .footer-links a {
+            font-size: 0.85rem;
+            padding: 0.2rem 0;
+        }
+        
+        .footer-links a i {
+            font-size: 0.6rem;
+            margin-right: 0.35rem !important;
+        }
+        
+        .footer-contact li {
+            margin-bottom: 0.625rem !important;
+        }
+        
+        .footer-contact i {
+            font-size: 0.85rem;
+            margin-top: 0.15rem !important;
+        }
+        
+        .footer-contact-text,
+        .footer-email,
+        .footer-contact a {
+            font-size: 0.8rem;
+            word-break: break-word;
+            line-height: 1.4;
+        }
+        
+        .footer-cv-col {
+            text-align: center;
+            padding-top: 0.5rem;
+            border-top: 1px solid rgba(99, 102, 241, 0.1);
+            margin-top: 0.5rem;
+        }
+        
+        .footer-cv-col .footer-title {
+            text-align: center;
+        }
+        
+        .footer-cv-col .footer-title::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .footer-cv-text {
+            font-size: 0.85rem;
+            text-align: center;
+        }
+        
+        .footer-cv-btn {
+            width: 100%;
+            max-width: 250px;
+            justify-content: center;
+            padding: 0.75rem 1.25rem;
+            font-size: 0.9rem;
+        }
+        
+        .footer-modern hr {
+            margin: 1.5rem 0 !important;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+        }
+        
+        .footer-bottom .col-md-6 {
+            margin-bottom: 0.25rem;
+        }
+        
+        .footer-bottom p {
+            font-size: 0.75rem;
+        }
+    }
+
+    /* Extra Small Mobile Footer */
+    @@media (max-width: 480px) {
+        .footer-modern {
+            padding: 2rem 0 1rem !important;
+        }
+        
+        .footer-modern .container {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        
+        .footer-brand i {
+            font-size: 1.25rem !important;
+        }
+        
+        .footer-brand .gradient-text {
+            font-size: 1.1rem !important;
+        }
+        
+        .footer-about-text {
+            font-size: 0.8rem;
+        }
+        
+        .social-icon-footer {
+            width: 40px;
+            height: 40px;
+            font-size: 1rem;
+        }
+        
+        .footer-links-col,
+        .footer-contact-col {
+            padding-left: 0.75rem;
+            padding-right: 0.75rem;
+        }
+        
+        .footer-title {
+            font-size: 0.875rem;
+        }
+        
+        .footer-links a {
+            font-size: 0.8rem;
+        }
+        
+        .footer-contact-text,
+        .footer-email,
+        .footer-contact a {
+            font-size: 0.75rem;
+        }
+        
+        .footer-cv-btn {
+            padding: 0.625rem 1rem;
+            font-size: 0.85rem;
+        }
+        
+        .footer-bottom p {
+            font-size: 0.7rem;
+        }
+    }
+
+    /* Touch Device Optimizations */
+    @@media (hover: none) and (pointer: coarse) {
+        .hover-effect:hover {
+            transform: none;
+            background-color: transparent !important;
+        }
+        
+        .hover-effect:active {
+            background-color: rgba(99, 102, 241, 0.2) !important;
+        }
+        
+        .hover-effect::after {
+            display: none;
+        }
+        
+        .social-icon-footer:hover {
+            transform: none;
+        }
+        
+        .social-icon-footer:active {
+            transform: scale(0.95);
+            background: linear-gradient(135deg, #6366f1, #06b6d4);
+        }
+        
+        .glow-on-hover:hover {
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .glow-on-hover:active {
+            transform: scale(0.98);
+        }
+        
+        .footer-links a:hover {
+            transform: none;
+        }
+        
+        .footer-links a:active {
+            color: #06b6d4;
+        }
+    }
+</style>

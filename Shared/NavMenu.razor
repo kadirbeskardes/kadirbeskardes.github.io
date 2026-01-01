@@ -1,0 +1,55 @@
+﻿@using Personal.Services
+@inject LocalizationService L
+
+<div class="top-row ps-3 navbar navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="">@L["Nav_Portfolio"]</a>
+        <div class="d-flex align-items-center">
+            <CultureSwitcher />
+            <button title="Navigation menu" class="navbar-toggler ms-2" @onclick="ToggleNavMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+    <nav class="flex-column">
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                <span class="oi oi-home" aria-hidden="true"></span> @L["Nav_Home"]
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="about">
+                <span class="oi oi-person" aria-hidden="true"></span> @L["Nav_About"]
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="projects">
+                <span class="oi oi-briefcase" aria-hidden="true"></span> @L["Nav_Projects"]
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="contact">
+                <span class="oi oi-envelope-open" aria-hidden="true"></span> @L["Nav_Contact"]
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <a class="nav-link" href="files/CV Kadir Beskardes.pdf" download>
+                <span class="oi oi-cloud-download" aria-hidden="true"></span> @L["Nav_DownloadCV"]
+            </a>
+        </div>
+    </nav>
+</div>
+
+@code {
+    private bool collapseNavMenu = true;
+
+    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}

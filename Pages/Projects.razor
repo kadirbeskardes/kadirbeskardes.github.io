@@ -1,0 +1,1282 @@
+@page "/projects"
+@using Personal.Models
+@using Personal.Services
+@inject ProjectService ProjectService
+@inject LocalizationService Localization
+
+<PageTitle>@Localization["Meta_ProjectsOgTitle"]</PageTitle>
+<HeadContent>
+    <meta name="description" content="@Localization["Meta_ProjectsDescription"]">
+    <meta property="og:title" content="@Localization["Meta_ProjectsOgTitle"]">
+    <meta property="og:description" content="@Localization["Meta_ProjectsOgDescription"]">
+    <meta property="og:url" content="https://kadirbeskardes.github.io/projects">
+    <meta property="og:type" content="website">
+    <meta name="twitter:title" content="@Localization["Meta_ProjectsTwitterTitle"]">
+    <meta name="twitter:description" content="@Localization["Meta_ProjectsTwitterDescription"]">
+    <link rel="canonical" href="https://kadirbeskardes.github.io/projects">
+</HeadContent>
+
+<div class="projects-page-wrapper">
+    <!-- Animated Hero Section -->
+    <section class="projects-hero-section">
+        <div class="hero-particles">
+            @for (int i = 0; i < 20; i++)
+            {
+                <div class="particle" style="--delay: @(i * 0.5)s; --x: @(Random.Shared.Next(0, 100))%; --duration: @(Random.Shared.Next(15, 30))s;"></div>
+            }
+        </div>
+        <div class="hero-gradient-overlay"></div>
+        <div class="container position-relative" style="z-index: 10;">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 text-center">
+                    <div class="hero-badge-wrapper mb-4">
+                        <span class="hero-badge">
+                            <span class="badge-dot"></span>
+                            <i class="bi bi-code-slash me-2"></i>@Localization["Projects_Badge_Portfolio"]
+                        </span>
+                    </div>
+                    <h1 class="hero-title">
+                        <span class="title-line">@Localization["Projects_Title"]</span>
+                    </h1>
+                    <p class="hero-subtitle">@Localization["Projects_Subtitle"]</p>
+                    <div class="hero-stats mt-5">
+                        <div class="stat-item">
+                            <span class="stat-number">@(projectsList?.Count ?? 0)+</span>
+                            <span class="stat-label">@Localization["Projects_Stat_Projects"]</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-item">
+                            <span class="stat-number">10+</span>
+                            <span class="stat-label">@Localization["Projects_Stat_Technologies"]</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-item">
+                            <span class="stat-number">3+</span>
+                            <span class="stat-label">@Localization["Projects_Stat_Years"]</span>
+                        </div>
+                    </div>
+                    <div class="scroll-indicator mt-5">
+                        <a href="#projects-grid" class="scroll-btn">
+                            <span class="scroll-text">@Localization["Projects_Explore"]</span>
+                            <i class="bi bi-chevron-double-down scroll-icon"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-wave">
+            <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+                <path d="M0,64L48,69.3C96,75,192,85,288,80C384,75,480,53,576,48C672,43,768,53,864,64C960,75,1056,85,1152,80C1248,75,1344,53,1392,42.7L1440,32L1440,120L1392,120C1344,120,1248,120,1152,120C1056,120,960,120,864,120C768,120,672,120,576,120C480,120,384,120,288,120C192,120,96,120,48,120L0,120Z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Projects Grid Section -->
+    <section id="projects-grid" class="projects-grid-section">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="section-header text-center mb-5">
+                <span class="section-tag">
+                    <i class="bi bi-folder2-open me-2"></i>@Localization["Projects_Section_MyWork"]
+                </span>
+                <h2 class="section-title">@Localization["Projects_Section_FeaturedProjects"]</h2>
+                <div class="section-divider">
+                    <span class="divider-line"></span>
+                    <span class="divider-icon"><i class="bi bi-stars"></i></span>
+                    <span class="divider-line"></span>
+                </div>
+            </div>
+
+            <!-- Category Filter (New) -->
+            <div class="d-flex justify-content-center flex-wrap gap-2 mb-5 filter-buttons">
+                <button class="btn btn-filter @(selectedCategory == "All" ? "active" : "")" @onclick="@(() => FilterProjects("All"))">
+                    @Localization["Projects_Filter_All"]
+                </button>
+                @if (categories != null)
+                {
+                    @foreach (var category in categories)
+                    {
+                        <button class="btn btn-filter @(selectedCategory == category ? "active" : "")" @onclick="@(() => FilterProjects(category))">
+                            @category
+                        </button>
+                    }
+                }
+            </div>
+
+            @if (filteredProjects == null)
+            {
+                <div class="loading-state">
+                    <div class="loading-spinner">
+                        <div class="spinner-ring"></div>
+                        <div class="spinner-ring"></div>
+                        <div class="spinner-ring"></div>
+                        <i class="bi bi-code-slash spinner-icon"></i>
+                    </div>
+                    <p class="loading-text">@Localization["Projects_Loading"]</p>
+                </div>
+            }
+            else if (!filteredProjects.Any())
+            {
+                <div class="empty-state">
+                    <div class="empty-icon">
+                        <i class="bi bi-inbox"></i>
+                    </div>
+                    <h3 class="empty-title">@Localization["Projects_NoProjects"]</h3>
+                    <p class="empty-description">@Localization["Projects_NoProjectsDescription"]</p>
+                </div>
+            }
+            else
+            {
+                <div class="projects-masonry">
+                    @{int projectIndex = 0;}
+                    @foreach (var project in filteredProjects)
+                    {
+                        <div class="project-item @(projectIndex % 3 == 0 ? "featured" : "")" style="--animation-order: @projectIndex;" @key="project.Id">
+                            <article class="project-card-modern">
+                                <!-- Image Container -->
+                                <div class="card-image-container">
+                                    <div class="image-wrapper">
+                                        <img src="@project.ImageUrl" alt="@project.Title" loading="lazy" class="project-img">
+                                        <div class="image-overlay"></div>
+                                    </div>
+                                    
+                                    <!-- Floating Actions -->
+                                    <div class="card-actions">
+                                        <a href="@($"project/{project.Id}")" class="action-btn primary" title="@Localization["Global_ViewDetails"]">
+                                            <i class="bi bi-arrow-up-right"></i>
+                                        </a>
+                                        @if (!string.IsNullOrEmpty(project.GitHubUrl))
+                                        {
+                                            <a href="@project.GitHubUrl" target="_blank" class="action-btn secondary" title="@Localization["Global_GitHub"]">
+                                                <i class="bi bi-github"></i>
+                                            </a>
+                                        }
+                                    </div>
+
+                                    <!-- Date Badge -->
+                                    <div class="date-badge">
+                                        <i class="bi bi-calendar3 me-1"></i>
+                                        @project.CreatedDate.ToString("MMM yyyy")
+                                    </div>
+
+                                    <!-- Category Tag -->
+                                    @if (!string.IsNullOrEmpty(project.Category))
+                                    {
+                                        <div class="category-tag">
+                                            <span>@project.Category</span>
+                                        </div>
+                                    }
+                                </div>
+
+                                <!-- Card Content -->
+                                <div class="card-content">
+                                    <h3 class="card-title">
+                                        <a href="@($"project/{project.Id}")">@project.Title</a>
+                                    </h3>
+                                    <p class="card-description">@project.ShortDescription</p>
+                                    
+                                    <!-- Tech Stack -->
+                                    <div class="tech-stack-wrapper">
+                                        <div class="tech-stack-list">
+                                            @foreach (var tech in project.Technologies.Take(4))
+                                            {
+                                                <span class="tech-tag">@tech</span>
+                                            }
+                                            @if (project.Technologies.Length > 4)
+                                            {
+                                                <span class="tech-tag more">+@(project.Technologies.Length - 4)</span>
+                                            }
+                                        </div>
+                                    </div>
+
+                                    <!-- Card Footer -->
+                                    <div class="card-footer-custom">
+                                        <a href="@($"project/{project.Id}")" class="view-project-btn">
+                                            <span>@Localization["Projects_ViewDetails"]</span>
+                                            <i class="bi bi-arrow-right"></i>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- Hover Glow Effect -->
+                                <div class="card-glow"></div>
+                            </article>
+                        </div>
+                        projectIndex++;
+                    }
+                </div>
+            }
+        </div>
+    </section>
+</div>
+
+<style>
+    /* ========================================
+       PROJECTS PAGE - MODERN DESIGN SYSTEM
+       ======================================== */
+
+    .projects-page-wrapper {
+        background: linear-gradient(180deg, #0a0f1e 0%, #0d1424 100%);
+        min-height: 100vh;
+    }
+
+    /* Hero Section */
+    .projects-hero-section {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        background: linear-gradient(135deg, #0a0f1e 0%, #1a1f35 50%, #0f172a 100%);
+    }
+
+    .hero-gradient-overlay {
+        position: absolute;
+        inset: 0;
+        background: 
+            radial-gradient(ellipse 80% 50% at 50% -20%, rgba(99, 102, 241, 0.3) 0%, transparent 50%),
+            radial-gradient(ellipse 60% 40% at 80% 60%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+            radial-gradient(ellipse 60% 40% at 20% 80%, rgba(6, 182, 212, 0.15) 0%, transparent 50%);
+        pointer-events: none;
+    }
+
+    /* Particle Animation */
+    .hero-particles {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        pointer-events: none;
+    }
+
+    .particle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: rgba(99, 102, 241, 0.6);
+        border-radius: 50%;
+        left: var(--x);
+        top: 100%;
+        animation: float-up var(--duration) linear infinite;
+        animation-delay: var(--delay);
+        box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+    }
+
+    @@keyframes float-up {
+        0% {
+            transform: translateY(0) scale(1);
+            opacity: 0;
+        }
+        10% {
+            opacity: 1;
+        }
+        90% {
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(-100vh) scale(0.5);
+            opacity: 0;
+        }
+    }
+
+    /* Hero Badge */
+    .hero-badge-wrapper {
+        perspective: 1000px;
+    }
+
+    .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 24px;
+        background: rgba(99, 102, 241, 0.1);
+        border: 1px solid rgba(99, 102, 241, 0.3);
+        border-radius: 50px;
+        color: #a5b4fc;
+        font-size: 0.9rem;
+        font-weight: 500;
+        backdrop-filter: blur(10px);
+        animation: badge-glow 3s ease-in-out infinite;
+    }
+
+    .badge-dot {
+        width: 8px;
+        height: 8px;
+        background: #22c55e;
+        border-radius: 50%;
+        animation: pulse-dot 2s ease-in-out infinite;
+    }
+
+    @@keyframes pulse-dot {
+        0%, 100% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.2); opacity: 0.7; }
+    }
+
+    @@keyframes badge-glow {
+        0%, 100% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.2); }
+        50% { box-shadow: 0 0 30px rgba(99, 102, 241, 0.4); }
+    }
+
+    /* Hero Title */
+    .hero-title {
+        font-size: clamp(2.5rem, 8vw, 5rem);
+        font-weight: 800;
+        color: #fff;
+        margin-bottom: 1.5rem;
+        line-height: 1.1;
+        letter-spacing: -0.03em;
+    }
+
+    .title-line {
+        display: block;
+        background: linear-gradient(135deg, #fff 0%, #a5b4fc 50%, #818cf8 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: gradient-shift 8s ease-in-out infinite;
+        background-size: 200% 200%;
+    }
+
+    @@keyframes gradient-shift {
+        0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+    }
+
+    .hero-subtitle {
+        font-size: clamp(1rem, 2vw, 1.25rem);
+        color: rgba(255, 255, 255, 0.6);
+        max-width: 600px;
+        margin: 0 auto;
+        line-height: 1.7;
+    }
+
+    /* Hero Stats */
+    .hero-stats {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .stat-item {
+        text-align: center;
+    }
+
+    .stat-number {
+        display: block;
+        font-size: 2.5rem;
+        font-weight: 700;
+        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        line-height: 1;
+    }
+
+    .stat-label {
+        display: block;
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.5);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-top: 0.5rem;
+    }
+
+    .stat-divider {
+        width: 1px;
+        height: 50px;
+        background: linear-gradient(180deg, transparent, rgba(99, 102, 241, 0.5), transparent);
+    }
+
+    /* Scroll Indicator */
+    .scroll-indicator {
+        animation: bounce 2s ease-in-out infinite;
+    }
+
+    .scroll-btn {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        color: rgba(255, 255, 255, 0.6);
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .scroll-btn:hover {
+        color: #a5b4fc;
+    }
+
+    .scroll-text {
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+    }
+
+    .scroll-icon {
+        font-size: 1.5rem;
+    }
+
+    @@keyframes bounce {
+        0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+        40% { transform: translateY(-10px); }
+        60% { transform: translateY(-5px); }
+    }
+
+    /* Hero Wave */
+    .hero-wave {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        overflow: hidden;
+        line-height: 0;
+    }
+
+    .hero-wave svg {
+        width: 100%;
+        height: 120px;
+    }
+
+    .hero-wave path {
+        fill: #0d1424;
+    }
+
+    /* Projects Grid Section */
+    .projects-grid-section {
+        background: #0d1424;
+        padding: 6rem 0;
+        position: relative;
+    }
+
+    /* Section Header */
+    .section-header {
+        margin-bottom: 4rem;
+    }
+
+    .section-tag {
+        display: inline-flex;
+        align-items: center;
+        padding: 8px 20px;
+        background: rgba(99, 102, 241, 0.1);
+        border: 1px solid rgba(99, 102, 241, 0.2);
+        border-radius: 30px;
+        color: #a5b4fc;
+        font-size: 0.85rem;
+        font-weight: 500;
+        margin-bottom: 1.5rem;
+    }
+
+    .section-title {
+        font-size: clamp(2rem, 5vw, 3rem);
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 1.5rem;
+    }
+
+    .section-divider {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .divider-line {
+        width: 60px;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.5), transparent);
+    }
+
+    .divider-icon {
+        color: #6366f1;
+        font-size: 1.25rem;
+    }
+
+    /* Loading State */
+    .loading-state {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 6rem 0;
+    }
+
+    .loading-spinner {
+        position: relative;
+        width: 80px;
+        height: 80px;
+    }
+
+    .spinner-ring {
+        position: absolute;
+        inset: 0;
+        border: 3px solid transparent;
+        border-top-color: #6366f1;
+        border-radius: 50%;
+        animation: spin 1.5s linear infinite;
+    }
+
+    .spinner-ring:nth-child(2) {
+        inset: 8px;
+        border-top-color: #8b5cf6;
+        animation-duration: 2s;
+        animation-direction: reverse;
+    }
+
+    .spinner-ring:nth-child(3) {
+        inset: 16px;
+        border-top-color: #06b6d4;
+        animation-duration: 2.5s;
+    }
+
+    .spinner-icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 1.5rem;
+        color: #6366f1;
+    }
+
+    @@keyframes spin {
+        to { transform: rotate(360deg); }
+    }
+
+    .loading-text {
+        margin-top: 1.5rem;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 1rem;
+    }
+
+    /* Empty State */
+    .empty-state {
+        text-align: center;
+        padding: 6rem 2rem;
+    }
+
+    .empty-icon {
+        font-size: 4rem;
+        color: rgba(99, 102, 241, 0.3);
+        margin-bottom: 1.5rem;
+    }
+
+    .empty-title {
+        font-size: 1.5rem;
+        color: #fff;
+        margin-bottom: 0.5rem;
+    }
+
+    .empty-description {
+        color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* Filter Buttons */
+    .btn-filter {
+        background: rgba(30, 41, 59, 0.4);
+        border: 1px solid rgba(99, 102, 241, 0.2);
+        color: rgba(255, 255, 255, 0.7);
+        border-radius: 50px;
+        padding: 8px 20px;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+    }
+
+    .btn-filter:hover {
+        background: rgba(99, 102, 241, 0.1);
+        color: #fff;
+    }
+
+    .btn-filter.active {
+        background: var(--primary-color);
+        color: #fff;
+        border-color: var(--primary-color);
+        box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+    }
+
+    /* Projects Masonry Grid */
+    .projects-masonry {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 2rem;
+    }
+
+    .project-item {
+        animation: fade-in-up 0.6s ease-out forwards;
+        animation-delay: calc(var(--animation-order) * 0.1s);
+        opacity: 0;
+    }
+
+    @@keyframes fade-in-up {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Modern Project Card */
+    .project-card-modern {
+        position: relative;
+        background: linear-gradient(145deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.9) 100%);
+        border-radius: 20px;
+        overflow: hidden;
+        border: 1px solid rgba(99, 102, 241, 0.1);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .project-card-modern:hover {
+        transform: translateY(-8px);
+        border-color: rgba(99, 102, 241, 0.3);
+        box-shadow: 
+            0 25px 50px -12px rgba(0, 0, 0, 0.5),
+            0 0 0 1px rgba(99, 102, 241, 0.1);
+    }
+
+    /* Card Glow Effect */
+    .card-glow {
+        position: absolute;
+        inset: -1px;
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.4) 0%, transparent 50%, rgba(139, 92, 246, 0.4) 100%);
+        border-radius: 20px;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        z-index: -1;
+        filter: blur(20px);
+    }
+
+    .project-card-modern:hover .card-glow {
+        opacity: 1;
+    }
+
+    /* Card Image Container */
+    .card-image-container {
+        position: relative;
+        height: 220px;
+        overflow: hidden;
+    }
+
+    .image-wrapper {
+        width: 100%;
+        height: 100%;
+    }
+
+    .project-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .project-card-modern:hover .project-img {
+        transform: scale(1.1);
+    }
+
+    .image-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, transparent 0%, rgba(15, 23, 42, 0.9) 100%);
+        opacity: 0.6;
+        transition: opacity 0.3s ease;
+    }
+
+    .project-card-modern:hover .image-overlay {
+        opacity: 0.8;
+    }
+
+    /* Card Actions */
+    .card-actions {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        gap: 1rem;
+        opacity: 0;
+        transition: all 0.4s ease;
+        z-index: 10;
+    }
+
+    .project-card-modern:hover .card-actions {
+        opacity: 1;
+    }
+
+    .action-btn {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.25rem;
+        color: #fff;
+        transition: all 0.3s ease;
+        transform: scale(0.8);
+        text-decoration: none;
+    }
+
+    .project-card-modern:hover .action-btn {
+        transform: scale(1);
+    }
+
+    .action-btn.primary {
+        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
+    }
+
+    .action-btn.secondary {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .action-btn:hover {
+        transform: scale(1.1) !important;
+    }
+
+    /* Date Badge */
+    .date-badge {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        padding: 6px 14px;
+        background: rgba(15, 23, 42, 0.9);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(99, 102, 241, 0.2);
+        border-radius: 30px;
+        color: #a5b4fc;
+        font-size: 0.75rem;
+        font-weight: 500;
+        z-index: 5;
+    }
+
+    /* Category Tag */
+    .category-tag {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        z-index: 5;
+    }
+
+    .category-tag span {
+        padding: 6px 14px;
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.9) 0%, rgba(139, 92, 246, 0.9) 100%);
+        border-radius: 30px;
+        color: #fff;
+        font-size: 0.7rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    /* Card Content */
+    .card-content {
+        padding: 1.5rem;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+    }
+
+    .card-title a {
+        color: #fff;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .card-title a:hover {
+        color: #a5b4fc;
+    }
+
+    .card-description {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.9rem;
+        line-height: 1.6;
+        margin-bottom: 1.25rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    /* Tech Stack */
+    .tech-stack-wrapper {
+        margin-top: auto;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(99, 102, 241, 0.1);
+    }
+
+    .tech-stack-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .tech-tag {
+        padding: 4px 12px;
+        background: rgba(99, 102, 241, 0.1);
+        border: 1px solid rgba(99, 102, 241, 0.2);
+        border-radius: 20px;
+        color: #a5b4fc;
+        font-size: 0.75rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+
+    .tech-tag:hover {
+        background: rgba(99, 102, 241, 0.2);
+        border-color: rgba(99, 102, 241, 0.4);
+    }
+
+    .tech-tag.more {
+        background: rgba(139, 92, 246, 0.1);
+        border-color: rgba(139, 92, 246, 0.2);
+        color: #c4b5fd;
+    }
+
+    /* Card Footer */
+    .card-footer-custom {
+        padding: 1rem 1.5rem;
+        background: rgba(15, 23, 42, 0.5);
+        border-top: 1px solid rgba(99, 102, 241, 0.1);
+    }
+
+    .view-project-btn {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: #a5b4fc;
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+
+    .view-project-btn:hover {
+        color: #fff;
+    }
+
+    .view-project-btn i {
+        transition: transform 0.3s ease;
+    }
+
+    .view-project-btn:hover i {
+        transform: translateX(5px);
+    }
+
+    /* Mobile Responsive */
+    @@media (max-width: 768px) {
+        /* Hero Section Mobile */
+        .projects-hero-section {
+            min-height: 70vh;
+            padding: 4rem 0 3rem;
+        }
+        
+        .hero-badge {
+            font-size: 0.8rem;
+            padding: 8px 16px;
+        }
+        
+        .hero-title {
+            font-size: 1.75rem !important;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-subtitle {
+            font-size: 0.9rem !important;
+            padding: 0 1rem;
+        }
+        
+        .hero-stats {
+            gap: 1rem;
+            margin-top: 2rem !important;
+        }
+
+        .stat-number {
+            font-size: 1.75rem;
+        }
+        
+        .stat-label {
+            font-size: 0.7rem;
+        }
+
+        .stat-divider {
+            height: 35px;
+        }
+        
+        .scroll-indicator {
+            margin-top: 2rem !important;
+        }
+        
+        .scroll-text {
+            font-size: 0.75rem;
+        }
+        
+        .scroll-icon {
+            font-size: 1.25rem;
+        }
+        
+        .hero-wave svg {
+            height: 60px;
+        }
+        
+        /* Projects Grid Mobile */
+        .projects-grid-section {
+            padding: 3rem 0;
+        }
+        
+        .section-header {
+            margin-bottom: 2rem;
+        }
+        
+        .section-tag {
+            font-size: 0.75rem;
+            padding: 6px 14px;
+            margin-bottom: 1rem;
+        }
+        
+        .section-title {
+            font-size: 1.5rem !important;
+            margin-bottom: 1rem;
+        }
+        
+        .divider-line {
+            width: 40px;
+        }
+        
+        .divider-icon {
+            font-size: 1rem;
+        }
+
+        .projects-masonry {
+            grid-template-columns: 1fr;
+            gap: 1.25rem;
+        }
+
+        .card-image-container {
+            height: 180px;
+        }
+        
+        /* Card Actions Always Visible on Mobile */
+        .card-actions {
+            opacity: 1;
+            bottom: 1rem;
+            top: auto;
+            right: 1rem;
+            left: auto;
+            transform: none;
+        }
+        
+        .action-btn {
+            width: 44px;
+            height: 44px;
+            font-size: 1.1rem;
+            transform: scale(1);
+        }
+        
+        .date-badge {
+            font-size: 0.7rem;
+            padding: 4px 10px;
+        }
+        
+        .category-tag span {
+            font-size: 0.65rem;
+            padding: 4px 10px;
+        }
+        
+        /* Card Content Mobile */
+        .card-content {
+            padding: 1.25rem;
+        }
+        
+        .card-title {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .card-description {
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            -webkit-line-clamp: 2;
+        }
+        
+        .tech-stack-wrapper {
+            padding-top: 0.75rem;
+        }
+        
+        .tech-tag {
+            font-size: 0.7rem;
+            padding: 3px 10px;
+        }
+        
+        .card-footer-custom {
+            padding: 0.875rem 1.25rem;
+        }
+        
+        .view-project-btn {
+            font-size: 0.85rem;
+        }
+        
+        /* Project Card Hover Effects for Touch */
+        .project-card-modern:hover {
+            transform: none;
+        }
+        
+        .project-card-modern:active {
+            transform: scale(0.98);
+        }
+        
+        .project-card-modern:hover .card-glow {
+            opacity: 0;
+        }
+        
+        .project-card-modern:hover .project-img {
+            transform: none;
+        }
+    }
+    
+    /* Extra Small Mobile */
+    @@media (max-width: 480px) {
+        .projects-hero-section {
+            min-height: 60vh;
+            padding: 3rem 0 2rem;
+        }
+        
+        .hero-title {
+            font-size: 1.5rem !important;
+        }
+        
+        .hero-subtitle {
+            font-size: 0.85rem !important;
+        }
+        
+        .hero-stats {
+            flex-direction: row;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .stat-number {
+            font-size: 1.5rem;
+        }
+        
+        .stat-divider {
+            height: 30px;
+        }
+        
+        .projects-grid-section {
+            padding: 2rem 0;
+        }
+        
+        .section-title {
+            font-size: 1.25rem !important;
+        }
+        
+        .card-image-container {
+            height: 160px;
+        }
+        
+        .action-btn {
+            width: 40px;
+            height: 40px;
+            font-size: 1rem;
+        }
+        
+        .card-content {
+            padding: 1rem;
+        }
+        
+        .card-title {
+            font-size: 1rem;
+        }
+        
+        .card-description {
+            font-size: 0.8rem;
+        }
+        
+        .tech-tag {
+            font-size: 0.65rem;
+            padding: 2px 8px;
+        }
+        
+        .card-footer-custom {
+            padding: 0.75rem 1rem;
+        }
+        
+        .view-project-btn {
+            font-size: 0.8rem;
+        }
+    }
+
+    /* Touch Device Specific */
+    @@media (hover: none) and (pointer: coarse) {
+        .project-card-modern:hover {
+            transform: none;
+            border-color: rgba(99, 102, 241, 0.1);
+        }
+        
+        .project-card-modern:active {
+            transform: scale(0.99);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+        
+        .card-actions {
+            opacity: 1;
+        }
+        
+        .action-btn {
+            transform: scale(1) !important;
+        }
+        
+        .action-btn:active {
+            transform: scale(0.9) !important;
+        }
+        
+        .view-project-btn:active {
+            color: #fff;
+        }
+        
+        .view-project-btn:active i {
+            transform: translateX(5px);
+        }
+        
+        .tech-tag:hover {
+            background: rgba(99, 102, 241, 0.1);
+            border-color: rgba(99, 102, 241, 0.2);
+        }
+        
+        .tech-tag:active {
+            background: rgba(99, 102, 241, 0.2);
+        }
+    }
+    
+    /* Landscape Mode Mobile */
+    @@media (max-height: 500px) and (orientation: landscape) {
+        .projects-hero-section {
+            min-height: auto;
+            padding: 2rem 0;
+        }
+        
+        .hero-stats {
+            margin-top: 1rem !important;
+        }
+        
+        .scroll-indicator {
+            display: none;
+        }
+    }
+</style>
+
+<!-- Projects SEO and Structured Data -->
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@@type": "Question",
+      "name": "Hangi teknolojilerle projeler geliştiriyorsun?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "C#, .NET Core, ASP.NET, Blazor WebAssembly, Xamarin.Forms, Python, Entity Framework, SQL Server, Firebase ve Azure teknolojileriyle web ve mobil uygulamalar geliştiriyorum."
+      }
+    },
+    {
+      "@@type": "Question", 
+      "name": "Projelerinde hangi tür uygulamalar var?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "Portföyümde görme engelliler için görsel tanıma uygulaması, ilaç takip sistemi, e-ticaret platformu, steganografi uygulaması, chat uygulaması ve yazım denetleyicisi gibi çeşitli projeler bulunmaktadır."
+      }
+    },
+    {
+      "@@type": "Question",
+      "name": "Projeler GitHub'da mevcut mu?",
+      "acceptedAnswer": {
+        "@@type": "Answer", 
+        "text": "Evet, projelerimin kaynak kodları GitHub hesabımda (github.com/kadirbeskardes) açık kaynak olarak paylaşılmaktadır."
+      }
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@@type": "CollectionPage",
+  "name": "Projeler - Kadir Beşkardeş",
+  "description": "Full Stack Developer Kadir Beşkardeş'in geliştirdiği web ve mobil uygulama projeleri",
+  "url": "https://kadirbeskardes.github.io/projects",
+  "mainEntity": {
+    "@@type": "ItemList",
+    "name": "Yazılım Projeleri",
+    "description": "C#, .NET, Python ve diğer teknolojilerle geliştirilmiş projeler",
+    "numberOfItems": 6
+  },
+  "breadcrumb": {
+    "@@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@@type": "ListItem",
+        "position": 1,
+        "name": "Ana Sayfa",
+        "item": "https://kadirbeskardes.github.io/"
+      },
+      {
+        "@@type": "ListItem", 
+        "position": 2,
+        "name": "Projeler",
+        "item": "https://kadirbeskardes.github.io/projects"
+      }
+    ]
+  }
+}
+</script>
+
+@code {
+    private List<Personal.Models.ProjectDetail>? projectsList;
+    private List<Personal.Models.ProjectDetail>? filteredProjects;
+    private List<string>? categories;
+    private string selectedCategory = "All";
+
+    protected override async Task OnInitializedAsync()
+    {
+        projectsList = await ProjectService.GetProjectListingsAsync();
+        if (projectsList != null)
+        {
+            categories = projectsList
+                .Where(p => !string.IsNullOrEmpty(p.Category))
+                .Select(p => p.Category)
+                .Distinct()
+                .OrderBy(c => c)
+                .ToList();
+            
+            FilterProjects("All");
+        }
+    }
+
+    private void FilterProjects(string category)
+    {
+        selectedCategory = category;
+        if (category == "All")
+        {
+            filteredProjects = projectsList;
+        }
+        else
+        {
+            filteredProjects = projectsList?.Where(p => p.Category == category).ToList();
+        }
+    }
+}
