@@ -3,7 +3,7 @@
 @inject CultureService CultureService
 
 <div class="dropdown culture-switcher">
-    <button class="btn btn-outline-light btn-sm dropdown-toggle d-flex align-items-center" type="button" id="cultureDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+    <button class="btn btn-outline-primary btn-sm dropdown-toggle d-flex align-items-center" type="button" id="cultureDropdown" data-bs-toggle="dropdown" aria-expanded="false">
         <i class="bi bi-globe me-1"></i>
         @GetCurrentCultureDisplayName()
     </button>
@@ -24,24 +24,24 @@
 <style>
     .culture-switcher .dropdown-menu {
         z-index: 9999 !important;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        background-color: rgba(33, 37, 41, 0.95);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        background-color: #ffffff;
         backdrop-filter: blur(10px);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     }
     
     .culture-switcher .dropdown-item {
-        color: #fff;
+        color: #0f172a;
         transition: all 0.2s ease;
     }
     
     .culture-switcher .dropdown-item:hover {
-        background-color: rgba(13, 110, 253, 0.8);
-        color: #fff;
+        background-color: rgba(99, 102, 241, 0.1);
+        color: #6366f1;
     }
     
     .culture-switcher .dropdown-item.active {
-        background-color: #0d6efd;
+        background-color: #6366f1;
         color: #fff;
     }
 </style>

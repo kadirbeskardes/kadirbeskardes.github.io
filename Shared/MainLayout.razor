@@ -4,10 +4,10 @@
 
 <div class="d-flex flex-column min-vh-100">
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-primary border-3" style="box-shadow: 0 2px 15px rgba(0, 123, 255, 0.2);">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom border-primary border-3" style="box-shadow: 0 2px 15px rgba(0, 123, 255, 0.1);">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="/" style="transition: all 0.3s ease;">
-                    <i class="bi bi-code-slash fs-3 text-primary me-2" style="text-shadow: 0 0 8px rgba(13, 110, 253, 0.6);"></i>
+                    <i class="bi bi-code-slash fs-3 text-primary me-2" style="text-shadow: 0 0 8px rgba(13, 110, 253, 0.3);"></i>
                     <span class="fw-bold fs-4 gradient-text brand-text">@L["Nav_Portfolio"]</span>
                 </a>
                 <button class="navbar-toggler mobile-menu-btn" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
@@ -73,7 +73,7 @@
                         <i class="bi bi-code-slash fs-2 text-primary me-2"></i>
                         <span class="fw-bold fs-4 gradient-text">@L["Nav_Portfolio"]</span>
                     </div>
-                    <p class="text-light opacity-75 mb-4 footer-about-text">@L["Footer_AboutText"]</p>
+                    <p class="opacity-75 mb-4 footer-about-text">@L["Footer_AboutText"]</p>
                     <div class="social-links d-flex gap-3 footer-social">
                         <a href="https://github.com/kadirbeskardes" class="social-icon-footer" target="_blank" aria-label="GitHub">
                             <i class="bi bi-github"></i>
@@ -100,21 +100,21 @@
                     <ul class="footer-contact list-unstyled">
                         <li class="d-flex align-items-start mb-3">
                             <i class="bi bi-geo-alt-fill text-primary me-2 mt-1 flex-shrink-0"></i>
-                            <span class="text-light opacity-75 footer-contact-text">@L["Contact_Location"]</span>
+                            <span class="opacity-75 footer-contact-text">@L["Contact_Location"]</span>
                         </li>
                         <li class="d-flex align-items-start mb-3">
                             <i class="bi bi-envelope-fill text-primary me-2 mt-1 flex-shrink-0"></i>
-                            <a href="mailto:kadir.beskardes11@gmail.com" class="text-light opacity-75 text-decoration-none footer-email">kadir.beskardes11@gmail.com</a>
+                            <a href="mailto:kadir.beskardes11@gmail.com" class="opacity-75 text-decoration-none footer-email">kadir.beskardes11@gmail.com</a>
                         </li>
                         <li class="d-flex align-items-start">
                             <i class="bi bi-phone-fill text-primary me-2 mt-1 flex-shrink-0"></i>
-                            <a href="tel:+905072756747" class="text-light opacity-75 text-decoration-none">+90 507 275 67 47</a>
+                            <a href="tel:+905072756747" class="opacity-75 text-decoration-none footer-contact-text">+90 507 275 67 47</a>
                         </li>
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-6 col-12 footer-cv-col">
                     <h5 class="footer-title mb-4">@L["Nav_DownloadCV"]</h5>
-                    <p class="text-light opacity-75 mb-3 footer-cv-text">@L["Footer_CVDescription"]</p>
+                    <p class="opacity-75 mb-3 footer-cv-text">@L["Footer_CVDescription"]</p>
                     <a href="files/CV Kadir Beskardes.pdf" download class="btn btn-primary rounded-pill px-4 footer-cv-btn">
                         <i class="bi bi-download me-2"></i>@L["Nav_DownloadCV"]
                     </a>
@@ -123,10 +123,10 @@
             <hr class="my-4 border-secondary opacity-25">
             <div class="row align-items-center footer-bottom">
                 <div class="col-md-6 text-center text-md-start mb-2 mb-md-0">
-                    <p class="mb-0 text-light opacity-50 small">@L["Footer_Copyright"]</p>
+                    <p class="mb-0 opacity-50 small footer-copyright">@L["Footer_Copyright"]</p>
                 </div>
                 <div class="col-md-6 text-center text-md-end">
-                    <p class="mb-0 text-light opacity-50 small">
+                    <p class="mb-0 opacity-50 small footer-built-with">
                         <i class="bi bi-heart-fill text-danger mx-1"></i> @L["Footer_BuiltWith"]
                     </p>
                 </div>
@@ -155,7 +155,7 @@
     }
 
         .hover-effect:hover {
-            background-color: rgba(99, 102, 241, 0.15) !important;
+            background-color: rgba(99, 102, 241, 0.1) !important;
             transform: translateY(-2px);
         }
 
@@ -180,16 +180,18 @@
         box-shadow: 0 0 10px rgba(99, 102, 241, 0);
         background: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
         border: none !important;
+        color: white !important;
     }
 
         .glow-on-hover:hover {
-            box-shadow: 0 0 20px rgba(99, 102, 241, 0.6);
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
             transform: translateY(-2px);
         }
 
     .active {
-        background-color: rgba(99, 102, 241, 0.2) !important;
+        background-color: rgba(99, 102, 241, 0.15) !important;
         font-weight: 500;
+        color: var(--primary-color) !important;
     }
 
         .active::after {
@@ -198,8 +200,8 @@
 
     /* Footer Styles */
     .footer-modern {
-        background: linear-gradient(180deg, rgba(10, 15, 30, 0.95) 0%, rgba(15, 20, 40, 1) 100%);
-        border-top: 1px solid rgba(99, 102, 241, 0.2);
+        background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+        border-top: 1px solid rgba(0, 0, 0, 0.05);
     }
 
     .footer-brand {
@@ -208,7 +210,7 @@
     }
 
     .footer-title {
-        color: #fff;
+        color: var(--light-color);
         font-weight: 600;
         position: relative;
         padding-bottom: 10px;
@@ -230,7 +232,7 @@
     }
 
     .footer-links a {
-        color: rgba(255, 255, 255, 0.7);
+        color: var(--light-secondary);
         text-decoration: none;
         transition: all 0.3s ease;
         display: inline-flex;
@@ -257,24 +259,29 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: rgba(99, 102, 241, 0.1);
-        border: 1px solid rgba(99, 102, 241, 0.3);
+        background: rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(0, 0, 0, 0.1);
         border-radius: 50%;
-        color: #fff;
+        color: var(--primary-color);
         font-size: 1.1rem;
         transition: all 0.3s ease;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     }
 
     .social-icon-footer:hover {
         background: linear-gradient(135deg, #6366f1, #06b6d4);
         border-color: transparent;
         transform: translateY(-3px);
-        box-shadow: 0 5px 20px rgba(99, 102, 241, 0.4);
+        box-shadow: 0 5px 20px rgba(99, 102, 241, 0.3);
         color: #fff;
     }
 
     .footer-contact a:hover {
         color: #06b6d4 !important;
+    }
+    
+    .footer-contact-text, .footer-email {
+        color: var(--light-secondary) !important;
     }
 
     /* Mobile Navigation Styles */
@@ -289,13 +296,13 @@
         }
         
         .navbar-collapse {
-            background: rgba(10, 15, 30, 0.98);
+            background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(20px);
             margin-top: 1rem;
             border-radius: 16px;
             padding: 1rem;
-            border: 1px solid rgba(99, 102, 241, 0.2);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
             max-height: calc(100vh - 100px);
             overflow-y: auto;
         }
@@ -312,11 +319,13 @@
             font-size: 0.95rem;
             min-height: 48px;
             justify-content: flex-start;
+            color: var(--light-color) !important;
         }
         
         .mobile-nav-link:hover,
         .mobile-nav-link.active {
-            background-color: rgba(99, 102, 241, 0.2) !important;
+            background-color: rgba(99, 102, 241, 0.1) !important;
+            color: var(--primary-color) !important;
         }
         
         .mobile-nav-link::after {
@@ -331,13 +340,15 @@
             align-items: center;
             justify-content: center;
             border-radius: 10px;
-            border: 1px solid rgba(99, 102, 241, 0.3);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            background-color: white;
+            color: var(--primary-color);
         }
         
         .mobile-culture-switcher {
             padding: 0.75rem 1rem;
             justify-content: center;
-            border-top: 1px solid rgba(99, 102, 241, 0.1);
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
             margin-top: 0.5rem;
             padding-top: 1rem;
         }
@@ -401,6 +412,7 @@
             font-size: 0.85rem;
             margin-bottom: 1rem !important;
             line-height: 1.6;
+            color: var(--light-secondary) !important;
         }
         
         .footer-social {
@@ -464,7 +476,7 @@
         .footer-cv-col {
             text-align: center;
             padding-top: 0.5rem;
-            border-top: 1px solid rgba(99, 102, 241, 0.1);
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
             margin-top: 0.5rem;
         }
         
@@ -480,6 +492,7 @@
         .footer-cv-text {
             font-size: 0.85rem;
             text-align: center;
+            color: var(--light-secondary) !important;
         }
         
         .footer-cv-btn {
@@ -504,6 +517,7 @@
         
         .footer-bottom p {
             font-size: 0.75rem;
+            color: var(--light-tertiary) !important;
         }
     }
 
@@ -574,7 +588,7 @@
         }
         
         .hover-effect:active {
-            background-color: rgba(99, 102, 241, 0.2) !important;
+            background-color: rgba(99, 102, 241, 0.1) !important;
         }
         
         .hover-effect::after {

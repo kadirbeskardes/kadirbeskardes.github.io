@@ -1,4 +1,4 @@
-/* Enhanced Design System - Koyu Tema */
+/* Enhanced Design System - Light Theme */
 :root {
     /* Primary Color Palette */
     --primary-color: #6366f1;
@@ -8,13 +8,13 @@
     --accent-color: #06b6d4;
     --accent-light: #22d3ee;
     
-    /* Neutral Palette - Daha Koyu */
-    --dark-color: #0a0f1e;
-    --dark-secondary: #1a1f35;
-    --dark-tertiary: #2a2f45;
-    --light-color: #f1f5f9;
-    --light-secondary: #e2e8f0;
-    --light-tertiary: #cbd5e1;
+    /* Neutral Palette - Light Theme */
+    --dark-color: #ffffff;
+    --dark-secondary: #f8fafc;
+    --dark-tertiary: #f1f5f9;
+    --light-color: #0f172a; /* Text color is now dark */
+    --light-secondary: #334155;
+    --light-tertiary: #475569;
     
     /* Semantic Colors */
     --success-color: #10b981;
@@ -22,17 +22,17 @@
     --danger-color: #ef4444;
     --info-color: #3b82f6;
     
-    /* Gradients - Daha Canlı ve Koyu */
-    --gradient-primary: linear-gradient(135deg, #4338ca 0%, #6366f1 50%, #8b5cf6 100%);
-    --gradient-accent: linear-gradient(135deg, #0891b2 0%, #06b6d4 50%, #22d3ee 100%);
-    --gradient-dark: linear-gradient(135deg, #0a0f1e 0%, #1a1f35 50%, #0a0f1e 100%);
+    /* Gradients - Light & Vibrant */
+    --gradient-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    --gradient-accent: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+    --gradient-dark: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
     
     /* Shadows */
     --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-    --shadow-glow: 0 0 20px rgb(99 102 241 / 0.3);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.06);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.05);
+    --shadow-glow: 0 0 20px rgba(99, 102, 241, 0.2);
     
     /* Border Radius */
     --radius-sm: 0.375rem;
@@ -100,27 +100,27 @@ html {
     scroll-behavior: smooth;
 }
 
-/* Selection colors - Daha Belirgin */
+/* Selection colors - Light Theme */
 ::selection {
-    background: rgba(99, 102, 241, 0.5);
-    color: #ffffff;
-    text-shadow: 0 0 8px rgba(99, 102, 241, 0.5);
+    background: rgba(99, 102, 241, 0.3);
+    color: #0f172a;
+    text-shadow: none;
 }
 
 ::-moz-selection {
-    background: rgba(99, 102, 241, 0.5);
-    color: #ffffff;
-    text-shadow: 0 0 8px rgba(99, 102, 241, 0.5);
+    background: rgba(99, 102, 241, 0.3);
+    color: #0f172a;
+    text-shadow: none;
 }
 
-/* Loading Screen Styles - Daha Koyu */
+/* Loading Screen Styles - Light Theme */
 .app-loading {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, #0a0f1e 0%, #1a1f35 50%, #0a0f1e 100%);
+    background: linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #f1f5f9 100%);
     z-index: 9999;
     display: flex;
     justify-content: center;
@@ -136,8 +136,8 @@ html {
 }
 
 .app-loading-text h1 {
-    color: #f1f5f9;
-    text-shadow: 0 0 20px rgba(99, 102, 241, 0.6), 0 0 40px rgba(99, 102, 241, 0.3);
+    color: var(--light-color);
+    text-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
 }
 
 .loading-logo {
@@ -406,17 +406,17 @@ html {
     opacity: 1;
 }
 
-/* Enhanced Card Styles - Daha Koyu */
+/* Enhanced Card Styles - Light Theme */
 .card-enhanced, .glass-card {
-    background: rgba(30, 41, 59, 0.4);
+    background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
     border-radius: var(--radius-xl);
     transition: all var(--transition-base);
     position: relative;
     overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
 .card-enhanced::before, .glass-card::before {
@@ -426,18 +426,18 @@ html {
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+    background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.3), transparent);
 }
 
 .card-enhanced:hover, .glass-card:hover {
-    background: rgba(30, 41, 59, 0.6);
-    border-color: rgba(99, 102, 241, 0.5);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), 0 0 30px rgba(99, 102, 241, 0.2);
+    background: rgba(255, 255, 255, 0.95);
+    border-color: rgba(99, 102, 241, 0.3);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1), 0 0 20px rgba(99, 102, 241, 0.1);
     transform: translateY(-5px);
 }
 
 .bg-primary-light {
-    background-color: rgba(99, 102, 241, 0.1) !important;
+    background-color: rgba(99, 102, 241, 0.05) !important;
 }
 
 /* Enhanced Icon Containers */
@@ -451,7 +451,7 @@ html {
     justify-content: center;
     position: relative;
     overflow: hidden;
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 10px 20px -5px rgba(99, 102, 241, 0.4);
 }
 
 .icon-container-enhanced::before {
@@ -461,7 +461,7 @@ html {
     left: -50%;
     width: 200%;
     height: 200%;
-    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
     transform: rotate(45deg);
     transition: transform var(--transition-slow);
 }
@@ -488,12 +488,12 @@ html {
     background-clip: text;
 }
 
-/* Enhanced Navigation Styles - Daha Koyu */
+/* Enhanced Navigation Styles - Light Theme */
 .navbar {
     backdrop-filter: blur(20px);
-    background: rgba(10, 15, 30, 0.9) !important;
-    border-bottom: 1px solid rgba(99, 102, 241, 0.2);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.9) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
 .navbar-nav .nav-link {
@@ -501,6 +501,7 @@ html {
     transition: all var(--transition-base);
     font-weight: 500;
     letter-spacing: 0.025em;
+    color: var(--light-color) !important;
 }
 
 .navbar-nav .nav-link::before {
@@ -522,23 +523,24 @@ html {
 }
 
 .navbar-nav .nav-link.hover-effect:hover {
-    background-color: rgba(99, 102, 241, 0.2);
-    color: var(--accent-light) !important;
+    background-color: rgba(99, 102, 241, 0.1);
+    color: var(--primary-color) !important;
     transform: translateY(-2px);
     border-radius: var(--radius-md);
-    box-shadow: 0 0 15px rgba(99, 102, 241, 0.3);
+    box-shadow: 0 0 15px rgba(99, 102, 241, 0.1);
 }
 
 .navbar-nav .nav-link.active {
-    background-color: rgba(99, 102, 241, 0.25);
-    color: var(--accent-light) !important;
+    background-color: rgba(99, 102, 241, 0.15);
+    color: var(--primary-color) !important;
     border-radius: var(--radius-md);
-    box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.15);
 }
 
 .navbar-brand {
     font-weight: 800 !important;
     letter-spacing: -0.02em;
+    color: var(--light-color) !important;
 }
 
 .gradient-text {
@@ -563,6 +565,7 @@ html {
     font-weight: 600;
     letter-spacing: 0.025em;
     box-shadow: var(--shadow-md);
+    color: white;
 }
 
 .btn-primary::before {
@@ -587,9 +590,9 @@ html {
 }
 
 .btn-outline-light {
-    border: 2px solid rgba(99, 102, 241, 0.4);
-    background: rgba(30, 41, 59, 0.4);
-    color: var(--light-color);
+    border: 2px solid rgba(99, 102, 241, 0.2);
+    background: rgba(255, 255, 255, 0.8);
+    color: var(--primary-color);
     backdrop-filter: blur(10px);
     transition: all var(--transition-base);
     font-weight: 600;
@@ -597,17 +600,17 @@ html {
 }
 
 .btn-outline-light:hover {
-    background: rgba(99, 102, 241, 0.3);
-    border-color: rgba(99, 102, 241, 0.6);
+    background: var(--primary-color);
+    border-color: var(--primary-color);
     color: #ffffff !important;
     transform: translateY(-2px);
-    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
+    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
 }
 
-/* Glass morphism button - Koyu Tema */
+/* Glass morphism button - Light Theme */
 .btn-glass {
-    background: rgba(30, 41, 59, 0.4);
-    border: 1px solid rgba(99, 102, 241, 0.3);
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(99, 102, 241, 0.2);
     backdrop-filter: blur(20px);
     color: var(--light-color);
     transition: all var(--transition-base);
@@ -615,11 +618,11 @@ html {
 }
 
 .btn-glass:hover {
-    background: rgba(30, 41, 59, 0.6);
-    border-color: rgba(99, 102, 241, 0.5);
-    color: var(--light-color);
+    background: rgba(255, 255, 255, 0.9);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
     transform: translateY(-2px);
-    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.2);
 }
 
 /* Enhanced Interactive Effects */
@@ -1076,7 +1079,7 @@ html {
 
     /* Better text readability on mobile */
     .text-light {
-        color: rgba(255, 255, 255, 0.9) !important;
+        color: var(--light-color) !important;
     }
     
     .opacity-75 {
@@ -1315,7 +1318,7 @@ html {
     }
     
     .skill-list li:active {
-        background: rgba(255, 255, 255, 0.05);
+        background: rgba(0, 0, 0, 0.05);
     }
     
     /* Badge touch */
