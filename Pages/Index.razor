@@ -436,11 +436,15 @@
     .glow-on-hover {
         background: #ffffff !important;
         color: var(--primary-color) !important;
-        border: none;
+        border: none !important;
         transition: all 0.3s ease;
+        font-weight: 600;
     }
 
-    .glow-on-hover:hover {
+    .glow-on-hover:hover,
+    .glow-on-hover:focus {
+        background: #ffffff !important;
+        color: var(--primary-color) !important;
         box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
         transform: translateY(-2px);
     }
