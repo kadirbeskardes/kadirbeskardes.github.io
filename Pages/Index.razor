@@ -21,7 +21,7 @@
                     @Localization["Home_Description"]
                 </p>
                 <div class="d-flex gap-3 animate__animated animate__fadeIn animate__delay-2s hero-buttons">
-                    <a href="projects" class="btn btn-primary btn-lg px-4 rounded-pill shadow-lg hero-btn glow-on-hover">
+                    <a href="projects" class="btn btn-light btn-lg px-4 rounded-pill shadow-lg hero-btn glow-on-hover">
                         <i class="bi bi-rocket-takeoff me-2"></i>@Localization["Home_ViewProjects"]
                     </a>
                     <a href="contact" class="btn btn-outline-light btn-lg px-4 rounded-pill shadow-sm hero-btn">
@@ -44,11 +44,11 @@
 </section>
 
 <!-- Skills Section -->
-<section class="py-5 skills-section" style="background: var(--dark-secondary);">
+<section class="py-5 skills-section" style="background: var(--bg-secondary);">
     <div class="container py-5">
         <div class="text-center mb-5">
             <h2 class="section-title fw-bold position-relative d-inline-block">@Localization["Home_Skills"]</h2>
-            <p class="text-secondary opacity-75 fs-5 section-subtitle">@Localization["Home_SkillsSubtitle"]</p>
+            <p class="text-muted opacity-75 fs-5 section-subtitle">@Localization["Home_SkillsSubtitle"]</p>
         </div>
 
         <div class="row g-4 skills-row">
@@ -60,10 +60,10 @@
                         </div>
                         <h3 class="h4 mb-3 fw-bold skill-title">@Localization["Home_Frontend"]</h3>
                         <ul class="list-unstyled skill-list">
-                            <li><i class="bi bi-check-circle-fill text-info me-2"></i><span class="text-secondary">@Localization["Home_Skill_BlazorWASM"]</span></li>
-                            <li><i class="bi bi-check-circle-fill text-info me-2"></i><span class="text-secondary">@Localization["Home_Skill_HTMLCSS"]</span></li>
-                            <li><i class="bi bi-check-circle-fill text-info me-2"></i><span class="text-secondary">@Localization["Home_Skill_JS"]</span></li>
-                            <li><i class="bi bi-check-circle-fill text-info me-2"></i><span class="text-secondary">@Localization["Home_Skill_Bootstrap"]</span></li>
+                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i><span class="text-secondary">@Localization["Home_Skill_BlazorWASM"]</span></li>
+                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i><span class="text-secondary">@Localization["Home_Skill_HTMLCSS"]</span></li>
+                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i><span class="text-secondary">@Localization["Home_Skill_JS"]</span></li>
+                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i><span class="text-secondary">@Localization["Home_Skill_Bootstrap"]</span></li>
                         </ul>
                     </div>
                 </div>
@@ -77,11 +77,11 @@
                         </div>
                         <h3 class="h4 mb-3 fw-bold skill-title">@Localization["Home_Backend"]</h3>
                         <ul class="list-unstyled skill-list">
-                            <li><i class="bi bi-check-circle-fill text-info me-2"></i><span class="text-secondary">@Localization["Home_Skill_DotNet"]</span></li>
-                            <li><i class="bi bi-check-circle-fill text-info me-2"></i><span class="text-secondary">@Localization["Home_Skill_Python"]</span></li>
-                            <li><i class="bi bi-check-circle-fill text-info me-2"></i><span class="text-secondary">@Localization["Home_Skill_EF"]</span></li>
-                            <li><i class="bi bi-check-circle-fill text-info me-2"></i><span class="text-secondary">@Localization["Home_Skill_RESTAPI"]</span></li>
-                            <li><i class="bi bi-check-circle-fill text-info me-2"></i><span class="text-secondary">@Localization["Home_Skill_SQLServer"]</span></li>
+                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i><span class="text-secondary">@Localization["Home_Skill_DotNet"]</span></li>
+                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i><span class="text-secondary">@Localization["Home_Skill_Python"]</span></li>
+                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i><span class="text-secondary">@Localization["Home_Skill_EF"]</span></li>
+                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i><span class="text-secondary">@Localization["Home_Skill_RESTAPI"]</span></li>
+                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i><span class="text-secondary">@Localization["Home_Skill_SQLServer"]</span></li>
                         </ul>
                     </div>
                 </div>
@@ -108,11 +108,11 @@
 </section>
 
 <!-- Projects Section -->
-<section class="py-5 projects-section" style="background: var(--dark-color);">
+<section class="py-5 projects-section" style="background: var(--bg-primary);">
     <div class="container py-5">
         <div class="text-center mb-5">
             <h2 class="section-title fw-bold position-relative d-inline-block">@Localization["Home_RecentProjects"]</h2>
-            <p class="text-secondary fs-5 section-subtitle">@Localization["Home_RecentProjectsSubtitle"]</p>
+            <p class="text-muted fs-5 section-subtitle">@Localization["Home_RecentProjectsSubtitle"]</p>
         </div>
 
         @if (recentFeaturedProjects == null)
@@ -165,7 +165,7 @@
             </div>
 
             <div class="text-center mt-5">
-                <a href="projects" class="btn btn-enhanced btn-lg px-4 rounded-pill shadow-sm animate-in all-projects-btn" style="background: var(--accent-color); color: white; position: relative; overflow: hidden;">
+                <a href="projects" class="btn btn-primary btn-lg px-4 rounded-pill shadow-sm animate-in all-projects-btn">
                     <i class="bi bi-collection me-2"></i>@Localization["Home_AllProjects"]
                 </a>
             </div>
@@ -244,7 +244,7 @@
 <style>
     /* Hero Section */
     .hero-section {
-        background: linear-gradient(135deg, #4338ca 0%, #6366f1 50%, #8b5cf6 100%);
+        background: var(--gradient-hero);
         position: relative;
         overflow: hidden;
     }
@@ -261,7 +261,7 @@
     }
 
     .text-highlight {
-        background: linear-gradient(135deg, #06b6d4, #22d3ee, #06b6d4);
+        background: linear-gradient(135deg, #22d3ee, #a5b4fc, #22d3ee);
         background-size: 200% 200%;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -297,6 +297,7 @@
     .section-title {
         position: relative;
         padding-bottom: 15px;
+        color: var(--text-primary);
     }
 
     .section-title:after {
@@ -307,7 +308,7 @@
         transform: translateX(-50%);
         width: 80px;
         height: 4px;
-        background: linear-gradient(90deg, #6366f1, #06b6d4);
+        background: var(--gradient-primary);
         border-radius: 3px;
     }
 
@@ -318,8 +319,8 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: linear-gradient(135deg, #6366f1, #8b5cf6);
-        box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        background: var(--gradient-primary);
+        box-shadow: 0 10px 30px rgba(37, 99, 235, 0.25);
         transition: all 0.3s ease;
     }
 
@@ -329,7 +330,7 @@
 
     .skill-list li {
         padding: 10px 0;
-        border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+        border-bottom: 1px solid var(--border-color);
         transition: all 0.3s ease;
     }
 
@@ -339,7 +340,7 @@
 
     .skill-list li:hover {
         transform: translateX(8px);
-        background: rgba(99, 102, 241, 0.05);
+        background: rgba(37, 99, 235, 0.05);
         padding-left: 10px;
         border-radius: 8px;
     }
@@ -351,7 +352,7 @@
 
     .hover-effect:hover {
         transform: translateY(-10px);
-        box-shadow: 0 20px 40px rgba(99, 102, 241, 0.3) !important;
+        box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15) !important;
     }
 
     .project-image-container {
@@ -374,7 +375,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(135deg, rgba(99, 102, 241, 0.9), rgba(139, 92, 246, 0.9));
+        background: linear-gradient(135deg, rgba(37, 99, 235, 0.9), rgba(124, 58, 237, 0.9));
         opacity: 0;
         transition: all 0.4s ease;
         backdrop-filter: blur(5px);
@@ -402,7 +403,7 @@
         top: -7.5%;
         left: -7.5%;
         border-radius: 50%;
-        background: linear-gradient(45deg, #6366f1, #06b6d4, #8b5cf6, #6366f1);
+        background: linear-gradient(45deg, #2563eb, #0891b2, #7c3aed, #2563eb);
         background-size: 300% 300%;
         animation: gradientBorder 4s ease infinite;
         z-index: -1;
@@ -414,22 +415,34 @@
     }
 
     .card-enhanced {
-        background: rgba(30, 41, 59, 0.5);
+        background: var(--bg-card);
         backdrop-filter: blur(20px);
-        border: 1px solid rgba(99, 102, 241, 0.2);
+        border: 1px solid var(--border-color);
         border-radius: 20px;
     }
 
     .btn-glass {
-        background: rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.9);
         backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        color: #fff;
+        border: 1px solid var(--border-color);
+        color: var(--text-primary);
     }
 
     .btn-glass:hover {
-        background: rgba(255, 255, 255, 0.2);
-        color: #fff;
+        background: rgba(255, 255, 255, 1);
+        color: var(--primary-color);
+    }
+
+    .glow-on-hover {
+        background: #ffffff !important;
+        color: var(--primary-color) !important;
+        border: none;
+        transition: all 0.3s ease;
+    }
+
+    .glow-on-hover:hover {
+        box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+        transform: translateY(-2px);
     }
 
     /* ================================================
