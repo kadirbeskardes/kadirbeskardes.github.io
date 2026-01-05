@@ -4,10 +4,10 @@
 
 <div class="d-flex flex-column min-vh-100">
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom border-primary border-3" style="box-shadow: 0 2px 15px rgba(0, 123, 255, 0.1);">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom" style="box-shadow: 0 2px 15px rgba(0, 0, 0, 0.04);">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="/" style="transition: all 0.3s ease;">
-                    <i class="bi bi-code-slash fs-3 text-primary me-2" style="text-shadow: 0 0 8px rgba(13, 110, 253, 0.3);"></i>
+                    <i class="bi bi-code-slash fs-3 text-primary me-2"></i>
                     <span class="fw-bold fs-4 gradient-text brand-text">@L["Nav_Portfolio"]</span>
                 </a>
                 <button class="navbar-toggler mobile-menu-btn" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
@@ -39,7 +39,7 @@
                             <CultureSwitcher />
                         </li>
                         <li class="nav-item ms-2 d-flex align-items-center mobile-cv-btn">
-                            <a class="btn btn-primary d-flex align-items-center py-2 px-3 rounded-pill glow-on-hover" href="files/CV Kadir Beskardes.pdf" download>
+                            <a class="btn btn-primary d-flex align-items-center py-2 px-3 rounded-pill" href="files/CV Kadir Beskardes.pdf" download>
                                 <i class="bi bi-download me-2"></i> @L["Nav_DownloadCV"]
                             </a>
                         </li>
@@ -143,7 +143,7 @@
     }
     
     .gradient-text {
-        background: linear-gradient(135deg, #6366f1, #06b6d4);
+        background: var(--gradient-primary);
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
@@ -155,7 +155,7 @@
     }
 
         .hover-effect:hover {
-            background-color: rgba(99, 102, 241, 0.1) !important;
+            background-color: rgba(37, 99, 235, 0.08) !important;
             transform: translateY(-2px);
         }
 
@@ -166,7 +166,7 @@
             left: 15%;
             width: 70%;
             height: 2px;
-            background: linear-gradient(90deg, #6366f1, #06b6d4);
+            background: var(--gradient-primary);
             transform: scaleX(0);
             transition: transform 0.3s ease;
         }
@@ -175,21 +175,8 @@
             transform: scaleX(1);
         }
 
-    .glow-on-hover {
-        transition: all 0.3s ease;
-        box-shadow: 0 0 10px rgba(99, 102, 241, 0);
-        background: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
-        border: none !important;
-        color: white !important;
-    }
-
-        .glow-on-hover:hover {
-            box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
-            transform: translateY(-2px);
-        }
-
     .active {
-        background-color: rgba(99, 102, 241, 0.15) !important;
+        background-color: rgba(37, 99, 235, 0.1) !important;
         font-weight: 500;
         color: var(--primary-color) !important;
     }
@@ -200,8 +187,8 @@
 
     /* Footer Styles */
     .footer-modern {
-        background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
-        border-top: 1px solid rgba(0, 0, 0, 0.05);
+        background: var(--bg-secondary);
+        border-top: 1px solid var(--border-color);
     }
 
     .footer-brand {
@@ -210,7 +197,7 @@
     }
 
     .footer-title {
-        color: var(--light-color);
+        color: var(--text-primary);
         font-weight: 600;
         position: relative;
         padding-bottom: 10px;
@@ -223,7 +210,7 @@
         left: 0;
         width: 40px;
         height: 3px;
-        background: linear-gradient(90deg, #6366f1, #06b6d4);
+        background: var(--gradient-primary);
         border-radius: 3px;
     }
 
@@ -232,7 +219,7 @@
     }
 
     .footer-links a {
-        color: var(--light-secondary);
+        color: var(--text-secondary);
         text-decoration: none;
         transition: all 0.3s ease;
         display: inline-flex;
@@ -240,7 +227,7 @@
     }
 
     .footer-links a:hover {
-        color: #06b6d4;
+        color: var(--primary-color);
         transform: translateX(5px);
     }
 
@@ -259,29 +246,29 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: rgba(255, 255, 255, 0.8);
-        border: 1px solid rgba(0, 0, 0, 0.1);
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
         border-radius: 50%;
         color: var(--primary-color);
         font-size: 1.1rem;
         transition: all 0.3s ease;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        box-shadow: var(--shadow-sm);
     }
 
     .social-icon-footer:hover {
-        background: linear-gradient(135deg, #6366f1, #06b6d4);
+        background: var(--gradient-primary);
         border-color: transparent;
         transform: translateY(-3px);
-        box-shadow: 0 5px 20px rgba(99, 102, 241, 0.3);
+        box-shadow: 0 5px 20px rgba(37, 99, 235, 0.25);
         color: #fff;
     }
 
     .footer-contact a:hover {
-        color: #06b6d4 !important;
+        color: var(--primary-color) !important;
     }
     
     .footer-contact-text, .footer-email {
-        color: var(--light-secondary) !important;
+        color: var(--text-secondary) !important;
     }
 
     /* Mobile Navigation Styles */
