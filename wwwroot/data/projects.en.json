@@ -187,5 +187,38 @@
     "screenshots": [],
     "challenges": "Running complex tournament algorithms (bracket system) synchronously on both web and mobile.",
     "solutions": "A strong algorithm service was established on the backend, and interfaces fully compatible with this service were developed on the React Native and React web sides."
-  }
+  },
+  {
+  "id": 8,
+  "title": "WeatherThen",
+  "shortDescription": "Sophisticated, visual-first weather application with premium lifestyle insights and customizable widgets.",
+  "fullDescription": "WeatherThen is a comprehensive weather application designed to provide more than just the temperature. It combines accurate real-time data from Open-Meteo with immersive visualizations that reflect the current weather and time of day. Beyond standard forecasts, it offers deep insights into air quality, solar/lunar cycles, and comfort indices. The app features a robust premium tier that unlocks advanced charts, clothing suggestions, unlimited location favorites, and a suite of highly customizable Android home screen widgets, ensuring users are always prepared for the elements.",
+  "imageUrl": "assets/icon.png",
+  "technologies": [
+    "React Native",
+    "Expo",
+    "TypeScript",
+    "Open-Meteo API",
+    "React Navigation",
+    "Reanimated",
+    "AsyncStorage",
+    "Android Widgets"
+  ],
+  "createdDate": "2025-08-15",
+  "projectUrl": "#",
+  "Category": "Mobil Uygulama",
+  "githubUrl": "https://github.com/your-username/WeatherThen",
+  "features": [
+    "Real-time weather tracking with dynamic background animations",
+    "Advanced metrics: Air Quality, UV Index, and Moon Phases",
+    "Premium lifestyle tools: Comfort Index and Clothing Suggestions",
+    "Interactive 48-hour and 7-day forecast charts",
+    "Customizable Android Home Screen Widgets",
+    "Freemium model with subscription management"
+  ],
+  "screenshots": [],
+  "challenges": "Developing a performant widget system that stays synchronized with the main app's data while managing battery efficiency and background update limitations on Android.",
+  "solutions": "Implemented a shared caching layer using AsyncStorage to serve both the app and widgets, utilizing 'react-native-android-widget' for native rendering capabilities without native code complexity.",
+  "impact": "Empowers users to make better daily decisions through actionable weather insights and convenient home screen access, bridging the gap between raw data and daily life utility."
+}
 ]

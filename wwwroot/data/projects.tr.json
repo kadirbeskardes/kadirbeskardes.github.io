@@ -187,5 +187,38 @@
     "screenshots": [],
     "challenges": "Karmaşık turnuva algoritmalarını (bracket system) hem web hem mobilde senkronize çalıştırmak.",
     "solutions": "Backend tarafında güçlü bir algoritma servisi kuruldu, React Native ve React web tarafında bu servis ile tam uyumlu arayüzler geliştirildi."
-  }
+  },
+  {
+  "id": 8,
+  "title": "WeatherThen",
+  "shortDescription": "Premium yaşam tarzı öngörüleri ve özelleştirilebilir widget'lar sunan, görsellik odaklı, gelişmiş bir hava durumu uygulaması.",
+  "fullDescription": "WeatherThen, sadece sıcaklığı göstermekten fazlasını sunmak için tasarlanmış kapsamlı bir hava durumu uygulamasıdır. Open-Meteo'dan alınan doğru ve gerçek zamanlı verileri, mevcut hava durumunu ve günün saatini yansıtan sürükleyici görselleştirmelerle birleştirir. Standart tahminlerin ötesinde; hava kalitesi, güneş/ay döngüleri ve konfor endeksleri hakkında derinlemesine bilgiler sunar. Uygulama; gelişmiş grafikleri, kıyafet önerilerini, sınırsız favori konum eklemeyi ve kullanıcıların her türlü hava koşuluna hazırlıklı olmasını sağlayan son derece özelleştirilebilir Android ana ekran widget'larını içeren güçlü bir premium seviyeye sahiptir.",
+  "imageUrl": "assets/icon.png",
+  "technologies": [
+    "React Native",
+    "Expo",
+    "TypeScript",
+    "Open-Meteo API",
+    "React Navigation",
+    "Reanimated",
+    "AsyncStorage",
+    "Android Widgets"
+  ],
+  "createdDate": "2025-08-15",
+  "projectUrl": "#",
+  "Category": "Mobil Uygulama",
+  "githubUrl": "https://github.com/your-username/WeatherThen",
+  "features": [
+    "Dinamik arka plan animasyonları ile gerçek zamanlı hava durumu takibi",
+    "Gelişmiş metrikler: Hava Kalitesi, UV İndeksi ve Ay Evreleri",
+    "Premium yaşam tarzı araçları: Konfor İndeksi ve Kıyafet Önerileri",
+    "Etkileşimli 48 saatlik ve 7 günlük tahmin grafikleri",
+    "Özelleştirilebilir Android Ana Ekran Widget'ları",
+    "Abonelik yönetimi içeren Freemium model"
+  ],
+  "screenshots": [],
+  "challenges": "Android'deki pil verimliliğini ve arka plan güncelleme sınırlamalarını yönetirken, aynı zamanda ana uygulamanın verileriyle senkronize kalan performanslı bir widget sistemi geliştirmek.",
+  "solutions": "Hem uygulamaya hem de widget'lara hizmet etmek için AsyncStorage kullanarak paylaşılan bir önbellekleme katmanı uygulandı ve yerel kod (native code) karmaşıklığı olmadan yerel işleme yetenekleri için 'react-native-android-widget' kütüphanesi kullanıldı.",
+  "impact": "Ham veriler ile günlük yaşam faydası arasındaki köprüyü kurarak, eyleme geçirilebilir hava durumu içgörüleri ve kolay ana ekran erişimi sayesinde kullanıcıların daha iyi günlük kararlar almasını sağlar."
+}
 ]
