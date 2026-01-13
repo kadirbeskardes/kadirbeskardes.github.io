@@ -377,7 +377,7 @@
 
     /* Özel Stiller */
     .about-hero {
-        background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        background: var(--gradient-hero);
         margin-bottom: 3rem;
         position: relative;
     }
@@ -419,7 +419,7 @@
     }
 
     .dotnet-badge {
-        background: linear-gradient(135deg, #512bd4 0%, #0078d4 100%);
+        background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%);
         top: -20px;
         left: -20px;
         animation-delay: 0s;
@@ -469,11 +469,11 @@
     .skills-section, .references-section, .certificates-section {
         margin-top: 1.5rem;
         padding-top: 1.5rem;
-        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        border-top: 1px solid var(--border-color);
     }
 
     .bg-primary-light {
-        background-color: rgba(59, 130, 246, 0.1);
+        background-color: rgba(37, 99, 235, 0.08);
     }
 
     .icon-circle {
@@ -500,7 +500,7 @@
         bottom: 0;
         left: 50%;
         width: 2px;
-        background: linear-gradient(180deg, #6366f1 0%, rgba(99, 102, 241, 0.2) 100%);
+        background: linear-gradient(180deg, var(--primary-color) 0%, rgba(37, 99, 235, 0.2) 100%);
         transform: translateX(-50%);
     }
 
@@ -518,11 +518,11 @@
         left: 50%;
         top: 0;
         transform: translateX(-50%);
-        background: #0d1424;
-        color: #a5b4fc;
+        background: var(--bg-card);
+        color: var(--primary-color);
         padding: 5px 15px;
         border-radius: 20px;
-        border: 1px solid rgba(99, 102, 241, 0.3);
+        border: 1px solid var(--border-color);
         font-size: 0.85rem;
         font-weight: 600;
         z-index: 2;
@@ -532,8 +532,8 @@
         position: relative;
         width: 45%;
         padding: 1.5rem;
-        background: rgba(30, 41, 59, 0.4);
-        border: 1px solid rgba(99, 102, 241, 0.2);
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
         border-radius: 15px;
         margin-left: auto; /* Default to right */
     }
@@ -548,11 +548,11 @@
         position: absolute;
         top: 20px;
         font-size: 1.5rem;
-        color: #6366f1;
-        background: #0d1424;
+        color: var(--primary-color);
+        background: var(--bg-card);
         border-radius: 50%;
         padding: 10px;
-        box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        box-shadow: var(--shadow-md);
     }
     
     .timeline-row:nth-child(odd) .icon-attachment {
@@ -584,13 +584,13 @@
     /* Tech Cards */
     .tech-card {
         transition: all 0.3s ease;
-        background-color: white;
-        border: 1px solid rgba(0, 0, 0, 0.05);
+        background-color: var(--bg-card);
+        border: 1px solid var(--border-color);
     }
 
         .tech-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            box-shadow: var(--shadow-lg);
         }
 
     /* Hero Scroll Indicator */
