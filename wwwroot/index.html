@@ -33,8 +33,8 @@
     <meta name="twitter:image" content="https://kadirbeskardes.github.io/img/pp.jpg">
     
     <!-- Additional Meta Tags -->
-    <meta name="theme-color" content="#4361ee">
-    <meta name="msapplication-navbutton-color" content="#4361ee">
+    <meta name="theme-color" content="#10b981">
+    <meta name="msapplication-navbutton-color" content="#10b981">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     
     <!-- Advanced SEO Meta Tags -->
@@ -52,7 +52,7 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="Kadir Portföy">
     <meta name="application-name" content="Kadir Beşkardeş Portfolio">
-    <meta name="msapplication-TileColor" content="#4361ee">
+    <meta name="msapplication-TileColor" content="#10b981">
     <meta name="msapplication-tooltip" content="Kadir Beşkardeş - Full Stack Developer Portfolio">
     <meta name="format-detection" content="telephone=no">
     
@@ -291,23 +291,65 @@
             easing: 'ease-out-quart'
         });
 
-        const loadingMessages = [
-            "Kod derleniyor...",
-            "Bileşenler monte ediliyor...",
-            "Veritabanı bağlantıları kuruluyor...",
-            "Arayüz elementleri render ediliyor...",
-            "API endpoint'leri hazırlanıyor...",
-            "Kod optimizasyonu yapılıyor...",
-            "Güvenlik kontrolleri tamamlanıyor...",
-            "Cache temizleniyor...",
-            "Asset'ler yükleniyor...",
-            "Son testler yapılıyor...",
-            "Kütüphaneler başlatılıyor...",
-            "Yapılandırma yükleniyor...",
-            "Route'lar tanımlanıyor...",
-            "State management hazırlanıyor..."
-        ];
+        // Localization Dictionary
+        const translations = {
+            'en-US': {
+                title: "Software Developer",
+                subtitle: "Preparing professional portfolio...",
+                initialMessage: "System initializing...",
+                messages: [
+                    "Compiling code...",
+                    "Mounting components...",
+                    "Establishing database connections...",
+                    "Rendering interface elements...",
+                    "Preparing API endpoints...",
+                    "Optimizing code...",
+                    "Completing security checks...",
+                    "Clearing cache...",
+                    "Loading assets...",
+                    "Performing final tests...",
+                    "Initializing libraries...",
+                    "Loading configuration...",
+                    "Defining routes...",
+                    "Preparing state management..."
+                ],
+                ready: "Portfolio ready! Redirecting..."
+            },
+            'tr-TR': {
+                title: "Yazılım Geliştirici",
+                subtitle: "Profesyonel portföyüm hazırlanıyor...",
+                initialMessage: "Sistem başlatılıyor...",
+                messages: [
+                    "Kod derleniyor...",
+                    "Bileşenler monte ediliyor...",
+                    "Veritabanı bağlantıları kuruluyor...",
+                    "Arayüz elementleri render ediliyor...",
+                    "API endpoint'leri hazırlanıyor...",
+                    "Kod optimizasyonu yapılıyor...",
+                    "Güvenlik kontrolleri tamamlanıyor...",
+                    "Cache temizleniyor...",
+                    "Asset'ler yükleniyor...",
+                    "Son testler yapılıyor...",
+                    "Kütüphaneler başlatılıyor...",
+                    "Yapılandırma yükleniyor...",
+                    "Route'lar tanımlanıyor...",
+                    "State management hazırlanıyor..."
+                ],
+                ready: "Portföy hazır! Yönlendiriliyorsunuz..."
+            }
+        };
 
+        // Detect Culture
+        const currentCulture = window.blazorCulture.get() || 'tr-TR';
+        const lang = translations[currentCulture] ? currentCulture : 'tr-TR';
+        const t = translations[lang];
+
+        // Apply Localization
+        document.querySelector('.app-loading-text h1').textContent = t.title;
+        document.querySelector('.app-loading-text .lead').textContent = t.subtitle;
+        document.getElementById('random-message').textContent = t.initialMessage;
+
+        const loadingMessages = t.messages;
         const techIcons = document.querySelectorAll('.tech-icon');
 
         let progress = 0;
@@ -367,7 +409,7 @@
             progressBar.style.width = '100%';
             progressBar.setAttribute('aria-valuenow', 100);
 
-            randomMessageElement.textContent = "Portföy hazır! Yönlendiriliyorsunuz...";
+            randomMessageElement.textContent = t.ready;
             randomMessageElement.style.opacity = '1';
 
             techIcons.forEach(icon => {

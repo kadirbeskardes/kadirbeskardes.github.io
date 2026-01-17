@@ -51,16 +51,16 @@ else
                     <div class="hero-overlay"></div>
                 </div>
                 <div class="hero-particles">
-                    @for (int i = 0; i < 15; i++)
+                    @for (int i = 0; i < 20; i++)
                     {
-                        <div class="particle-dot" style="--delay: @(i * 0.3)s; --x: @(Random.Shared.Next(0, 100))%; --y: @(Random.Shared.Next(0, 100))%;"></div>
+                        <div class="particle-dot" style="--delay: @(i * 0.2)s; --duration: @(Random.Shared.Next(4, 8))s; --x: @(Random.Shared.Next(0, 100))%; --y: @(Random.Shared.Next(0, 100))%;"></div>
                     }
                 </div>
             </div>
 
             <div class="container position-relative" style="z-index: 10;">
                 <!-- Breadcrumb -->
-                <nav class="breadcrumb-nav">
+                <nav class="breadcrumb-nav animate-fade-down">
                     <a href="/" class="breadcrumb-link">
                         <i class="bi bi-house-door"></i>
                         <span>@Localization["ProjectDetail_Breadcrumb_Home"]</span>
@@ -75,20 +75,24 @@ else
                 </nav>
 
                 <div class="hero-content">
-                    <div class="row align-items-center">
-                        <div class="col-lg-8">
+                    <div class="row align-items-center g-5">
+                        <div class="col-lg-7 animate-fade-right">
                             <!-- Category & Date -->
                             <div class="hero-meta">
                                 @if (!string.IsNullOrEmpty(projectDetail.Category))
                                 {
-                                    <span class="meta-category">
-                                        <i class="bi bi-tag"></i>
+                                    <span class="meta-tag category">
+                                        <i class="bi bi-tag-fill"></i>
                                         @projectDetail.Category
                                     </span>
                                 }
-                                <span class="meta-date">
-                                    <i class="bi bi-calendar3"></i>
+                                <span class="meta-tag date">
+                                    <i class="bi bi-calendar-event"></i>
                                     @projectDetail.CreatedDate.ToString("MMMM yyyy")
+                                </span>
+                                <span class="meta-tag status @(string.IsNullOrEmpty(projectDetail.ProjectUrl) ? "dev" : "live")">
+                                    <i class="bi @(string.IsNullOrEmpty(projectDetail.ProjectUrl) ? "bi-tools" : "bi-broadcast")"></i>
+                                    @(string.IsNullOrEmpty(projectDetail.ProjectUrl) ? Localization["ProjectDetail_Status_Development"] : Localization["ProjectDetail_Status_Live"])
                                 </span>
                             </div>
 
@@ -117,46 +121,22 @@ else
                             </div>
                         </div>
 
-                        <div class="col-lg-4">
-                            <!-- Quick Stats Card -->
-                            <div class="quick-stats-card">
-                                <div class="stat-item">
-                                    <div class="stat-icon">
-                                        <i class="bi bi-stack"></i>
+                        <div class="col-lg-5 d-none d-lg-block animate-fade-left">
+                            <!-- Project Preview Card (Browser Look) -->
+                            <div class="project-preview-card">
+                                <div class="preview-header">
+                                    <div class="preview-dots">
+                                        <span></span><span></span><span></span>
                                     </div>
-                                    <div class="stat-content">
-                                        <span class="stat-value">@projectDetail.Technologies.Length</span>
-                                        <span class="stat-label">@Localization["ProjectDetail_Stat_Technologies"]</span>
+                                    <div class="preview-address-bar">
+                                        <div class="preview-lock"><i class="bi bi-lock-fill"></i></div>
+                                        <div class="preview-url">@GetDisplayUrl(projectDetail.ProjectUrl)</div>
                                     </div>
                                 </div>
-                                @if (projectDetail.Features?.Any() == true)
-                                {
-                                    <div class="stat-item">
-                                        <div class="stat-icon">
-                                            <i class="bi bi-star"></i>
-                                        </div>
-                                        <div class="stat-content">
-                                            <span class="stat-value">@projectDetail.Features.Length</span>
-                                            <span class="stat-label">@Localization["ProjectDetail_Stat_Features"]</span>
-                                        </div>
-                                    </div>
-                                }
-                                <div class="stat-item">
-                                    <div class="stat-icon">
-                                        <i class="bi bi-check-circle"></i>
-                                    </div>
-                                    <div class="stat-content">
-                                        <span class="stat-value status">
-                                            @if (!string.IsNullOrEmpty(projectDetail.ProjectUrl))
-                                            {
-                                                <span class="status-live">@Localization["ProjectDetail_Status_Live"]</span>
-                                            }
-                                            else
-                                            {
-                                                <span class="status-dev">@Localization["ProjectDetail_Status_Development"]</span>
-                                            }
-                                        </span>
-                                        <span class="stat-label">@Localization["ProjectDetail_Stat_Status"]</span>
+                                <div class="preview-body">
+                                    <img src="@projectDetail.ImageUrl" alt="@projectDetail.Title Preview" class="preview-image">
+                                    <div class="preview-overlay">
+                                        <i class="bi bi-arrows-fullscreen"></i>
                                     </div>
                                 </div>
                             </div>
@@ -178,12 +158,12 @@ else
             <div class="container">
                 <div class="row g-4">
                     <!-- Main Content Column -->
-                    <div class="col-lg-8">
+                    <div class="col-lg-8 animate-fade-up">
                         <!-- Project Description -->
                         <article class="content-card">
                             <div class="card-header-custom">
                                 <div class="header-icon">
-                                    <i class="bi bi-file-earmark-text"></i>
+                                    <i class="bi bi-file-text-fill"></i>
                                 </div>
                                 <h2 class="header-title">@Localization["ProjectDetail_Section_Details"]</h2>
                             </div>
@@ -200,7 +180,7 @@ else
                             <article class="content-card">
                                 <div class="card-header-custom">
                                     <div class="header-icon features">
-                                        <i class="bi bi-lightning-charge"></i>
+                                        <i class="bi bi-stars"></i>
                                     </div>
                                     <h2 class="header-title">@Localization["ProjectDetail_Section_Features"]</h2>
                                 </div>
@@ -210,7 +190,7 @@ else
                                         {
                                             <div class="feature-card">
                                                 <div class="feature-icon">
-                                                    <i class="bi bi-check2-circle"></i>
+                                                    <i class="bi bi-check-lg"></i>
                                                 </div>
                                                 <span class="feature-text">@feature</span>
                                             </div>
@@ -226,7 +206,7 @@ else
                             <article class="content-card">
                                 <div class="card-header-custom">
                                     <div class="header-icon challenges">
-                                        <i class="bi bi-puzzle"></i>
+                                        <i class="bi bi-puzzle-fill"></i>
                                     </div>
                                     <h2 class="header-title">@Localization["ProjectDetail_Section_ChallengesSolutions"]</h2>
                                 </div>
@@ -235,7 +215,7 @@ else
                                     {
                                         <div class="challenge-block">
                                             <div class="block-header challenges">
-                                                <i class="bi bi-exclamation-diamond"></i>
+                                                <i class="bi bi-exclamation-triangle-fill"></i>
                                                 <h3>@Localization["ProjectDetail_Section_Challenges"]</h3>
                                             </div>
                                             <div class="block-content">
@@ -248,7 +228,7 @@ else
                                     {
                                         <div class="solution-block">
                                             <div class="block-header solutions">
-                                                <i class="bi bi-lightbulb"></i>
+                                                <i class="bi bi-lightbulb-fill"></i>
                                                 <h3>@Localization["ProjectDetail_Section_Solutions"]</h3>
                                             </div>
                                             <div class="block-content">
@@ -262,12 +242,12 @@ else
                     </div>
 
                     <!-- Sidebar -->
-                    <div class="col-lg-4">
+                    <div class="col-lg-4 animate-fade-up" style="animation-delay: 0.2s;">
                         <!-- Technology Stack -->
                         <aside class="sidebar-card">
                             <div class="sidebar-header">
                                 <div class="header-icon tech">
-                                    <i class="bi bi-layers"></i>
+                                    <i class="bi bi-code-square"></i>
                                 </div>
                                 <h3>@Localization["ProjectDetail_Section_TechStack"]</h3>
                             </div>
@@ -275,8 +255,7 @@ else
                                 <div class="tech-list">
                                     @foreach (var tech in projectDetail.Technologies)
                                     {
-                                        <div class="tech-item">
-                                            <div class="tech-bullet"></div>
+                                        <div class="tech-pill">
                                             <span class="tech-name">@tech</span>
                                         </div>
                                     }
@@ -314,7 +293,7 @@ else
                         <aside class="sidebar-card">
                             <div class="sidebar-header">
                                 <div class="header-icon info">
-                                    <i class="bi bi-info-circle"></i>
+                                    <i class="bi bi-info-circle-fill"></i>
                                 </div>
                                 <h3>@Localization["ProjectDetail_Section_Info"]</h3>
                             </div>
@@ -322,7 +301,7 @@ else
                                 <div class="info-list">
                                     <div class="info-item">
                                         <div class="info-icon">
-                                            <i class="bi bi-calendar-event"></i>
+                                            <i class="bi bi-calendar-check"></i>
                                         </div>
                                         <div class="info-content">
                                             <span class="info-label">@Localization["ProjectDetail_Info_CreatedDate"]</span>
@@ -331,35 +310,11 @@ else
                                     </div>
                                     <div class="info-item">
                                         <div class="info-icon">
-                                            <i class="bi bi-bookmark"></i>
+                                            <i class="bi bi-tags"></i>
                                         </div>
                                         <div class="info-content">
                                             <span class="info-label">@Localization["ProjectDetail_Info_Category"]</span>
                                             <span class="info-value">@projectDetail.Category</span>
-                                        </div>
-                                    </div>
-                                    <div class="info-item">
-                                        <div class="info-icon">
-                                            <i class="bi bi-activity"></i>
-                                        </div>
-                                        <div class="info-content">
-                                            <span class="info-label">@Localization["ProjectDetail_Info_Status"]</span>
-                                            <span class="info-value">
-                                                @if (!string.IsNullOrEmpty(projectDetail.ProjectUrl))
-                                                {
-                                                    <span class="status-badge live">
-                                                        <span class="status-dot"></span>
-                                                        @Localization["ProjectDetail_Status_Live"]
-                                                    </span>
-                                                }
-                                                else
-                                                {
-                                                    <span class="status-badge dev">
-                                                        <span class="status-dot"></span>
-                                                        @Localization["ProjectDetail_Status_Development"]
-                                                    </span>
-                                                }
-                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -383,7 +338,7 @@ else
     @if (isLightboxOpen)
     {
         <div class="lightbox-modal" @onclick="CloseScreenshotLightbox">
-            <div class="lightbox-content" @onclick:stopPropagation>
+            <div class="lightbox-content animate-zoom-in" @onclick:stopPropagation>
                 <button class="lightbox-close" @onclick="CloseScreenshotLightbox">
                     <i class="bi bi-x-lg"></i>
                 </button>
@@ -416,6 +371,8 @@ else
     protected override async Task OnParametersSetAsync()
     {
         isLoadingProject = true;
+        // Simulating a small delay for the animation to be appreciated
+        await Task.Delay(300);
         projectDetail = await ProjectService.GetProjectDetailAsync(Id);
         isLoadingProject = false;
     }
@@ -454,12 +411,65 @@ else
         selectedScreenshotIndex++;
         selectedScreenshotUrl = projectDetail.Screenshots[selectedScreenshotIndex];
     }
+
+    private string GetDisplayUrl(string? url)
+    {
+        if (string.IsNullOrEmpty(url) || url == "#")
+        {
+            return "project-demo.com";
+        }
+
+        if (Uri.TryCreate(url, UriKind.Absolute, out var uri))
+        {
+            return uri.Host;
+        }
+
+        return "project-demo.com";
+    }
 }
 
 <style>
     /* ========================================
        PROJECT DETAIL - MODERN DESIGN SYSTEM
        ======================================== */
+
+    :root {
+        --glass-bg: rgba(255, 255, 255, 0.05);
+        --glass-border: rgba(255, 255, 255, 0.1);
+        --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    /* Animations */
+    @@keyframes fadeUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @@keyframes fadeRight {
+        from { opacity: 0; transform: translateX(-20px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+
+    @@keyframes fadeLeft {
+        from { opacity: 0; transform: translateX(20px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+    
+    @@keyframes fadeDown {
+        from { opacity: 0; transform: translateY(-20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @@keyframes zoomIn {
+        from { opacity: 0; transform: scale(0.95); }
+        to { opacity: 1; transform: scale(1); }
+    }
+
+    .animate-fade-up { animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
+    .animate-fade-right { animation: fadeRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
+    .animate-fade-left { animation: fadeLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
+    .animate-fade-down { animation: fadeDown 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
+    .animate-zoom-in { animation: zoomIn 0.3s ease forwards; }
 
     /* Loading & Error States */
     .project-loading-wrapper {
@@ -477,8 +487,8 @@ else
 
     .loading-spinner-large {
         position: relative;
-        width: 120px;
-        height: 120px;
+        width: 100px;
+        height: 100px;
         margin: 0 auto 2rem;
     }
 
@@ -492,93 +502,42 @@ else
     }
 
     .spinner-orbit:nth-child(2) {
-        inset: 15px;
+        inset: 12px;
         border-top-color: var(--secondary-color);
         animation-duration: 3s;
         animation-direction: reverse;
     }
 
     .spinner-orbit:nth-child(3) {
-        inset: 30px;
+        inset: 24px;
         border-top-color: var(--accent-color);
         animation-duration: 4s;
     }
 
     .spinner-core {
         position: absolute;
-        inset: 40px;
+        inset: 0;
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 1.5rem;
         color: var(--primary-color);
+        animation: pulse 2s infinite;
     }
 
     @@keyframes orbit {
         to { transform: rotate(360deg); }
     }
 
+    @@keyframes pulse {
+        0%, 100% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(0.9); opacity: 0.7; }
+    }
+
     .loading-text {
         color: var(--text-tertiary);
         font-size: 1rem;
-    }
-
-    /* Error State */
-    .error-icon-wrapper {
-        position: relative;
-        width: 100px;
-        height: 100px;
-        margin: 0 auto 2rem;
-    }
-
-    .error-icon-bg {
-        position: absolute;
-        inset: 0;
-        background: rgba(220, 38, 38, 0.1);
-        border-radius: 50%;
-        animation: pulse-error 2s ease-in-out infinite;
-    }
-
-    .error-icon {
-        position: absolute;
-        inset: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 3rem;
-        color: var(--danger-color);
-    }
-
-    @@keyframes pulse-error {
-        0%, 100% { transform: scale(1); opacity: 1; }
-        50% { transform: scale(1.1); opacity: 0.7; }
-    }
-
-    .error-title {
-        font-size: 1.5rem;
-        color: var(--text-primary);
-        margin-bottom: 0.5rem;
-    }
-
-    .error-message {
-        color: var(--text-tertiary);
-        margin-bottom: 2rem;
-    }
-
-    .back-button {
-        padding: 12px 28px;
-        background: var(--gradient-primary);
-        border: none;
-        border-radius: 50px;
-        color: #fff;
-        font-weight: 500;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-
-    .back-button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+        letter-spacing: 0.05em;
     }
 
     /* Project Detail Wrapper */
@@ -590,11 +549,11 @@ else
     /* Hero Section */
     .project-hero-section {
         position: relative;
-        min-height: 70vh;
+        min-height: 600px;
         display: flex;
         align-items: center;
         overflow: hidden;
-        padding: 6rem 0 8rem;
+        padding: 120px 0 140px;
         background: var(--gradient-hero);
     }
 
@@ -612,19 +571,280 @@ else
         width: 100%;
         height: 100%;
         object-fit: cover;
-        opacity: 0.1;
-        filter: blur(3px);
+        opacity: 0.12;
+        filter: blur(20px);
+        transform: scale(1.1);
     }
 
     .hero-overlay {
         position: absolute;
         inset: 0;
-        background: 
-            linear-gradient(180deg, rgba(30, 64, 175, 0.8) 0%, rgba(37, 99, 235, 0.9) 100%),
-            radial-gradient(ellipse 80% 50% at 50% -10%, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+        background: linear-gradient(135deg, rgba(6, 78, 59, 0.9) 0%, rgba(15, 23, 42, 0.95) 100%);
     }
 
-    /* ... */
+    .hero-particles {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+    }
+
+    .particle-dot {
+        position: absolute;
+        width: 3px;
+        height: 3px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        left: var(--x);
+        top: var(--y);
+        animation: float var(--duration) infinite ease-in-out;
+        animation-delay: var(--delay);
+    }
+
+    @@keyframes float {
+        0%, 100% { transform: translateY(0); opacity: 0.2; }
+        50% { transform: translateY(-30px); opacity: 0.6; }
+    }
+
+    /* Breadcrumb */
+    .breadcrumb-nav {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 8px 16px;
+        background: var(--glass-bg);
+        backdrop-filter: blur(10px);
+        border-radius: 50px;
+        border: 1px solid var(--glass-border);
+        margin-bottom: 2rem;
+    }
+
+    .breadcrumb-link {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        font-size: 0.85rem;
+        transition: color 0.2s ease;
+    }
+
+    .breadcrumb-link:hover {
+        color: #fff;
+    }
+
+    .breadcrumb-separator {
+        color: rgba(255, 255, 255, 0.3);
+        font-size: 0.75rem;
+    }
+
+    .breadcrumb-current {
+        color: #fff;
+        font-size: 0.85rem;
+        font-weight: 500;
+        max-width: 200px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    /* Hero Content */
+    .hero-meta {
+        display: flex;
+        gap: 0.75rem;
+        margin-bottom: 1.5rem;
+        flex-wrap: wrap;
+    }
+
+    .meta-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        backdrop-filter: blur(5px);
+    }
+
+    .meta-tag.category {
+        background: rgba(16, 185, 129, 0.15);
+        color: #6ee7b7;
+        border: 1px solid rgba(16, 185, 129, 0.2);
+    }
+
+    .meta-tag.date {
+        background: rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .meta-tag.status.live {
+        background: rgba(34, 197, 94, 0.2);
+        color: #86efac;
+        border: 1px solid rgba(34, 197, 94, 0.3);
+    }
+
+    .meta-tag.status.dev {
+        background: rgba(234, 179, 8, 0.2);
+        color: #fde047;
+        border: 1px solid rgba(234, 179, 8, 0.3);
+    }
+
+    .hero-title {
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
+        font-weight: 800;
+        color: #fff;
+        margin-bottom: 1.25rem;
+        line-height: 1.1;
+        text-shadow: 0 4px 30px rgba(0,0,0,0.3);
+        background: linear-gradient(to right, #fff, #e2e8f0);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .hero-description {
+        font-size: 1.2rem;
+        color: rgba(255, 255, 255, 0.85);
+        line-height: 1.7;
+        margin-bottom: 2.5rem;
+        max-width: 600px;
+        font-weight: 300;
+    }
+
+    .hero-actions {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .action-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 32px;
+        border-radius: 50px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .action-btn.primary {
+        background: #fff;
+        color: var(--primary-dark);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+
+    .action-btn.primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        background: #f1f5f9;
+    }
+
+    .action-btn.secondary {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #fff;
+        backdrop-filter: blur(5px);
+    }
+
+    .action-btn.secondary:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-3px);
+    }
+
+    /* Project Preview Card (Browser Style) */
+    .project-preview-card {
+        background: rgba(23, 23, 23, 0.8);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        overflow: hidden;
+        backdrop-filter: blur(10px);
+        transform: perspective(1000px) rotateY(-5deg) rotateX(2deg);
+        transition: transform 0.5s ease;
+    }
+    
+    .project-preview-card:hover {
+        transform: perspective(1000px) rotateY(0) rotateX(0) translateY(-10px);
+    }
+
+    .preview-header {
+        background: rgba(0, 0, 0, 0.4);
+        padding: 10px 16px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .preview-dots {
+        display: flex;
+        gap: 6px;
+    }
+
+    .preview-dots span {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    .preview-dots span:nth-child(1) { background: #ef4444; }
+    .preview-dots span:nth-child(2) { background: #eab308; }
+    .preview-dots span:nth-child(3) { background: #22c55e; }
+
+    .preview-address-bar {
+        flex: 1;
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 6px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        padding: 0 10px;
+        font-size: 0.75rem;
+        color: rgba(255, 255, 255, 0.5);
+        gap: 8px;
+    }
+    
+    .preview-url {
+        opacity: 0.8;
+    }
+
+    .preview-body {
+        position: relative;
+        aspect-ratio: 16/10;
+        overflow: hidden;
+    }
+
+    .preview-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .preview-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0,0,0,0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .project-preview-card:hover .preview-overlay {
+        opacity: 1;
+    }
+    
+    .preview-overlay i {
+        font-size: 2rem;
+        color: #fff;
+    }
 
     /* Hero Wave */
     .hero-wave {
@@ -638,16 +858,17 @@ else
     .hero-wave svg {
         width: 100%;
         height: 120px;
+        filter: drop-shadow(0 -5px 15px rgba(0,0,0,0.1));
     }
 
     .hero-wave path {
-        fill: var(--dark-secondary);
+        fill: var(--bg-secondary);
     }
 
     /* Content Section */
     .project-content-section {
         background: var(--bg-secondary);
-        padding: 4rem 0 6rem;
+        padding: 2rem 0 6rem;
     }
 
     /* Content Card */
@@ -658,43 +879,39 @@ else
         overflow: hidden;
         margin-bottom: 2rem;
         transition: all 0.3s ease;
-        box-shadow: var(--shadow-card);
+        box-shadow: var(--shadow-sm);
     }
 
     .content-card:hover {
-        border-color: rgba(37, 99, 235, 0.15);
+        box-shadow: var(--shadow-md);
+        transform: translateY(-2px);
     }
 
     .card-header-custom {
         display: flex;
         align-items: center;
-        gap: 1rem;
+        gap: 1.25rem;
         padding: 1.5rem 2rem;
-        background: var(--bg-secondary);
+        background: linear-gradient(to right, rgba(16, 185, 129, 0.03), transparent);
         border-bottom: 1px solid var(--border-color);
     }
 
     .header-icon {
-        width: 48px;
-        height: 48px;
+        width: 44px;
+        height: 44px;
         display: flex;
         align-items: center;
         justify-content: center;
-        background: rgba(37, 99, 235, 0.08);
+        background: #fff;
+        border: 1px solid rgba(16, 185, 129, 0.1);
         border-radius: 12px;
         color: var(--primary-color);
         font-size: 1.25rem;
+        box-shadow: 0 2px 8px rgba(16, 185, 129, 0.1);
     }
 
-    .header-icon.features {
-        background: rgba(22, 163, 74, 0.08);
-        color: var(--success-color);
-    }
-
-    .header-icon.challenges {
-        background: rgba(202, 138, 4, 0.08);
-        color: var(--warning-color);
-    }
+    .header-icon.features { color: var(--secondary-color); border-color: rgba(59, 130, 246, 0.1); }
+    .header-icon.challenges { color: var(--accent-color); border-color: rgba(245, 158, 11, 0.1); }
 
     .header-title {
         font-size: 1.25rem;
@@ -707,59 +924,22 @@ else
         padding: 2rem;
     }
 
-    /* Markdown Content */
+    /* Markdown Styling */
     .markdown-content {
         color: var(--text-secondary);
         line-height: 1.8;
+        font-size: 1.05rem;
     }
-
-    .markdown-content p {
-        margin-bottom: 1rem;
-    }
-
-    .markdown-content h1, .markdown-content h2, .markdown-content h3 {
-        color: var(--text-primary);
-        margin-top: 1.5rem;
-        margin-bottom: 1rem;
-    }
-
-    .markdown-content ul, .markdown-content ol {
-        padding-left: 1.5rem;
-        margin-bottom: 1rem;
-    }
-
-    .markdown-content li {
-        margin-bottom: 0.5rem;
-    }
-
-    .markdown-content code {
-        background: rgba(37, 99, 235, 0.08);
-        padding: 2px 8px;
-        border-radius: 4px;
-        color: var(--primary-color);
-    }
-
-    .markdown-content pre {
-        background: var(--bg-secondary);
-        padding: 1rem;
-        border-radius: 10px;
-        overflow-x: auto;
-        margin: 1rem 0;
-        border: 1px solid var(--border-color);
-    }
-
-    .markdown-content a {
-        color: var(--primary-color);
-    }
-
-    .markdown-content a:hover {
-        color: var(--primary-dark);
-    }
+    
+    .markdown-content p { margin-bottom: 1.2rem; }
+    .markdown-content h2, .markdown-content h3 { color: var(--text-primary); margin: 1.5rem 0 1rem; font-weight: 700; }
+    .markdown-content code { background: rgba(0,0,0,0.05); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; color: var(--primary-dark); }
+    .markdown-content blockquote { border-left: 4px solid var(--primary-color); padding-left: 1rem; margin: 1.5rem 0; font-style: italic; color: var(--text-tertiary); }
 
     /* Features Grid */
     .features-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
         gap: 1rem;
     }
 
@@ -767,68 +947,56 @@ else
         display: flex;
         align-items: center;
         gap: 1rem;
-        padding: 1rem 1.25rem;
-        background: rgba(22, 163, 74, 0.05);
-        border: 1px solid rgba(22, 163, 74, 0.1);
+        padding: 1rem;
+        background: #fff;
+        border: 1px solid var(--border-color);
         border-radius: 12px;
         transition: all 0.3s ease;
     }
 
     .feature-card:hover {
-        background: rgba(22, 163, 74, 0.08);
-        border-color: rgba(22, 163, 74, 0.15);
-        transform: translateX(5px);
+        border-color: var(--primary-light);
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.08);
+        transform: translateX(4px);
     }
 
     .feature-icon {
-        color: var(--success-color);
-        font-size: 1.25rem;
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
+        background: rgba(16, 185, 129, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary-color);
+        flex-shrink: 0;
     }
 
     .feature-text {
-        color: var(--text-secondary);
+        color: var(--text-primary);
+        font-weight: 500;
         font-size: 0.95rem;
     }
 
-    /* Challenges & Solutions Blocks */
+    /* Challenges & Solutions */
     .challenge-block, .solution-block {
-        margin-bottom: 2rem;
-    }
-
-    .challenge-block:last-child, .solution-block:last-child {
-        margin-bottom: 0;
+        margin-bottom: 1.5rem;
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+        overflow: hidden;
     }
 
     .block-header {
         display: flex;
         align-items: center;
         gap: 0.75rem;
-        margin-bottom: 1rem;
-    }
-
-    .block-header.challenges {
-        color: #ef4444;
-    }
-
-    .block-header.solutions {
-        color: #22c55e;
-    }
-
-    .block-header i {
-        font-size: 1.25rem;
-    }
-
-    .block-header h3 {
-        font-size: 1.1rem;
+        padding: 1rem 1.25rem;
         font-weight: 600;
-        margin: 0;
     }
 
-    .block-content {
-        padding-left: 2rem;
-        border-left: 2px solid rgba(99, 102, 241, 0.2);
-        color: var(--light-tertiary);
-    }
+    .block-header.challenges { background: #fef2f2; color: #dc2626; border-bottom: 1px solid #fee2e2; }
+    .block-header.solutions { background: #f0fdf4; color: #16a34a; border-bottom: 1px solid #dcfce7; }
+    .block-content { padding: 1.25rem; background: #fff; }
 
     /* Sidebar Cards */
     .sidebar-card {
@@ -837,173 +1005,100 @@ else
         border-radius: 20px;
         overflow: hidden;
         margin-bottom: 1.5rem;
-        box-shadow: var(--shadow-card);
+        box-shadow: var(--shadow-sm);
     }
 
     .sidebar-header {
         display: flex;
         align-items: center;
         gap: 1rem;
-        padding: 1.25rem 1.5rem;
-        background: var(--bg-secondary);
+        padding: 1.25rem;
+        background: rgba(248, 250, 252, 0.5);
         border-bottom: 1px solid var(--border-color);
     }
 
-    .sidebar-header .header-icon {
-        width: 40px;
-        height: 40px;
-        font-size: 1rem;
-    }
+    .sidebar-header .header-icon { width: 36px; height: 36px; font-size: 1rem; border-radius: 10px; }
+    .sidebar-header h3 { font-size: 1rem; font-weight: 700; color: var(--text-primary); margin: 0; }
+    .sidebar-body { padding: 1.25rem; }
 
-    .sidebar-header .header-icon.tech {
-        background: rgba(37, 99, 235, 0.08);
+    /* Tech Pills */
+    .tech-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .tech-pill {
+        display: inline-flex;
+        padding: 6px 14px;
+        background: #fff;
+        border: 1px solid var(--border-color);
+        border-radius: 50px;
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        font-weight: 500;
+        transition: all 0.2s;
+    }
+    .tech-pill:hover {
+        border-color: var(--primary-color);
         color: var(--primary-color);
+        background: rgba(16, 185, 129, 0.05);
     }
 
-    .sidebar-header .header-icon.gallery {
-        background: rgba(124, 58, 237, 0.08);
-        color: var(--secondary-color);
-    }
-
-    .sidebar-header .header-icon.info {
-        background: rgba(8, 145, 178, 0.08);
-        color: var(--accent-color);
-    }
-
-    .sidebar-header h3 {
-        font-size: 1rem;
-        font-weight: 600;
-        color: var(--text-primary);
-        margin: 0;
-    }
-
-    .sidebar-body {
-        padding: 1.5rem;
-    }
-
-    /* Tech List */
-    .tech-list {
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-    }
-
-    .tech-item {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        padding: 0.75rem 1rem;
-        background: rgba(37, 99, 235, 0.05);
+    /* Gallery */
+    .gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+    .gallery-item {
+        position: relative;
+        aspect-ratio: 4/3;
         border-radius: 10px;
-        transition: all 0.3s ease;
+        overflow: hidden;
+        cursor: pointer;
+        border: 1px solid var(--border-color);
     }
-
-    .tech-item:hover {
-        background: rgba(37, 99, 235, 0.08);
-        transform: translateX(5px);
-    }
-
-    .tech-bullet {
-        width: 8px;
-        height: 8px;
-        background: var(--gradient-primary);
-        border-radius: 50%;
-    }
-
-    .tech-name {
-        color: var(--text-primary);
-        font-size: 0.9rem;
-    }
-
-    /* Gallery Grid */
-    .gallery-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 0.75rem;
-    }
-
-    /* ... */
-
-    /* Info List */
-    .info-list {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    .info-item {
-        display: flex;
-        gap: 1rem;
-    }
-
-    .info-icon {
-        width: 40px;
-        height: 40px;
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+    .gallery-item:hover img { transform: scale(1.1); }
+    .gallery-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0,0,0,0.4);
         display: flex;
         align-items: center;
         justify-content: center;
-        background: rgba(8, 145, 178, 0.08);
+        opacity: 0;
+        transition: 0.2s;
+    }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+    .gallery-overlay i { color: #fff; font-size: 1.5rem; }
+
+    /* Info List */
+    .info-list { display: flex; flex-direction: column; gap: 1rem; }
+    .info-item { display: flex; gap: 1rem; align-items: center; }
+    .info-icon {
+        width: 38px;
+        height: 38px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f8fafc;
         border-radius: 10px;
-        color: var(--accent-color);
-        font-size: 1rem;
-        flex-shrink: 0;
+        color: var(--text-secondary);
+        font-size: 1.1rem;
     }
+    .info-content { display: flex; flex-direction: column; }
+    .info-label { font-size: 0.75rem; text-transform: uppercase; color: var(--text-tertiary); font-weight: 600; }
+    .info-value { font-size: 0.95rem; color: var(--text-primary); font-weight: 500; }
 
-    .info-content {
-        flex: 1;
-    }
-
-    .info-label {
-        display: block;
-        font-size: 0.75rem;
-        color: var(--text-tertiary);
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        margin-bottom: 0.25rem;
-    }
-
-    .info-value {
-        color: var(--text-primary);
-        font-size: 0.9rem;
-    }
-
-    /* ... */
-
-    /* Back to Projects */
-    .back-to-projects {
-        margin-top: 2rem;
-    }
-
+    /* Back Button */
+    .back-to-projects { text-align: center; margin-top: 1.5rem; }
     .back-link {
         display: inline-flex;
         align-items: center;
-        gap: 0.75rem;
-        padding: 12px 24px;
-        background: var(--bg-card);
-        border: 1px solid var(--border-color);
-        border-radius: 50px;
-        color: var(--primary-color);
+        gap: 0.5rem;
+        color: var(--text-secondary);
         text-decoration: none;
-        font-weight: 500;
-        transition: all 0.3s ease;
-        box-shadow: var(--shadow-sm);
+        font-weight: 600;
+        transition: 0.2s;
+        padding: 10px 20px;
+        border-radius: 50px;
+        background: #fff;
+        border: 1px solid var(--border-color);
     }
-
-    .back-link:hover {
-        background: var(--primary-color);
-        border-color: var(--primary-color);
-        color: #fff;
-        transform: translateY(-2px);
-        box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.25);
-    }
-
-    .back-link i {
-        transition: transform 0.3s ease;
-    }
-
-    .back-link:hover i {
-        transform: translateX(-5px);
-    }
+    .back-link:hover { color: var(--primary-color); border-color: var(--primary-color); transform: translateX(-5px); }
 
     /* Lightbox */
     .lightbox-modal {
@@ -1015,116 +1110,30 @@ else
         align-items: center;
         justify-content: center;
         padding: 2rem;
-        animation: fade-in 0.3s ease;
+        backdrop-filter: blur(5px);
     }
+    .lightbox-content { position: relative; max-width: 90vw; max-height: 90vh; display: flex; flex-direction: column; align-items: center; }
+    .lightbox-close { position: absolute; top: -50px; right: 0; background: transparent; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; opacity: 0.7; transition: 0.2s; }
+    .lightbox-close:hover { opacity: 1; transform: scale(1.1); }
+    .lightbox-image-container { border-radius: 8px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+    .lightbox-image { max-width: 80vw; max-height: 80vh; display: block; }
+    .lightbox-controls { display: flex; gap: 2rem; margin-top: 1.5rem; align-items: center; }
+    .lightbox-nav { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; width: 44px; height: 44px; border-radius: 50%; cursor: pointer; transition: 0.2s; display: flex; align-items: center; justify-content: center; }
+    .lightbox-nav:hover:not(:disabled) { background: rgba(255,255,255,0.2); }
+    .lightbox-nav:disabled { opacity: 0.3; cursor: not-allowed; }
+    .lightbox-counter { color: rgba(255,255,255,0.7); }
 
-    @@keyframes fade-in {
-        from { opacity: 0; }
-        to { opacity: 1; }
-    }
-
-    .lightbox-content {
-        position: relative;
-        max-width: 90vw;
-        max-height: 90vh;
-    }
-
-    .lightbox-close {
-        position: absolute;
-        top: -50px;
-        right: 0;
-        width: 40px;
-        height: 40px;
-        background: rgba(255, 255, 255, 0.1);
-        border: none;
-        border-radius: 50%;
-        color: #fff;
-        font-size: 1.25rem;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-
-    .lightbox-close:hover {
-        background: rgba(255, 255, 255, 0.2);
-    }
-
-    .lightbox-image-container {
-        border-radius: 15px;
-        overflow: hidden;
-    }
-
-    .lightbox-image {
-        max-width: 85vw;
-        max-height: 75vh;
-        object-fit: contain;
-    }
-
-    .lightbox-controls {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 2rem;
-        margin-top: 1.5rem;
-    }
-
-    .lightbox-nav {
-        width: 50px;
-        height: 50px;
-        background: rgba(255, 255, 255, 0.1);
-        border: none;
-        border-radius: 50%;
-        color: #fff;
-        font-size: 1.25rem;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-
-    .lightbox-nav:hover:not(:disabled) {
-        background: rgba(255, 255, 255, 0.2);
-    }
-
-    .lightbox-nav:disabled {
-        opacity: 0.3;
-        cursor: not-allowed;
-    }
-
-    .lightbox-counter {
-        color: rgba(255, 255, 255, 0.7);
-        font-size: 0.9rem;
-    }
-
-    /* Responsive */
     @@media (max-width: 992px) {
-        .project-hero-section {
-            min-height: auto;
-            padding: 4rem 0 6rem;
-        }
-
-        .hero-title {
-            font-size: 2rem;
-        }
-
-        .quick-stats-card {
-            margin-top: 2rem;
-        }
+        .project-hero-section { padding: 100px 0 80px; min-height: auto; }
+        .hero-title { font-size: 2.5rem; }
+        .project-preview-card { margin-top: 2rem; transform: none !important; }
+        .hero-actions { justify-content: flex-start; }
     }
-
+    
     @@media (max-width: 768px) {
-        .hero-actions {
-            flex-direction: column;
-        }
-
-        .action-btn {
-            width: 100%;
-            justify-content: center;
-        }
-
-        .features-grid {
-            grid-template-columns: 1fr;
-        }
-
-        .card-body-custom {
-            padding: 1.5rem;
-        }
+        .hero-title { font-size: 2rem; }
+        .hero-actions { flex-direction: column; }
+        .action-btn { width: 100%; justify-content: center; }
+        .features-grid { grid-template-columns: 1fr; }
     }
 </style>

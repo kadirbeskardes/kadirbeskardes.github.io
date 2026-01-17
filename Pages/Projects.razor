@@ -132,25 +132,23 @@
                     @foreach (var project in filteredProjects)
                     {
                         <div class="project-item @(projectIndex % 3 == 0 ? "featured" : "")" style="--animation-order: @projectIndex;" @key="project.Id">
-                            <article class="project-card-modern">
+                            <article class="project-card-modern h-100">
                                 <!-- Image Container -->
-                                <div class="card-image-container">
-                                    <div class="image-wrapper">
-                                        <img src="@project.ImageUrl" alt="@project.Title" loading="lazy" class="project-img">
-                                        <div class="image-overlay"></div>
-                                    </div>
-                                    
-                                    <!-- Floating Actions -->
-                                    <div class="card-actions">
-                                        <a href="@($"project/{project.Id}")" class="action-btn primary" title="@Localization["Global_ViewDetails"]">
-                                            <i class="bi bi-arrow-up-right"></i>
-                                        </a>
-                                        @if (!string.IsNullOrEmpty(project.GitHubUrl))
-                                        {
-                                            <a href="@project.GitHubUrl" target="_blank" class="action-btn secondary" title="@Localization["Global_GitHub"]">
-                                                <i class="bi bi-github"></i>
+                                <div class="card-modern-image-wrapper">
+                                    <img src="@project.ImageUrl" alt="@project.Title" loading="lazy" class="card-modern-image">
+                                    <div class="card-modern-overlay">
+                                        <div class="overlay-actions">
+                                            <a href="@($"project/{project.Id}")" class="btn-view-project">
+                                                <span>@Localization["Projects_ViewDetails"]</span>
+                                                <i class="bi bi-arrow-right"></i>
                                             </a>
-                                        }
+                                            @if (!string.IsNullOrEmpty(project.GitHubUrl))
+                                            {
+                                                <a href="@project.GitHubUrl" target="_blank" class="btn-github-icon" title="@Localization["Global_GitHub"]">
+                                                    <i class="bi bi-github"></i>
+                                                </a>
+                                            }
+                                        </div>
                                     </div>
 
                                     <!-- Date Badge -->
@@ -169,37 +167,27 @@
                                 </div>
 
                                 <!-- Card Content -->
-                                <div class="card-content">
-                                    <h3 class="card-title">
-                                        <a href="@($"project/{project.Id}")">@project.Title</a>
-                                    </h3>
-                                    <p class="card-description">@project.ShortDescription</p>
+                                <div class="modern-card-body">
+                                    <div class="modern-card-content">
+                                        <h3 class="modern-card-title">
+                                            <a href="@($"project/{project.Id}")">@project.Title</a>
+                                        </h3>
+                                        <p class="modern-card-description">@project.ShortDescription</p>
+                                    </div>
                                     
-                                    <!-- Tech Stack -->
-                                    <div class="tech-stack-wrapper">
-                                        <div class="tech-stack-list">
+                                    <div class="modern-card-footer">
+                                        <div class="modern-tech-tags">
                                             @foreach (var tech in project.Technologies.Take(4))
                                             {
-                                                <span class="tech-tag">@tech</span>
+                                                <span class="modern-tech-tag">@tech</span>
                                             }
                                             @if (project.Technologies.Length > 4)
                                             {
-                                                <span class="tech-tag more">+@(project.Technologies.Length - 4)</span>
+                                                <span class="modern-tech-tag more">+@(project.Technologies.Length - 4)</span>
                                             }
                                         </div>
                                     </div>
-
-                                    <!-- Card Footer -->
-                                    <div class="card-footer-custom">
-                                        <a href="@($"project/{project.Id}")" class="view-project-btn">
-                                            <span>@Localization["Projects_ViewDetails"]</span>
-                                            <i class="bi bi-arrow-right"></i>
-                                        </a>
-                                    </div>
                                 </div>
-
-                                <!-- Hover Glow Effect -->
-                                <div class="card-glow"></div>
                             </article>
                         </div>
                         projectIndex++;
@@ -236,8 +224,8 @@
         inset: 0;
         background: 
             radial-gradient(ellipse 80% 50% at 50% -20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-            radial-gradient(ellipse 60% 40% at 80% 60%, rgba(124, 58, 237, 0.15) 0%, transparent 50%),
-            radial-gradient(ellipse 60% 40% at 20% 80%, rgba(8, 145, 178, 0.15) 0%, transparent 50%);
+            radial-gradient(ellipse 60% 40% at 80% 60%, rgba(16, 185, 129, 0.15) 0%, transparent 50%),
+            radial-gradient(ellipse 60% 40% at 20% 80%, rgba(52, 211, 153, 0.15) 0%, transparent 50%);
         pointer-events: none;
     }
 
@@ -329,7 +317,7 @@
 
     .title-line {
         display: block;
-        background: linear-gradient(135deg, #fff 0%, #a5b4fc 50%, #c4b5fd 100%);
+        background: linear-gradient(135deg, #fff 0%, #6ee7b7 50%, #34d399 100%);
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -367,7 +355,7 @@
         display: block;
         font-size: 2.5rem;
         font-weight: 700;
-        background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+        background: linear-gradient(135deg, #fff 0%, #6ee7b7 100%);
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -405,7 +393,7 @@
     }
 
     .scroll-btn:hover {
-        color: #a5b4fc;
+        color: #6ee7b7;
     }
 
     .scroll-text {
@@ -462,8 +450,8 @@
         display: inline-flex;
         align-items: center;
         padding: 8px 20px;
-        background: rgba(37, 99, 235, 0.08);
-        border: 1px solid rgba(37, 99, 235, 0.15);
+        background: rgba(16, 185, 129, 0.08);
+        border: 1px solid rgba(16, 185, 129, 0.15);
         border-radius: 30px;
         color: var(--primary-color);
         font-size: 0.85rem;
@@ -488,7 +476,7 @@
     .divider-line {
         width: 60px;
         height: 2px;
-        background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.3), transparent);
+        background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.3), transparent);
     }
 
     .divider-icon {
@@ -560,7 +548,7 @@
 
     .empty-icon {
         font-size: 4rem;
-        color: rgba(37, 99, 235, 0.2);
+        color: rgba(16, 185, 129, 0.2);
         margin-bottom: 1.5rem;
     }
 
@@ -586,7 +574,7 @@
     }
 
     .btn-filter:hover {
-        background: rgba(37, 99, 235, 0.08);
+        background: rgba(16, 185, 129, 0.08);
         color: var(--text-primary);
     }
 
@@ -594,7 +582,7 @@
         background: var(--primary-color);
         color: #fff;
         border-color: var(--primary-color);
-        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
     }
 
     /* Projects Masonry Grid */
@@ -623,144 +611,130 @@
 
     /* Modern Project Card */
     .project-card-modern {
-        position: relative;
-        background: var(--bg-card);
-        border-radius: 20px;
+        background: #fff;
+        border-radius: 24px;
         overflow: hidden;
-        border: 1px solid var(--border-color);
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        height: 100%;
+        box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         display: flex;
         flex-direction: column;
-        box-shadow: var(--shadow-card);
+        border: 1px solid rgba(0, 0, 0, 0.03);
+        height: 100%;
     }
 
     .project-card-modern:hover {
-        transform: translateY(-8px);
-        border-color: rgba(37, 99, 235, 0.2);
-        box-shadow: var(--shadow-card-hover);
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px -5px rgba(16, 185, 129, 0.15);
+        border-color: rgba(16, 185, 129, 0.2);
     }
 
-    /* Card Glow Effect */
-    .card-glow {
-        position: absolute;
-        inset: -1px;
-        background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, transparent 50%, rgba(124, 58, 237, 0.1) 100%);
-        border-radius: 20px;
-        opacity: 0;
-        transition: opacity 0.4s ease;
-        z-index: -1;
-        filter: blur(20px);
-    }
-
-    .project-card-modern:hover .card-glow {
-        opacity: 1;
-    }
-
-    /* Card Image Container */
-    .card-image-container {
+    /* Image Wrapper */
+    .card-modern-image-wrapper {
         position: relative;
         height: 220px;
         overflow: hidden;
     }
 
-    .image-wrapper {
-        width: 100%;
-        height: 100%;
-    }
-
-    .project-img {
+    .card-modern-image {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: transform 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
     }
 
-    .project-card-modern:hover .project-img {
+    .project-card-modern:hover .card-modern-image {
         transform: scale(1.1);
     }
 
-    .image-overlay {
+    /* Overlay & Actions */
+    .card-modern-overlay {
         position: absolute;
-        inset: 0;
-        background: linear-gradient(180deg, transparent 0%, rgba(15, 23, 42, 0.8) 100%);
-        opacity: 0.3;
-        transition: opacity 0.3s ease;
-    }
-
-    .project-card-modern:hover .image-overlay {
-        opacity: 0.6;
-    }
-
-    /* Card Actions */
-    .card-actions {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        display: flex;
-        gap: 1rem;
-        opacity: 0;
-        transition: all 0.4s ease;
-        z-index: 10;
-    }
-
-    .project-card-modern:hover .card-actions {
-        opacity: 1;
-    }
-
-    .action-btn {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.25rem;
-        color: #fff;
+        opacity: 0;
         transition: all 0.3s ease;
-        transform: scale(0.8);
+        backdrop-filter: blur(3px);
+    }
+
+    .project-card-modern:hover .card-modern-overlay {
+        opacity: 1;
+    }
+
+    .overlay-actions {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        transform: translateY(20px);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        opacity: 0;
+    }
+
+    .project-card-modern:hover .overlay-actions {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    .btn-view-project {
+        background: #fff;
+        color: var(--primary-color);
+        padding: 10px 20px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        transition: all 0.2s ease;
+    }
+
+    .btn-view-project:hover {
+        background: var(--primary-color);
+        color: #fff;
+    }
+
+    .btn-github-icon {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.9);
+        color: var(--text-primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        transition: all 0.2s ease;
         text-decoration: none;
     }
 
-    .project-card-modern:hover .action-btn {
-        transform: scale(1);
+    .btn-github-icon:hover {
+        background: #fff;
+        color: var(--primary-color);
+        transform: scale(1.1);
     }
 
-    .action-btn.primary {
-        background: var(--gradient-primary);
-        box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
-    }
-
-    .action-btn.secondary {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
-        border: 1px solid var(--border-color);
-        color: var(--text-primary);
-    }
-
-    .action-btn:hover {
-        transform: scale(1.1) !important;
-    }
-
-    /* Date Badge */
+    /* Badges */
     .date-badge {
         position: absolute;
         top: 1rem;
         right: 1rem;
-        padding: 6px 14px;
+        padding: 6px 12px;
         background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
-        border: 1px solid var(--border-color);
+        backdrop-filter: blur(4px);
         border-radius: 30px;
         color: var(--primary-color);
         font-size: 0.75rem;
-        font-weight: 500;
+        font-weight: 600;
         z-index: 5;
-        box-shadow: var(--shadow-sm);
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
 
-    /* Category Tag */
     .category-tag {
         position: absolute;
         top: 1rem;
@@ -769,7 +743,7 @@
     }
 
     .category-tag span {
-        padding: 6px 14px;
+        padding: 6px 12px;
         background: var(--gradient-primary);
         border-radius: 30px;
         color: #fff;
@@ -777,107 +751,76 @@
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 0.05em;
-        box-shadow: 0 2px 10px rgba(37, 99, 235, 0.25);
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
     }
 
-    /* Card Content */
-    .card-content {
+    /* Card Body */
+    .modern-card-body {
         padding: 1.5rem;
         flex: 1;
         display: flex;
         flex-direction: column;
+        justify-content: space-between;
     }
 
-    .card-title {
-        font-size: 1.25rem;
+    .modern-card-title {
         font-weight: 700;
+        font-size: 1.25rem;
         margin-bottom: 0.75rem;
     }
 
-    .card-title a {
+    .modern-card-title a {
         color: var(--text-primary);
         text-decoration: none;
-        transition: color 0.3s ease;
+        transition: color 0.2s ease;
     }
 
-    .card-title a:hover {
+    .modern-card-title a:hover {
         color: var(--primary-color);
     }
 
-    .card-description {
-        color: var(--text-tertiary);
+    .modern-card-description {
+        color: var(--text-secondary);
         font-size: 0.9rem;
         line-height: 1.6;
-        margin-bottom: 1.25rem;
         display: -webkit-box;
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
         overflow: hidden;
+        margin-bottom: 1.5rem;
+        opacity: 0.8;
     }
 
-    /* Tech Stack */
-    .tech-stack-wrapper {
-        margin-top: auto;
+    .modern-card-footer {
+        border-top: 1px solid rgba(0,0,0,0.05);
         padding-top: 1rem;
-        border-top: 1px solid var(--border-color);
+        margin-top: auto;
     }
 
-    .tech-stack-list {
+    .modern-tech-tags {
         display: flex;
         flex-wrap: wrap;
         gap: 0.5rem;
     }
 
-    .tech-tag {
-        padding: 4px 12px;
-        background: rgba(37, 99, 235, 0.08);
-        border: 1px solid rgba(37, 99, 235, 0.15);
-        border-radius: 20px;
-        color: var(--primary-color);
+    .modern-tech-tag {
         font-size: 0.75rem;
-        font-weight: 500;
-        transition: all 0.3s ease;
-    }
-
-    .tech-tag:hover {
-        background: rgba(37, 99, 235, 0.15);
-        border-color: rgba(37, 99, 235, 0.3);
-    }
-
-    .tech-tag.more {
-        background: rgba(124, 58, 237, 0.08);
-        border-color: rgba(124, 58, 237, 0.15);
-        color: var(--secondary-color);
-    }
-
-    /* Card Footer */
-    .card-footer-custom {
-        padding: 1rem 1.5rem;
-        background: var(--bg-secondary);
-        border-top: 1px solid var(--border-color);
-    }
-
-    .view-project-btn {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+        padding: 4px 12px;
+        background: rgba(16, 185, 129, 0.08);
         color: var(--primary-color);
-        text-decoration: none;
-        font-size: 0.9rem;
-        font-weight: 500;
-        transition: all 0.3s ease;
+        border-radius: 6px;
+        font-weight: 600;
+        transition: all 0.2s ease;
     }
 
-    .view-project-btn:hover {
-        color: var(--primary-dark);
+    .modern-tech-tag:hover {
+        background: var(--primary-color);
+        color: #fff;
     }
 
-    .view-project-btn i {
-        transition: transform 0.3s ease;
-    }
-
-    .view-project-btn:hover i {
-        transform: translateX(5px);
+    .modern-tech-tag.more {
+        background: #f3f4f6;
+        color: #6b7280;
     }
 
     /* Mobile Responsive */
@@ -1128,12 +1071,12 @@
     @@media (hover: none) and (pointer: coarse) {
         .project-card-modern:hover {
             transform: none;
-            border-color: rgba(99, 102, 241, 0.1);
+            border-color: rgba(16, 185, 129, 0.1);
         }
         
         .project-card-modern:active {
             transform: scale(0.99);
-            border-color: rgba(99, 102, 241, 0.3);
+            border-color: rgba(16, 185, 129, 0.3);
         }
         
         .card-actions {
@@ -1157,12 +1100,12 @@
         }
         
         .tech-tag:hover {
-            background: rgba(99, 102, 241, 0.1);
-            border-color: rgba(99, 102, 241, 0.2);
+            background: rgba(16, 185, 129, 0.1);
+            border-color: rgba(16, 185, 129, 0.2);
         }
         
         .tech-tag:active {
-            background: rgba(99, 102, 241, 0.2);
+            background: rgba(16, 185, 129, 0.2);
         }
     }
     

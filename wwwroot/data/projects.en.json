@@ -193,7 +193,7 @@
   "title": "WeatherThen",
   "shortDescription": "Sophisticated, visual-first weather application with premium lifestyle insights and customizable widgets.",
   "fullDescription": "WeatherThen is a comprehensive weather application designed to provide more than just the temperature. It combines accurate real-time data from Open-Meteo with immersive visualizations that reflect the current weather and time of day. Beyond standard forecasts, it offers deep insights into air quality, solar/lunar cycles, and comfort indices. The app features a robust premium tier that unlocks advanced charts, clothing suggestions, unlimited location favorites, and a suite of highly customizable Android home screen widgets, ensuring users are always prepared for the elements.",
-  "imageUrl": "assets/icon.png",
+  "imageUrl": "icon-192.png",
   "technologies": [
     "React Native",
     "Expo",
